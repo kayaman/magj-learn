@@ -7,7 +7,7 @@ description: Resources
 
 <a href="/resources/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf" target="_blank">Exam Guide</a>  
 
-<a href="/resources/CurriculumResourceGuideV2.pdf" target="_blank">Udemy Course slides</a>  
+<a href="/resources/CurriculumResourceGuideV2.pdf" target="_blank">Curriculum</a>  
 
 
 ## Udemy
