@@ -130,3 +130,104 @@ A machine learning engineer has been tasked with fine-tuning a pre-trained text 
     *Use a custom dataset to fine-tune the model with domain-specific data.*
 
 Domain adaption fine-tuning is useful for industry jargon and technical terms. As long as the model supports this type of fine-tuning, this approach should work.
+
+---
+
+A machine learning engineer must make sure that catastrophic forgetting doesn’t occur during model fine-tuning.  
+Which technique would help them identify catastrophic forgetting because of a drop in model performance?
+
+    *Plot the model’s performance over time, and then look for significant decreases in performance on specific tasks after fine-tuning with new data.*
+
+This approach helps the engineer detect when catastrophic forgetting might have occurred by identifying drops in performance after fine-tuning events.
+
+---
+
+A machine learning engineer is working on a project that involves training multiple versions of a model for sentiment analysis. Her team wants to maintain a clear record of all model versions, track their performance metrics, and ensure only approved models are deployed to production.  
+Which approach should the team use to achieve these goals?
+
+    *Use Amazon SageMaker Model Registry to register and manage different versions of the sentiment analysis model within a Model Group.*
+
+The SageMaker Model Registry is designed specifically for managing model versions, tracking metadata and performance metrics, and controlling the approval and deployment process.
+
+---
+
+You are a data scientist working on a project that involves training a machine learning (ML) model to forecast customer demand. You and other members of your team need to re-train the model in Amazon SageMaker frequently as new data becomes available. Which method should you use to manage and track model versions? 
+
+    *Manage this model using Amazon SageMaker Model Registry in a Model Group.*
+
+Model Groups in SageMaker Model Registry are designed to contain different versions of a model trained for a particular problem. This feature would be most useful for grouping and tracking all the versions of your model under one umbrella. 
+
+---
+
+You are training a random forest model and trying to identify hyperparameter values. You are working on the hyperparameters that define the characteristics of the decision trees in the model. Which changes to the hyperparameters would help reduce overfitting?
+
+    *Increase the number of samples required to split a node.*
+
+Increasing the number of samples required to split a node prevents the tree from creating too many branches. This helps prevent trees from creating overly specific rules that can result in overfitting.
+
+---
+
+You are experimenting with different ensemble methods and want to train an ensemble model using the bagging method. Which model types can you consider?
+
+    *Random forest*
+
+Random forests are ensembles of decision tree models. They combine bagging with random feature selection.
+
+---
+
+You are a data scientist troubleshooting a model re-training job for a neural network. Model performance on specific tasks has decreased and you have identified the issue as catastrophic forgetting. Which changes might you consider?
+
+    *Use a rehearsal strategy in your training job and include older samples in your training set.*
+
+The rehearsal approach involves including samples from the original training set during the re-training process. The model rehearses the previous task, which helps it retain the learned knowledge.
+
+---
+
+You are a data scientist who needs to create a model that will be deployed for an edge computing use case. The model must be small to make efficient use of compute and storage resources. What should you consider to manage model size?
+
+    *Only use as many features as needed to achieve the required accuracy.*
+
+Models trained on fewer features have fewer patterns in the data to learn. This results in a smaller model.
+
+---
+
+You are training a neural network and observe that the model performs well on training data but fails to generalize to new, unseen data. Which technique can help improve model performance?
+
+    *Use dropout.*
+
+Dropout randomly drops out (sets to 0) a number of neurons in each layer of the neural network during each epoch. This forces the network to not overemphasize specific neurons and develop multiple methods of arriving at a result.
+
+---
+
+You are a data scientist working with a model for performing text summarization on customer feedback. You observe that the model does not perform well when processing industry-specific jargon and technical terms. You do not have access to the original training data but have a collection of text samples with this terminology. What is the best approach for improving the performance of this model? 
+
+    *Domain adaptation fine-tuning* 
+
+Domain adaptation fine-tuning is a suitable approach for adapting models to specific tasks using limited domain-specific data, such as industry jargon or technical terms.
+
+---
+
+You are a machine learning (ML) engineer trying to decide between hyperparameter tuning techniques. You need a technique that prioritizes speed and scalability for data with a larger search space. What is the best choice?
+
+    *Hyperband*
+
+Hyperband can train multiple models in parallel, which increases speed. It also focuses resources on higher performing hyperparameter configurations and uses early stopping. This can be a more efficient allocation of compute resources.
+
+---
+
+You are a data scientist who needs to reduce the size of a machine learning (ML) model. You decide to use iterative model pruning. What would impact how much smaller your model becomes?
+
+    *After ranking weights by their importance in making correct permissions, setting a higher percentage of bottom-ranked weights to remove from the model*
+
+Iterative model pruning reduces the number of weights in a neural network by ranking their importance in making correct predictions. It then removes the weights that rank lowest.
+
+---
+
+You are experimenting with reducing training time for your models to reduce compute costs. Which model characteristic INCREASES as you decrease the number of training epochs?
+
+    *Model bias*
+
+Decreasing the number of epochs reduces training time, giving the model less time to capture the patterns in the training data.
+
+---
+
