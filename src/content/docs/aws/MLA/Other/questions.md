@@ -100,14 +100,16 @@ Which AWS streaming services would be best suited for processing real-time strea
   
     *Kinesis Data Streams provides durable real-time data streaming that can capture and store data from many different sources. Amazon Managed Service for Apache Flink can query, analyze, and run computations on streaming data. Using a combination of both of these services, you can ingest real-time data using Kinesis Data Streams. Then, you can process it with Apache Flink for suitable use for ML inference.*
 
-## Choose a modeling approach
+---
 
-1. You are a machine learning engineer for a cybersecurity company and planning to train your own model to detect security threats. You want to train your model using deep learning and SageMaker.  
+You are a machine learning engineer for a cybersecurity company and planning to train your own model to detect security threats. You want to train your model using deep learning and SageMaker.  
 Which of the AI/ML stack would you choose to accomplish your goal?
 
     *AWS ML frameworks and infrastructure helps you train your model with a deep learning framework.*
 
-2. You are training your machine learning (ML) model for a classification problem. You provide answers in the example data during training. Which algorithm can be used for a binary classification, a multi-class classification, and a regression ML task?  
+---
+
+You are training your machine learning (ML) model for a classification problem. You provide answers in the example data during training. Which algorithm can be used for a binary classification, a multi-class classification, and a regression ML task?  
 
     *XGBoost - This implements a gradient-boosted trees algorithm that combines an ensemble of estimates from a set of simpler and weaker models. It can be used for binary classification, multi-class classification, and regression problems.*
 
@@ -119,13 +121,13 @@ Which of the AI/ML stack would you choose to accomplish your goal?
 
 ---
 
-How does iterative model pruning reduce the size of a machine learning (ML) model?
++ How does iterative model pruning reduce the size of a machine learning (ML) model?
 
     *It removes the least important parameters or nodes from a model.*
 
 ---
 
-A machine learning engineer has been tasked with fine-tuning a pre-trained text generation model. The text generation model needs to be able to answer to industry-specific terminology and acronyms but is otherwise effective in the business solution.
++ A machine learning engineer has been tasked with fine-tuning a pre-trained text generation model. The text generation model needs to be able to answer to industry-specific terminology and acronyms but is otherwise effective in the business solution.
 
     *Use a custom dataset to fine-tune the model with domain-specific data.*
 
@@ -133,7 +135,7 @@ Domain adaption fine-tuning is useful for industry jargon and technical terms. A
 
 ---
 
-A machine learning engineer must make sure that catastrophic forgetting doesn’t occur during model fine-tuning.  
++ A machine learning engineer must make sure that catastrophic forgetting doesn’t occur during model fine-tuning.  
 Which technique would help them identify catastrophic forgetting because of a drop in model performance?
 
     *Plot the model’s performance over time, and then look for significant decreases in performance on specific tasks after fine-tuning with new data.*
@@ -142,7 +144,7 @@ This approach helps the engineer detect when catastrophic forgetting might have 
 
 ---
 
-A machine learning engineer is working on a project that involves training multiple versions of a model for sentiment analysis. Her team wants to maintain a clear record of all model versions, track their performance metrics, and ensure only approved models are deployed to production.  
++ A machine learning engineer is working on a project that involves training multiple versions of a model for sentiment analysis. Her team wants to maintain a clear record of all model versions, track their performance metrics, and ensure only approved models are deployed to production.  
 Which approach should the team use to achieve these goals?
 
     *Use Amazon SageMaker Model Registry to register and manage different versions of the sentiment analysis model within a Model Group.*
@@ -151,7 +153,7 @@ The SageMaker Model Registry is designed specifically for managing model version
 
 ---
 
-You are a data scientist working on a project that involves training a machine learning (ML) model to forecast customer demand. You and other members of your team need to re-train the model in Amazon SageMaker frequently as new data becomes available. Which method should you use to manage and track model versions? 
++ You are a data scientist working on a project that involves training a machine learning (ML) model to forecast customer demand. You and other members of your team need to re-train the model in Amazon SageMaker frequently as new data becomes available. Which method should you use to manage and track model versions? 
 
     *Manage this model using Amazon SageMaker Model Registry in a Model Group.*
 
@@ -159,7 +161,7 @@ Model Groups in SageMaker Model Registry are designed to contain different versi
 
 ---
 
-You are training a random forest model and trying to identify hyperparameter values. You are working on the hyperparameters that define the characteristics of the decision trees in the model. Which changes to the hyperparameters would help reduce overfitting?
++ You are training a random forest model and trying to identify hyperparameter values. You are working on the hyperparameters that define the characteristics of the decision trees in the model. Which changes to the hyperparameters would help reduce overfitting?
 
     *Increase the number of samples required to split a node.*
 
@@ -167,7 +169,7 @@ Increasing the number of samples required to split a node prevents the tree from
 
 ---
 
-You are experimenting with different ensemble methods and want to train an ensemble model using the bagging method. Which model types can you consider?
++ You are experimenting with different ensemble methods and want to train an ensemble model using the bagging method. Which model types can you consider?
 
     *Random forest*
 
@@ -175,7 +177,7 @@ Random forests are ensembles of decision tree models. They combine bagging with 
 
 ---
 
-You are a data scientist troubleshooting a model re-training job for a neural network. Model performance on specific tasks has decreased and you have identified the issue as catastrophic forgetting. Which changes might you consider?
++ You are a data scientist troubleshooting a model re-training job for a neural network. Model performance on specific tasks has decreased and you have identified the issue as catastrophic forgetting. Which changes might you consider?
 
     *Use a rehearsal strategy in your training job and include older samples in your training set.*
 
@@ -183,7 +185,7 @@ The rehearsal approach involves including samples from the original training set
 
 ---
 
-You are a data scientist who needs to create a model that will be deployed for an edge computing use case. The model must be small to make efficient use of compute and storage resources. What should you consider to manage model size?
++ You are a data scientist who needs to create a model that will be deployed for an edge computing use case. The model must be small to make efficient use of compute and storage resources. What should you consider to manage model size?
 
     *Only use as many features as needed to achieve the required accuracy.*
 
@@ -191,7 +193,7 @@ Models trained on fewer features have fewer patterns in the data to learn. This 
 
 ---
 
-You are training a neural network and observe that the model performs well on training data but fails to generalize to new, unseen data. Which technique can help improve model performance?
++ You are training a neural network and observe that the model performs well on training data but fails to generalize to new, unseen data. Which technique can help improve model performance?
 
     *Use dropout.*
 
@@ -199,7 +201,7 @@ Dropout randomly drops out (sets to 0) a number of neurons in each layer of the 
 
 ---
 
-You are a data scientist working with a model for performing text summarization on customer feedback. You observe that the model does not perform well when processing industry-specific jargon and technical terms. You do not have access to the original training data but have a collection of text samples with this terminology. What is the best approach for improving the performance of this model? 
++ You are a data scientist working with a model for performing text summarization on customer feedback. You observe that the model does not perform well when processing industry-specific jargon and technical terms. You do not have access to the original training data but have a collection of text samples with this terminology. What is the best approach for improving the performance of this model? 
 
     *Domain adaptation fine-tuning* 
 
@@ -207,7 +209,7 @@ Domain adaptation fine-tuning is a suitable approach for adapting models to spec
 
 ---
 
-You are a machine learning (ML) engineer trying to decide between hyperparameter tuning techniques. You need a technique that prioritizes speed and scalability for data with a larger search space. What is the best choice?
++ You are a machine learning (ML) engineer trying to decide between hyperparameter tuning techniques. You need a technique that prioritizes speed and scalability for data with a larger search space. What is the best choice?
 
     *Hyperband*
 
@@ -215,7 +217,7 @@ Hyperband can train multiple models in parallel, which increases speed. It also 
 
 ---
 
-You are a data scientist who needs to reduce the size of a machine learning (ML) model. You decide to use iterative model pruning. What would impact how much smaller your model becomes?
++ You are a data scientist who needs to reduce the size of a machine learning (ML) model. You decide to use iterative model pruning. What would impact how much smaller your model becomes?
 
     *After ranking weights by their importance in making correct permissions, setting a higher percentage of bottom-ranked weights to remove from the model*
 
@@ -223,7 +225,7 @@ Iterative model pruning reduces the number of weights in a neural network by ran
 
 ---
 
-You are experimenting with reducing training time for your models to reduce compute costs. Which model characteristic INCREASES as you decrease the number of training epochs?
++ You are experimenting with reducing training time for your models to reduce compute costs. Which model characteristic INCREASES as you decrease the number of training epochs?
 
     *Model bias*
 
@@ -231,3 +233,35 @@ Decreasing the number of epochs reduces training time, giving the model less tim
 
 ---
 
++ For the case study income eligibility model, the business goals need a quality model that balances minimizing both false positive (FP) and false negative (FN).  
+Which metrics would best be used to evaluate these models?
+
+    *F1 Score*
+
+F1 score balances out Precision (FP) and Recall (FN).
+
+---
+
++ Nikki, a machine learning engineer, is evaluating a classification model for a business problem where it is critical to identify all positive cases correctly, even if it means having a higher number of false positives (FPs)?  
+Which metric would be best for this example?  
+
+    *Precision*
+
+Precision measures the proportion of positive predictions that are actually correct.
+
+---
+
++ Martha, a machine learning engineer, is building a binary classification model to predict whether an email is spam or not spam.  
+Which evaluation metric would be most appropriate to use if falsely classifying a non-spam email as spam is highly undesirable?
+
+    *Precision*
+
+Precision measures the proportion of positive predictions (spam emails) that are actually correct. If falsely classifying non-spam as spam is highly undesirable, Martha wants to minimize false positives, which precision directly accounts for. 
+
+---
+
++ Which of the following is a key benefit of using Amazon SageMaker Debugger?
+
+    *Improved model performance*
+
+Amazon SageMaker Debugger helps identify and resolve issues such as overfitting, underfitting, or data quality problems during model training and deployment. By addressing these issues, Model Debugger enables you to improve the model's performance and accuracy.
