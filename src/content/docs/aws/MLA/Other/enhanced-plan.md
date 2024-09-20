@@ -35,25 +35,29 @@ If you need to refresh your knowledge, enroll in the Enhanced Exam Prep Plan: [A
 3. [Analyze Model Performance](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/19653/aws-ml-engineer-associate-24-analyze-model-performance
 ) (45 minutes)
 
-4.  Select a Deployment Infrastructure (1 hour)
+### Domain 3: 
 
-## Domain 3: 
+1. [Select a Deployment Infrastructure](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/20369/aws-ml-engineer-associate-31-select-a-deployment-infrastructure) (1 hour)
 
-5.  Create and Script Infrastructure (1 hour 30 minutes)
+2. [Create and Script Infrastructure](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/20360/aws-ml-engineer-associate-32-create-and-script-infrastructure) (1 hour 30 minutes)
 
-6.  Automate Deployment (1 hour 15 minutes)
+3. [Automate Deployment](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/20361/aws-ml-engineer-associate-33-automate-deployment) (1 hour 15 minutes)
+  
+### Domain 4:
 
-7.  Monitor Model Performance and Data Quality (2 hours 30 minutes)
+1. [Monitor Model Performance and Data Quality](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/20446/aws-ml-engineer-associate-41-monitor-model-performance-and-data-quality) (2 hours 30 minutes)
 
-8.  Monitor and Optimize Infrastructure and Costs (2 hours 30 minutes)
+2. [Monitor and Optimize Infrastructure and Costs](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/20450/aws-ml-engineer-associate-42-monitor-and-optimize-infrastructure-and-costs) (2 hours 30 minutes)
 
-9.  Secure AWS ML Resources (2 hours 15 minutes)
+3. [Secure AWS ML Resources](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/20398/aws-ml-engineer-associate-43-secure-aws-ml-resources) (2 hours 15 minutes)
 
-10. AWS ML Engineer Associate Curriculum Conclusion (10 minute)
+### Other
 
-11. Planning a Machine Learning Project (30 minutes)
+1.  [AWS ML Engineer Associate Curriculum Conclusion](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/20366/aws-ml-engineer-associate-curriculum-conclusion) (10 minute)
 
-12. Amazon Bedrock Getting Started (1 hour)
+2.  [Planning a Machine Learning Project](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/6351/planning-a-machine-learning-project) (30 minutes)
+
+3. [Amazon Bedrock Getting Started](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/17508/amazon-bedrock-getting-started) (1 hour)
 
 ## Experiential and game-based learning
 
