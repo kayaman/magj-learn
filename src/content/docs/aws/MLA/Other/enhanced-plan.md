@@ -35,7 +35,7 @@ If you need to refresh your knowledge, enroll in the Enhanced Exam Prep Plan: [A
 3. [Analyze Model Performance](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/19653/aws-ml-engineer-associate-24-analyze-model-performance
 ) (45 minutes)
 
-### Domain 3: 
+### Domain 3: Deployment and Orchestration of ML Workflows
 
 1. [Select a Deployment Infrastructure](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/20369/aws-ml-engineer-associate-31-select-a-deployment-infrastructure) (1 hour)
 
@@ -43,7 +43,7 @@ If you need to refresh your knowledge, enroll in the Enhanced Exam Prep Plan: [A
 
 3. [Automate Deployment](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/20361/aws-ml-engineer-associate-33-automate-deployment) (1 hour 15 minutes)
   
-### Domain 4:
+### Domain 4: ML Solution Monitoring, Maintenance, and Security
 
 1. [Monitor Model Performance and Data Quality](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/20446/aws-ml-engineer-associate-41-monitor-model-performance-and-data-quality) (2 hours 30 minutes)
 
