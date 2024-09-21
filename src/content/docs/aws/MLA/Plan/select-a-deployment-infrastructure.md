@@ -140,5 +140,151 @@ Batch transform provides offline inference for large datasets. Batch transform i
 
 **Multi-model and multi-container deployments**
 
-###
+![multi](/img/multi.png)
+
+- Dedicated endpoints
+
+    Dedicated endpoints will be best performant, though they will be the most expensive.
+
+- Multi-model endpoint
+
+    SageMaker multi-model endpoints provide a scalable and cost-effective solution to deploying large numbers of models. They use the same fleet of resources and a shared serving container to host all of your models. This method reduces hosting costs by improving endpoint utilization compared with using single-model endpoints. It also reduces deployment overhead because SageMaker manages loading models in memory and scaling them based on the traffic patterns to your endpoint.
+
+- Multi-container endpoint
+
+    SageMaker multi-container endpoints give you the ability to deploy multiple containers, which use different models or frameworks, on a single SageMaker endpoint. The containers can be run in a sequence as an inference pipeline. Or each container can be accessed individually by using direct invocation to improve endpoint utilization and optimize costs.
+
+---
+
+**Use cases for multi-model endpoint**
+
+- A/B testing: When you are developing and iterating on different versions of a model, you can use a multi-model endpoint to host the different model versions side-by-side. This helps you to perform A/B testing to compare the performance of the models and determine the best one to deploy.
+
+- Ensemble model: You can use a multi-model endpoint to host an ensemble of different models that each specialize in different parts of a problem domain. The endpoint can then intelligently route incoming requests to the best-suited model, providing improved overall performance.
+
+- Dynamic model loading: If you have a large number of models that are used more rarely, you can use a multi-model endpoint to only load the specific models needed when they are required. This can save on compute and memory resources, compared to hosting all models simultaneously.
+
+- Multi-tenant applications: Different customers might require their own unique model. A multi-model endpoint helps you to serve multiple customers from a single endpoint, streamlining deployment and management.
+
+**Use cases for multi-container endpoint**
+
+- Data preprocessing: Run a data pre-processing container alongside your primary model container. The preprocessing container can handle tasks like data normalization, feature engineering, or other transformations before passing the data to the model. 
+
+- Post-processing and interpretation: Run a post-processing container that takes the model's predictions and performs additional tasks like generating explanations, formatting the output, or combining results from multiple models.
+
+- Multi-modal inference: If your machine learning system ingests and processes different data modalities, you can use a multi-container endpoint to have specialized containers for each modality. This helps you to optimize the processing for each data type.
+
+- Complex workflows: For very complex machine learning pipelines, a multi-container endpoint provides a way to break down the workflow into modular, reusable components. This can improve testability, maintainability, and scalability of your system.
+
+### Container and Instance Types for Inference
+
+**Choosing the right container for Inference**
+
+- SageMaker managed container images
+
+  - Deployment
+
+    Deploy your model using a SageMaker managed container image. The pre-configured containers handle the necessary setup, including model hosting and inference processing.
+
+  - Pre-built code
+
+    Many SageMaker managed container images contain pre-built code for managing inference requests and responses.
+
+  - Training your model
+
+    You might be able to use the same container image for both training and inference. If you use a SageMaker managed container image to train your model, it might already include the inference logic.
+
+- Using your own inference code
+
+  - Inbound and outbound
+
+    When you use your own inference code, you have the flexibility to handle the inbound requests and outbound responses.
+
+  - Extend SageMaker containers
+
+    You can extend SageMaker managed containers by providing your own inference code. Containers come pre-configured with the necessary components, such as framework, dependencies, and libraries.
+
+  - Bring your own container (BYOC)
+
+    You can also use your own inference code by bringing your own container (BYOC). Create a custom container image that includes your model, dependencies, and any other necessary components. This option offers the most flexibility.
+
+**Choosing the right compute resources**
+
+| Instance family |	Workload type |
+|-----------------|------------------|
+|t family |	Short jobs or notebooks |
+|m family | Standard CPU to memory ratio |
+|r family | Memory-optimized |
+|c family | Compute-optimized |
+|p family | Accelerated computing, training, and inference |
+|g family | Accelerated inference, smaller training jobs |
+| Amazon Elastic Inference | Cost-effective inference accelerators |
+
+**Choosing CPU, GPU, or Trainium instances**
+
+- CPU
+
+    CPU instances are effective choices for traditional ML models. They apply to prototyping deep learning (DL) models, training smaller DL models, fine-tuning smaller datasets, or use cases that involve trade-off of time for cost. CPU instances are effective for the following reasons:
+
+  - Used for smaller datasets: CPU instances are ideal for smaller datasets, less complex models, or when the training process is not computationally intensive.
+
+  - Cost effective: CPU instances can be cost-effective for certain use cases, because they generally have lower hourly rates compared to GPU-accelerated instances.
+
+    Use cases include the following:
+
+    - Text classification or sentiment analysis
+    - Financial data
+    - Small to medium-sized models
+
+- GPU
+  
+    GPU instances are effective choices for training ML frameworks such as TensorFlow, PyTorch, Apache MXNet, and XGBoost. They are also effective for training DL models with neural networks. Select from a range of GPU instances that balance performance and cost considerations. GPU instances are effective for the following reasons:
+
+  - Frequently used for training: GPU instances are often used for most ML training tasks due to their ability to accelerate computations through parallel processing.
+
+  - Faster training times: Using GPU instances results in faster training times and the ability to handle larger datasets for more complex models.
+
+    Use cases include the following:
+  
+  - Sequence modeling
+  - Object detection, video analysis
+  - Large-scale models or generative adversarial networks (GANs)
+
+- Trainium
+
+    You can also use AWS Trainium instances for inference. Navigate through the three labeled markers to learn more about when to use Trainium instances. Trainium instances are effective for the following reasons:
+
+  - Cost effective: Trainium instances can be more cost-effective than GPU instances for certain use cases, particularly dealing with large-scale ML training or inference tasks.
+
+  - Might have limited availability: Trainium might have limited availability or Regional limitations compared to more widely available CPU and GPU instances.
+
+    Use cases include the following:
+
+  - Computer vision and speech recognition
+  
+  - Recommendation models
+  
+  - Simulations
+
+---
+
+**Consider the following for Amazon EC2 P5 instances:**
+
+- High serial performance
+- Cost efficient for smaller models
+- Broad support for models and frameworks
+
+**Consider the following for GPU-based instances:**
+
+- High throughput at desired latency
+- Cost efficient for high utilization
+- Good for deep learning, large models
+
+**Consider the following for Amazon EC2 Inf2 instances:**
+
+- Accelerator designed for ML inference
+- High throughput at lower cost than GPUs
+- Ideal for models that AWS Neuron SDK supports
+
+### Optimizing Deployment with Edge Computing
 
