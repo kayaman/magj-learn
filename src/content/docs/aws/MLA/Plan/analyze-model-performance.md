@@ -207,3 +207,139 @@ To learn more, visit Use [Amazon SageMaker Debugger to debug and improve model p
 
 ### SageMaker Clarify and Metrics Overview
 
+For post-training evaluation and explainability
+
+SageMaker Clarify is a feature within Amazon SageMaker that helps you monitor, explain, and improve the fairness and transparency of your machine learning models. It provides a suite of bias detection, explainability, and data quality monitoring tools that can be applied to your models throughout the ML lifecycle.
+
+**SageMaker Clarify in the ML lifecycle**
+
+![Clarify](/img/clarify.png)
+
+- Explain machine learning models
+
+  SageMaker Clarify helps to explain machine learning models and assess your data and models for bias.
+
+- Detect drift in bias during data preparation
+
+  SageMaker Clarify helps detect bias across attributes in your training data utilizing nine different pre-training detection methods.
+
+- Detect bias in your trained model
+
+  SageMaker Clarify helps detect bias in your trained model. It also helps evaluate the degree to which various types of bias are present in your model utilizing nine different post-training detection methods.
+
+- Explain both global and local predictions
+
+  SageMaker Clarify helps explain both global and local predictions. It helps you understand the relative importance of each feature to your model's overall behavior and individual predictions.
+  Note: Global methods have access to more training data by fitting a single method over multiple time series. This can lead to better generalizations than traditional local forecasting methods, which estimate a single method per time series.
+
+- Explain decisions made by computer vision or natural language processing
+
+  SageMaker Clarify helps you understand how computer vision (CV) or natural language processing (NLP) model predictions are being made in unstructured data models that are typically black box in their approach.
+
+- Detect drift in bias and model behavior over time
+
+  SageMaker Clarify provides alerts and detects drift over time in SageMaker Model Monitor to understand changes due to dynamic real-world conditions.
+
+- Provide model reports
+
+  SageMaker Clarify can provide visual reports with descriptions of the sources and severity of possible bias so that you can plan steps to mitigate.
+
+To learn more about how to use SageMaker Clarify, visit [Use SageMaker Clarify](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-configure-processing-jobs.html).
+
+#### Metrics
+
+- Data bias metrics
+
+  - Class Imbalance: Measures the imbalance in the distribution of classes or labels in your training data. 
+  - Facet Imbalance: Evaluates the imbalance in the distribution of facets or sensitive attributes, such as age, gender, or race across different classes or labels. 
+  - Facet Correlation: Measures the correlation between facets or sensitive attributes and the target variable.
+
+- Model bias metrics
+
+  - Differential validity: Evaluates the difference in model performance such as accuracy, precision, and recall across different facet groups.
+  - Differential prediction bias: Measures the difference in predicted outcomes or probabilities for different facet groups, given the same input features. 
+  - Differential feature importance: Analyzes the difference in feature importance across different facet groups, helping to identify potential biases in how the model uses features for different groups.
+
+- Model explanability metrics
+
+  - SHAP (SHapley Additive exPlanations): Provides explanations for individual predictions by quantifying the contribution of each feature to the model's output. 
+  - Feature Attribution: Identifies the most important features contributing to a specific prediction, helping to understand the model's decision-making process.
+  - Partial Dependence Plots (PDPs): Visualizes the marginal effect of one or more features on the model's predictions, helping to understand the relationship between features and the target variable.
+
+- Data quality metrics
+
+  - Missing Data: Identifies the presence and distribution of missing values in your training data.
+  - Duplicate Data: Detects duplicate instances or rows in your training data.
+  - Data Drift: Measures the statistical difference between the training data and the data used for inference or production, helping to identify potential distribution shifts.
+
+### Interpret Model Outputs Using SageMaker Clarify
+
+- Feature importance explanations
+
+  Feature importance explanations show how each input feature contributes to the model's predictions. This can help you understand which features are driving the model's decisions and identify potential biases or unfair treatment based on sensitive features like gender, race, or age.
+
+- Shapley additive explanations (SHAP)
+
+  SageMaker Clarify supports SHAP, a game-theoretic approach to explain the output of any machine learning model. SHAP calculates the contribution of each feature to the model's prediction, providing a local explanation for individual predictions. This can help you understand how the model arrived at a specific prediction and identify potential biases or unfair treatment for that particular instance.
+
+- Partial dependence plots (PDPs)
+
+  PDPs are graphical representations that show the marginal effect of one or two features on the model's predictions. SageMaker Clarify can generate PDPs, helping you visualize how the model's predictions change as the values of specific features change, while holding all other features constant. This can help you identify potential biases or unfair treatment based on specific feature values.
+
+- Bias metrics
+
+  SageMaker Clarify provides a set of bias metrics that measure the fairness of your model's predictions across different demographic groups. These metrics include disparate impact, demographic parity, and equal opportunity difference, among others. By analyzing these metrics, you can identify potential biases or unfair treatment towards specific groups in your data.
+
+- Data quality reports
+
+  SageMaker Clarify can generate data quality reports that provide insights into the distribution and quality of your training data. These reports can help you identify potential issues like data imbalance, missing values, or outliers, which can contribute to biased or unfair model predictions.
+
+### Amazon SageMaker Experiments
+
+- Organize
+
+  SageMaker Experiments allows you to organize runs with metrics, parameters, and tags.
+
+- Reproduce
+
+  SageMaker Experiments helps with reproducibility by logging code, data, and models.
+
+- Support
+
+  SageMaker Experiments provides support for any ML library or language.
+
+- Deploy
+
+  SageMaker Experiments includes a central model registry for deployment.
+
+- Track
+
+  SageMaker Experiments provides scalable tracking for many parallel experiments.
+
+To learn more, visit [Manage Machine Learning with Amazon SageMaker Experiments](https://docs.aws.amazon.com/sagemaker/latest/dg/experiments.html).
+
+## Resources
+
+- [Model explainability](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-explainability.html)
+
+  Use this resource to learn more about the tools SageMaker Clarify uses to help explain how ML models make predictions.
+
+- [Explanations for your datasets and models](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-configure-processing-jobs.html)
+
+  Visit this resource to learn how to use SageMaker Clarify to explain and detect bias for your datasets and models.
+
+- [Online explainability with SageMaker Clarify](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-online-explainability.html)
+
+  Visit this resource to obtain explanations in real-time from a SageMaker endpoint.
+
+- [Well Architected ML Lens Whitepaper](https://docs.aws.amazon.com/pdfs/wellarchitected/latest/machine-learning-lens/wellarchitected-machine-learning-lens.pdf#machine-learning-lens)
+
+  Visit this resource for best practices in discussing the level of explainability with stakeholders (section MLOE-02).
+
+- [Amazon SageMaker Debugger](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
+
+  Visit this resource to learn about the tools SageMaker Debugger provides to improve the performance of your models.
+
+- [Amazon SageMaker Experiments](https://docs.aws.amazon.com/sagemaker/latest/dg/experiments.html)
+
+  Use this resource to learn how you can use SageMaker Experiments to create, manage, analyze, and compare your machine learning experiments.

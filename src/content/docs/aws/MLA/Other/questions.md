@@ -265,3 +265,33 @@ Precision measures the proportion of positive predictions (spam emails) that are
     *Improved model performance*
 
 Amazon SageMaker Debugger helps identify and resolve issues such as overfitting, underfitting, or data quality problems during model training and deployment. By addressing these issues, Model Debugger enables you to improve the model's performance and accuracy.
+
+---
+
+A machine learning engineer is working on an ML project that involves predicting loan approval decisions based on various applicant features. They want to use SageMaker Clarify to ensure that your model is fair and unbiased across different demographic groups.  
+Which of the following SageMaker Clarify metrics would be most useful for identifying potential biases in the model's predictions?
+
+*Differential prediction bias*
+
+Differential prediction bias measures the difference in predicted outcomes or probabilities for different facet groups (such as demographic groups), given the same input features. This metric is particularly useful for identifying potential biases in your model's predictions across different demographic groups, which is the primary concern in this scenario.
+
+---
+
+A machine learning engineer is using SageMaker Clarify to evaluate the fairness and explainability of a machine learning model used for loan approval decisions.  
+Which of the following metrics would they use to understand the contribution of each input feature, (income, credit score, employment status) to the model's predictions?
+
+*SHAP (SHapley Additive exPlanations)*
+
+SHAP is a game-theoretic approach that calculates the contribution of each input feature to the model's prediction, providing a local explanation for individual predictions. This would be useful for understanding how different features like income, credit score, and employment status influence the loan approval decisions made by the model.
+
+---
+
+A newly trained machine learning engineer is working on a project that involves extensive experimentation with different algorithms, hyperparameters, and data configurations. Alex wants to ensure that the experimentation process is organized, reproducible, and scalable.  
+Which of the following AWS services would be most suitable to streamline the machine learning experimentation workflow?
+
+*Amazon SageMaker Experiments*
+
+Amazon SageMaker Experiments is a tool designed specifically for organizing, tracking, and analyzing machine learning experiments. It allows you to automatically track inputs, parameters, configurations, and results of your iterations as runs. You can group and organize these runs into experiments, making it easier to manage and analyze your ML experiments.
+
+---
+
