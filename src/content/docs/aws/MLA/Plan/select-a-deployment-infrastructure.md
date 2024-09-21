@@ -312,3 +312,62 @@ Batch transform provides offline inference for large datasets. Batch transform i
 
 ### Optimizing Deployment with Edge Computing
 
+For more information about edge computing fundamentals, including benefits and restrictions, navigate to [What is edge computing?](https://aws.amazon.com/what-is/edge-computing/).
+
+**AWS IoT Greengrass**
+
+- Run at the edge: Bring intelligence to edge devices, such as for anomaly detection in precision agriculture or powering autonomous devices.
+
+- Manage applications: Deploy new or legacy apps across fleets using any language, packaging technology, or run time.
+
+- Control fleets: Manage and operate device fleets in the field locally or remotely using MQTT or other protocols.
+
+- Process locally: Collect, aggregate, filter, and send data locally.
+
+For more information about Greengrass, navigate to [AWS IoT Greengrass](https://aws.amazon.com/greengrass/?nc2=type_a).
+
+---
+
+**Amazon SageMaker Neo**
+
+- Optimize models for faster inference: SageMaker Neo can optimize models trained in frameworks like TensorFlow, PyTorch, and MXNet to run faster with no loss in accuracy.
+
+- Deploy models to SageMaker and edge devices: SageMaker Neo can optimize and compile models to run on SageMaker hosted inference platforms, like SageMaker endpoints. As you've learned, it can also help you to run models on edge devices, such as phones, cameras, and IoT devices.
+
+- Model portability: SageMaker Neo can convert compiled models between frameworks, such as TensorFlow and PyTorch. Compiled models can also be run across different platforms and hardware, helping you to deploy models to diverse target environments.
+
+- Compress model size: SageMaker Neo quantizes and prunes models to significantly reduce their size, lowering storage costs and improving load times. This works well for compressing large, complex models for production. 
+
+For more information about SageMaker Neo, navigate to [Amazon SageMaker Neo](https://aws.amazon.com/sagemaker/neo/).
+
+## Resources
+
+[Kubernetes Orchestration](https://docs.aws.amazon.com/sagemaker/latest/dg/kubernetes-workflows.html)  
+This documentation highlights information for SageMaker Operators for Kubernetes and SageMaker Components for Kubeflow Pipelines.
+
+[Create and Manage SageMaker Pipelines](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-build.html)  
+This resource discusses how to create and manage SageMaker Pipelines.
+
+[Model Building Pipeline Steps](https://docs.aws.amazon.com/sagemaker/latest/dg/build-and-manage-steps.html#build-and-manage-steps-types)  
+SageMaker Pipelines are composed of steps. These steps define the actions that the pipeline takes and the relationships between steps using properties.
+
+[Manage SageMaker with Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/connect-sagemaker.html)  
+This resource provides insight into how to manage SageMaker with AWS Step Functions.
+
+[Manage your Machine Learning Lifecycle with MLflow and Amazon SageMaker](https://aws.amazon.com/blogs/machine-learning/managing-your-machine-learning-lifecycle-with-mlflow-and-amazon-sagemaker)
+In this blog post, explore how you can manage your machine learning lifecycle with SageMaker and MLflow.
+
+[Best Practices for Deploying Models on SageMaker Hosting Services](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-best-practices.html)
+This documentation highlights best practices for deploying models on SageMaker Hosting services.
+
+[Amazon SageMaker Pricing](https://aws.amazon.com/sagemaker/pricing/)
+With SageMaker, you pay only for what you use. Learn more about on-demand pricing, savings plans, total cost of ownership and pricing examples.
+
+[What is Edge Computing?](https://aws.amazon.com/what-is/edge-computing/)
+Learn more about what edge computing is, AWS use cases, why edge computing is important, and how AWS can help you with your edge computing requirements.
+
+[AWS IoT Greengrass](https://aws.amazon.com/greengrass/?nc2=type_a)
+Learn more about how AWS IoT Greengrass works, use cases, customer stories, and how to get started.
+
+[Amazon SageMaker Neo](https://aws.amazon.com/sagemaker/neo/)
+Amazon SageMaker Neo automatically optimizes machine learning models for inference on cloud instances and edge devices to run faster with no loss in accuracy. Learn how it works, use cases, and key benefits.

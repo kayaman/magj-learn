@@ -301,3 +301,15 @@ What is the main difference between the two, in terms of performance and scaling
 *On-demand resources are more cost-effective for short-term, unpredictable workloads, whereas provisioned resources are better for long-term, predictable workloads.*
 
 On-demand resources can scale up and down instantly to meet the changing needs of the workload, but this flexibility comes at a higher cost. Provisioned resources, on the other hand, have a fixed capacity that is reserved in advance, which makes them more cost-effective for long-term, predictable workloads. However, provisioned resources might take time to scale up or down, because the capacity needs to be provisioned ahead of time.
+
+---
+
++ Your company operates a network of Internet of Things (IoT) devices that collect sensor data from remote locations.  
+Which benefit of edge computing would be the MOST relevant in this scenario?
+
+*Reduced latency*
+
+In this scenario, the IoT devices are located in remote locations. This means the data they collect needs to be transmitted over a network to a central cloud for processing. By performing some of the data processing and analysis at the edge (on the IoT devices themselves), the latency between data collection and action can be significantly reduced. This is because the data does not need to be sent back and forth over the network.
+
+---
+
