@@ -3,14 +3,15 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax';
+import remarkToc from 'remark-toc';
 
-// https://astro.build/config
 export default defineConfig({
+	site: 'https://learning.magj.dev',
 	integrations: [
 		starlight({
 			title: 'MAGJ Learning',
 			social: {
-				github: 'https://github.com/kayaman/learning',
+				github: 'https://github.com/kayaman/magj-learning',
 			},
 			sidebar: [
 				{
@@ -21,7 +22,7 @@ export default defineConfig({
 		}),
 	],
 	markdown: {
-		remarkPlugins: [remarkMath],
+		remarkPlugins: [remarkMath, [remarkToc, {heading: "contents"}]],
 		rehypePlugins: [rehypeMathjax],
 	}
 });

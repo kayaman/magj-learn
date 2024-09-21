@@ -268,7 +268,7 @@ Amazon SageMaker Debugger helps identify and resolve issues such as overfitting,
 
 ---
 
-A machine learning engineer is working on an ML project that involves predicting loan approval decisions based on various applicant features. They want to use SageMaker Clarify to ensure that your model is fair and unbiased across different demographic groups.  
++ A machine learning engineer is working on an ML project that involves predicting loan approval decisions based on various applicant features. They want to use SageMaker Clarify to ensure that your model is fair and unbiased across different demographic groups.  
 Which of the following SageMaker Clarify metrics would be most useful for identifying potential biases in the model's predictions?
 
 *Differential prediction bias*
@@ -277,7 +277,7 @@ Differential prediction bias measures the difference in predicted outcomes or pr
 
 ---
 
-A machine learning engineer is using SageMaker Clarify to evaluate the fairness and explainability of a machine learning model used for loan approval decisions.  
++ A machine learning engineer is using SageMaker Clarify to evaluate the fairness and explainability of a machine learning model used for loan approval decisions.  
 Which of the following metrics would they use to understand the contribution of each input feature, (income, credit score, employment status) to the model's predictions?
 
 *SHAP (SHapley Additive exPlanations)*
@@ -286,7 +286,7 @@ SHAP is a game-theoretic approach that calculates the contribution of each input
 
 ---
 
-A newly trained machine learning engineer is working on a project that involves extensive experimentation with different algorithms, hyperparameters, and data configurations. Alex wants to ensure that the experimentation process is organized, reproducible, and scalable.  
++ A newly trained machine learning engineer is working on a project that involves extensive experimentation with different algorithms, hyperparameters, and data configurations. Alex wants to ensure that the experimentation process is organized, reproducible, and scalable.  
 Which of the following AWS services would be most suitable to streamline the machine learning experimentation workflow?
 
 *Amazon SageMaker Experiments*
@@ -295,3 +295,9 @@ Amazon SageMaker Experiments is a tool designed specifically for organizing, tra
 
 ---
 
++ Your company is trying to decide between using on-demand or provisioned resources for their machine learning (ML) workloads.  
+What is the main difference between the two, in terms of performance and scaling?
+
+*On-demand resources are more cost-effective for short-term, unpredictable workloads, whereas provisioned resources are better for long-term, predictable workloads.*
+
+On-demand resources can scale up and down instantly to meet the changing needs of the workload, but this flexibility comes at a higher cost. Provisioned resources, on the other hand, have a fixed capacity that is reserved in advance, which makes them more cost-effective for long-term, predictable workloads. However, provisioned resources might take time to scale up or down, because the capacity needs to be provisioned ahead of time.

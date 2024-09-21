@@ -286,5 +286,29 @@ Batch transform provides offline inference for large datasets. Batch transform i
 - High throughput at lower cost than GPUs
 - Ideal for models that AWS Neuron SDK supports
 
+---
+
+**Resource considerations**
+
+1. Model complexity
+
+    More complex models, such as deep neural networks or ensemble methods, tend to have higher computational requirements during training and inference. Allocate sufficient CPU, GPU, and memory resources to handle demanding workloads.
+
+2. Dataset size
+
+    Large datasets can place significant demands on memory and storage resources. Distribute data processing tasks across multiple nodes or use parallel process techniques to improve performance.
+
+3. Real-time inference
+
+    Provision resources specifically for low-latency inference, such as dedicated GPU instances.
+
+4. Scalability and elasticity
+
+    Use auto scaling capabilities or load-balancing techniques to dynamically adjust your compute resources based on workload demands.
+
+5. Cost optimization
+
+    Balance performance requirements with cost considerations. Use Spot Instances or auto scaling options to optimize costs without compromising performance.
+
 ### Optimizing Deployment with Edge Computing
 
