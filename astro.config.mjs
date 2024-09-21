@@ -4,7 +4,6 @@ import starlight from '@astrojs/starlight';
 import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax';
 import remarkToc from 'remark-toc';
-import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
 
 export default defineConfig({
 	site: 'https://learning.magj.dev',
@@ -27,7 +26,7 @@ export default defineConfig({
 		}),
 	],
 	markdown: {
-		remarkPlugins: [remarkMath, remarkToc],
-		rehypePlugins: [rehypeMathjax, rehypeAccessibleEmojis],
+		remarkPlugins: [remarkMath, [remarkToc, {heading: "contents"}]],
+		rehypePlugins: [rehypeMathjax],
 	}
 });
