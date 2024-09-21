@@ -138,5 +138,7 @@ Batch transform provides offline inference for large datasets. Batch transform i
 
 5. Does your workload have sustained traffic and need lower and consistent latency? If no, progress to question four. If yes, the best inference option for your use case is Serverless Inference.
 
+**Multi-model and multi-container deployments**
+
 ###
 
