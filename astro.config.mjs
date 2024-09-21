@@ -27,7 +27,7 @@ export default defineConfig({
 		}),
 	],
 	markdown: {
-		remarkPlugins: [remarkMath, [remarkToc, {heading: "contents"}]],
+		remarkPlugins: [remarkMath, remarkToc],
 		rehypePlugins: [rehypeMathjax, rehypeAccessibleEmojis],
 	}
 });
