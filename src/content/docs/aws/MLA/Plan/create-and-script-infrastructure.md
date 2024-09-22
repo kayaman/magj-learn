@@ -111,7 +111,23 @@ A CloudFormation template is a text file written in either JSON or YAML that def
     ```json
     "AWSTemplateFormatVersion" : "2010-09-09"
     ```
+- Description
 
+    This text string describes the template.
+
+    ```json
+    "Description" : "Here are some details about the template."
+    ```
+- Metadata
+
+    These objects provide additional information about the template.
+
+    ```json
+    "Metadata" : {
+     "Instances" : {"Description" : "Information about the instances"},
+     "Databases" : {"Description" : "Information about the databases"}
+    }
+    ```
 ### Working with the AWS CDK
 
 
