@@ -94,6 +94,23 @@ sidebar:
 
 ### Working with AWS CloudFormation
 
+Getting started with CloudFormation is straightforward. First, you create a CloudFormation template that describes your infrastructure. CloudFormation uses this template to provision the resources. These resources are then managed as a CloudFormation stack. 
+
+![CF Stack](/img/cf-stack.png)
+
+This CloudFormation template defines the database layer of an application that includes an Amazon DynamoDB database and an Amazon Relational Database Service (Amazon RDS) database. CloudFormation provisions these resources and manages them as a stack. All resources in a stack must be provisioned completely before CloudFormation reports the build as successful.
+
+#### CloudFormation templates
+
+A CloudFormation template is a text file written in either JSON or YAML that defines the resources that CloudFormation will provision as part of a stack. For instance, examine the following CloudFormation template written in JSON.
+
+- Format version
+
+    This first section identifies the AWS CloudFormation template version to which the template conforms.
+
+    ```json
+    "AWSTemplateFormatVersion" : "2010-09-09"
+    ```
 
 ### Working with the AWS CDK
 
