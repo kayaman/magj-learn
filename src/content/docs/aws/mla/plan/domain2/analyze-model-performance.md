@@ -2,8 +2,11 @@
 title: Analyze Model Performance
 description: Skill Builder
 sidebar:
-  order: 10
+  order: 4
 ---
+:::note
+**Domain 2: Model Development**
+:::
 
 This final course of the model development domain provides instructions to analyze ML model performance. You will learn about key concepts and techniques for model evaluation including classification and regression problem metrics. You will also learn how to identify convergence issues. Finally, you will use AWS services such as Amazon SageMaker Clarify and Amazon SageMaker Debugger to gain insight into ML training data and model issues.
 

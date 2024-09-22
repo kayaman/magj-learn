@@ -1,9 +1,12 @@
 ---
 title: Refine Models
-description: abcd
+description: Skill Builder
 sidebar:
-  order: 9
+  order: 3
 ---
+:::note
+**Domain 2: Model Development**
+:::
 
 ### Evaluating Model Performance
 
