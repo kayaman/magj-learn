@@ -2,8 +2,11 @@
 title: Select a Deployment Infrastructure 
 description: Skill Builder
 sidebar:
-  order: 11
+  order: 1
 ---
+:::note
+**Domain 3: Deployment and Orchestration of ML Workflows**
+:::
 
 ## Fundamentals of Model Deployment
 

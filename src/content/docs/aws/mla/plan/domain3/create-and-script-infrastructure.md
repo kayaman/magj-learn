@@ -2,8 +2,11 @@
 title: Create and Script Infrastructure
 description: Skill Builder
 sidebar:
-  order: 12
+  order: 2
 ---
+:::note
+**Domain 3: Deployment and Orchestration of ML Workflows**
+:::
 
 ## Methods for Provisioning Resources
 
