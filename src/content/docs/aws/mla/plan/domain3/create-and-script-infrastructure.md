@@ -375,7 +375,79 @@ To learn more about CloudFormation templates, reference [Working with CloudForma
 
 ### Working with the AWS CDK
 
+#### CDK Constructs
+
+- Lower-level constructs, such as L1 constructs, can represent a single resource from a single AWS service.
+
+- Higher-level constructs, such as L2 constructs and L3 constructs, can represent a more complex component consisting of multiple preconfigured AWS resources.
+
+---
+
+- L1 constructs
+
+    Low-level, or L1, constructs directly represent all resources available in CloudFormation. They are sometimes called CFN resources. You use L1 constructs when you need to explicitly configure all resource properties to the same level of granularity as a CloudFormation template.
+
+- L2 constructs
+
+    L2 constructs are the next level of constructs. Like L1, they represent AWS individual resources, but they also provide a level of abstraction. L2 constructs incorporate the defaults, boilerplate, and glue logic you would be writing yourself with a CFN Resource construct. They reduce the need to know all the details about the AWS resources they represent. L2 constructs also provide convenient methods to help you to work with the resource.
+
+- L3 constructs (Patterns)
+
+    The AWS Construct Library includes even higher-level, L3 constructs, called patterns. AWS CDK patterns declare multiple resources to create entire AWS architectures for specific use cases.
+
+To explore the constructs available for different AWS services, consult the [AWS Construct Library](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-construct-library.html).
+
+AWS Solutions Constructs is an open-source extension of the AWS CDK and provides additional experimental patterns. To view the available patterns, explore the [Github Repository](https://github.com/awslabs/aws-solutions-constructs/tree/main/source/patterns/%40aws-solutions-constructs).
+
+#### Deploying resources with the AWS CDK Toolkit
+
+Developers interact with their CDK app using the AWS CDK Toolkit, also referred to as the AWS CDK Command Line Interface (AWS CDK CLI). By using this command line tool, developers can do the following:
+
+- Synthesize artifacts, such as AWS CloudFormation templates.
+- Deploy stacks to development AWS accounts.
+- Compare against a deployed stack to understand the impact of a code change.
+- Destroy stacks to delete the resources when no longer needed. This saves on unnecessary costs.
+
+1. `cdk init`
+
+When you begin your CDK project, you create a directory for it, run cdk init, and specify the programming language used:
+
+```sh
+mkdir my-cdk-app
+cd my-cdk-app
+cdk init app --language typescript
+```
+
+2. `cdk bootstrap`
+
+You then run `cdk bootstrap` to prepare the environments into which the stacks will be deployed. This creates the special dedicated AWS CDK resources for the environments.
+
+3. `cdk synth`
+
+Next, you synthesize the CloudFormation templates using the `cdk synth` command. When updating existing stacks, you can run `cdk diff` to compare the resources defined in your app with the already-deployed version of the stack.
+
+4. `cdk deploy`
+
+Finally, you can run the `cdk deploy` command to have CloudFormation provision resources defined in the synthesized templates.
 
 ### Comparing AWS CloudFormation and AWS CDK
 
+|  | AWS CloudFormation | AWS CDK |
+|--|--------------------|---------|
+| Authoring experience | CloudFormation only uses JSON or YAML templates to define your infrastructure resources. These are more convenient to write than many programming languages. However, these templates can become verbose and complex as your infrastructure grows, making them more challenging to maintain and modify. | With AWS CDK, you can define your infrastructure using modern programming languages, like Python, TypeScript, Java, C#, and Go. This approach provides a familiar and expressive coding experience. You can also use standard software development practices to write modular and reusable infrastructure components. |
+| IaC approach | CloudFormation templates are declarative. You define the desired state of your infrastructure and CloudFormation handles the provisioning and updates. | AWS CDK provides an imperative approach to generating CloudFormation templates, which are declarative. Working with programming languages, instead of templates means you can introduce logic and conditions that determine the resources to provision in your infrastructure. |
+| Debugging and troubleshooting | Troubleshooting CloudFormation templates requires learning specific CloudFormation error handling and messages. | With the CDK, you can use the debugging capabilities of your chosen programming language, making it more convenient to identify and fix issues in your infrastructure code. |
+| Reusability and modularity | With CloudFormation, you can create nested stacks and cross-stack references, resulting in modular and reusable infrastructure designs. However, this approach can become complex and difficult to manage as your infrastructure grows. | AWS CDK supports programming languages that you can use to apply object-oriented programming principles. This makes it more convenient to create modular and reusable IaC code blocks for your infrastructure, which are managed as part of an application. |
+| Community support | CloudFormation has been around for a longer time and has a larger community for support. It also has a variety of third-party tools and resources. |AWS CDK is a newer offering than AWS CloudFormation, but it is rapidly gaining adoption. It has an active community that shares best practices and contributes to its development. This includes collections of code samples and access to libraries in development. |
+| Learning curve | AWS CloudFormation has a steeper learning curve for developers who are used to a more programmatic approach over a template-driven approach. However, AWS CloudFormation has become a standard method for IaC in the AWS Cloud, and your organization might have existing expertise. | If you're already familiar with programming languages like Python or TypeScript, AWS CDK will have a gentler learning curve. Your existing knowledge of application design and interacting with software libraries and APIs will help you learn AWS CDK. |
+
 ## Deploying and Hosting Models
+
+### Amazon SageMaker Python SDK
+
+
+### Building and Maintaining Containers
+
+
+
+### Auto Scaling Inference Infrastructure

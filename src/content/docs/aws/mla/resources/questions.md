@@ -313,3 +313,21 @@ In this scenario, the IoT devices are located in remote locations. This means th
 
 ---
 
+An MLOps engineer is creating a CloudFormation template that will be used in multiple AWS Regions. The template will provision EC2 instances, but it needs to provide a different Amazon Machine Image (AMI), depending on which Region the template is being used in.  
+Which section of the CloudFormation template would be used to provide the AMI ID values for each Region?
+
+*Mappings*
+
+The Mappings section is a mapping of keys and associated values used to specify conditional parameter values, similar to a lookup table. You can associate a Region identifier with a corresponding AMI ID.
+
+---
+
+An MLOps engineer is using the AWS Cloud Development Kit (AWS CDK) to deploy infrastructure for a machine learning (ML) application. They have an inference container and model artifacts, but need to provision an entire architecture to support the application. They do not need to manage every resource at a granular level and they have limited available time to specify the infrastructure in its entirety.  
+Which level of AWS CDK construct should they consider?
+
+*L3 constructs*
+
+L3 constructs, also called patterns, contain a collection of resources configured to work together to accomplish a specific task or service within your application. These can include entire architectures.
+
+---
+
