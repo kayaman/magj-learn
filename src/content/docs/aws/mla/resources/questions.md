@@ -313,7 +313,7 @@ In this scenario, the IoT devices are located in remote locations. This means th
 
 ---
 
-An MLOps engineer is creating a CloudFormation template that will be used in multiple AWS Regions. The template will provision EC2 instances, but it needs to provide a different Amazon Machine Image (AMI), depending on which Region the template is being used in.  
++ An MLOps engineer is creating a CloudFormation template that will be used in multiple AWS Regions. The template will provision EC2 instances, but it needs to provide a different Amazon Machine Image (AMI), depending on which Region the template is being used in.  
 Which section of the CloudFormation template would be used to provide the AMI ID values for each Region?
 
 *Mappings*
@@ -322,12 +322,21 @@ The Mappings section is a mapping of keys and associated values used to specify 
 
 ---
 
-An MLOps engineer is using the AWS Cloud Development Kit (AWS CDK) to deploy infrastructure for a machine learning (ML) application. They have an inference container and model artifacts, but need to provision an entire architecture to support the application. They do not need to manage every resource at a granular level and they have limited available time to specify the infrastructure in its entirety.  
++ An MLOps engineer is using the AWS Cloud Development Kit (AWS CDK) to deploy infrastructure for a machine learning (ML) application. They have an inference container and model artifacts, but need to provision an entire architecture to support the application. They do not need to manage every resource at a granular level and they have limited available time to specify the infrastructure in its entirety.  
 Which level of AWS CDK construct should they consider?
 
 *L3 constructs*
 
 L3 constructs, also called patterns, contain a collection of resources configured to work together to accomplish a specific task or service within your application. These can include entire architectures.
+
+---
+
++ A machine learning engineer is using the Amazon SageMaker Python SDK to create a model training job.  
+Which class and class method would the engineer use to define, and then start, a training job?
+
+*Instantiate an Estimator class and use the fit() method.*
+
+The Estimator class defines a training job, and the fit() method runs the training job.
 
 ---
 

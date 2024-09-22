@@ -66,8 +66,14 @@ export default defineConfig({
 							] 
 						},
 						{ 
-							label: 'Developer', 
-							link: '/aws/dva/overview' 
+							label: 'Developer',
+							collapsed: true,
+							items: [
+								{
+									label: 'Overview',
+									link: 'aws/dva/overview' 
+								},
+							]
 						},
 					]
 				},

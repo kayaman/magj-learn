@@ -445,9 +445,125 @@ Finally, you can run the `cdk deploy` command to have CloudFormation provision r
 
 ### Amazon SageMaker Python SDK
 
+The SageMaker Python SDK provides classes and methods for configuring and running tasks in your model building and deployment workflows. Consider the following SageMaker Pipeline example. In this example, the SageMaker Python SDK orchestrates many of the tasks in the machine learning lifecycle, including data processing and model development tasks.
+
+![SageMaker SDK](/img/sagemaker-sdk.png)
+
+**Creating pipelines with the SageMaker Python SDK to orchestrate workflows**
+
+```python
+pipeline = Pipeline(
+     name=pipeline_name,
+     parameters=[input_data, processing_instance_type,
+                    processing_instance_count, training_instance_type,
+                    mse_threshold, model_approval_status],
+     steps = [step_process, step_train, step_evaluate, step_conditional]
+)
+```
+
+**Defining steps**
+
+```python
+step_process = ProcessingStep(...),
+step_train = TrainingStep(…),
+```
+
+To learn more about using the SageMaker SDK to create different step types supported by Amazon SageMaker Pipelines, explore the [Steps class](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#steps) documentation.
+
+**Automating your pipeline**
+
+Defining your pipelines as code is essential when taking an IaC approach to deploying your model building and deployment infrastructure.
+
+1. Access stored pipeline code
+
+    Your SageMaker Python SDK pipeline code is accessed from a code repository.
+
+2. Provision model building pipeline infrastructure
+
+    Your continuous integration and continuous deployment (CI/CD) tools receive an automated notification to start the pipeline. The tools pull this code, while passing in input parameters for this particular job. The code is then run to build the pipeline and necessary infrastructure.
+
+3. Train model
+
+    The pipeline uses the parameters to complete steps of the pipeline. This includes the location of the training data, the training instance type, and the model approval threshold.
+
+4. Register model
+
+    If the trained model meets the approval threshold, it is registered in your model registry. It can then be accessed by your deployment pipeline.
+
+5. Deprovision pipeline resources
+
+    After the pipeline completes, your CI/CD tools de-provision the resources that are no longer in use. This helps you to avoid paying for idle resources.
 
 ### Building and Maintaining Containers
 
+**SageMaker containers**
+
+Training and inference containers in SageMaker must adhere to certain requirements. For instance, you must follow a specific folder structure. Containers provided by SageMaker already have this folder structure in place. Any container that you extend or build new must also follow this structure.
+
+#### Training containers
+
+![FS](/img/container-fs.png)
+
+1. **/opt/ml**
+
+    This is the top level of the directory.
+
+2. **/opt/ml/code/**
+
+    This directory holds the scripts that the container will run, such as custom training algorithms in script mode in **/opt/ml/code/**.
+
+3. **/opt/ml/input/**
+
+    This directory holds the folders that receive inputs for the training job:
+    **/opt/ml/input/config/** holds the JSON files that configure the hyperparameters for the training algorithm and the resources used for distributed training.
+    **/opt/ml/input/data/** holds each channel of training data accessed from Amazon S3.
+
+4. **/opt/ml/checkpoints/**
+
+    If you use checkpointing, Amazon SageMaker saves checkpoints locally in this directory and then synchs them to the specified location in Amazon S3.
+
+5. **/opt/ml/output/**
+
+    This directory holds the folders that store files output by the training job:
+    **/opt/ml/output/data/** holds the output data, which the training job sends to Amazon S3 as **output.tar.gz**.
+
+6. **/opt/ml/model/**
+
+    The model artifact created by the training job is stored here. When training is finished, the final model artifact in this folder is written to Amazon S3 as **model.tar.gz**.
+
+SageMaker training uses environment variables to define storage paths for training datasets, model artifacts, checkpoints, and outputs between AWS Cloud storage and training jobs. For more information, refer to [SageMaker Environment Variables and Default Paths for Training Storage Locations](https://docs.aws.amazon.com/sagemaker/latest/dg/model-train-storage.html#model-train-storage-env-var-summary).
+
+#### Inference containers
+
+- Your container must include the path **/opt/ml/model**. When the inference container starts, it will import the model artifact and store it in this directory.
+    Note: This is the same directory that a training container uses to store the newly trained model artifact.
+
+- Your container must be configured to run as an executable. Your Dockerfile should include an ENTRYPOINT instruction that defines an executable to run when the container starts, as in the following example:
+    
+    ```docker
+    ENTRYPOINT ["python", "serve.py"]
+    ```
+- Your container must have a web server listening on **port 8080**.
+
+- Your container must accept **POST** requests to the **/invocations** and **/ping** real-time endpoints. The requests that you send to these endpoints must be returned with 60 seconds and have a maximum size of 6 MB.
+
+![Inf Container](/img/container-inf.png)
+
+1. **serve.py**
+
+    **serve.py** runs when the container is started for hosting. It starts the inference server, including the nginx web server and Gunicorn as a Python web server gateway interface.
+
+2. **predictor.py**
+
+    This Python script contains the logic to load and perform inference with your model. It uses Flask to provide the **/ping** and **/invocations** endpoints.
+
+3. **wsgi.py**
+
+    This is a wrapper for the Gunicorn server.
+
+4. **nginx.conf**
+
+    This is a script to configure a web server, including listening on **port 8080**. It forwards requests containing either **/ping** or **/invocations** paths to the Gunicorn server.
 
 
 ### Auto Scaling Inference Infrastructure
