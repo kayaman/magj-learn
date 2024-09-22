@@ -231,7 +231,7 @@ A CloudFormation template is a text file written in either JSON or YAML that def
 
 #### SageMaker Endpoint Example
 
-The following example creates an endpoint configuration from a trained model, and then creates an endpoint.
+    The following example creates an endpoint configuration from a trained model, and then creates an endpoint.
 
     ```json
     {
@@ -343,6 +343,7 @@ The following example creates an endpoint configuration from a trained model, an
         }
     }
     ```
+
 To learn more about CloudFormation templates, reference [Working with CloudFormation Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-guide.html).
 
 ### Working with the AWS CDK
