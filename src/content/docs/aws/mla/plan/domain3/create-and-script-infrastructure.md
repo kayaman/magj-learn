@@ -349,6 +349,30 @@ The following example creates an endpoint configuration from a trained model, an
 
 To learn more about CloudFormation templates, reference [Working with CloudFormation Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-guide.html).
 
+#### Layered Architecture
+
+![cf-layered](/img/cf-layered.png)
+
+1. Identity layer
+
+    Your identity layer can define your IAM users, groups, and roles.
+
+2. Base network layer
+
+    Your base network layer can include VPCs, internet gateways, virtual private networks (VPNs), and NAT gateways.
+
+3. Shared resources layer
+
+    Your shared resources layer can include databases, common monitoring or alarms, subnets, and security groups. It can also include storage for your model artifacts, and training, validation and test data sets.
+
+4. Back-end layer
+
+    Your back-end layer can include model endpoints, Lambda functions, and application servers.
+
+5. Front-end layer
+
+    Your front-end layer can include the web interface, admin interface, or analytics dashboard.
+
 ### Working with the AWS CDK
 
 
