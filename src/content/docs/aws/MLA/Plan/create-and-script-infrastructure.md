@@ -128,6 +128,107 @@ A CloudFormation template is a text file written in either JSON or YAML that def
      "Databases" : {"Description" : "Information about the databases"}
     }
     ```
+
+- Parameters
+
+    Parameters are values to pass to your template when you create or update a stack. You can refer to parameters from the Resources and Outputs sections of the template.
+
+    ```json
+    "Parameters" : {
+     "InstanceTypeParameter" : {
+     "Type" : "String",
+     "Default" : "t2.micro",
+     "AllowedValues" : ["t2.micro", "m1.small", "m1.large"],
+     "Description" : "Enter t2.micro, m1.small, or m1.large. Default is t2.micro."
+     }
+    }
+    ```
+
+- Rules
+
+    Rules validate parameter values passed to a template during a stack creation or stack update.
+
+    ```json
+    "Rules" : {
+     "Rule01": {
+          "RuleCondition": {
+               ...
+          },
+          "Assertions": [
+               ...
+          ]
+     }
+    } 
+    ```
+
+- Mappings
+
+    These are map keys and associated values that you can use to specify conditional parameter values. This is similar to a lookup table.
+
+    ```json
+    "Mappings" : {
+     "Mapping01" : {
+          "Key01" : {
+               "Name" : "Value01"
+          },
+          ...
+     }
+    }
+    ```
+
+- Conditions
+
+    Conditions control whether certain resources are created, or whether certain resource properties are assigned a value during stack creation or an update. For example, you could conditionally create a resource that depends on whether the stack is for a production or test environment.
+
+    ```json
+    "Conditions" : {
+     "MyLogicalID" : {Intrinsic function}
+    }
+    ```
+
+- Transform
+
+    For serverless applications, transform specifies the version of the AWS Serverless Application Model (AWS SAM) to use.  
+    You can also use AWS::Include transforms to work with template snippets that are stored separately from the main AWS CloudFormation template. For more information, reference [AWS::Include transform](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html).
+
+    ```json
+    "Transform" : {
+     set of transforms
+    }
+    ```
+
+- Resources
+
+    This section specifies the stack resources, and their properties that you would like to provision. You can refer to resources in the Resources and Outputs sections of the template.  
+    Note: This is the only required section of the template.
+
+    ```json
+    "Resources" : {
+     "Logical ID of resource" : {
+          "Type" : "Resource type",
+          "Properties" : {
+               Set of properties
+          }
+     }
+    }
+    ```
+
+- Outputs
+
+    Outputs describe the values that are returned whenever you view your stack's properties. For example, you can declare an output for an Amazon S3 bucket name and then call the `aws cloudformation describe-stacks` AWS CLI command to view the name.
+
+    ```json
+    "Outputs" : {
+     "Logical ID of resource" : {
+          "Description" : "Information about the value",
+          "Value" : "Value to return",
+          "Export" : {
+          "Name" : "Name of resource to export"
+          }
+     }
+    }
+    ```
+
 ### Working with the AWS CDK
 
 
