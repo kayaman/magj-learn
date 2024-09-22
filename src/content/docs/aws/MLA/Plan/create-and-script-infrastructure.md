@@ -231,118 +231,118 @@ A CloudFormation template is a text file written in either JSON or YAML that def
 
 #### SageMaker Endpoint Example
 
-    The following example creates an endpoint configuration from a trained model, and then creates an endpoint.
+The following example creates an endpoint configuration from a trained model, and then creates an endpoint.
 
-    ```json
-    {
-        "Description": "Basic Hosting entities test.  We need models to create endpoint configs.",
-        "Mappings": {
-            "RegionMap": {
-            "us-west-2": {
-                "NullTransformer": "12345678901.dkr.ecr.us-west-2.amazonaws.com/mymodel:latest"
-            },
-            "us-east-2": {
-                "NullTransformer": "12345678901.dkr.ecr.us-east-2.amazonaws.com/mymodel:latest"
-            },
-            "us-east-1": {
-                "NullTransformer": "12345678901.dkr.ecr.us-east-1.amazonaws.com/mymodel:latest"
-            },
-            "eu-west-1": {
-                "NullTransformer": "12345678901.dkr.ecr.eu-west-1.amazonaws.com/mymodel:latest"
-            },
-            "ap-northeast-1": {
-                "NullTransformer": "12345678901.dkr.ecr.ap-northeast-1.amazonaws.com/mymodel:latest"
-            },
-            "ap-northeast-2": {
-                "NullTransformer": "12345678901.dkr.ecr.ap-northeast-2.amazonaws.com/mymodel:latest"
-            },
-            "ap-southeast-2": {
-                "NullTransformer": "12345678901.dkr.ecr.ap-southeast-2.amazonaws.com/mymodel:latest"
-            },
-            "eu-central-1": {
-                "NullTransformer": "12345678901.dkr.ecr.eu-central-1.amazonaws.com/mymodel:latest"
-            }
-            }
+```json
+{
+    "Description": "Basic Hosting entities test.  We need models to create endpoint configs.",
+    "Mappings": {
+        "RegionMap": {
+        "us-west-2": {
+            "NullTransformer": "12345678901.dkr.ecr.us-west-2.amazonaws.com/mymodel:latest"
         },
-        "Resources": {
-            "Endpoint": {
-            "Type": "AWS::SageMaker::Endpoint",
-            "Properties": {
-                "EndpointConfigName": { "Fn::GetAtt" : ["EndpointConfig", "EndpointConfigName" ] }
+        "us-east-2": {
+            "NullTransformer": "12345678901.dkr.ecr.us-east-2.amazonaws.com/mymodel:latest"
+        },
+        "us-east-1": {
+            "NullTransformer": "12345678901.dkr.ecr.us-east-1.amazonaws.com/mymodel:latest"
+        },
+        "eu-west-1": {
+            "NullTransformer": "12345678901.dkr.ecr.eu-west-1.amazonaws.com/mymodel:latest"
+        },
+        "ap-northeast-1": {
+            "NullTransformer": "12345678901.dkr.ecr.ap-northeast-1.amazonaws.com/mymodel:latest"
+        },
+        "ap-northeast-2": {
+            "NullTransformer": "12345678901.dkr.ecr.ap-northeast-2.amazonaws.com/mymodel:latest"
+        },
+        "ap-southeast-2": {
+            "NullTransformer": "12345678901.dkr.ecr.ap-southeast-2.amazonaws.com/mymodel:latest"
+        },
+        "eu-central-1": {
+            "NullTransformer": "12345678901.dkr.ecr.eu-central-1.amazonaws.com/mymodel:latest"
+        }
+        }
+    },
+    "Resources": {
+        "Endpoint": {
+        "Type": "AWS::SageMaker::Endpoint",
+        "Properties": {
+            "EndpointConfigName": { "Fn::GetAtt" : ["EndpointConfig", "EndpointConfigName" ] }
+        }
+        },
+        "EndpointConfig": {
+        "Type": "AWS::SageMaker::EndpointConfig",
+        "Properties": {
+            "ProductionVariants": [
+            {
+                "InitialInstanceCount": 1,
+                "InitialVariantWeight": 1,
+                "InstanceType": "ml.t2.large",
+                "ModelName": { "Fn::GetAtt" : ["Model", "ModelName" ] },
+                "VariantName": { "Fn::GetAtt" : ["Model", "ModelName" ] }
             }
+            ]
+        }
+        },
+        "Model": {
+        "Type": "AWS::SageMaker::Model",
+        "Properties": {
+            "PrimaryContainer": {
+            "Image": { "Fn::FindInMap" : [ "AWS::Region", "NullTransformer"] }
             },
-            "EndpointConfig": {
-            "Type": "AWS::SageMaker::EndpointConfig",
-            "Properties": {
-                "ProductionVariants": [
+            "ExecutionRoleArn": { "Fn::GetAtt" : [ "ExecutionRole", "Arn" ] }
+        }
+        },
+        "ExecutionRole": {
+        "Type": "AWS::IAM::Role",
+        "Properties": {
+            "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
                 {
-                    "InitialInstanceCount": 1,
-                    "InitialVariantWeight": 1,
-                    "InstanceType": "ml.t2.large",
-                    "ModelName": { "Fn::GetAtt" : ["Model", "ModelName" ] },
-                    "VariantName": { "Fn::GetAtt" : ["Model", "ModelName" ] }
-                }
-                ]
-            }
-            },
-            "Model": {
-            "Type": "AWS::SageMaker::Model",
-            "Properties": {
-                "PrimaryContainer": {
-                "Image": { "Fn::FindInMap" : [ "AWS::Region", "NullTransformer"] }
+                "Effect": "Allow",
+                "Principal": {
+                    "Service": [
+                    "sagemaker.amazonaws.com"
+                    ]
                 },
-                "ExecutionRoleArn": { "Fn::GetAtt" : [ "ExecutionRole", "Arn" ] }
-            }
+                "Action": [
+                    "sts:AssumeRole"
+                ]
+                }
+            ]
             },
-            "ExecutionRole": {
-            "Type": "AWS::IAM::Role",
-            "Properties": {
-                "AssumeRolePolicyDocument": {
+            "Path": "/",
+            "Policies": [
+            {
+                "PolicyName": "root",
+                "PolicyDocument": {
                 "Version": "2012-10-17",
                 "Statement": [
                     {
                     "Effect": "Allow",
-                    "Principal": {
-                        "Service": [
-                        "sagemaker.amazonaws.com"
-                        ]
-                    },
-                    "Action": [
-                        "sts:AssumeRole"
-                    ]
+                    "Action": "*",
+                    "Resource": "*"
                     }
                 ]
-                },
-                "Path": "/",
-                "Policies": [
-                {
-                    "PolicyName": "root",
-                    "PolicyDocument": {
-                    "Version": "2012-10-17",
-                    "Statement": [
-                        {
-                        "Effect": "Allow",
-                        "Action": "*",
-                        "Resource": "*"
-                        }
-                    ]
-                    }
                 }
-                ]
             }
-            }
-        },
-        "Outputs": {
-            "EndpointId": {
-            "Value": { "Ref" : "Endpoint" }
-            },
-            "EndpointName": {
-            "Value": { "Fn::GetAtt" : [ "Endpoint", "EndpointName" ] }
-            }
-            
+            ]
         }
+        }
+    },
+    "Outputs": {
+        "EndpointId": {
+        "Value": { "Ref" : "Endpoint" }
+        },
+        "EndpointName": {
+        "Value": { "Fn::GetAtt" : [ "Endpoint", "EndpointName" ] }
+        }
+        
     }
-    ```
+}
+```
 
 To learn more about CloudFormation templates, reference [Working with CloudFormation Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-guide.html).
 
