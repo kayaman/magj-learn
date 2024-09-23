@@ -173,6 +173,31 @@ Continuous deployment flow structures refer to sets of processes, tools, and pra
 
     In the event of issues or performance degradation you might rollback or rollforward. Use established rollback processes for quickly reverting to a previous, stable version of the ML model. Use established rollforward processes for deploying a new, updated version of the ML model.
 
+#### Gitflow
+
+![Gitflow](/img/gitflow.png)
+
+1. Main
+
+    This is the primary branch that represents the official, production-ready state of the codebase. It is the branch that contains the latest stable, released version of the software. 
+
+2. Hotfix
+
+    These branches are used to quickly address and fix critical issues in the production environment. They are branched off from the main branch and are merged back into both the main and develop branches.
+
+3. Release
+
+    These branches are used to prepare a new production release. They are branched off from the develop branch and can include final touches, such as bug fixes, before being merged into the main branch.
+
+4. Develop
+
+    This branch is used for active development and integration of new features. It serves as the central hub where all the completed features are merged.
+
+5. Feature
+
+    These are short-lived branches that are created for the development of new features. They are typically branched off from the develop branch and are merged back into it after the feature is complete.
+
+
 ## AWS Software Release Process
 
 ## Automating Orchestration
