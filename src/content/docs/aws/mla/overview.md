@@ -9,12 +9,12 @@ sidebar:
 
 ## Preparation
 
-- [Skill Builder Enhanced Plan](./Other/enhanced-plan.md)
-- [SageMaker Study Notes](./Services/sagemaker.md)
-- [Bedrock Study Notes](./Services/bedrock.md)
-- [AWS AI Services Study Notes](./Services/ai-services.md)
-- [Random Study Notes](./Other/notes.md)
-- [Sample Questions](./Other/questions.md)
+- [Skill Builder Enhanced Plan](./resources/enhanced-plan.md)
+- [SageMaker Study Notes](./services/sagemaker.md)
+- [Bedrock Study Notes](./services/bedrock.md)
+- [AWS AI Services Study Notes](./services/ai-services.md)
+- [Random Study Notes](./resources/notes.md)
+- [Sample Questions](./resources/questions.md)
 
 ## Whitepapers
 
