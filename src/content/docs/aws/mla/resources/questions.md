@@ -442,3 +442,11 @@ CodeDeploy is a deployment service that provides automated in-place deployments 
 
 ---
 
++ The Machine Learning Lens: AWS Well-Architected Framework design principle, continuous improvement, is a key component to help your models remain accurate and effective over time.  
+Which best practices can be used to help with continuous improvement?
+
+*Establish feedback loops, monitor performance, and automate retraining.*
+
+To enable continuous improvement you should establish feedback loops and monitor performance using Amazon SageMaker Model Monitor for concept drift and model drift. To automate retraining, you should use Amazon EventBridge.
+
+---

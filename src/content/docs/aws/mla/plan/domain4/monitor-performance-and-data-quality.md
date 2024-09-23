@@ -86,6 +86,44 @@ To learn more about how to run a Machine Learning Lens review in your AWS accoun
 
 ### Detecting Drift in Monitoring
 
+#### Types of Drift
+
+- Data Quality Drift
+
+    Production data distribution differs from data that is used for training. ML models in production must make predictions on real-life data that is not carefully curated like most training datasets. The statistical nature of the data your model receives in production might drift away from the nature of the baseline data it was trained on. In that case, the model begins to lose accuracy in its predictions.
+
+- Model Quality Drift
+
+    Model quality drift are predictions that a model makes that differ from actual ground truth labels that the model attempts to predict.
+
+- Bias Drift
+
+    Bias drift represents an increase in the bias that affects predictions that the model makes over time. Bias drift can be introduced by changes in the live data distribution, such as the following:
+    - Bias could be present in data that is used to train the model.
+      - For example, training data is too small or not representative of live data, and cannot teach the model.
+      - Training data incorporates existing societal assumptions, which introduces those biases into the model.
+      - An important data point is excluded from training data because of a lack of recognition of its importance.
+    - Bias could be introduced in the real-world data that the model interacts with.
+
+    Note: Bias differs from variance, which is the level of small fluctuations or noise common in complex data sets. Bias tends to cause model predictions to overgeneralize, and variance tends to cause models to undergeneralize. Increasing variance is one method for reducing the impact of bias.
+
+- Feature Attribution Drift
+
+    Feature attribution drift or concept drift is when the contribution of individual features to model predictions differs from the baseline that was established during model training.
+
+#### Monitoring data quality and model performance
+
+**How to monitor for different types of drift**
+
+- Implement data validation checks on your input data before feeding it to the model to ensure the data meets the expected format, range, and quality requirements. This can include checking for missing values, outliers, or inconsistent data types.
+
+- Calculate statistical metrics such as mean, standard deviation, missing value counts, and outlier counts on the input data.
+
+- Compare these metrics with baseline values or expected ranges established during the model development phase. Significant deviations from the baseline can indicate data quality issues or distribution shifts.
+
+- Use techniques like data drift detection to identify changes in the distribution of input data over time. This can involve monitoring the statistical properties of the data like mean, variance, or skewness. You can also use more advanced techniques like Kolmogorov-Smirnov tests or Maximum Mean Discrepancy to detect distributional shifts.
+
+
 ### SageMaker Model Monitor
 
 ### Monitoring for Data Quality Drift

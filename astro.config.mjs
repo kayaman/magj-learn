@@ -5,6 +5,8 @@ import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax';
 import remarkToc from 'remark-toc';
 import starlightThemeRapide from 'starlight-theme-rapide'
+import { astroExpressiveCode } from '@astrojs/starlight/expressive-code';
+import starlightLinksValidator from 'starlight-links-validator';
 
 export default defineConfig({
 	site: 'https://learning.magj.dev',
@@ -15,7 +17,7 @@ export default defineConfig({
 				src: './src/assets/academic.webp'
 			},
 			title: 'MAGJ Learning',
-			plugins: [starlightThemeRapide()],
+			plugins: [starlightThemeRapide(), starlightLinksValidator()],
 			sidebar: [
 				{
 					label: 'AWS',
@@ -130,6 +132,11 @@ export default defineConfig({
 				linkedin: 'https://www.linkedin.com/in/marcoantoniogonzalezjunior/',
 			}
 		}),
+		astroExpressiveCode({
+			frames: {
+				showCopyToClipboardButton: true,
+			}
+		})
 	],
 	markdown: {
 		remarkPlugins: [remarkMath, [remarkToc, {heading: "contents"}]],
