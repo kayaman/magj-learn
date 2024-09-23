@@ -69,6 +69,22 @@ Data and ML code are separate components that are both critical for developing a
   
 - **Explainability**: Incorporates techniques that promote decision transparency and model interpretability.
 
+#### Comparing the ML workflow with DevOps
+
+Machine learning projects have unique complexities compared to traditional software development.
+
+| Feature | DevOps | MLOps |
+|---------|--------|-------|
+| Code versioning  | ✔️  | ✔️  |
+| Compute environment  | ✔️  | ✔️  |
+| CI/CD  | ✔️  | ✔️  |
+| Monitoring in production  | ✔️  | ✔️  |
+| Data provenance  |   | ✔️  |
+| Datasets  |   | ✔️  |
+| Models  |   | ✔️  |
+| Model building with workflows  |   | ✔️  |
+| Model deployment with workflows  |   | ✔️  |
+
 ## AWS Software Release Process
 
 ## Automating Orchestration
