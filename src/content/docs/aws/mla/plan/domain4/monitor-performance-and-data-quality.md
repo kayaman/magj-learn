@@ -350,7 +350,29 @@ To schedule monitoring jobs, you use cron expressions, which are strings that re
 
 ### Monitoring for Statistical Bias Drift with SageMaker Clarify
 
+#### Options for using SageMaker Clarify
 
+![clarify options](/img/clarify-opts.png)
+
+
+
+1. Use SageMaker Clarify directly
+
+    You can run SageMaker Clarify directly. In this scenario, you must configure a SageMaker Clarify processing job. The SageMaker Python SDK API provides a high-level wrapper that hides many of the details involved in setting up a SageMaker Clarify processing job. The details to set up a job include retrieving the SageMaker Clarify container image URI and generating the analysis configuration file.  You can configure the job inputs, outputs, resources, and analysis configuration by using this API.
+
+
+2. Use SageMaker Model Monitor
+
+    SageMaker Model Monitor uses SageMaker Clarify to analyze your data and models for bias and explainability. The process to set up this monitor is similar to the other monitoring types using SageMaker Model Monitor. In this case, you create a baseline that is specific to bias drift and then schedule your monitoring job like the other monitoring types.  
+    Similar to monitoring for model quality, a bias drift monitoring job would first merge captured data and ground truth data, and then compute bias metrics on the merged data.   
+    Bias drift jobs evaluate the baseline constraints provided by the baseline configuration against the analysis results of the current monitoring job. If violations are detected, the job lists them to the constraint_violations.json file in the execution output location and marks the execution status as interpret results.  
+    As the model is monitored, you can view exportable reports and graphs detailing bias. You can also configure alerts in CloudWatch to receive notifications when bias breaches a certain threshold. To detect these changes, SageMaker Model Monitor uses SageMaker Clarify to continuously monitor the bias metrics of a deployed model.  
+    For more information, see [Post-training bias metrics](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html#w921aac33c13c25c11c11) in the Amazon SageMaker Developer Guide.
+
+3. Use SageMaker Data Wrangler
+   
+    You can also use SageMaker Clarify within Amazon SageMaker Data Wrangler to identify potential bias during data preparation. You specify input features, such as gender or age, and SageMaker Clarify runs an analysis job to detect potential bias in those features.  
+    For more information, see [Monitor Bias Drift for Models in Production](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-bias-drift.html) in the Amazon SageMaker Developer Guide.
 
 ### Monitoring for Feature Attribution Drift
 
