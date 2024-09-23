@@ -39,7 +39,11 @@ export default defineConfig({
 									collapsed: true,
 									autogenerate: { directory: 'aws/mla/plan/domain3' } 
 								},
-
+								{ 
+									label: 'Domain 4', 
+									collapsed: true,
+									autogenerate: { directory: 'aws/mla/plan/domain4' } 
+								},
 								{ 
 									label: 'Services', 
 									collapsed: true,
