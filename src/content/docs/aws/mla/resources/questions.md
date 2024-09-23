@@ -487,3 +487,14 @@ These are the steps to help with model quality monitoring and would solve the mo
 
 ---
 
+A machine learning engineer working on a fraud detection model for a financial institution. The model is currently deployed and receiving real-time transaction data for inference. To monitor the data quality of the incoming transactions, the engineer has set up Amazon SageMaker Model Monitor.  
+Which steps should they take to create a baseline for data quality monitoring?
+
+*Use the training dataset to generate baseline constraints and statistics using the suggest_baseline method of the ModelQualityMonitor object.*
+
+The correct step to create a baseline for data quality monitoring is to use the training dataset to generate baseline constraints and statistics using the suggest_baseline method of the ModelQualityMonitor object. According to the lesson, to create the baseline, you start a baseline processing job with the suggest_baseline method using the Amazon SageMaker Python SDK. The baseline job analyzes the training dataset stored in Amazon S3 and generates constraints.json and statistics.json files. These files contain the suggested constraints and descriptive statistics that characterize the training data, which serve as the baseline for comparison against the captured inference data.
+
+---
+
+
+

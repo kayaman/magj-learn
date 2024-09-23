@@ -293,6 +293,35 @@ To schedule monitoring jobs, you use cron expressions, which are strings that re
    
 ### Monitoring for Model Quality Using SageMaker Model Monitor
 
+#### How monitoring for model quality works
+
+![mmq](/img/monit-mq.png)
+
+1. Similarities
+
+
+Many parts of the process follow the same general approach as monitoring for data quality. The way you setup the data capture, the baseline job, and working with baseline statistics and constraints are the same. Working with requests and predictions are also consistent with other monitoring jobs.
+
+2. Human in the loop
+
+    One significant difference is the human in the loop to verify the true labels or ground truth. Ground truth refers to the true labels or values for the data that a machine learning model is trying to predict or classify. Having ground truth allows you to evaluate how well a model's predictions match reality.
+
+3. Merge job
+
+    In this example, the monitoring job merges predictions with ground truth data to perform the comparison.
+
+4. Merge files
+
+    Merged data is the intermediate result of model quality drift monitoring execution. The merged data is saved to JSON lines files in which each line is a valid JSON object combining the captured data and the ground truth data.
+
+5. Results sent to S3
+
+    Reports, statistics, and violations are automatically sent to Amazon S3. Any violations, compared to the baseline performance, are captured in the violations file.
+
+6. CloudWatch
+
+    You can configure CloudWatch alarms when model quality drifts beyond specified thresholds. You can use the CloudWatch alarms to trigger remedial actions such as retraining your model or updating the training data set.
+
 ### Monitoring for Statistical Bias Drift with SageMaker Clarify
 
 ### Monitoring for Feature Attribution Drift
