@@ -496,5 +496,11 @@ The correct step to create a baseline for data quality monitoring is to use the 
 
 ---
 
+A company has deployed a binary classification model to predict customer churn based on customer behavior data. They want to monitor the model's quality over time using SageMaker Model Monitor. The company has a dataset of labeled customer data, including the ground truth labels for churn, stored in Amazon Simple Storage Service (Amazon S3).  
+Which inputs are required for Amazon SageMaker Model Monitor to monitor the model's quality effectively?
 
+*Baseline data, inference input data, and Amazon SageMaker Ground Truth labels*
 
+To monitor model quality, SageMaker Model Monitor requires these three inputs: (1) Baseline data from the initial model training, (2) Inference input data and predictions made by the deployed model, and (3) SageMaker Ground Truth labels associated with the inference inputs. Model Monitor compares the model's predictions with the Ground Truth labels to measure the quality and detect any drift from the baseline performance.
+
+---

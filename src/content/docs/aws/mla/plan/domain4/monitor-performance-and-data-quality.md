@@ -321,7 +321,36 @@ To schedule monitoring jobs, you use cron expressions, which are strings that re
 
     You can configure CloudWatch alarms when model quality drifts beyond specified thresholds. You can use the CloudWatch alarms to trigger remedial actions such as retraining your model or updating the training data set.
 
+#### Model quality monitoring job metrics
+
+- Binary classification metrics
+
+  - Confusion Matrix
+  - Accuracy
+  - Recall
+  - Precision
+  - True positive rate (TPR), true negative rate (TNR), false positive rate (FPR), false negative rate (FNR), true positive rate (TPR), true negative rate (TNR)
+  - AUC (Area Under the Curve)
+  - PR (Precision-Recall) and ROC (Receiver Operating Characteristic) Curves
+  - F1 score
+
+- Multiclass classification metrics
+
+  - Confusion matrix
+  - Weighted precision
+  - Weighted recall
+  - Weighted accuracy
+  - Weighted F1 score
+
+- Regression metrics
+
+  - MAE (Mean Absolute Error)
+  - MSE (Mean Squared Error)
+  - R-squared (R²)
+
 ### Monitoring for Statistical Bias Drift with SageMaker Clarify
+
+
 
 ### Monitoring for Feature Attribution Drift
 
