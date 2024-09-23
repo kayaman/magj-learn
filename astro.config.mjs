@@ -4,13 +4,18 @@ import starlight from '@astrojs/starlight';
 import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax';
 import remarkToc from 'remark-toc';
+import starlightThemeRapide from 'starlight-theme-rapide'
 
 export default defineConfig({
 	site: 'https://learning.magj.dev',
 	integrations: [
 		starlight({
 			title: 'MAGJ Learning',
+			logo: {
+				src: './src/assets/academic.webp'
+			},
 			favicon: '/favicon.png',
+			plugins: [starlightThemeRapide()],
 			sidebar: [
 				{
 					label: 'AWS',
