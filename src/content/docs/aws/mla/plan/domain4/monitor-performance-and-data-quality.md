@@ -204,20 +204,57 @@ SageMaker Model Monitor also works with other AWS services to support monitoring
 
 1. Real-time monitoring
 
-
-After a model is deployed in production, you can monitor its performance in real time using SageMaker Model Monitor.
+    After a model is deployed in production, you can monitor its performance in real time using SageMaker Model Monitor.
 
 2. Working together
 
-
-SageMaker Model Monitor is a capability of SageMaker that emits per-feature metrics to CloudWatch. SageMaker is integrated with CloudWatch, Amazon CloudWatch Logs, EventBridge, and AWS CloudTrail for monitoring and auditing.
+    SageMaker Model Monitor is a capability of SageMaker that emits per-feature metrics to CloudWatch. SageMaker is integrated with CloudWatch, Amazon CloudWatch Logs, EventBridge, and AWS CloudTrail for monitoring and auditing.
 
 3. Integrated with SageMaker Clarify
 
+    Additionally, SageMaker Model Monitor is integrated with Amazon SageMaker Clarify to improve visibility into potential bias.
 
-Additionally, SageMaker Model Monitor is integrated with Amazon SageMaker Clarify to improve visibility into potential bias.
+#### Use cases
 
+- Monitor real-time endpoints: You can set up continuous monitoring for models deployed to real-time endpoints. SageMaker Model Monitor captures data from model inputs and outputs and monitors for deviations compared to a baseline.
 
+- Monitor batch transform jobs: You can monitor models used in batch transform jobs, either running regularly or on a schedule. SageMaker Model Monitor captures the input data and output predictions from these batch jobs and monitors for drift. The schedule can be adjusted based on data availability and desired frequency.
+
+- On-demand monitoring job: SageMaker Model Monitor also supports on-demand monitoring jobs. These jobs can be launched manually to assess the performance at any time.
+
+#### Schedule or run your monitor job
+
+To schedule monitoring jobs, you use cron expressions, which are strings that represent a schedule for running periodic tasks. In SageMarker Model Monitor, you can use the CronExpressionGenerator utility or provide custom cron expression strings to schedule SageMaker Model Monitor jobs at the desired frequency.
+
+#### Monitor job status
+
+- **Completed**: No violations were identified.
+- **Completed with violations**: Constraint violations were detected.
+- **Failed**: The monitoring job failed, possibly because of client error (such as incorrect role permissions) or infrastructure issues.
+
+#### Output of SageMaker Model Monitor jobs
+
+- Statistics
+
+    SageMaker Model Monitor output can include different types of statistics:
+
+    - Statistical parameters to be calculated for the baseline data and the data being captured.
+    - Dataset-level statistics like the item_count (number of rows or instances).
+    - Feature-level statistics for each feature or column in the dataset.
+    - Other statistics such as number of nulls, maximum value, minimum value, and mean.
+
+- Violations
+
+    The violations file lists the results of evaluating the constraints (specified in the constraints.json file) against the analyzed dataset. The report is output as constraints_violations.json.
+
+- Metrics
+
+    SageMaker Model Monitor emits per-feature metrics to CloudWatch, which you can use to set up dashboards and alerts. The summary metrics from CloudWatch are also visible in Amazon SageMaker Studio, and all statistics, monitoring results, and data collected can be viewed and further analyzed in a notebook.
+
+- Logs
+
+    Model Monitor generates logs with information about the monitoring job, such as the start time, end time, and status. You can view the logs in the CloudWatch console.
+    
 ### Monitoring for Data Quality Drift
 
 ### Monitoring for Model Quality Using SageMaker Model Monitor
