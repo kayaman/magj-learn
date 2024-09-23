@@ -20,10 +20,9 @@ export default defineConfig({
 		starlight({
 			favicon: '/favicon.png',
 			logo: {
-				src: '/logo.png'
+				src: './src/assets/logo.png'
 			},
 			title: 'MAGJ Learning',
-			
 			plugins: [starlightThemeRapide(), starlightLinksValidator()],
 			sidebar: [
 				{
