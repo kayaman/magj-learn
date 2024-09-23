@@ -376,6 +376,40 @@ To schedule monitoring jobs, you use cron expressions, which are strings that re
 
 ### Monitoring for Feature Attribution Drift
 
+#### Feature attribution
+
+Also known as feature importance or feature relevance
+
+Feature attribution refers to understanding and quantifying the contribution or influence of each feature on the model's predictions or outputs. It helps to identify the most relevant features and their relative importance in the decision-making process of the model.
+
+A drift in the distribution of live data for production models can cause a corresponding drift in feature attribution values. SageMaker Model Monitor integration with SageMaker Clarify provides explainability tools for deployed models hosted in SageMaker. SageMaker Clarify's feature attribution monitoring helps you monitor predictions and detect feature attribution drift (explainability). It provides insights into how the models make predictions, which can be useful for debugging, improving model performance, and ensuring fairness and transparency.
+
+#### Monitoring for feature attribution drift
+
+**How to set up**
+
+![Clarify FAD](/img/clarify-fat.png)
+
+1. Data capture configuration
+
+    As with the other model monitoring approaches, you first need to activate data capture for your endpoint.
+
+2. Create a baseline
+
+    After you have configured your application to capture real-time or batch transform inference data to monitor for drift in feature attribution, you create a baseline to compare against. This involves configuring the data inputs, which groups are sensitive, how the predictions are captured, and the model and its post-training bias metrics.
+
+3. Baseline statistics and constraints
+
+    When the baselining job completes, SageMaker will suggest a set of baseline constraints and generate descriptive statistics.
+
+4. Data drift monitoring job
+
+    Again, similar to the other monitoring types, feature attribution drift jobs evaluate the baseline constraints against the analysis results of the latest monitoring job. If violations are detected, the job lists them in the constraint_violations.json file. The model explainability monitor calculates a normalized, global SHAP score for the model, which compares feature attribution for live production data with the baseline. 
+
+5. Amazon CloudWatch metrics
+
+    Feature attribution drift violations occur when the global SHAP scores fall below a threshold. You can view exportable reports and graphs detailing bias and feature attributions in SageMaker Studio. You can also configure alerts in Amazon CloudWatch to receive notifications if violations are detected.
+
 ### Monitoring Model Performance Using A/B Testing
 
 ### Introduction to SageMaker Model Dashboard
