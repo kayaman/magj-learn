@@ -410,6 +410,31 @@ A drift in the distribution of live data for production models can cause a corre
 
     Feature attribution drift violations occur when the global SHAP scores fall below a threshold. You can view exportable reports and graphs detailing bias and feature attributions in SageMaker Studio. You can also configure alerts in Amazon CloudWatch to receive notifications if violations are detected.
 
+#### Example violations file output
+
+Here is an example of the violations file output.
+
+```json
+{
+  "version": "1.0",
+  "violations": [{
+      "label": "label0",
+      "metric_name": "shap",
+      "constraint_check_type": "feature_attribution_drift_check",
+      "description": "Feature attribution drift 0.7639720923277322 exceeds threshold 0.9"
+  }, {
+      "label": "label1",
+      "metric_name": "shap",
+      "constraint_check_type": "feature_attribution_drift_check",
+      "description": "Feature attribution drift 0.7323763972092327 exceeds threshold 0.9"
+  }]
+}
+```
+
+#### SageMaker Model Monitor benefits
+
+![sm-mm-benefits](/img/sm-mm-benefits.png)
+
 ### Monitoring Model Performance Using A/B Testing
 
 ### Introduction to SageMaker Model Dashboard
