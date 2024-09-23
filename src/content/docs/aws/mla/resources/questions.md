@@ -340,12 +340,85 @@ The Estimator class defines a training job, and the fit() method runs the traini
 
 ---
 
-An MLOps engineer is configuring a SageMaker endpoint. They expect traffic to the endpoint to fluctuate significantly throughout the day.  
++ An MLOps engineer is configuring a SageMaker endpoint. They expect traffic to the endpoint to fluctuate significantly throughout the day.  
 Which of the following describes the BEST approach to making sure that their model performance will meet performance benchmarks while remaining cost effective?
 
 *Conduct load testing on the application. Using different metrics, identify which metric value reliably corresponds to occurrences of model latency. Create a target tracking policy and use this metric as the target metric. Set the target value to a value lower than the value at which model latency occurs.*
 
 Load testing is used to identify the scaling metric. The target value is set below the point at which latency occurs. This will make sure the endpoint scales the compute capacity out to support increased demand. It will also scale capacity in to control costs when the capacity is no longer needed.
+
+---
+
++ A machine learning (ML) engineer is building a custom model training container. Where in the directory structure will the container store the hyperparameters during the training job?
+
+*opt/ml/input/config*
+
+This directory holds the JSON files that configure the hyperparameters for the training algorithm and the resources used for distributed training.
+
+---
+
++ Which AWS container service provides version control and access management features for container images?
+
+*Amazon Elastic Container Registry (Amazon ECR)*
+
+Amazon ECR is a container registry that performs version control. It can also be used to configure who has access to your container images.
+
+---
+
++ Which of the following most accurately describes the infrastructure as code (IaC) approaches of AWS CloudFormation and AWS Cloud Development Kit (AWS CDK)?
+
+*CloudFormation supports a declarative approach to IaC and AWS CDK supports an imperative approach.*
+
+CloudFormation works from a CloudFormation template that describes the end state of the infrastructure. This is the declarative approach to IaC. With AWS CDK, you can include logic that adjusts the final state of your infrastructure and the sequencing of provisioning activities. This is the imperative approach to IaC.
+
+---
+
++ Which AWS Cloud Development Kit (AWS CDK) Command Line Interface (CLI) command is used to generate AWS CloudFormation templates of the stacks defined in an app?
+
+*cdk synth*
+
+The **cdk synth** command compiles an AWS CDK application into CloudFormation templates.
+
+---
+
++ A machine learning (ML) engineer is using the Amazon SageMaker Python SDK to create an automated model training pipeline. How would they define a data processing step in their pipeline?
+
+*Instantiate a Processor class and use the run() method. Use this as input to a ProcessingStep().*
+
+The Processor class is used for data processing jobs and the run() method runs data processing jobs. A data processing step is defined in a SageMaker Pipeline using ProcessingStep(). 
+
+---
+
++ An MLOps engineer needs to deploy an Amazon EC2 instance using the AWS Cloud Development Kit (AWS CDK). They need to explicitly configure all of the properties available in AWS CloudFormation. Which type of AWS CDK construct should you use?
+
+*L1 construct*
+
+L1 constructs, also known as CFN resources, are the lowest-level construct and offer no abstraction. Each L1 construct maps directly to a single CloudFormation resource and requires you to explicitly configure properties.
+
+---
+
+An MLOps engineer is troubleshooting an application that includes a SageMaker endpoint. Users have been reporting occasional performance issues. The engineer notices that these reports correspond to increased latency in model predictions. Further research shows that model prediction latency increases when CPUUtilizaton of the Amazon EC2 instances hosting the inference containers reaches 95 percent. The MLOps engineer also notices that this saturation sometimes occurs during invocations metric spikes.  
+How should the engineer address this issue in an operationally efficient and cost-effective manner?
+
+*Implement a target tracking policy on the SageMaker endpoint and set the target metric to CPUUtilization.*
+
+Because the performance issues correspond to CPU saturation, scaling capacity to keep CPUUtilization at a specific target is the correct choice. In addition to scaling out to provide additional capacity, a target tracking policy will also scale resources in to avoid paying for underutilized resources. 
+
+---
+
+An MLOps engineer is creating an AWS CloudFormation template. They need the template to provision an Amazon EC2 instance. Which section of the CloudFormation template would they use to specify the instance and its properties?
+
+*Resources*
+
+The Resources section specifies the stack resources, such as EC2 instances, that you would like to provision.
+
+---
+
+Which of the following is a benefit of using infrastructure as code (IaC)?
+
+*You can deploy the same infrastructure for developer and test environments.*
+
+One of the benefits of IaC is repeatable provisioning, where you can use the same templates to provision infrastructure into different environments.
 
 ---
 
