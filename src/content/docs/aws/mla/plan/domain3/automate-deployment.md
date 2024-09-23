@@ -197,6 +197,81 @@ Continuous deployment flow structures refer to sets of processes, tools, and pra
 
     These are short-lived branches that are created for the development of new features. They are typically branched off from the develop branch and are merged back into it after the feature is complete.
 
+#### Gitflow workflow
+
+1. Start and develop a new feature
+
+![1](/img/step1.png)
+
+Create a new feature branch from the develop branch. Develop the feature and commit your changes to the feature branch.
+
+2. Merge the feature
+
+![2](/img/step2.png)
+
+When the feature is complete, merge the feature branch back into the develop branch.
+
+3. Prepare a release
+
+![3](/img/step3.png)
+
+Create a new feature branch from the develop branch. Develop the feature and commit your changes to the feature branch. When it's time to create a new release, create a release branch from the develop branch.
+
+4. Finalize the release
+
+![4](/img/step4.png)
+
+Perform any necessary final adjustments, such as bug fixes, on the release branch.
+
+5. Merge the release
+
+![5](/img/step5.png)
+
+Merge the release branch into the main branch and tag it with the version number.
+
+6. Merge back to develop
+
+![6](/img/step6.png)
+
+Merge the release branch back into the develop branch to incorporate the changes.
+
+7. Handle hotfixes
+
+![7](/img/step7.png)
+
+If a critical issue is found in the production environment, first create a hotfix branch from the main branch. Then fix the issue and merge it back into both the main and develop branches.
+
+### Continuous Delivery Services
+
+#### CodePipeline
+
+CodePipeline supports integration with various AWS services, including CodeCommit, CodeBuild, CodeDeploy, AWS Elastic Beanstalk, Amazon ECS, and Lambda. You can also integrate with third party services like GitHub, Bitbucket, and Jenkins.
+
+- Manual approvals
+
+    You can configure manual approval gates in your pipeline so that you can control the release process. These manual approvals can be configured to require approval from specific users or groups.
+
+- Monitoring and notifications
+
+    CodePipeline provides visibility into the status of your pipelines, with detailed logs and notifications. There are several ways you can monitor your pipeline to ensure its performance, reliability, and availability, and to find ways to improve it. You can monitor the pipeline directly from the CodePipeline console, the AWS Command Line Interface (AWS CLI), use Amazon EventBridge, or AWS CloudTrail.
+
+- Security
+
+    CodePipeline supports resource-level permissions, making it possible for you to specify which user can perform what action on the pipeline. Some users might have read-only access to the pipeline, whereas others might have access to a particular stage or action in a stage.
+
+#### CodeBuild
+
+CodeBuild is a fully managed continuous integration service that compiles source code, runs tests, and produces software packages that are ready to deploy. CodeBuild supports both managed and custom build environments using Docker images. You configure builds by using a YAML buildspec file that defines the build steps.
+
+CodeBuild provides detailed logging, auto-scaling capacity, and high availability for builds. It also integrates with other AWS services like CodePipeline and Amazon Elastic Container Registry (Amazon ECR) for end-to-end CI/CD workflows. Build artifacts can be stored in Amazon Simple Storage Service (Amazon S3) buckets or other destinations. Also builds can be monitored through the CodeBuild console, Amazon CloudWatch, and other methods. You get fine-grained access controls for build projects using AWS Identity and Access Management (IAM) policies.
+
+#### CodeDeploy 
+
+CodeDeploy is a deployment service that provides automated deployments, flexible deployment strategies, rollback capabilities, and integration with other AWS services to help manage the application lifecycle across environments. 
+
+CodeDeploy facilitates automated application deployments to multiple environments, supporting deployment strategies like blue/green, in-place, and canary deployments. It provides rollback capabilities, detailed monitoring and logging, and integration with services like Amazon EC2, Lambda, and Amazon ECS to manage deployments across AWS environments. 
+
+With CodeDeploy, you can implement secure, compliant, and reliable application deployments while reducing the risks associated with manual processes.
 
 ## AWS Software Release Process
 

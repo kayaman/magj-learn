@@ -432,3 +432,13 @@ Which kind of test should you implement to ensure these changes do not negativel
 Regression testing checks for changes in system behavior due to code changes. Re-running models with new feature engineering on holdout tests datasets. Checking for degradation in accuracy is a form of regression testing.
 
 ---
+
++ After deploying a new version, the MLOps engineer notices issues arising in production. It is necessary to quickly rollback to the previous version.  
+Which AWS service provides straightforward rollback capabilities? 
+
+*AWS CodeDeploy*
+
+CodeDeploy is a deployment service that provides automated in-place deployments and straightforward rollback to previous versions. 
+
+---
+
