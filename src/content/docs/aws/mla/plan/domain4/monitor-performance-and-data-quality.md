@@ -299,8 +299,7 @@ To schedule monitoring jobs, you use cron expressions, which are strings that re
 
 1. Similarities
 
-
-Many parts of the process follow the same general approach as monitoring for data quality. The way you setup the data capture, the baseline job, and working with baseline statistics and constraints are the same. Working with requests and predictions are also consistent with other monitoring jobs.
+    Many parts of the process follow the same general approach as monitoring for data quality. The way you setup the data capture, the baseline job, and working with baseline statistics and constraints are the same. Working with requests and predictions are also consistent with other monitoring jobs.
 
 2. Human in the loop
 
