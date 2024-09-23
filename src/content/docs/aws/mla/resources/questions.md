@@ -517,3 +517,13 @@ Which approach would require the least amount of effort for this scenario?
 Using SageMaker Model Monitor, which integrates with SageMaker Clarify, is the most suitable approach for monitoring the deployed model's predictions for statistical bias drift. SageMaker Model Monitor automates the process of merging prediction data with ground truth labels, computing baseline statistics and constraints, inspecting data for bias metrics and violations, and generating reports and alerts for bias drift detection.
 
 ---
+
+A financial institution has developed a credit risk assessment model to evaluate loan applications. The model's predictions are influenced by various features, such as the applicant's income, credit history, and employment status. The institution wants to ensure that the model's feature attributions remain consistent and fair over time.  
+Which benefit of SageMaker Clarify attribution monitoring would be most relevant in this scenario?
+
+*Inspect merged data and generate quality metrics and violations related to feature attribution drift.*
+
+In this scenario, where the financial institution wants to ensure consistent and fair feature attributions for the credit risk assessment model, the ability to inspect merged data and generate quality metrics and violations related to feature attribution drift would be most relevant. This would allow the institution to identify any potential biases or unfair attributions in the model's predictions and take appropriate actions.
+
+---
+
