@@ -1,6 +1,8 @@
 ---
 title: Enhanced Plan
 description: Skill Builder
+sidebar:
+  order: 1
 ---
 
 Although we don't require that you take any specific training before you take an exam, we do recommend that have the underlying training and knowledge outlined in the exam guide.

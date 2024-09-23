@@ -1,6 +1,8 @@
 ---
 title: Resources
 description: Resources
+sidebar:
+  order: 4
 ---
 
 <a href="https://aws.amazon.com/certification/certified-machine-learning-engineer-associate/" target="_blank">Exam Page</a>  

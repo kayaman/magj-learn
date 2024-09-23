@@ -2,7 +2,7 @@
 title: Random Notes
 description: Study Notes
 sidebar:
-  order: 50
+  order: 2
 ---
 
 ## IAM

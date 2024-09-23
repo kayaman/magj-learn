@@ -85,6 +85,32 @@ Machine learning projects have unique complexities compared to traditional softw
 | Model building with workflows  |   | ✔️  |
 | Model deployment with workflows  |   | ✔️  |
 
+### Automating Testing in CI/CD Pipelines
+
+#### Types of automated tests
+
+Automated testing is an essential part of maintaining quality in machine learning model development and deployment. Applying automated tests to a CI/CD pipeline helps to catch issues early, reduce bugs, and maintain model performance over time.
+
+1. Unit tests
+
+    Validate smaller components like individual functions or methods.
+
+2. Integration tests
+
+    Can check that pipeline stages, including data ingestion, training, and deployment, work together correctly. Other types of integration tests depend on your system or architecture.
+
+3. Regression tests
+
+    In practice, regression testing is re-running the same tests to make sure something that used to work was not broken by a change. Regression tests are not only for models.
+
+#### SageMaker Projects
+
+For more information about creating a real project using SageMaker Projects, refer to the following templates: 
+
+- To use the [MLOps template for model building, training, and deployment](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-templates-sm.html#sagemaker-projects-templates-code-commit), refer to [SageMaker MLOps Project Walkthrough](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-walkthrough.html).
+- To use the [MLOps template for model building, training, and deployment with third-party Git repositories using CodePipeline](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-templates-sm.html#sagemaker-projects-templates-git-code-pipeline), refer to [SageMaker MLOps Project Walkthrough Using Third-party Git Repos](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-walkthrough-3rdgit.html).
+- To use the [MLOps template for model building, training, and deployment with third-party Git repositories using Jenkins](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-templates-sm.html#sagemaker-projects-templates-git-jenkins), refer to [Create Amazon SageMaker projects using third-party source control and Jenkins](https://aws.amazon.com/blogs/machine-learning/create-amazon-sagemaker-projects-using-third-party-source-control-and-jenkins/).
+
 ## AWS Software Release Process
 
 ## Automating Orchestration

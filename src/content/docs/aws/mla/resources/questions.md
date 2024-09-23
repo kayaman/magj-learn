@@ -1,6 +1,8 @@
 ---
 title: Sample Questions
 description: questions
+sidebar:
+  order: 3
 ---
 
 ## Official Pretest
@@ -397,7 +399,7 @@ L1 constructs, also known as CFN resources, are the lowest-level construct and o
 
 ---
 
-An MLOps engineer is troubleshooting an application that includes a SageMaker endpoint. Users have been reporting occasional performance issues. The engineer notices that these reports correspond to increased latency in model predictions. Further research shows that model prediction latency increases when CPUUtilizaton of the Amazon EC2 instances hosting the inference containers reaches 95 percent. The MLOps engineer also notices that this saturation sometimes occurs during invocations metric spikes.  
++ An MLOps engineer is troubleshooting an application that includes a SageMaker endpoint. Users have been reporting occasional performance issues. The engineer notices that these reports correspond to increased latency in model predictions. Further research shows that model prediction latency increases when CPUUtilizaton of the Amazon EC2 instances hosting the inference containers reaches 95 percent. The MLOps engineer also notices that this saturation sometimes occurs during invocations metric spikes.  
 How should the engineer address this issue in an operationally efficient and cost-effective manner?
 
 *Implement a target tracking policy on the SageMaker endpoint and set the target metric to CPUUtilization.*
@@ -406,7 +408,7 @@ Because the performance issues correspond to CPU saturation, scaling capacity to
 
 ---
 
-An MLOps engineer is creating an AWS CloudFormation template. They need the template to provision an Amazon EC2 instance. Which section of the CloudFormation template would they use to specify the instance and its properties?
++ An MLOps engineer is creating an AWS CloudFormation template. They need the template to provision an Amazon EC2 instance. Which section of the CloudFormation template would they use to specify the instance and its properties?
 
 *Resources*
 
@@ -414,7 +416,7 @@ The Resources section specifies the stack resources, such as EC2 instances, that
 
 ---
 
-Which of the following is a benefit of using infrastructure as code (IaC)?
++ Which of the following is a benefit of using infrastructure as code (IaC)?
 
 *You can deploy the same infrastructure for developer and test environments.*
 
@@ -422,3 +424,11 @@ One of the benefits of IaC is repeatable provisioning, where you can use the sam
 
 ---
 
++ A team is making changes to the feature engineering part of their machine learning pipeline.  
+Which kind of test should you implement to ensure these changes do not negatively impact model accuracy?
+
+*Regression testing *
+
+Regression testing checks for changes in system behavior due to code changes. Re-running models with new feature engineering on holdout tests datasets. Checking for degradation in accuracy is a form of regression testing.
+
+---
