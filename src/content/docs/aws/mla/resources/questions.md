@@ -5,26 +5,28 @@ sidebar:
   order: 3
 ---
 
-## Official Pretest
-
-1. An ML engineer wants to use Amazon SageMaker to create a model that predicts whether a student will pass an exam. The ML engineer is developing a logistic regression model and needs to find an optimal model with the most accurate classification threshold. The ML engineer must select a model evaluation technique to analyze the performance of the model based on the defined threshold. The dataset contains an equal amount of observations for passed and failed exam attempts.  
+An ML engineer wants to use Amazon SageMaker to create a model that predicts whether a student will pass an exam. The ML engineer is developing a logistic regression model and needs to find an optimal model with the most accurate classification threshold. The ML engineer must select a model evaluation technique to analyze the performance of the model based on the defined threshold. The dataset contains an equal amount of observations for passed and failed exam attempts.  
 Which model evaluation technique meets the requirements?
 
 *Receiver operating characteristic (ROC) curve. The ROC curve is a graphical plot that is used in ML to illustrate the performance of a model at all classification thresholds. The ROC curve meets the requirements because the engineer wants to compare the model's performance against threshold values.*
 
 Learn more about [metrics and validation](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-metrics-validation.html).
 
-2. A company built a deep learning model for climate modeling by using Amazon SageMaker. In each invocation, the model processes 400 MB of data for 30 minutes to return a prediction. The climate model is invoked automatically when a new climate event is detected. The company needs a deployment strategy to move the deep learning model to production. A cold start can be tolerated.  
+---
+
+A company built a deep learning model for climate modeling by using Amazon SageMaker. In each invocation, the model processes 400 MB of data for 30 minutes to return a prediction. The climate model is invoked automatically when a new climate event is detected. The company needs a deployment strategy to move the deep learning model to production. A cold start can be tolerated.  
 What is the MOST cost-effective solution?
 
 *Deploy the model by using an asynchronous endpoint. SageMaker Asynchronous Inference is the capability to queue incoming requests to process the requests asynchronously. SageMaker Asynchronous Inference is suitable for requests with large inference request dataset sizes and long processing times when a cold start is tolerated.*
 
-    ~~SageMaker Serverless Inference is another option when a cold start is tolerated. However, serverless inference is not a suitable deployment method for large inference request dataset sizes and long processing times. In this scenario, serverless inference would time out.~~
+~~SageMaker Serverless Inference is another option when a cold start is tolerated. However, serverless inference is not a suitable deployment method for large inference request dataset sizes and long processing times. In this scenario, serverless inference would time out.~~
 
 Learn more about [SageMaker Asynchronous Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference.html).  
 Learn more about [SageMaker Serverless Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html).
 
-3. An ML engineer must implement a solution that processes hundreds of thousands of text inputs once every 24 hours. Each of the inputs is inserted into a prompt and sent to a large language model (LLM) for inference. The LLM response must be stored in an Amazon S3 bucket.  
+---
+
+An ML engineer must implement a solution that processes hundreds of thousands of text inputs once every 24 hours. Each of the inputs is inserted into a prompt and sent to a large language model (LLM) for inference. The LLM response must be stored in an Amazon S3 bucket.  
 Which solution will meet these requirements with the LEAST operational overhead?
 
 *Create a batch inference job in Amazon Bedrock. Store the input file in an S3 bucket and specify the stored file as an input to a CreateModelInvocationJob request. Specify the output location for the request as the target S3 bucket.*
@@ -33,7 +35,9 @@ To create a batch inference job, you need to send a CreateModelInvocationJob req
 Learn more about [how to create a batch inference job in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-create.html).  
 Learn more about [how to format and upload input data](https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-data.html).
 
-3. A data scientist is training a deep learning neural network by using Amazon SageMaker. The data scientist wants to debug the model to identify and address model convergence issues. The data scientist wants to use real-time monitoring to determine if there is a sampling imbalance between classes.  
+---
+
+A data scientist is training a deep learning neural network by using Amazon SageMaker. The data scientist wants to debug the model to identify and address model convergence issues. The data scientist wants to use real-time monitoring to determine if there is a sampling imbalance between classes.  
 Which solution will meet these requirements with the LEAST operational overhead?
 
 
@@ -43,7 +47,7 @@ SageMaker Debugger provides a suite of tools to debug training jobs in real time
 Learn more about [how to debug training jobs in SageMaker by using SageMaker Debugger](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html).  
 Learn more about [SageMaker Debugger built-in rules](https://docs.aws.amazon.com/sagemaker/latest/dg/debugger-built-in-rules.html).  
 
-## Collect, Ingest, and Store Data
+---
 
 A retail company wants to use an Amazon Elastic File System (Amazon EFS) file server for their machine learning (ML) workload. The Amazon EFS file server will be used to store data for model training that will be accessed from a fleet of training instances.
 Which AWS service would best be used for efficiently extracting a large dataset from a file system hosted on Amazon EC2 to an Amazon EFS file server?
@@ -502,5 +506,14 @@ Which inputs are required for Amazon SageMaker Model Monitor to monitor the mode
 *Baseline data, inference input data, and Amazon SageMaker Ground Truth labels*
 
 To monitor model quality, SageMaker Model Monitor requires these three inputs: (1) Baseline data from the initial model training, (2) Inference input data and predictions made by the deployed model, and (3) SageMaker Ground Truth labels associated with the inference inputs. Model Monitor compares the model's predictions with the Ground Truth labels to measure the quality and detect any drift from the baseline performance.
+
+---
+
+A financial institution has developed a machine learning model to predict loan default risk. The model is based on various customer attributes such as income, credit history, and employment status. The model is currently in production, and the institution wants to monitor for potential statistical bias drift to ensure fair and accurate predictions.  
+Which approach would require the least amount of effort for this scenario?
+
+*Use Amazon SageMaker Model Monitor, which integrates with Amazon SageMaker Clarify, to monitor the deployed model's predictions for bias drift.*
+
+Using SageMaker Model Monitor, which integrates with SageMaker Clarify, is the most suitable approach for monitoring the deployed model's predictions for statistical bias drift. SageMaker Model Monitor automates the process of merging prediction data with ground truth labels, computing baseline statistics and constraints, inspecting data for bias metrics and violations, and generating reports and alerts for bias drift detection.
 
 ---
