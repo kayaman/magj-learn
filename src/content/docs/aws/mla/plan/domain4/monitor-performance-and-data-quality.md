@@ -143,7 +143,80 @@ To learn more about how to run a Machine Learning Lens review in your AWS accoun
 
 - Implement techniques like adversarial debiasing or calibrated equalized odds to mitigate bias during training or inference. These techniques aim to reduce the dependence of the model's predictions on sensitive attributes or enforce fairness constraints.
 
+##### Feature attribution drift monitoring
+
+- Use interpretability techniques like SHAP (SHapley Additive exPlanations) to calculate feature attributions or importance scores for individual predictions. These techniques provide insights into how different features contribute to the model's predictions.
+
+- Calculate statistical metrics (for example, mean, standard deviation) on the feature attributions.
+
+- Compare the metrics with baseline values or expected ranges established during the model development phase. Significant deviations from the baseline can indicate changes in the importance or contribution of specific features over time.
+
+- Identify features whose attributions have changed significantly over time, as this might indicate underlying data or model drift. For example, if a feature that was previously important for the model's predictions becomes less important, it could signal a change in the data distribution or the model's behavior.
+
 ### SageMaker Model Monitor
+
+SageMaker Model Monitor is a fully managed automatic monitoring service for your machine learning models. With SageMaker Model Monitor, you can continuously monitor the quality of SageMaker machine learning models in production.
+
+#### How it works
+
+1. Baseline of the training dataset
+
+    SageMaker Model Monitor uses a baseline of the dataset used to train your model as a reference during monitoring.
+
+2. Dataset statistics compared to incoming data
+
+    This baseline includes statistics about the dataset, such as the mean and standard deviation of each feature. After the baseline is created, SageMaker Model Monitor starts monitoring the incoming data. It compares the incoming data to the baseline and checks for any data quality issues.
+
+3. Report generated
+
+    If SageMaker Model Monitor detects an issue, it generates a report that includes the details of the issue. The generated report is saved to an Amazon Simple Storage Service (Amazon S3) bucket that you specify.
+
+#### Four types of monitoring
+
+- Data quality
+- Model quality
+- Model bias drift
+- Feature attribution drift
+
+#### Benefits
+
+- Improved model performance and accuracy
+
+    By continuously monitoring the data quality, SageMaker Model Monitor helps ensure that the model is operating with the most accurate and reliable data. This, in turn, leads to improved model performance and accuracy.
+
+- Early detection of data quality issues
+
+    One of the primary benefits of SageMaker Model Monitor is its ability to quickly identify any issues with the data being used by the model. With this early detection, you can address these problems before they have a significant impact on the model's performance, saving time and resources.
+
+- Reduced operational overhead for data monitoring
+
+    Traditionally, monitoring data quality has been a manual and time-consuming process. SageMaker Model Monitor automates this task, reducing the operational overhead associated with data monitoring. This helps your team to focus on other critical aspects of model development and deployment.
+
+- Compliance with data quality standards
+
+    Many industries and organizations have strict data quality standards that must be met. SageMaker Model Monitor helps ensure compliance with data quality standards, reducing the risk of regulatory or compliance-related issues.
+
+#### Working together to support ML monitoring
+
+SageMaker Model Monitor also works with other AWS services to support monitoring model performance.
+
+![MM](/img/mm-int.png)
+
+1. Real-time monitoring
+
+
+After a model is deployed in production, you can monitor its performance in real time using SageMaker Model Monitor.
+
+2. Working together
+
+
+SageMaker Model Monitor is a capability of SageMaker that emits per-feature metrics to CloudWatch. SageMaker is integrated with CloudWatch, Amazon CloudWatch Logs, EventBridge, and AWS CloudTrail for monitoring and auditing.
+
+3. Integrated with SageMaker Clarify
+
+
+Additionally, SageMaker Model Monitor is integrated with Amazon SageMaker Clarify to improve visibility into potential bias.
+
 
 ### Monitoring for Data Quality Drift
 

@@ -477,3 +477,13 @@ Which type of drift has the machine learning engineer identified?
 Bias drift represents an increase in the bias that affects predictions that the model makes over time. Bias drift can be introduced by changes in the live data distribution.
 
 ---
+
+A machine learning engineer has noticed some model quality drift. Specifically, they noticed predictions that their model made that differed from the actual ground truth labels that the model attempted to predict.  
+Which steps for monitoring will work best for model quality issues?
+
+*Calculate relevant evaluation metrics, implement confidence thresholds, flag predictions, and monitor the model on different datasets.*
+
+These are the steps to help with model quality monitoring and would solve the model quality issues.
+
+---
+
