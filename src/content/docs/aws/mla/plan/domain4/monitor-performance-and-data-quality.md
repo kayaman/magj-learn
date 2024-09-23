@@ -254,9 +254,43 @@ To schedule monitoring jobs, you use cron expressions, which are strings that re
 - Logs
 
     Model Monitor generates logs with information about the monitoring job, such as the start time, end time, and status. You can view the logs in the CloudWatch console.
-    
+
 ### Monitoring for Data Quality Drift
 
+#### How monitoring for data quality drift works
+
+![mdd](/img/monit-dd.png)
+
+1. Data capture configuration
+
+    Set up the data capture configuration on the SageMaker endpoint.
+
+2. Create a baseline
+
+    You can ask SageMaker to suggest a set of baseline constraints and generate descriptive statistics.
+
+3. Baseline statistics and constraints
+
+    After the baseline runs, the output includes statistics about each feature of your training data.
+
+4. Data drift monitoring job
+
+    Each monitoring job will capture new inference data from the deployed endpoint. It will compare the new data against the baseline. Any violations or data quality issues will be reported.
+
+5. Amazon CloudWatch metrics
+
+    You can use the built-in SageMaker Model Monitor container for CloudWatch Metrics.
+
+#### Steps to monitor data quality drift
+
+1. Initiate data capture on your endpoint.
+2. Create a baseline.
+3. Define and schedule data quality monitoring jobs.
+4. Integrate data quality monitoring with CloudWatch to view data quality metrics.
+5. Interpret and analyze the results of a monitoring job.
+
+![steps](/img/steps-mdqd.png)
+   
 ### Monitoring for Model Quality Using SageMaker Model Monitor
 
 ### Monitoring for Statistical Bias Drift with SageMaker Clarify
