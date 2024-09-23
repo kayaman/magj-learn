@@ -20,7 +20,7 @@ export default defineConfig({
 		starlight({
 			favicon: '/favicon.png',
 			logo: {
-				src: './src/assets/academic.webp'
+				src: '/logo.png'
 			},
 			title: 'MAGJ Learning',
 			
