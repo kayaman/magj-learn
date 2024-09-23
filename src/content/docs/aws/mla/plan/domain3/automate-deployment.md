@@ -8,7 +8,7 @@ sidebar:
 **Domain 3: Deployment and Orchestration of ML Workflows**
 :::
 
-## Continuous Integration and Continuous Delivery
+## Continuous Integration and Continuous Deployment
 
 ### Introduction to MLOps
 
@@ -241,6 +241,9 @@ Merge the release branch back into the develop branch to incorporate the changes
 
 If a critical issue is found in the production environment, first create a hotfix branch from the main branch. Then fix the issue and merge it back into both the main and develop branches.
 
+
+## AWS Software Release Process
+
 ### Continuous Delivery Services
 
 #### CodePipeline
@@ -273,8 +276,134 @@ CodeDeploy facilitates automated application deployments to multiple environment
 
 With CodeDeploy, you can implement secure, compliant, and reliable application deployments while reducing the risks associated with manual processes.
 
-## AWS Software Release Process
+### Best Practices for Configuring and Troubleshooting
+
+N/A
+
+### Automating Data Integration in ML Pipeline
+
+#### Running SageMaker Pipelime
+
+
+
+- Pipeline definition
+
+    To run a SageMaker Pipeline, you first must define the pipeline. This involves creating a pipeline script or a JSON file that describes the sequence of steps and their dependencies. Each step in the pipeline is represented by a SageMaker Pipeline component that manages these tasks: 
+
+    - Manages data processing and feature engineering
+    - Trains the ML model
+    - Evaluates the performance of the trained model
+    - Registers the trained model in the SageMaker model registry
+    - Deploys the trained model as a SageMaker endpoint for real-time inference
+
+- Pipeline run
+
+    After the pipeline is defined, you can run it using the SageMaker Python SDK or the AWS CLI. The SDK provides a Pipeline class for creating, running, and monitoring the running pipeline.
+
+- Step run
+
+    When you run the pipeline, SageMaker orchestrates the running of each step in the pipeline. The running of the pipeline follows the defined dependencies, ensuring that the required data and artifacts are available for each step. 
+
+- Monitoring and debugging
+
+    During the running of the pipeline, you can monitor the progress and status of the pipeline and its individual steps. SageMaker provides visualization tools and logs to help you track the pipeline's running and identify any issues or errors.
+
+- Reusability and versioning
+
+    SageMaker Pipelines support versioning, so you can track changes to your pipeline definition and maintain a history of runs. This helps you to reproduce and iterate on your ML workflows.
+
+- Integration with other AWS services
+
+    SageMaker Pipelines can be integrated with other AWS services. For example, AWS Glue for data preparation, Lambda for custom processing steps, and Amazon S3 for data storage and model artifacts.
+
+For more information about SageMaker Pipelines, refer to [Amazon SageMaker Model Building Pipelines](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html).  
+For a tutorial about the implementation of these concepts, refer to [Create and Manage SageMaker Pipelines](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-build.html).  
+For a tutorial about creating and automating end-to-end ML workflows using SageMaker Pipelines, refer to [Automate Machine Learning Workflows](https://aws.amazon.com/tutorials/machine-learning-tutorial-mlops-automate-ml-workflows/).  
+
+
 
 ## Automating Orchestration
 
+### Step Functions and CodePipeline
+
+### Deployment Strategies
+
 ## Retraining Models
+
+### Building and Integrating Mechanisms for Retraining
+
+### Configuring Inferencing Jobs
+
+## Resources
+
+[Git](https://aws.amazon.com/devops/source-control/git/)
+For more information about Git, choose the following button.
+
+[GitHub](https://github.com/)
+Collaborate with this widely used web-based hosting service for code repositories using Git. For more information, choose the following button.
+
+[AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+Privately store and manage assets in the cloud using this version control service. To learn more, choose the following button.
+
+[AWS CodeCommit Security](https://docs.aws.amazon.com/codecommit/latest/userguide/security.html)
+For more information about security in AWS CodeCommit, choose the following button.
+
+[SageMaker Projects MLOps template](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-templates-sm.html#sagemaker-projects-templates-code-commit)
+To use the MLOps template for model building, training, and deployment, choose the following button.
+
+[SageMaker Projects MLOps CodePipeline template](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-templates-sm.html#sagemaker-projects-templates-git-code-pipeline)
+To use the MLOps template for model building, training, and deployment with third-party Git repositories using CodePipeline, choose the following button.
+
+[SageMaker Projects MLOps Jenkins template](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-templates-sm.html#sagemaker-projects-templates-git-jenkins)
+To use the MLOps template for model building, training, and deployment with third-party Git repositories using Jenkins, choose the following button.
+
+[SageMaker model building pipelines](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html)
+To learn more about the SageMaker Model Building Pipelines tool, choose the following button.
+
+[AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/getting-started-codepipeline.html)
+For tutorials on working with AWS CodePipeline, choose the following button.
+
+[AWS CodePipeline Security](https://docs.aws.amazon.com/codepipeline/latest/userguide/security.html)
+For more information about security in AWS CodePipeline, choose the following button.
+
+[AWS CodePipeline Troubleshooting](https://docs.aws.amazon.com/codebuild/latest/userguide/troubleshooting.html)
+For detailed information on AWS CodePipeline troubleshooting, choose the following button.
+
+[AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/getting-started.html)
+For a tutorial on using AWS CodeBuild to build a collection of sample source code input files, choose the following button.
+
+[AWS CodeBuild Security](https://docs.aws.amazon.com/codebuild/latest/userguide/security.html)
+For more information about security in AWS CodeBuild, choose the following button.
+
+[AWS CodeBuild Troubleshooting](https://docs.aws.amazon.com/codebuild/latest/userguide/troubleshooting.html)
+For detailed information on AWS CodeBuild troubleshooting and best practices, choose the following button.
+
+[AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)
+AWS Step Functions is a visual workflow service. For detailed information, choose the following button.
+
+[Traffic Shifting Modes](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-blue-green.html#deployment-guardrails-blue-green-traffic-modes)
+For more information about traffic shifting modes in blue/green deployments, choose the following button.
+
+[Rolling Deployments](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-rolling.html#:~:text=Reference-,Rolling%20Deployments,-PDF)
+For more information about rolling deployments, choose the following button.
+
+[Auto-Rollback Configuration and Monitoring](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-rolling.html#:~:text=Reference-,Rolling%20Deployments,-PDF)
+For more information about using auto-rollback functionality in deployment guardrails, choose the following button.
+
+[Elastic Weight Consolidation](https://github.com/yashkant/Elastic-Weight-Consolidation)
+For an implementation of Elastic Weight Consolidation algorithm, choose the following button.
+
+[Continual Learning Through Synaptic Intelligence](https://github.com/ganguli-lab/pathint?tab=readme-ov-file#continual-learning-through-synaptic-intelligence)
+For code that prevents catastrophic forgetting in continual learning, choose the following button.
+
+[Real-time inferencing](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-deploy-models-realtime.html)
+For more information about real-time inferencing, choose the following button.
+
+[Serverless Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/serverless-endpoints.html)
+For more information about serverless inference, choose the following button.
+
+[Asynchronous inference](https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference.html)
+For more information about asynchronous inference, choose the following button.
+
+[Batch transform](https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html)
+For more information about batch transform, choose the following button.

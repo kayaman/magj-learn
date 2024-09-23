@@ -10,11 +10,11 @@ export default defineConfig({
 	site: 'https://learning.magj.dev',
 	integrations: [
 		starlight({
-			title: 'MAGJ Learning',
+			favicon: '/favicon.png',
 			logo: {
 				src: './src/assets/academic.webp'
 			},
-			favicon: '/favicon.png',
+			title: 'MAGJ Learning',
 			plugins: [starlightThemeRapide()],
 			sidebar: [
 				{
