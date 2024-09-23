@@ -340,3 +340,12 @@ The Estimator class defines a training job, and the fit() method runs the traini
 
 ---
 
+An MLOps engineer is configuring a SageMaker endpoint. They expect traffic to the endpoint to fluctuate significantly throughout the day.  
+Which of the following describes the BEST approach to making sure that their model performance will meet performance benchmarks while remaining cost effective?
+
+*Conduct load testing on the application. Using different metrics, identify which metric value reliably corresponds to occurrences of model latency. Create a target tracking policy and use this metric as the target metric. Set the target value to a value lower than the value at which model latency occurs.*
+
+Load testing is used to identify the scaling metric. The target value is set below the point at which latency occurs. This will make sure the endpoint scales the compute capacity out to support increased demand. It will also scale capacity in to control costs when the capacity is no longer needed.
+
+---
+

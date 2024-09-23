@@ -565,5 +565,89 @@ SageMaker training uses environment variables to define storage paths for traini
 
     This is a script to configure a web server, including listening on **port 8080**. It forwards requests containing either **/ping** or **/invocations** paths to the Gunicorn server.
 
+#### Managing containers on AWS
+
+When running machine learning applications that use containers, you need to select your container management tools. Container management tools can be broken down into three categories: registry, orchestration, and hosting.
+
+![Managing Containers](/img/managing-containers.png)
+
+- Registry
+
+When you develop containerized applications, you build a container image that holds everything needed to run your container. This container image includes application code, runtime, system tools, system libraries, and settings. You push your images to a repository for version control and pull those images from the repository to deploy containers.  
+AWS offers Amazon Elastic Container Registry (Amazon ECR) as a container image registry that supports integration with other AWS services.
+
+- Orchestration Tool
+
+    - Amazon SageMaker includes container orchestration capabilities. During model training, you identify the training container image to use and the EC2 instance type. SageMaker then handles the creation of the container and its connections to the required training resources. When you deploy a SageMaker endpoint, you can identify the model to use in the SageMaker Model Registry. This includes a reference to the inference container image. The model endpoint scales inference capacity based on your scaling policy.
+
+    - Amazon ECS is a container orchestration service that offers a more managed model for deploying your containers. Amazon ECS features additional integrations with other AWS services.
+
+    - Amazon Elastic Kubernetes Service (Amazon EKS) is a managed service that you can use to run the Kubernetes container orchestration software on AWS. You might choose this option if your application infrastructure is already using Kubernetes. Or, you might choose this option when you require additional control over your containerized workflow configurations.
 
 ### Auto Scaling Inference Infrastructure
+
+#### SageMaker model auto scaling methods
+
+- Target tracking scaling policy
+
+    With a target-tracking scaling policy, you specify a predefined or custom metric and a target value for the metric. The tracking policy calculates the scaling adjustment based on the metric and the target value. The scaling policy adds or removes capacity as required to keep the metric at, or close to, the specified target value.
+
+- Step scaling policy
+
+    With step scaling, you choose scaling metrics and threshold values for the CloudWatch alarms that invoke the scaling process. You also define how your scalable target should be scaled when a threshold is in breach for a specified number of evaluation periods.  
+    With a target tracking policy, capacity is automatically scaled to maintain the target metric value. With step scaling, you define multiple policies that specify the number of instances to scale at specific metric thresholds. It helps you to configure a more aggressive response when demand reaches certain levels.
+    For more information about configuring a step scaling policy, consult [How Step Scaling for Application Auto Scaling Works](https://docs.aws.amazon.com/autoscaling/application/userguide/step-scaling-policy-overview.html) in the *Application Auto Scaling User Guide*.
+
+- Scheduled scaling policy
+
+    You can use scheduled scaling when you know that the demand follows a particular schedule in the day, week, month, or year. Scheduled scaling helps you specify a one-time schedule or a recurring schedule. Or you can specify cron expressions along with start and end times, which form the boundaries of when the autoscaling action starts and stops.  
+    When you scale based on a schedule, you can scale your application in response to predictable load changes.
+
+- On-demand scaling
+
+    Use on-demand scaling only when you want to increase or decrease the number of instances manually. For example, you might want to use on-demand scaling under the following circumstances:
+
+    - New product launch: When a company releases a new product, traffic patterns might be unknown and hard to predict.
+    - Traffic spikes: Consider ticket sales for an event. The event announcement can drive unexpected traffic to the application.
+    - Special promotions or ad campaigns: These events can cause higher traffic and might be a good use case for on-demand scaling.
+
+## Resources
+
+[Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/machine-learning-lens.html)
+To learn more about the ML lens of the AWS Well-Architected Framework, choose the following button.
+
+[Infrastructure as Code (IaC)](https://docs.aws.amazon.com/prescriptive-guidance/latest/choose-iac-tool/introduction.html)
+To learn more about choosing an IaC tool for your organization, choose the following button.
+
+[AWS CloudFormation Stacks](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/walkthrough-crossstackref.html)
+For more information about cross-stack references, choose the following button.
+
+[AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
+For more information about the available resource types in AWS CloudFormation, choose the following button.
+
+[SageMaker Resource Type Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_SageMaker.html)
+To explore the available SageMaker resource types in AWS CloudFormation, choose the following button.
+
+[AWS Construct Library](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-construct-library.html)
+For documentation on the constructs available for different AWS services, choose the following button.
+
+[AWS Solutions Constructs](https://github.com/awslabs/aws-solutions-constructs/tree/main/source/patterns/%40aws-solutions-constructs)
+AWS solutions constructs is an open-source extension of the AWS CDK and provides additional patterns. To view the available patterns, choose the following button.
+
+[Steps Class](https://sagemaker.readthedocs.io/en/stable/workflows/pipelines/sagemaker.workflow.pipelines.html#steps)
+For additional information on using the Amazon SageMaker SDK for creating the different step types supported by Amazon SageMaker Pipelines, choose the following button.
+
+[SageMaker Automatic Model Tuning](https://sagemaker.readthedocs.io/en/stable/overview.html#sagemaker-automatic-model-tuning)
+You can also use the HyperparameterTuner class for creating and interacting with hyperparameter training jobs. For more information, choose the following button.
+
+[Amazon SageMaker Model Building Pipeline](https://github.com/aws/sagemaker-python-sdk/blob/master/doc/amazon_sagemaker_model_building_pipeline.rst)
+For more information about the Amazon SageMaker Python SDK model building pipeline, choose the following button.
+
+[SageMaker Environment Variables and Default Paths for Training Storage Locations](https://docs.aws.amazon.com/sagemaker/latest/dg/model-train-storage.html#model-train-storage-env-var-summary)
+To explore the mappings between SageMaker environment variables and the SageMaker container folder structure, choose the following button.
+
+[AWS Fargate](https://aws.amazon.com/fargate/pricing/)
+For a list of supported configurations of AWS Fargate CPU capacity settings and their corresponding memory capacity settings, choose the following button.
+
+[How Step Scaling for Application Auto Scaling Works](https://docs.aws.amazon.com/autoscaling/application/userguide/step-scaling-policy-overview.html)
+For more information about configuring a step scaling policy, choose the following button.
