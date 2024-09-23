@@ -8,11 +8,9 @@ sidebar:
 **Domain 2: Model Development**
 :::
 
-This final course of the model development domain provides instructions to analyze ML model performance. You will learn about key concepts and techniques for model evaluation including classification and regression problem metrics. You will also learn how to identify convergence issues. Finally, you will use AWS services such as Amazon SageMaker Clarify and Amazon SageMaker Debugger to gain insight into ML training data and model issues.
+## Performance Baselines
 
-### Performance Baselines
-
-#### Best practices for building performance baselines
+### Best practices for building performance baselines
 
 - Establish evaluation metrics
 
@@ -28,7 +26,7 @@ This final course of the model development domain provides instructions to analy
 
 
 
-#### Assessing trade-offs
+### Assessing trade-offs
 
 **Balance model performance, training time, and cost**
 
@@ -49,7 +47,7 @@ Striking the right balance between model performance, training time, and cost wh
 
     Training time is the duration required to train a machine learning model on a given dataset. Longer training times are typically associated with larger datasets, more complex models, and more extensive hyperparameter tuning. Although faster training times are desirable for rapid iteration and experimentation, they can come at the cost of reduced model performance.
 
-#### How to choose
+### How to choose
 
 ![choose](/img/choose.png)
 
@@ -115,7 +113,7 @@ To assess these trade-offs, you can use AWS services like Amazon SageMaker Debug
 
     Accuracy is the ratio of the number of matching predictions (TP + TN) to the total number of instances (TP + TN + FP + FN). Accuracy is a good metric unless the dataset has a severe target imbalance.
 
-$$ Accuracy = \frac{TP + TN}{TP + TN + FP + FN}$$
+    $$ Accuracy = \frac{TP + TN}{TP + TN + FP + FN}$$
 
   - Precision
 
@@ -123,7 +121,7 @@ $$ Accuracy = \frac{TP + TN}{TP + TN + FP + FN}$$
     
     Think about a classification model that identifies emails as spam or not. In this case, you don't want your model labeling an important email as spam and preventing your users from seeing it when the email was legitimate. 
 
-$$ Precision = \frac{TP}{TP + FP}$$
+    $$ Precision = \frac{TP}{TP + FP}$$
 
   - Recall
 
@@ -131,7 +129,7 @@ $$ Precision = \frac{TP}{TP + FP}$$
 
     Think about an example of a model that needs to predict whether or not a patient has a terminal illness or not. In this case, using precision as your evaluation metric does not account for the false negatives in your model. It is vital to the success of the model that it does not identify a patient as illness-free when that patient actually does have that illness. 
 
-$$ Recall = \frac{TP}{TP + FN}$$
+    $$ Recall = \frac{TP}{TP + FN}$$
 
   - F1 Score
 
@@ -139,7 +137,7 @@ $$ Recall = \frac{TP}{TP + FN}$$
 
     You should look at using the F1 score when you have a class imbalance, but also want to preserve the equality between precision and recall.
 
-$$ F1 Score = \frac{2 * Precision * Recall}{Precision + Recall}$$
+    $$ F1 Score = \frac{2 * Precision * Recall}{Precision + Recall}$$
 
   - AUC-ROC
 
@@ -153,11 +151,11 @@ $$ F1 Score = \frac{2 * Precision * Recall}{Precision + Recall}$$
 
   - Mean Squared Error
 
-$$ MSE = \frac{1}{n}\sum_{i=1}^{n}(y_{i} - \hat{y}_{i})^2 $$ 
+    $$ MSE = \frac{1}{n}\sum_{i=1}^{n}(y_{i} - \hat{y}_{i})^2 $$ 
 
 - Root Mean Squared Error
 
-$$ RMSE = \sqrt{\frac{\sum_{i=1}^{n}(y_{i} - \hat{y}_{i})^2}{n}} $$ 
+    $$ RMSE = \sqrt{\frac{\sum_{i=1}^{n}(y_{i} - \hat{y}_{i})^2}{n}} $$ 
 
 - R-squared
 
@@ -182,9 +180,9 @@ SageMaker Training Compiler can improve the convergence speed as well as the sta
 
 Convergence issues pose common challenges in machine learning during post-training evaluation, but AWS offers powerful tools and resources to help mitigate these problems. By using services like SageMaker AMT and SageMakerTraining Compiler, you can improve the convergence of your machine learning models and achieve better performance in your applications.
 
-### Debug Model Convergence with SageMaker Debugger
+## Debug Model Convergence with SageMaker Debugger
 
-#### Identifying and resolving issues
+### Identifying and resolving issues
 
 **SageMaker Debugger**: Monitoring and debugging ML models
 
@@ -208,7 +206,7 @@ SageMaker Debugger is a capability of SageMaker that allows you to monitor and d
 
 To learn more, visit Use [Amazon SageMaker Debugger to debug and improve model performance](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
 
-### SageMaker Clarify and Metrics Overview
+## SageMaker Clarify and Metrics Overview
 
 For post-training evaluation and explainability
 
@@ -249,7 +247,7 @@ SageMaker Clarify is a feature within Amazon SageMaker that helps you monitor, e
 
 To learn more about how to use SageMaker Clarify, visit [Use SageMaker Clarify](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-configure-processing-jobs.html).
 
-#### Metrics
+### Metrics
 
 - Data bias metrics
 
@@ -275,7 +273,7 @@ To learn more about how to use SageMaker Clarify, visit [Use SageMaker Clarify](
   - Duplicate Data: Detects duplicate instances or rows in your training data.
   - Data Drift: Measures the statistical difference between the training data and the data used for inference or production, helping to identify potential distribution shifts.
 
-### Interpret Model Outputs Using SageMaker Clarify
+## Interpret Model Outputs Using SageMaker Clarify
 
 - Feature importance explanations
 
@@ -297,7 +295,7 @@ To learn more about how to use SageMaker Clarify, visit [Use SageMaker Clarify](
 
   SageMaker Clarify can generate data quality reports that provide insights into the distribution and quality of your training data. These reports can help you identify potential issues like data imbalance, missing values, or outliers, which can contribute to biased or unfair model predictions.
 
-### Amazon SageMaker Experiments
+## Amazon SageMaker Experiments
 
 - Organize
 
