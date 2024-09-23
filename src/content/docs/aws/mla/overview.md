@@ -7,6 +7,12 @@ sidebar:
 
 **AWS Certified Machine Learning Engineer - Associate**
 
+## About
+
+- <a href="https://aws.amazon.com/certification/certified-machine-learning-engineer-associate/" target="_blank">Exam Page</a>  
+- <a href="/resources/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf" target="_blank">Exam Guide</a>  
+- <a href="/resources/CurriculumResourceGuideV2.pdf" target="_blank">Curriculum</a>  
+
 ## Preparation
 
 - [Skill Builder Enhanced Plan](./resources/enhanced-plan.md)
@@ -16,12 +22,8 @@ sidebar:
 - [Random Study Notes](./resources/notes.md)
 - [Sample Questions](./resources/questions.md)
 
-## Whitepapers
+## Udemy
 
-- [Machine Learning (ML) and Artificial Intelligence (AI)](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/machine-learning.html)
-  
-- [Augmented AI: The Power of Human and Machine](https://d1.awsstatic.com/whitepapers/augmented-ai-the-power-of-human-and-machine.pdf?did=wp_card&trk=wp_card)
-  
-- [Well-Architected Machine Learning Lifecycle](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/well-architected-machine-learning-lifecycle.html)
-  
-- [Amazon Machine Learning Documentation](https://docs.aws.amazon.com/machine-learning/)
+- Course [here](https://www.udemy.com/course/aws-certified-machine-learning-engineer-associate-mla-c01/)
+- Practice Exams [here](https://www.udemy.com/course/practice-exams-aws-certified-machine-learning-engineer-associate/)
+- <a href="/resources/AWS-Certified-ML-Engineer-Associate-Slides.pdf" target="_blank">Udemy Course slides</a>
