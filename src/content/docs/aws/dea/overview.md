@@ -9,4 +9,4 @@ sidebar:
 
 ## Preparation
 
-- [Skill Builder Enhanced Plan](./Other/enhanced-plan.md)
+- [Skill Builder Enhanced Plan](/aws/dea/resources/enhanced-plan/)

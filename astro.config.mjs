@@ -11,12 +11,18 @@ import starlightLinksValidator from 'starlight-links-validator';
 export default defineConfig({
 	site: 'https://learning.magj.dev',
 	integrations: [
+		astroExpressiveCode({
+			frames: {
+				showCopyToClipboardButton: true,
+			}
+		}),
 		starlight({
 			favicon: '/favicon.png',
 			logo: {
 				src: './src/assets/academic.webp'
 			},
 			title: 'MAGJ Learning',
+			
 			plugins: [starlightThemeRapide(), starlightLinksValidator()],
 			sidebar: [
 				{
@@ -132,11 +138,6 @@ export default defineConfig({
 				linkedin: 'https://www.linkedin.com/in/marcoantoniogonzalezjunior/',
 			}
 		}),
-		astroExpressiveCode({
-			frames: {
-				showCopyToClipboardButton: true,
-			}
-		})
 	],
 	markdown: {
 		remarkPlugins: [remarkMath, [remarkToc, {heading: "contents"}]],
