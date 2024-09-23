@@ -8,6 +8,10 @@ sidebar:
 **Domain 2: Model Development**
 :::
 
+:::caution
+some items are pending
+:::
+
 ### Evaluating Model Performance
 
 ## Model Fit
