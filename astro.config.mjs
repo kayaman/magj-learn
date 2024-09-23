@@ -10,6 +10,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'MAGJ Learning',
+			favicon: '/favicon.png',
 			sidebar: [
 				{
 					label: 'AWS',
