@@ -115,6 +115,8 @@ To learn more about how to run a Machine Learning Lens review in your AWS accoun
 
 **How to monitor for different types of drift**
 
+##### Data quality monitoring
+
 - Implement data validation checks on your input data before feeding it to the model to ensure the data meets the expected format, range, and quality requirements. This can include checking for missing values, outliers, or inconsistent data types.
 
 - Calculate statistical metrics such as mean, standard deviation, missing value counts, and outlier counts on the input data.
@@ -123,6 +125,23 @@ To learn more about how to run a Machine Learning Lens review in your AWS accoun
 
 - Use techniques like data drift detection to identify changes in the distribution of input data over time. This can involve monitoring the statistical properties of the data like mean, variance, or skewness. You can also use more advanced techniques like Kolmogorov-Smirnov tests or Maximum Mean Discrepancy to detect distributional shifts.
 
+##### Model quality monitoring
+
+- Calculate relevant evaluation metrics (for example, accuracy, precision, recall, F1-score, AUC-ROC) on a held-out test set or a representative sample of production data. You can then assess the model's performance on unseen data and compare it to the performance during training or previous monitoring cycles.
+
+- Implement techniques like confidence thresholding or uncertainty estimation to identify potentially unreliable predictions. For example, you can set a threshold on the model's confidence score or use techniques like Monte Carlo Dropout to estimate the uncertainty of predictions.
+
+- Flag Predictions with low confidence or high uncertainty for further review or handled differently in the application.
+
+- Monitor the model's performance on different subpopulations or slices of the data to detect potential performance degradation or bias issues. For example, you can calculate evaluation metrics separately for different demographic groups or data clusters.
+
+##### Model bias drift monitoring
+
+- Calculate bias metrics (for example, disparate impact, equal opportunity difference, average odds difference) for different sensitive groups or subpopulations. These metrics quantify the degree of bias or unfairness in the model's predictions with respect to protected attributes like race, gender, or age.
+
+- Compare the bias metrics with baseline values or acceptable thresholds established during the model development phase. Significant deviations from the baseline can indicate the introduction or amplification of bias in the model's predictions.
+
+- Implement techniques like adversarial debiasing or calibrated equalized odds to mitigate bias during training or inference. These techniques aim to reduce the dependence of the model's predictions on sensitive attributes or enforce fairness constraints.
 
 ### SageMaker Model Monitor
 
