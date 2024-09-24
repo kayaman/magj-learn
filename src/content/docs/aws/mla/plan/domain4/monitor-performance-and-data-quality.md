@@ -417,18 +417,20 @@ Here is an example of the violations file output.
 ```json
 {
   "version": "1.0",
-  "violations": [{
+  "violations": [
+    {
       "label": "label0",
       "metric_name": "shap",
       "constraint_check_type": "feature_attribution_drift_check",
       "description": "Feature attribution drift 0.7639720923277322 exceeds threshold 0.9"
-  },
-  {
-    "label": "label1",
-    "metric_name": "shap",
-    "constraint_check_type": "feature_attribution_drift_check",
-    "description": "Feature attribution drift 0.7323763972092327 exceeds threshold 0.9"
-  }]
+    },
+    {
+      "label": "label1",
+      "metric_name": "shap",
+      "constraint_check_type": "feature_attribution_drift_check",
+      "description": "Feature attribution drift 0.7323763972092327 exceeds threshold 0.9"
+    }
+  ]
 }
 ```
 
