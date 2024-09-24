@@ -50,6 +50,22 @@ VPC endpoints provide secure access to supported AWS services from within the VP
 
   Your ML model running in private subnets must download updates or dependencies from a public software repository. You can configure a NAT Gateway in a public subnet to allow outbound internet access for your private ML instances. This setup still prevents the internet from initiating connections with those instances. For example, you enable ML instances in private subnets to download dependencies or docker images from public repositories through a NAT Gateway.
 
+#### Allow access only from within the VPC
+
+To enhance the security of your ML resources, configure them to be accessible only from in your VPC. This will deny access to any outside sources, meaning that any requests originating from outside the VPC will be denied access. This approach helps prevent unauthorized access and potential attacks from external sources by ensuring that only trusted internal entities within the VPC can interact with your ML resources. This approach also significantly reduces the attack surface and protects your sensitive ML workloads from external threats.
+
+#### Security Groups
+
+Security Groups act as virtual firewalls that control inbound and outbound traffic to and from your ML resources within a VPC. You can configure Security Group rules to allow or deny traffic based on protocols, ports, and source or destination IP addresses. This granular control helps you secure your ML systems by limiting access to only authorized sources. For example, you allow inbound traffic to your SageMaker notebook instances only on port 8888 from a trusted IP range using a security group.
+
+![sg](/img/sg.png)
+
+#### Network Access Control List
+
+NACLs are an additional layer of security that act as a firewall for controlling traffic in and out of the subnets in your VPC. NACLs evaluate traffic based on rules you define, allowing or denying traffic based on IP addresses, protocols, and ports. NACLs provide an additional level of in-depth defense against unauthorized access to your ML resources. For example, you configure an NACL to block all inbound traffic from 0.0.0.0/0 to private subnets hosting ML training jobs as an additional security layer. Using NACLs supports an in-depth defense strategy by restricting all traffic not explicitly allowed to ML resources. 
+
+![nacl](/img/nacl.png)
+
 ### Demo: Securing ML Resources
 
 ## Amazon SageMaker Compliance and Governance

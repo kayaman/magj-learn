@@ -42,7 +42,8 @@ export default defineConfig({
 							link: 'aws/learning' 
 						},
 						{ 
-							label: 'Machine Learning Engineer', 
+							label: 'Machine Learning Engineer',
+							collapsed: true,
 							items: [
 								{ 
 									label: 'Overview', 
@@ -127,13 +128,13 @@ export default defineConfig({
 					items: [
 						{ 
 							label: 'Overview', 
-							link: 'snowflake/learning' 
+							link: 'snowflake/overview' 
 						},
 						{ 
 							label: 'Badges', 
 							collapsed: true,
 							items: [ 
-								{ label: 'Data Warehousing Workshop', link: 'snowflake/badges/1-data-warehousing-workshop' } 
+								{ label: '1: Data Warehousing', autogenerate: { directory: 'snowflake/badges/1-data-warehousing-workshop' } } 
 							]
 						},
 					]
