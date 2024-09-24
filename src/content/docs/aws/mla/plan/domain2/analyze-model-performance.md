@@ -91,23 +91,23 @@ To assess these trade-offs, you can use AWS services like Amazon SageMaker Debug
 
 - Classification problems
 
-**Confusion Matrix**  
+  - **Confusion Matrix**  
 
-  - True positive
+    - True positive
   
-    If the actual label or class is a cat, which is identified as P for positive in the confusion matrix, and the predicted label or class is also cat, then you have a true positive result. This is a good outcome for your model.
+      If the actual label or class is a cat, which is identified as P for positive in the confusion matrix, and the predicted label or class is also cat, then you have a true positive result. This is a good outcome for your model.
 
-  - True negative
+    - True negative
 
-    Similarly, if you have an actual label of not cat, which is identified as N for negative in the confusion matrix, and the predicted label or class is also not cat, then you have a true negative. This is also a good outcome for your model.
+      Similarly, if you have an actual label of not cat, which is identified as N for negative in the confusion matrix, and the predicted label or class is also not cat, then you have a true negative. This is also a good outcome for your model.
 
-  - False positive
+    - False positive
 
-    There are two other possible outcomes, both of which are less than ideal. The first is when the actual case is negative, not cat, but the predicted class is positive, cat. This is called a false positive because the prediction is positive but incorrect.
+      There are two other possible outcomes, both of which are less than ideal. The first is when the actual case is negative, not cat, but the predicted class is positive, cat. This is called a false positive because the prediction is positive but incorrect.
 
-  - False negative
+    - False negative
 
-    The second, less than ideal outcome is a false negative. A false negative occurs when the actual class is positive, cat, but the predicted class is negative, not cat.
+      The second, less than ideal outcome is a false negative. A false negative occurs when the actual class is positive, cat, but the predicted class is negative, not cat.
 
   - Accuracy
 
