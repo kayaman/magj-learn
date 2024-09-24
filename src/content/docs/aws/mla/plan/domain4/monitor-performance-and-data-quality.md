@@ -436,6 +436,48 @@ Here is an example of the violations file output.
 
 ### Monitoring Model Performance Using A/B Testing
 
+#### What is A/B testing?
+
+A/B testing, also known as split testing or bucket testing, is a technique that lets you evaluate the relative performance of two or more models simultaneously. This method lets you evaluate with real-world data and live production traffic. By running multiple models in parallel and exposing them to a controlled subset of production traffic, you can gather valuable insights into their respective strengths, weaknesses, and real-world performance characteristics.
+
+#### Using A/B testing to monitor for model performance
+
+![A/B](/img/a-b.png)
+
+1. The production environment
+
+    In this approach, the production environment is updated to support both the existing production model variant and the candidate replacement model variant.
+
+2. Routing inference requests
+
+    The inference requests are randomly routed to A (current production variant) or B (candidate variant). This method is directly supported by the traffic-routing capabilities of the multi-model endpoint deployment in SageMaker.
+
+3. The distribution of traffic
+
+    You can test models by specifying the distribution of invocation traffic. In this example, 45 percent of the requests are going to the production model. 10 percent goes to variant 1, 20 percent to variant 2, 15 percent to variant 3, and 10 percent to variant 4. You can also test models that offer a new feature by invoking the specific model directly for each request.
+
+4. Metrics are emitted
+
+    SageMaker emits a large variety of CloudWatch metrics. You can monitor latency, number of invocations, and how invocations were distributed among the multiple variants.
+
+5. Enable and configure
+
+    Other metrics are specific to how the model is performing, emitted by SageMaker Model Monitor as CloudWatch metrics. This feature is not enabled by default. To take advantage of SageMaker Model Monitor metrics, you need to enable and configure this feature to capture the metrics associated with the specific monitoring type.
+
+#### When to use A/B testing
+
+- Real-world data distribution differs from training data: Real-world data distribution differs from training data, leading to potential performance discrepancies in production.
+
+- Detecting unintended Consequences: A/B testing can help identify unintended consequences or edge cases that might not have been captured during offline testing, such as data drift, concept drift, or unexpected user behavior.
+
+- User interactions and feedback: Some models, such as recommendation systems or conversational agents, rely heavily on user interactions and feedback, which can be challenging to simulate during offline evaluation.
+
+- Dynamic environments: In rapidly changing environments, such as ecommerce or finance, models might have to adapt quickly, making A/B testing a valuable tool for continuous monitoring and improvement.
+
+- Business impact assessment: When deploying a new or updated model, it's crucial to understand its impact on key business metrics such as revenue, customer satisfaction, or user engagement. A/B testing facilitates a direct comparison of these metrics between the current and candidate models.
+
+- High-stakes decisions: A/B testing can be used when the consequences of deploying an underperforming model are severe, such as in healthcare or financial applications. This type of testing provides an additional layer of validation before fully committing to a new model.
+
 ### Introduction to SageMaker Model Dashboard
 
 ### Choosing Your Monitoring Approach
