@@ -17,6 +17,12 @@ export default defineConfig({
 			frames: {
 				showCopyToClipboardButton: true,
 			},
+			defaultProps: {
+				wrap: true,
+				overridesByLang: {
+				  'json': { preserveIndent: false },
+				},
+			},
 		}),
 		starlight({
 			favicon: '/favicon.png',
