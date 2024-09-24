@@ -17,6 +17,8 @@ export default defineConfig({
 			frames: {
 				showCopyToClipboardButton: true,
 			},
+			shiki: true,
+			tabWidth: 4,
 			defaultProps: {
 				wrap: true,
 				overridesByLang: {
