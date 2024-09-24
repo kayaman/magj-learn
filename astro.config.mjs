@@ -13,9 +13,10 @@ export default defineConfig({
 	site: 'https://learning.magj.dev',
 	integrations: [
 		astroExpressiveCode({
+			themes: ['dracula', 'github-light'],
 			frames: {
 				showCopyToClipboardButton: true,
-			}
+			},
 		}),
 		starlight({
 			favicon: '/favicon.png',
