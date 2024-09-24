@@ -545,3 +545,36 @@ The model lineage graphs in the SageMaker Model Dashboard record the S3 URL of i
 
 ---
 
+A machine learning engineer is responsible for monitoring the security and compliance of their organization's AWS resources. Which AWS service would the engineer use to track and record all API calls made to their AWS account, including changes made to AWS resources?
+
+*AWS CloudTrail*
+
+CloudTrail is the service the engineer should use to track and record all API calls made to the AWS account, including changes made to AWS resources. This provides the detailed logging and auditing required for security and compliance monitoring.
+
+---
+
+As a machine learning engineer, you have deployed a model using Amazon SageMaker and received reports of unauthorized access attempts. Which of the following SageMaker features would you leverage to investigate the security issue?
+
+*AWS CloudTrail Logs*
+
+CloudTrail Logs capture information about the caller's identity, the caller's time, and other details. Use this information to audit and investigate potential security breaches in SageMaker.
+
+---
+
+Who is responsible for securing the data in an Amazon Simple Storage Service (Amazon S3) bucket, according to the shared responsibility model?
+
+*Both AWS and the customer share responsibility for securing the data in an Amazon S3 bucket.*
+
+According to the shared responsibility model, AWS is responsible for securing the underlying infrastructure and services. The customer is responsible for securing their data, applications, and configurations within AWS services like Amazon S3.
+
+---
+
+A machine learning engineer is working on a project that involves sensitive financial data. Which security policy would be MOST appropriate to restrict access to the training data stored in an Amazon Simple Storage Service (Amazon S3) bucket?
+
+*Amazon S3 bucket policy*
+
+S3 bucket policies are designed to control access to objects within an S3 bucket, making them the ideal choice for restricting access to your sensitive training data stored in the bucket.
+
+---
+
+
