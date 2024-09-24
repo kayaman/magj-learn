@@ -536,3 +536,12 @@ In this high-stakes scenario, the most relevant benefit of A/B testing is realis
 
 ---
 
+A company wants to ensure that their ML models are compliant with regulatory requirements and can provide evidence of the data sources used for training.  
+Which feature of the Amazon SageMaker Model Dashboard would be MOST useful for this scenario?
+
+*Model lineage graphs*
+
+The model lineage graphs in the SageMaker Model Dashboard record the S3 URL of input data sources used for each job. This facilitates further analysis and verification of the data sources for compliance purposes. The graph also stores information about each step, helping you to recreate any step or track model and dataset lineage.
+
+---
+
