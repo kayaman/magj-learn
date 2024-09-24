@@ -20,7 +20,7 @@ export default defineConfig({
 			defaultProps: {
 				wrap: true,
 				overridesByLang: {
-				  'json': { preserveIndent: false },
+				  'json': { preserveIndent: true },
 				},
 			},
 		}),
