@@ -573,3 +573,38 @@ The SageMaker Model Dashboard displays aggregated model-related information from
 ## Remediating Problems Identified by Monitoring
 
 ### Automated Remediation and Troubleshooting
+
+## Resources
+
+[Machine Learning Lens](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/ml-lifecycle-%20phase-monitoring.html#ml-lifecycle-phase-monitoring)
+Use this resource to learn more about the AWS Well-Architected Framework Machine Learning Lens. It describes the monitoring phase and lists key components of the ML lifecycle.
+
+[Detecting data drift using Amazon SageMaker](https://aws.amazon.com/blogs/architecture/detecting-data-drift-using-amazon-sagemaker)
+Visit this resource from the AWS Architecture Blog post on detecting data drift using SageMaker. It includes guidance on how to detect drift, build a feedback loop, and gain insights into data and models.
+
+[Monitor data and model quality with Amazon SageMaker Model Monitor](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
+Visit this resource from the SageMaker Developer Guide. This resource provides an overview of SageMaker Model Monitor’s capabilities.
+
+[Monitor data quality](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html)
+Visit this resource from the SageMaker Developer Guide. It includes guidance for how to use SageMaker Model Monitor to monitor data quality.
+
+[Monitor Bias Drift for Models in Production](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-bias-drift.html)
+Visit this resource to learn more on guidance for how to use SageMaker Model Monitor to monitor for bias drift.
+
+[Monitor Feature Attribution Drift for Models in Production](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-feature-attribution-drift.html)
+Visit this resource to learn more about guidance for how to use SageMaker Model Monitor to monitor for feature attribution drift.
+
+[Amazon SageMaker Model Monitor](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_model_monitor/introduction/SageMaker-ModelMonitoring.html)
+This site highlights example Jupyter notebooks for a variety of machine learning monitoring use cases for SageMaker Model Monitor.
+
+[Detect NLP data drift using custom Amazon SageMaker Model Monitor](https://aws.amazon.com/blogs/machine-learning/detect-nlp-data-drift-using-custom-amazon-sagemaker-model-monitor/)
+Visit this resource to learn about detecting Natural Language Processing data drift using SageMaker Model Monitor. This includes guidance for how to use SageMaker Model Monitor to measure data drift.
+
+[A/B testing with Amazon SageMaker](https://sagemaker-examples.readthedocs.io/en/latest/sagemaker_endpoints/a_b_testing/a_b_testing.html)
+Visit this resource from SageMaker Examples documentation. This site highlights example Jupyter notebooks to use for A/B testing using SageMaker.
+
+[Improve governance of your machine learning models with Amazon SageMaker](https://aws.amazon.com/blogs/machine-learning/improve-governance-of-your-machine-learning-models-with-amazon-sagemaker/)
+This blog covers guidance on using SageMaker Model Cards and the SageMaker Model Dashboard to improve visibility and governance over machine learning models.
+
+[Automate model retraining with Amazon SageMaker Pipelines when drift is detected](https://aws.amazon.com/blogs/machine-learning/automate-model-retraining-with-amazon-sagemaker-pipelines-when-drift-is-detected/)
+This AWS Machine Learning blog is about automated model retraining. It includes guidance for how to set up an automated model retraining solution using SageMaker Pipelines.
