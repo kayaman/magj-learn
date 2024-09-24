@@ -521,6 +521,49 @@ A/B testing, also known as split testing or bucket testing, is a technique that 
 
 ### Introduction to SageMaker Model Dashboard
 
+#### A centralized portal
+
+SageMaker Model Dashboard is a centralized portal in the SageMaker console, where you can view, search, and explore all the models in your account. The dashboard provides a comprehensive presentation of model monitoring results.
+
+If you set up monitors with SageMaker Model Monitor, you can also track your models’ performance as they make real-time predictions on live data. SageMaker Model Dashboard also helps you quickly identify models that don’t have these metrics configured.
+
+![dash](/img/dash.png)
+
+The SageMaker Model Dashboard displays aggregated model-related information from other SageMaker features. You can view model cards, visualize workflow lineage, and track your endpoint performance. SageMaker Model Dashboard provides an included model governance solution to help you review quality coverage across your models.
+
+#### Features
+
+- Alerts
+
+    SageMaker Model Monitor alerts are a primary focus of the SageMaker Model Dashboard. The SageMaker Model Dashboard populates information from all the monitors you create on all of the models in your account. You can track the status of each monitor, which indicates whether your monitor is running as expected or failed because of an internal error.  
+    The SageMaker Model Dashboard displays alerts you configured in CloudWatch. You can modify the alert criteria in the dashboard itself. The alert criteria depend upon two parameters:
+    - Datapoints to alert: Within the evaluation period, how many runtime failures raise an alert?
+    - Evaluation period: The number of most recent monitoring executions to consider when evaluating alert status.
+
+- Risk rating
+
+    A user-specified parameter from the model card with a low, medium, or high value. The model card's risk rating is a categorical measure of the business impact of the model's predictions. Models are used for various business applications, each assuming a different risk level. For example, incorrectly detecting a cyber-attack has greater impact than incorrectly categorizing an email. If the model risk is unknown, it can be set as such.
+
+- Endpoint performance
+
+    The endpoints which host your model for real-time inference. In the SageMaker Model Dashboard, you can select the endpoint column to view performance metrics, such as:
+    - CpuUtilization: The sum of each individual CPU core's utilization, with each ranging from 0%-100%.
+    - MemoryUtilization: The percentage of memory used by the containers on an instance, ranging from 0%-100%.
+    - DiskUtilization: The percentage of disk space used by the containers on an instance, ranging from 0%-100%.
+
+- Most recent batch transform job
+
+    You can view the most recent batch transform job that ran using this model. This information helps you determine if a model is actively used for batch inference.
+
+- Model lineage graphs
+
+    When training a model, SageMaker creates a model lineage graph, a visualization of the entire ML workflow from data preparation to deployment. This graph uses entities to represent individual workflow steps, such as the training set, training job, and model.  
+    The graph also stores information about each step, so that you can recreate any step or track model and dataset lineage. For instance, SageMaker Lineage records the Amazon S3 URL of input data sources with each job, facilitating further data source analysis for compliance verification.
+
+- Links to model details
+
+    The dashboard links to a model details page where you can explore an individual model. This page displays the model's lineage graph, which visualizes the workflow from data preparation to deployment, as well as metadata for each step. You can also create and view the model card, review alert details and history, assess the performance of real-time endpoints, and access other infrastructure-related details.
+
 ### Choosing Your Monitoring Approach
 
 ## Remediating Problems Identified by Monitoring
