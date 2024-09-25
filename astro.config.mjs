@@ -101,6 +101,11 @@ export default defineConfig({
 									label: 'Overview',
 									link: 'aws/dva/overview' 
 								},
+								{ 
+									label: 'Resources', 
+									collapsed: true,
+									autogenerate: { directory: 'aws/dva/resources' } 
+								},
 							]
 						},
 					]
