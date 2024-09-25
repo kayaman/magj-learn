@@ -33,6 +33,9 @@ export default defineConfig({
 			},
 			title: 'MAGJ Learning',
 			plugins: [starlightThemeRapide(), starlightLinksValidator()],
+			customCss: [
+				'./src/styles/custom.css',
+			],
 			sidebar: [
 				{
 					label: 'AWS',
@@ -42,8 +45,9 @@ export default defineConfig({
 							link: 'aws/learning' 
 						},
 						{ 
-							label: 'Machine Learning Engineer',
+							label: 'ML Engineer',
 							collapsed: true,
+							badge: '✔️',
 							items: [
 								{ 
 									label: 'Overview', 
