@@ -89,11 +89,32 @@ export default defineConfig({
 						},
 						{ 
 							label: 'Data Engineer', 
-							collapsed: true,
+							collapsed: false,
 						  	items: [
 								{ 
 									label: 'Overview', 
 									link: 'aws/dea/overview' },
+								{ 
+									label: 'Plan', 
+									autogenerate: { directory: 'aws/dea/plan' } 
+								},
+								{ 
+									label: 'Course', 
+									items: [
+										{ 
+											label: 'Fundamentals',
+											autogenerate: { directory: 'aws/dea/course/section1' },
+										},
+										{ 
+											label: 'Storage',
+											autogenerate: { directory: 'aws/dea/course/section2' },
+										},
+										{ 
+											label: 'Database',
+											autogenerate: { directory: 'aws/dea/course/section3' },
+										}
+									] 
+								},
 								{ 
 									label: 'Resources', 
 									autogenerate: { directory: 'aws/dea/resources' } 
