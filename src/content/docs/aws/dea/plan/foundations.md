@@ -283,4 +283,9 @@ Use **Amazon DataZone** to catalog, discover, share, and govern data stored acro
 
 Audit Manager continuously audits usage to assess risk and compliance with regulations and industry standards.
 
+
+For more details about purpose-built AWS services for data analytics, refer to the [Analytics on AWS](https://aws.amazon.com/big-data/datalakes-and-analytics/) webpage.
+
+For more details about AWS services in data analytics scenarios and reference architectures, refer to **Scenarios** in the [Data Analytics Lens - Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/analytics-lens/scenarios.html) documentation.
+
 ## Data Engineering Security and Monitoring

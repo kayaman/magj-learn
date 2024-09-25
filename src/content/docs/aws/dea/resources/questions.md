@@ -53,3 +53,20 @@ Which questions are typically asked during the data discovery process?
 Some typical data discovery questions focus on understanding the available data sources, formats, and volumes and establishing the high-level processing needs to maximize the value from data. Identifying the technical requirements for machine learning, which models are used, and which reference architectures are used come later in the process after the initial data discovery.
 
 ---
+
+What is meant by the term data silos? 
+
+*Independent data stores that are optimized for specific uses and are difficult to combine or access by other systems*
+
+Data silos refer to isolated and incompatible data stores that are optimized for departmental or individual use cases. They make it challenging to develop a unified view of organizational data. This siloed approach inhibits data sharing and prevents using data for new insights.
+
+---
+
+Which option best describes a basic data analytics workflow?
+
+*Ingest → Store → Catalog → Process → Deliver*
+
+Data analytics workflows vary to suit business needs, however most workflows follow the pattern of Ingest → Store → Catalog → Process → Deliver. Some of these stages are performed cyclically or iteratively.
+
+---
+
