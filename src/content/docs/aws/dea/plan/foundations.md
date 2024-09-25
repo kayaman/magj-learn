@@ -157,6 +157,53 @@ To learn more about data discovery, refer to **Data Discovery** in the [Data Ana
 
 ## AWS Data Services and the Modern Data Architecture
 
+![Data Workflow](/img/data-workflow.png)
+
+1. Ingest
+
+    Data of various types and from multiple sources is ingested into the system.
+
+2. Store
+
+    Data is stored in a centralized repository rather than in departmental silos. 
+
+3. Catalog
+
+    Data is cataloged, indexed, and tagged to facilitate search and retrieval.
+
+4. Process
+
+    Much of the data in raw form is not usable for analysis. In the process stage, data is transformed into more usable formats.
+
+5. Deliver for consumption
+
+    Processed data is delivered to consumers and stakeholders for visualization and analysis.
+
+**The following is a partial list of AWS services that can be used in data analytics systems. Some services can be used in multiple workflow stages.**
+
+### Data lake
+
+![S3](/img/s3.png)
+
+**Amazon S3** provides an optimal foundation for a data lake because of its virtually unlimited scalability and high durability. You can seamlessly and non-disruptively increase storage from gigabytes to petabytes of content and only pay for what you use.
+
+### Specialized ingest services
+
+![DMS](/img/dms.png)
+
+Use **AWS DMS** to load data from relational and non-relational databases.
+
+![firehose](/img/firehose.png)
+
+Ingest real-time data streams with **Amazon Data Firehose**. Convert your data stream into formats such as Apache Parquet or ORC, decompress the data, or perform custom data transformations.
+
+![msk](/img/msk.png)
+
+With **Amazon MSK**, build fully managed Apache Kafka clusters for real-time streaming data pipelines and applications.
+
+![Snowball](/img/snowball.png)
+
+In cases where transfer through a network is not feasible because of data volume or sensitivity, use the **AWS Snow Family** of purpose-built physical devices.
 
 ## Orchestration and Automation Options
 
