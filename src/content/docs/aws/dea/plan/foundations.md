@@ -8,7 +8,7 @@ sidebar:
 
 ### What are the key functions of the data engineer?
 
-[key functions](/img/key-functions.png)
+![key functions](/img/key-functions.png)
 
 - Build and manage data infrastructure and platforms
 
