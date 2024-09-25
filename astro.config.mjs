@@ -36,6 +36,9 @@ export default defineConfig({
 			customCss: [
 				'./src/styles/custom.css',
 			],
+			components: {
+				SocialIcons: './src/components/CustomSocialIcons.astro',
+			},
 			sidebar: [
 				{
 					label: 'AWS',
@@ -47,7 +50,7 @@ export default defineConfig({
 						{ 
 							label: 'ML Engineer',
 							collapsed: true,
-							badge: '✔️',
+							badge: 'done',
 							items: [
 								{ 
 									label: 'Overview', 
@@ -158,8 +161,8 @@ export default defineConfig({
 				baseUrl: 'https://github.com/kayaman/magj-learning/edit/main/',
 			},
 			social: {
-				github: 'https://github.com/kayaman',
 				linkedin: 'https://www.linkedin.com/in/marcoantoniogonzalezjunior/',
+				github: 'https://github.com/kayaman',
 			}
 		}),
 	],

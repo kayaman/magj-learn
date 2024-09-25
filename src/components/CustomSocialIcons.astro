@@ -1,0 +1,17 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/SocialIcons.astro';
+import EmailIcon from './EmailIcon.astro'
+import CredlyIcon from './CredlyIcon.astro';
+---
+
+<Default {...Astro.props}><slot /></Default>
+<a class="down" href="https://www.credly.com/users/marcoantoniogonzalezjunior" target="_blank"><CredlyIcon /></a>
+<a href="mailto:m@rco.sh"><EmailIcon /></a>
+
+<style>
+    .down {
+        position: relative;
+        top: 4px;
+    }
+</style>
