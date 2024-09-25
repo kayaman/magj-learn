@@ -1,5 +1,5 @@
 ---
-title: Foundations - Roles and Concepts
+title: Foundations
 sidebar:
   order: 1
 ---
