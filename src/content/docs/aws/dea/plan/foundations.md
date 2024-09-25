@@ -205,6 +205,12 @@ With **Amazon MSK**, build fully managed Apache Kafka clusters for real-time str
 
 In cases where transfer through a network is not feasible because of data volume or sensitivity, use the **AWS Snow Family** of purpose-built physical devices.
 
+### Cataloging service
+
+[Glue Data Catalog](/img/glue-data-catalog.png)
+
+**AWS Glue Data Catalog** creates a catalog of metadata about your stored assets. Use this catalog to help search and find relevant data sources based on various attributes like name, owner, business terms, and others.
+
 ## Orchestration and Automation Options
 
 
