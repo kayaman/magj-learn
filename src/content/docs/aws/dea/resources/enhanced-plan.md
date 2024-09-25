@@ -1,6 +1,8 @@
 ---
 title: Enhanced Plan
 description: Skill Builder
+sidebar:
+  order: 1
 ---
 
 1. [Data Engineering on AWS: Foundations](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/19747/data-engineering-on-aws-foundations)
