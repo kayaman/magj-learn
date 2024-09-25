@@ -70,11 +70,11 @@ Data discovery is an important prerequisite to architecting and deploying a data
 Conduct data discovery kick-off workshops with stakeholders to understand business goals, prioritize use cases, and identify potential data sources.  
 The following are example questions that define the business opportunity:
 
-  - How would getting insight into data provide value to the business?
-  - Are you looking to create a new revenue stream from your data?
-  - What are the challenges with your current approach and tool? 
-  - Would your business benefit from managing fraud detection, predictive maintenance, and root-cause analysis to reduce mean time to detection and mean time to recovery?
-  - How are you continually innovating on behalf of your customers and improving their user experience?
+    - How would getting insight into data provide value to the business?
+    - Are you looking to create a new revenue stream from your data?
+    - What are the challenges with your current approach and tool? 
+    - Would your business benefit from managing fraud detection, predictive maintenance, and root-cause analysis to reduce mean time to detection and mean time to recovery?
+    - How are you continually innovating on behalf of your customers and improving their user experience?
 
 - **Identify your data consumers**
   
