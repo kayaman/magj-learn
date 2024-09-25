@@ -211,7 +211,76 @@ In cases where transfer through a network is not feasible because of data volume
 
 **AWS Glue Data Catalog** creates a catalog of metadata about your stored assets. Use this catalog to help search and find relevant data sources based on various attributes like name, owner, business terms, and others.
 
+### Processing services
+
+![Glue](/img/glue.png)
+
+Use **AWS Glue**, a fully managed extract, transform, and load (ETL) service, to prepare and cleanse data from various sources for analysis. It helps classify data, extract schema, and populate data catalogs.
+
+![EMR](/img/emr.png)
+
+With **Amazon EMR**, process big datasets using open-source frameworks, customized Amazon Elastic Compute Cloud (Amazon EC2) clusters, Amazon Elastic Kubernetes Service (Amazon EKS), AWS Outposts, or Amazon EMR Serverless. It can be used to run batch jobs for data processing.
+
+[Flink](/img/flink.png)
+
+Quickly author SQL code for real-time data processing using **Amazon Managed Service for Apache Flink**. Tasks include filtering, aggregating, joining, and deriving.
+
+### Analytics services
+
+![Redshift](/img/redshift.png)
+
+**Amazon Redshift** can directly analyze large sets of structured data across many functional databases and datasets without moving the data.
+
+![Athena](/img/athena.png)
+
+**Athena** queries large datasets directly on Amazon S3 using standard SQL syntax, in various formats such as CSV, Parquet, and ORC.
+
+![EMR](/img/emr.png)
+
+Use **Amazon EMR** to run analytics frameworks like Apache Spark, Hive, Presto, and Flink on large datasets stored in AWS services like Amazon S3 and Amazon DynamoDB. Examples include log analysis, machine learning, data science, web indexing and scientific simulations.
+
 ## Orchestration and Automation Options
 
+![Databases](/img/databases.png)
+
+Use more than fourteen purpose-built **Amazon databases** to store, query, and analyze large datasets. Choose from relational, key-value, document, in-memory, graph, time series, wide column, and ledger databases.
+
+![OpenSearch](/img/opensearch.png)
+
+Deploy, operate, and scale **OpenSearch** clusters in the AWS Cloud. Analyze large volumes of data from various sources like Amazon Kinesis Data Streams, Amazon S3, and Amazon DynamoDB using the OpenSearch APIs.
+
+![Quicksight](/img/quicksight.png)
+
+Visualize and analyze large datasets using SQL, charts, graphs, and dashboards with **Amazon QuickSight**.
+
+![SageMaker](/img/sagemaker.png)
+
+Build, train, and deploy machine learning models for use in predictive analytics, computer vision for image recognition, natural language processing, recommendation systems, and more.
+
+### Security and governance
+
+![Lake Formation](/img/lake-formation.png)
+
+With **Lake Formation**, you can centrally manage and scale fine-grained data access permissions and share data with confidence within and outside your organization.
+
+![IAM](/img/iam.png)
+
+**IAM** manages fine-grained access and permissions for human users, software users, other services, and microservices.
+
+![KMS](/img/kms.png)
+
+Use **AWS KMS** to create and control data encryption keys for data at rest and in transit.
+
+![Macie](/img/macie.png)
+
+Use **Macie** to automatically discover, classify, and protect sensitive data in AWS, such as personally identifiable information (PII).
+
+![DataZone](/img/datazone.png)
+
+Use **Amazon DataZone** to catalog, discover, share, and govern data stored across AWS, on premises, and third-party sources.
+
+![DataZone](/img/datazone.png)
+
+Audit Manager continuously audits usage to assess risk and compliance with regulations and industry standards.
 
 ## Data Engineering Security and Monitoring
