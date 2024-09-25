@@ -106,6 +106,11 @@ export default defineConfig({
 									collapsed: true,
 									autogenerate: { directory: 'aws/dva/resources' } 
 								},
+								{ 
+									label: 'Recommended', 
+									collapsed: true,
+									autogenerate: { directory: 'aws/dva/recommended' } 
+								},
 							]
 						},
 					]
