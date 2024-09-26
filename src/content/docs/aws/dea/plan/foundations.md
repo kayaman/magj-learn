@@ -281,7 +281,7 @@ Use **Amazon DataZone** to catalog, discover, share, and govern data stored acro
 
 ![DataZone](/img/datazone.png)
 
-Audit Manager continuously audits usage to assess risk and compliance with regulations and industry standards.
+**Audit Manager** continuously audits usage to assess risk and compliance with regulations and industry standards.
 
 
 For more details about purpose-built AWS services for data analytics, refer to the [Analytics on AWS](https://aws.amazon.com/big-data/datalakes-and-analytics/) webpage.
