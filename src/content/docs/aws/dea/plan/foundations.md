@@ -279,7 +279,7 @@ Use **Macie** to automatically discover, classify, and protect sensitive data in
 
 Use **Amazon DataZone** to catalog, discover, share, and govern data stored across AWS, on premises, and third-party sources.
 
-![DataZone](/img/datazone.png)
+![Audit Manager](/img/audit-manager.png)
 
 **Audit Manager** continuously audits usage to assess risk and compliance with regulations and industry standards.
 
