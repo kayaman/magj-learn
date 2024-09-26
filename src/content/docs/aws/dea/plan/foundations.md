@@ -221,7 +221,7 @@ Use **AWS Glue**, a fully managed extract, transform, and load (ETL) service, to
 
 With **Amazon EMR**, process big datasets using open-source frameworks, customized Amazon Elastic Compute Cloud (Amazon EC2) clusters, Amazon Elastic Kubernetes Service (Amazon EKS), AWS Outposts, or Amazon EMR Serverless. It can be used to run batch jobs for data processing.
 
-[Flink](/img/flink.png)
+![Flink](/img/flink.png)
 
 Quickly author SQL code for real-time data processing using **Amazon Managed Service for Apache Flink**. Tasks include filtering, aggregating, joining, and deriving.
 
