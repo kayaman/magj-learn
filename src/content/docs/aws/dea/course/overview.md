@@ -32,3 +32,12 @@ sidebar:
 |---|---|
 | ![Batch](/img/batch.png) <br> **AWS Batch** | ![EC2](/img/ec2.png) <br> **Amazon EC2** |
 | ![Lambda](/img/lambda.png) <br> **AWS Lambda** | ![SAR](/img/serverless-repository.png) <br> **AWS Serverless  Application Repository** |
+
+## Containers
+
+|   |   |   |
+|---|---|---|
+| ![ECR](/img/ecr.png) <br> **Amazon ECR** | ![ECS](/img/ecs.png) <br> **Amazon ECS** | ![EKS](/img/eks.png) <br> **Amazon EKS** |
+
+## Databases
+
