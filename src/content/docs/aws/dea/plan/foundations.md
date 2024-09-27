@@ -67,8 +67,8 @@ Data discovery is an important prerequisite to architecting and deploying a data
 
 - **Define business value**
 
-Conduct data discovery kick-off workshops with stakeholders to understand business goals, prioritize use cases, and identify potential data sources.  
-The following are example questions that define the business opportunity:
+  Conduct data discovery kick-off workshops with stakeholders to understand business goals, prioritize use cases, and identify potential data sources.  
+  The following are example questions that define the business opportunity:
 
   - How would getting insight into data provide value to the business?
   - Are you looking to create a new revenue stream from your data?
@@ -78,8 +78,8 @@ The following are example questions that define the business opportunity:
 
 - **Identify your data consumers**
   
-Conduct interactive sessions with various stakeholders within an organization such as data scientists and analysts.  
-The following example questions can help identify your data consumers:
+  Conduct interactive sessions with various stakeholders within an organization such as data scientists and analysts.  
+  The following example questions can help identify your data consumers:
 
   - Who are the end users (for example, business analysts, data engineers, data analysts, or data scientists)? 
   - Which insights are you currently getting from your data?
@@ -115,7 +115,7 @@ The following example questions can help identify your data consumers:
 | Micro-batch |	Sensors, website logs, graphics and video rendering |
 | Batch	| Medical imagery, genomic data, financial records, usage data |
 
-The following example questions can help identify your data types,  data sources, and ingest modes:
+  The following example questions can help identify your data types,  data sources, and ingest modes:
 
   - How many data sources do you have to support?
   - Where and how is the data generated?
