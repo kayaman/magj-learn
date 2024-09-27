@@ -15,8 +15,7 @@ sidebar:
 
 ## Applications Integration
 
-|                       |                      |
-|-----------------------|----------------------|
-| ![EventBridge](/img/eventbridge.png) <br> **Amazon EventBridge** | ![Step Functions](/img/step-functions.png) <br> **AWS Step Functions** |
-| ![AppFlow](/img/appflow.png) <br> **Amazon AppFlow** | ![SNS](/img/sns.png) <br> **Amazon SNS |
-| ![SQS](/img/sqs.png) <br> **Amazon SQS** | ![MSK](/img/redshift.png) <br> **Amazon Managed Workflows for Apache Airflow** |
+|                       |                      |      |
+|-----------------------|----------------------|------|
+| ![EventBridge](/img/eventbridge.png) <br> **Amazon EventBridge** | ![Step Functions](/img/step-functions.png) <br> **AWS Step Functions** | ![AppFlow](/img/appflow.png) <br> **Amazon AppFlow** |
+| ![SNS](/img/sns.png) <br> **Amazon SNS** | ![SQS](/img/sqs.png) <br> **Amazon SQS** | ![MSK](/img/redshift.png) <br> **Amazon Managed Workflows for Apache Airflow** |
