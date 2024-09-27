@@ -19,3 +19,16 @@ sidebar:
 |-----------------------|----------------------|------|
 | ![EventBridge](/img/eventbridge.png) <br> **Amazon EventBridge** | ![Step Functions](/img/step-functions.png) <br> **AWS Step Functions** | ![AppFlow](/img/appflow.png) <br> **Amazon AppFlow** |
 | ![SNS](/img/sns.png) <br> **Amazon SNS** | ![SQS](/img/sqs.png) <br> **Amazon SQS** | ![MSK](/img/redshift.png) <br> **Amazon Managed Workflows for Apache Airflow** |
+
+## Cloud Financial Management
+
+|   |   |
+|---|---|
+| ![Budgets](/img/budgets.png) <br> **AWS Budgets** | ![Cost Explorer](/img/cost-explorer.png) <br> **AWS Cost Explorer** |
+
+## Compute
+
+|   |   |
+|---|---|
+| ![Batch](/img/batch.png) <br> **AWS Batch** | ![EC2](/img/ec2.png) <br> **Amazon EC2** |
+| ![Lambda](/img/lambda.png) <br> **AWS Lambda** | ![SAR](/img/serverless-repository.png) <br> **AWS Serverless  Application Repository** |
