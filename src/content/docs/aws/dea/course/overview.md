@@ -45,10 +45,3 @@ sidebar:
 |---|---|---|
 | ![DocumentDB](/img/documentdb.png) <br> **Amazon DocumentDB** <br> (with MongoDB compatibility) | ![DynamoDB](/img/dynamodb.png) <br> **Amazon DynamoDB** | ![Keyspaces](/img/keyspaces.png) <br> **Amazon Keyspaces** <br> (for Apache Cassandra) |
 
-<table>
-  <tr>
-    <td>![DocumentDB](/img/documentdb.png) <br> **Amazon DocumentDB** <br> (with MongoDB compatibility)</td>
-    <td>![DynamoDB](/img/dynamodb.png) <br> **Amazon DynamoDB**</td>
-    <td>![Keyspaces](/img/keyspaces.png) <br> **Amazon Keyspaces** <br> (for Apache Cassandra)</td>
-  </tr>
-</table>
