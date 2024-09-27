@@ -462,17 +462,54 @@ Security should address the following five areas:
 
 #### Access management
 
+![IAM](/img/iam.png)
+
+**IAM** manages fine-grained access and permissions for human users, software users, other services and microservices.
+
+![ACM](/img/acm.png)
+
+Use **ACM** to provision, manage, and deploy SSL/TLS certificates for AWS services and applications.
 
 #### Regulatory compliance
 
+![Audit Manager](/img/audit-manager.png)
+
+**Audit Manager** automatically collects and organizes relevant evidence from AWS services and translates it into auditor-friendly reports in standards like GDPR, PCI DSS, and others.
+
+![Config](/img/config.png)
+
+**AWS Config** provides configuration management and auditing of AWS resources to assess security and compliance posture over time.
 
 #### Sensitive data protection
 
+![Macie](/img/macie.png)
+
+**Macie** uses machine learning (ML) and pattern matching to discover and help protect your sensitive data, such as personally identifiable information (PII).
+
+![KMS](/img/kms.png)
+
+Use **AWS KMS** to encrypt and decrypt data at rest and in transit using customer managed or AWS managed keys.
+
+![Glue](/img/glue.png)
+
+**AWS Glue** protects sensitive data in a number of ways including data encryption using AWS KMS and data masking.
 
 #### Data and network security
 
 
 #### Data auditability
+
+![CloudTrail](/img/cloudtrail.png)
+
+**CloudTrail** provides auditing and logging of API calls and management events in AWS accounts for security monitoring and compliance.
+
+![Lake Formation](/img/lake-formation.png)
+
+**Lake Formation** automatically catalogs the source and destination of the data in AWS Glue Data Catalog. This provides metadata about the origin, landing location, and transformations of the data.
+
+![Glue Data Catalog](/img/glue-data-catalog.png)
+
+As data moves between different data stores like Amazon S3, Amazon Redshift, and others, AWS Glue tracks these changes to metadata in the **AWS Glue Data Catalog**. This helps trace the flow of data.
 
 ### Security best practices
 
