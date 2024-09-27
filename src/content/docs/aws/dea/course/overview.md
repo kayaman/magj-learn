@@ -44,4 +44,6 @@ sidebar:
 |   |   |   |
 |---|---|---|
 | ![DocumentDB](/img/documentdb.png) <br> **Amazon DocumentDB** <br> (with MongoDB compatibility) | ![DynamoDB](/img/dynamodb.png) <br> **Amazon DynamoDB** | ![Keyspaces](/img/keyspaces.png) <br> **Amazon Keyspaces** <br> (for Apache Cassandra) |
+| ![MemoryDB](/img/memorydb.png) <br> **Amazon MemoryDB for Redis** | ![Neptune](/img/neptune.png) <br> **Amazon Neptune** | ![RDS](/img/rds.png) <br> **Amazon RDS** |
 
+## Developer Tools
