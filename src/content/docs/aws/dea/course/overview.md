@@ -53,3 +53,13 @@ sidebar:
 | ![CLI](/img/cli.png) <br> **AWS CLI** | ![Cloud9](/img/cloud9.png) <br> **AWS Cloud9** | ![CDK](/img/cdk.png) <br> **AWS CDK** |
 | ![CodeBuild](/img/codebuild.png) <br> **AWS CodeBuild** | ![CodeCommit](/img/code-commit.png) <br> **AWS CodeCommit** | ![CodeDeploy](/img/codedeploy.png) <br> **AWS CodeDeploy** |
 | ![CodePipeline](/img/codepipeline.png) <br> **AWS CodePipeline** |
+
+## Frontend Web
+
+![API Gateway](/img/api-gateway.png)  
+**Amazon API Gateway**
+
+## Machine Learning
+
+![SageMaker](/img/sagemaker.png)  
+**Amazon SageMaker**
