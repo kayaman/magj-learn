@@ -63,3 +63,9 @@ sidebar:
 
 ![SageMaker](/img/sagemaker.png)  
 **Amazon SageMaker**
+
+## Management and Governance
+
+|   |   |   |
+|---|---|---|
+| ![CloudFormation](/img/cloudformation.png) <br> **AWS CloudFormation** | ![CloudTrail](/img/cloudtrail.png) <br> **AWS CloudTrail** | ![CloudWatch](/img/cloudwatch.png) <br> **Amazon CloudWatch** |
