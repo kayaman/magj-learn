@@ -47,3 +47,8 @@ sidebar:
 | ![MemoryDB](/img/memorydb.png) <br> **Amazon MemoryDB for Redis** | ![Neptune](/img/neptune.png) <br> **Amazon Neptune** | ![RDS](/img/rds.png) <br> **Amazon RDS** |
 
 ## Developer Tools
+
+|   |   |   |
+|---|---|---|
+| ![CLI](/img/cli.png) <br> **AWS CLI** | ![Cloud9](/img/cloud9.png) <br> **AWS Cloud9** | ![CDK](/img/cdk.png) <br> **AWS CDK** |
+| ![CodeBuild](/img/codebuild.png) <br> **AWS CodeBuild** | ![CodeCommit](/img/code-commit.png) <br> **AWS CodeCommit** | ![CodeDeploy](/img/code-deploy.png) <br> **AWS CodeDeploy** | 
