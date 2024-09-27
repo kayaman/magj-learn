@@ -78,3 +78,14 @@ sidebar:
 |---|---|---|
 | ![ADS](/img/app-discovery-service.png) <br> **AWS Application Discovery Service** | ![AMS](/img/app-migration-service.png) <br> **AWS Application Migration Service** | ![](/img/dms.png) <br> **AWS DMS** |
 | ![DataSync](/img/datasync.png) <br> **AWS DataSync** | ![TF](/img/transfer-family.png) <br> **AWS Transfer Family** | ![SF](/img/snow-family.png) <br> **AWS Snow Family** |
+
+## Networking and Content Delivery
+
+|  |  |
+|--|--|
+| ![CloudFront](/img/cloudfront.png) <br> **Amazon CloudFront** | ![PrivateLink](/img/privatelink.png) <br> **AWS PrivateLink** |
+| ![Route53](/img/route53.png) <br> **Amazon Route 53** | ![VPC](/img/vpc.png) <br> **Amazon VPC** |
+
+## Security, Identity and Compliance
+
+| ![]() <br> **** | ![]() <br> **** |
