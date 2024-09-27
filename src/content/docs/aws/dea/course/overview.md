@@ -88,4 +88,12 @@ sidebar:
 
 ## Security, Identity and Compliance
 
-| ![]() <br> **** | ![]() <br> **** |
+|   |   |   |
+|---|---|---|
+| ![IAM](/img/iam.png) <br> **AWS IAM** | ![KMS](/img/kms.png) <br> **AWS KMS** | ![Macie](/img/macie.png) <br> **Amazon Macie** |
+| ![SM](/img/secrets-manager.png) <br> **AWS Secrets Manager** | ![Shield](/img/shield.png) <br> **AWS Shield** | ![WAF](/img/waf.png) <br> **AWS WAF** |
+
+
+|   |   |   |
+|---|---|---|
+| ![]() <br> **** | ![]() <br> **** | ![]() <br> **** |
