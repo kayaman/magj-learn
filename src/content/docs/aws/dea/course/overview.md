@@ -69,3 +69,5 @@ sidebar:
 |   |   |   |
 |---|---|---|
 | ![CloudFormation](/img/cloudformation.png) <br> **AWS CloudFormation** | ![CloudTrail](/img/cloudtrail.png) <br> **AWS CloudTrail** | ![CloudWatch](/img/cloudwatch.png) <br> **Amazon CloudWatch** |
+| ![Config](/img/config.png) <br> **AWS Config** | ![Grafana](/img/cloudtrail.png) <br> **Amazon Managed Grafana** | ![Systems Manager](/img/systems-manager.png) <br> **AWS Systems Manager** |
+| ![Well Architected](/img/well-architected.png) <br> **AWS Well Architected Tool** |
