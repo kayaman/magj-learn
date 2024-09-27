@@ -129,8 +129,8 @@ Data discovery is an important prerequisite to architecting and deploying a data
 
 - **Define your storage, catalog, and data access needs**
 
-Determine the best storage for specific data types. Assess data quality to determine processing needs. Catalog and register details about data sources.  
-The following are example questions to identify your data storage and data access requirements:
+  Determine the best storage for specific data types. Assess data quality to determine processing needs. Catalog and register details about data sources.  
+  The following are example questions to identify your data storage and data access requirements:
 
   - Which data stores do you have?
   - What is the purpose of each data store?
@@ -143,9 +143,9 @@ The following are example questions to identify your data storage and data acces
 
 - **Define your data processing requirements**
   
-Extract relevant data from sources like databases, data lakes, and CRM systems using tools such as AWS Glue crawlers or custom scripts.  
-Curate and transform the raw data as needed using services like AWS Glue and Amazon EMR.  
-The following example questions can help identify your data processing requirements:
+  Extract relevant data from sources like databases, data lakes, and CRM systems using tools such as AWS Glue crawlers or custom scripts.  
+  Curate and transform the raw data as needed using services like AWS Glue and Amazon EMR.  
+  The following example questions can help identify your data processing requirements:
 
   - Do you have to transform or enrich the data before you consume it?
   - Which tools do you use for transforming your data?
