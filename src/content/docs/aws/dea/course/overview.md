@@ -93,7 +93,9 @@ sidebar:
 | ![IAM](/img/iam.png) <br> **AWS IAM** | ![KMS](/img/kms.png) <br> **AWS KMS** | ![Macie](/img/macie.png) <br> **Amazon Macie** |
 | ![SM](/img/secrets-manager.png) <br> **AWS Secrets Manager** | ![Shield](/img/shield.png) <br> **AWS Shield** | ![WAF](/img/waf.png) <br> **AWS WAF** |
 
+# Storage
 
-|   |   |   |
-|---|---|---|
-| ![]() <br> **** | ![]() <br> **** | ![]() <br> **** |
+|   |   |
+|---|---|
+| ![Backup](/img/backup.png) <br> **AWS Backup** | ![EBS](/img/ebs.png) <br> **Amazon EBS** |
+| ![EFS](/img/efs.png) <br> **Amazon EFS** | ![S3](/img/s3.png) <br> **Amazon S3** |
