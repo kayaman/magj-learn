@@ -101,6 +101,10 @@ export default defineConfig({
 								{ 
 									label: 'Course', 
 									items: [
+										{
+											label: 'Overview',
+											link: 'aws/dea/course/overview'
+										},
 										{ 
 											label: 'Fundamentals',
 											autogenerate: { directory: 'aws/dea/course/section1' },
