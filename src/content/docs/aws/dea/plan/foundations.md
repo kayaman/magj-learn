@@ -432,3 +432,54 @@ To learn  more about [zero-ETL](https://aws.amazon.com/what-is/zero-etl/), see t
 To learn more about serverless computing on AWS, see the [Serverless](https://aws.amazon.com/serverless/) on AWS webpage.
 
 ## Data Engineering Security and Monitoring
+
+### Security
+
+The importance of security in AWS data analytics workflows cannot be overstated. Any breach or compromise could lead to severe consequences including data theft, financial loss, damage to reputation, and regulatory penalties.  
+Security should address the following five areas:
+
+- Access management
+
+  Strong access controls are important to ensure only authorized users and applications can access analytics resources and data. With IAM, granular permissions are applied on a per-user or group basis using policies.
+
+- Regulatory compliance
+
+  Many regulations like GDPR and HIPAA mandate that organizations securely manage data and adhere to privacy and security best practices. Non-compliance can result in heavy fines. Using managed services from AWS helps automate common compliance controls and auditing capabilities.
+
+- Sensitive data protection
+
+  Data analytics often involves large volumes of sensitive data such as Personally Identifiable Information (PII), financial records, and health records. These must be protected from unauthorized access, theft, or leakage. AWS provides services like encryption, masking, identity and access management, and data loss prevention to securely manage sensitive data.
+
+- Data and network security
+
+  AWS services like security groups, network access control lists, and firewalls help restrict network access and secure compute and storage resources. Features like encryption-at-rest provide added protection.
+
+- Data auditability 
+
+  It is essential to be able to track the origin, transformation, and flow of data from source to target. You need to know where the data came from, how it was processed, and who and what systems have access to it. With the AWS Glue Data Catalog you can store the table definition and physical location of a dataset, add business-relevant attributes, and track how this data has changed over time.
+
+### AWS security services
+
+#### Access management
+
+
+#### Regulatory compliance
+
+
+#### Sensitive data protection
+
+
+#### Data and network security
+
+
+#### Data auditability
+
+### Security best practices
+
+### Monitoring
+
+
+
+### AWS monitoring services
+
+### Monitoring best practices
