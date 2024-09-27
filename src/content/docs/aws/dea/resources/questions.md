@@ -70,3 +70,39 @@ Data analytics workflows vary to suit business needs, however most workflows fol
 
 ---
 
+Why is a data catalog important in a data analytics system? 
+
+*A data catalog acts as a single source of truth for metadata, and tracks data location and quality.*
+
+The data catalog provides transparency into the data landscape by tracking data assets, where they are located, their quality, and how they are being used. This acts as a single source of truth for metadata.
+
+---
+
+Which options are correct uses of AWS Step Functions in a data analytics workflow?
+
+- *Coordinating multiple AWS Glue extract, transform, and load (ETL) jobs that process data from different sources and load it into a data warehouse*
+- *Orchestrating a machine learning workflow that involves data preprocessing, model training, evaluation, and deployment*
+- *Performing batch processing jobs on data stored in Amazon S3 using AWS Batch*
+
+Step Functions is used to coordinate and orchestrate the components of a data analytics workflow, but it does not store any metadata itself. Step Functions workflows can invoke other AWS services like AWS Glue for ETL, AWS Batch for job processing, and AWS Lambda for tasks. But services like DynamoDB are used independently to store metadata, not as part of the Step Functions workflow definition.
+
+---
+
+Which options are benefits of using zero-ETL approaches on AWS?
+
+- *It streamlines data architecture and reduces data engineering efforts by automating custom extract, transform, and load (ETL) processes.*
+- *It provides real-time insights through real-time or near real-time data access.*
+- *It optimizes costs for organizations because it is based on actual usage and data processing needs.*
+
+Zero-ETL aims to eliminate the need for custom ETL pipelines by using integrations and automation between AWS data and analytics services.
+
+---
+
+Which option best describes a benefit of using serverless architectures for data analytics workloads on AWS?
+
+*Organizations can optimize costs by paying only for the resources consumed. Serverless services are billed based on actual usage rather than provisioned capacity.*
+
+Serverless architectures are designed specifically to avoid provisioning and managing fleets of EC2 instances. Data encryption is always necessary, whether an architecture is serverless or server-based. With Serverless architectures, you do not directly deploy EC2 instances. Batch and scheduled workloads often use serverless architectures. One of the primary advantages of serverless architectures is cost optimization.
+
+---
+

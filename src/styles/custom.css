@@ -1,3 +1,5 @@
-.tagline {
-   font-size: 0.75rem; 
-}
+:root {
+   /* --sl-color-text-accent: hsl(239, 95%, 29%); */
+   --sl-color-accent-high: hsl(239, 95%, 29%);
+   --sl-color-accent: hsl(239, 95%, 29%);
+ }

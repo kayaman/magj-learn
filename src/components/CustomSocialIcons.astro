@@ -3,15 +3,28 @@ import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/SocialIcons.astro';
 import EmailIcon from './EmailIcon.astro'
 import CredlyIcon from './CredlyIcon.astro';
+import BlogmarksIcon from './BlogmarksIcon.astro';
+import CodemarksIcon from './CodemarksIcon.astro';
 ---
 
+<a class="down4" href="https://www.credly.com/users/marcoantoniogonzalezjunior" target="_blank"><CredlyIcon /></a>
 <Default {...Astro.props}><slot /></Default>
-<a class="down" href="https://www.credly.com/users/marcoantoniogonzalezjunior" target="_blank"><CredlyIcon /></a>
-<a href="mailto:m@rco.sh"><EmailIcon /></a>
+<a class="down4" href="https://codemarks.dev" target="_blank"><CodemarksIcon /></a>
+<a class="down4left2" href="https://blogmarks.dev" target="_blank"><BlogmarksIcon /></a>
+<a class="down2" href="mailto:m@rco.sh"><EmailIcon /></a>
 
 <style>
-    .down {
+    .down4 {
         position: relative;
         top: 4px;
+    }
+    .down4left2 {
+        position: relative;
+        top: 4px;
+        left: -2px;
+    }
+    .down2 {
+        position: relative;
+        top: 2px;
     }
 </style>
