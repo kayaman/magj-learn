@@ -159,7 +159,10 @@ export default defineConfig({
 							label: 'AI Engineer',
 							collapsed: true,
 							items: [ 
-								{ label: 'Overview', link: 'ms/ai-engineer/overview' } 
+								{ 
+									label: 'Overview', 
+									link: 'ms/ai-engineer/overview' 
+								} 
 							]
 						},
 					]
@@ -176,11 +179,47 @@ export default defineConfig({
 							label: 'Badges', 
 							collapsed: true,
 							items: [ 
-								{ label: '1: Data Warehousing', autogenerate: { directory: 'snowflake/badges/1-data-warehousing-workshop' } } 
+								{ 
+									label: '1: Data Warehousing', 
+									autogenerate: { directory: 'snowflake/badges/1-data-warehousing-workshop' } } 
 							]
 						},
 					]
-				}
+				},
+				{
+					label: 'Neo4j',
+					items: [
+						{
+							label: 'Overview',
+							link: 'neo4j/overview'
+						},
+						{
+							label: 'Fundamentals',
+							collapsed: true,
+							items: [
+								{
+									label: 'Neo4j Fundamentals',
+									autogenerate: { directory: 'neo4j/fundamentals/neo4j-fundamentals' }
+								},
+								{
+									label: 'Cypher Fundamentals',
+									autogenerate: { directory: 'neo4j/fundamentals/cypher-fundamentals' }
+								}
+							]
+						},
+						{
+							label: 'Generative AI',
+							collapsed: true,
+							items: [
+								{ 
+									label: 'Neo4j & LLM Fundamentals',
+									autogenerate: { directory: 'neo4j/generative-ai/llm-fundamentals' }
+								}
+							]
+						},
+					]
+				},
+
 			],
 			editLink: {
 				baseUrl: 'https://github.com/kayaman/magj-learning/edit/main/',
