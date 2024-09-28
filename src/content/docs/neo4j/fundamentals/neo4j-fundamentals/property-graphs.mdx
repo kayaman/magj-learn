@@ -3,19 +3,26 @@ title: Property Graphs
 description: GraphAcademy
 sidebar:
   order: 2
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 4
 ---
 import { Aside } from '@astrojs/starlight/components';
 
-## Property graph
+## What is a Property Graph?
+
+### Property Graph
 
 In the previous module we referred to nodes and relationships as the fundamental building blocks for a graph. In this lesson you will learn about the additional elements that Neo4j supports to make a property graph.
 
-Nodes, Labels and Properties
+#### Nodes, Labels and Properties
 Recall that nodes are the graph elements that represent the things in our data. We can use two additional elements to provide some extra context to the data.
 
 Let’s take a look at how we can use these additional elements to improve our social graph.
 
-## Labels
+
+
+#### Labels
 
 ![labels](/img/neo4j/labels.png)
 
@@ -31,7 +38,7 @@ Michael works for a company called Graph Inc, so we can add that label to the no
 In Neo4j, a node can have zero, one, or many labels.
 </Aside>
 
-## Node properties
+#### Node properties
 
 So far we’re assuming that the nodes represent Michael, Sarah, and Graph Inc. We can make this concrete by adding properties to the node.
 
@@ -49,7 +56,11 @@ By looking at the `name` property on the Graph Inc node, we can see that it refe
 Properties do not need to exist for each node with a particular label. If a property does not exist for a node, it is treated as a `null` value.
 </Aside>
 
-## Relationship direction
+### Relationships
+
+A relationship in Neo4j is a connection between two nodes.
+
+#### Relationship direction
 
 ![direction](/img/neo4j/direction.png)
 
@@ -61,7 +72,7 @@ If we consider the concept of directed & undirected graphs that we discussed in 
 
 The direction of a relationship can be important when it comes to hierarchy, although whether the relationships point up or down towards the tree is an arbitrary decision.
 
-## Relationship type
+#### Relationship type
 
 ![Relationships with types](/img/neo4j/rt.png)
 
@@ -71,7 +82,7 @@ For example, we can traverse through every relationship from Michael, or we can 
 
 Here are sample Cypher statement statements to support this:
 
-```sh
+```sh frame="none"
 // traverse the Michael node to return the Sarah node
 MATCH (p:Person {firstName: 'Michael'})-[:MARRIED_TO]-(n) RETURN n;
 // traverse the Michael node to return the Graph Inc node
@@ -81,10 +92,12 @@ MATCH (p:Person {firstName: 'Michael'})-[:WORKS_AT]-(n) RETURN n;
 MATCH (p:Person {firstName: 'Michael'})--(n) RETURN n
 ```
 
-## Relationship properties
+#### Relationship properties
 
 As with nodes, relationships can also have properties. These can refer to a cost or distance in a weighted graph or just provide additional context to a relationship.
 
 ![Relationship properties](/img/neo4j/rp.png)
 
 In our graph, we can place a property on the `MARRIED_TO` relationship to hold the date in which Michael and Sarah were married. This `WORKS_AT` relationship has a roles property to signify any roles that the employee has filled at the company. If Michael also worked at another company, his `WORKS_AT` relationship to the other company would have a different value for the roles property.
+
+## Native Graph Advantage
