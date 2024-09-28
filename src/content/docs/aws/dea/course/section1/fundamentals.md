@@ -65,6 +65,63 @@ A storage repository that holds vast amounts of raw data in its native format, i
   Schema on read: schema is defined at the time of reading data.
   - Extract - Load - Transform (**ELT**)
 
+### Data Lakehouse
+
+A hybrid data architecture that combines the best features of data lakes and data warehouses, aiming to provide the performance, reliability and capabilities of a data warehouse while maintaining the flexibility, scale and low-cost storage of data lakes.
+
+## Data Mesh
+
+It's more about governance and organization. Individual teams own "data products" within a given domain. There data products serve various "use cases" around the organization. Domain-bases data management. Federated governance with central standards. Self-service tooling and infrastructure.
+
+![Data Mesh](/img/data-mesh.png)
+
+## ETL Pipelines
+
+ETL stands for Extract, Transform and Load. It's a  process used to move data from source systems into a data warehouse
+
+- **Extract**
+
+  - Retrieve raw data from source systems.
+  - Ensure data integrity during the extraction phase.
+  - Can be done in real-time or in batches, depending on requirements.
+
+- **Transform**
+  
+  - Convert the extracted data into a format suitable for the target data warehouse.
+  - Can involve various operations such as:
+    - data cleansing
+    - data enrichment
+    - format changes
+    - aggregations or computations
+    - encoding or decoding
+    - handling missing values
+  
+  - **Load**
+    
+    - Move the transformed data into the target data warehouse or another data repository.
+    - Can be done in batches or in a streaming manner.
+    - Ensure that data maintains its integrity during the load phase.
+  
+  - Managing ETL Pipelines
+    
+    - THis process must be automated in some reliable way.
+
+## Data Sources
+
+  - JDBC: Java Database Connectivity
+  - ODBC: Open Database Connectivity
+  - Raw logs
+  - APIs
+  - Streams
+
+## Data Formats
+
+  - CSV
+  - JSON
+  - Avro
+  - Parquet
+ 
+
 
 
 
