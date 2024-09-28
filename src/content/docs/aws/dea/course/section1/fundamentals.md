@@ -29,7 +29,7 @@ sidebar:
   - elements might be tagged or chategorized in some way
   - more flexible than structured data but not as chaotic as unstructured data
 
-## Proprties of data
+## Properties of data
 
 - Volume
   
