@@ -130,7 +130,7 @@ Neo4j’s Cypher statement language is optimized for node traversal so that rela
 
 ## Graphs are Everywhere
 
- ```sh frame="code" title="cypher:"
+```sh
 MATCH (c:Category)-[:HAS_CHILD|HAS_PRODUCT*1..3]->(p:Product)
 RETURN p.id, p.title, collect(c.name) AS categories
 ```
