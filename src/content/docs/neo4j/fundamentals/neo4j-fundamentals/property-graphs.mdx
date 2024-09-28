@@ -82,7 +82,7 @@ For example, we can traverse through every relationship from Michael, or we can 
 
 Here are sample Cypher statement statements to support this:
 
-```sh frame="none"
+```js frame="none"
 // traverse the Michael node to return the Sarah node
 MATCH (p:Person {firstName: 'Michael'})-[:MARRIED_TO]-(n) RETURN n;
 // traverse the Michael node to return the Graph Inc node
