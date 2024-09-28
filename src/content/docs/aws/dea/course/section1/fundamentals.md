@@ -33,7 +33,7 @@ sidebar:
 
 - Volume
   
-  Refers to the amount or size of data thatorganizations are dealing with at any given time.
+  Refers to the amount or size of data that organizations are dealing with at any given time.
 
 - Velocity
   
@@ -96,15 +96,15 @@ ETL stands for Extract, Transform and Load. It's a  process used to move data fr
     - encoding or decoding
     - handling missing values
   
-  - **Load**
+- **Load**
     
-    - Move the transformed data into the target data warehouse or another data repository.
-    - Can be done in batches or in a streaming manner.
-    - Ensure that data maintains its integrity during the load phase.
+  - Move the transformed data into the target data warehouse or another data repository.
+  - Can be done in batches or in a streaming manner.
+  - Ensure that data maintains its integrity during the load phase.
   
-  - Managing ETL Pipelines
+- Managing ETL Pipelines
     
-    - THis process must be automated in some reliable way.
+  - This process must be automated in some reliable way.
 
 ## Data Sources
 
