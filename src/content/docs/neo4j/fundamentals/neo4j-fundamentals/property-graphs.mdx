@@ -71,7 +71,7 @@ For example, we can traverse through every relationship from Michael, or we can 
 
 Here are sample Cypher statement statements to support this:
 
-```
+```js
 // traverse the Michael node to return the Sarah node
 MATCH (p:Person {firstName: 'Michael'})-[:MARRIED_TO]-(n) RETURN n;
 
