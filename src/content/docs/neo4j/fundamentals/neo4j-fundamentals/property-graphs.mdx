@@ -71,13 +71,11 @@ For example, we can traverse through every relationship from Michael, or we can 
 
 Here are sample Cypher statement statements to support this:
 
-```js
+```js frame="code" title="cypher"
 // traverse the Michael node to return the Sarah node
 MATCH (p:Person {firstName: 'Michael'})-[:MARRIED_TO]-(n) RETURN n;
-
 // traverse the Michael node to return the Graph Inc node
 MATCH (p:Person {firstName: 'Michael'})-[:WORKS_AT]-(n) RETURN n;
-
 // traverse all relationships from the Michael node
 // to return the Sarah node and the Graph Inc node
 MATCH (p:Person {firstName: 'Michael'})--(n) RETURN n
