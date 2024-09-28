@@ -1,0 +1,32 @@
+---
+title: Property Graphs
+description: GraphAcademy
+sidebar:
+  order: 2
+---
+import { Aside } from '@astrojs/starlight/components';
+
+## Property graph
+
+In the previous module we referred to nodes and relationships as the fundamental building blocks for a graph. In this lesson you will learn about the additional elements that Neo4j supports to make a property graph.
+
+Nodes, Labels and Properties
+Recall that nodes are the graph elements that represent the things in our data. We can use two additional elements to provide some extra context to the data.
+
+Let’s take a look at how we can use these additional elements to improve our social graph.
+
+## Labels
+
+![labels](/img/labels.png)
+
+By adding a label to a node, we are signifying that the node belongs to a subset of nodes within the graph. Labels are important in Neo4j because they provide a starting point for a Cypher statement.
+
+Let’s take Michael and Sarah - in this context both of these nodes are persons.
+
+We can embellish the graph by adding more labels to these nodes; Michael identifies as male and Sarah is female. In this context, Michael is an employee of a company, but we don’t have any information about Sarah’s employment status.
+
+Michael works for a company called Graph Inc, so we can add that label to the node that represents a company.
+
+<Aside type="note" title="">
+In Neo4j, a node can have zero, one, or many labels.
+</Aside>
