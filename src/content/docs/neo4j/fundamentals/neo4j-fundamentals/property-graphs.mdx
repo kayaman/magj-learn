@@ -57,7 +57,7 @@ In Neo4j, each relationship must have a direction in the graph. Although this di
 
 A relationship is created between a source node and a destination node, so these nodes must exist before you create the relationship.
 
-If we consider the concept of directed & undirected graphs that we discussed in the previous module, the direction of the MARRIED_TO relationship must exist and may provide some additional context but can be ignored for the purpose of the query. In Neo4j, the MARRIED_TO relationship must have a direction.
+If we consider the concept of directed & undirected graphs that we discussed in the previous module, the direction of the `MARRIED_TO` relationship must exist and may provide some additional context but can be ignored for the purpose of the query. In Neo4j, the `MARRIED_TO` relationship must have a direction.
 
 The direction of a relationship can be important when it comes to hierarchy, although whether the relationships point up or down towards the tree is an arbitrary decision.
 
@@ -67,6 +67,26 @@ The direction of a relationship can be important when it comes to hierarchy, alt
 
 Each relationship in a neo4j graph must have a type. This allows us to choose at query time which part of the graph we will traverse.
 
-For example, we can traverse through every relationship from Michael, or we can specify the MARRIED_TO relationship to end up only at Sarah’s node.
+For example, we can traverse through every relationship from Michael, or we can specify the `MARRIED_TO` relationship to end up only at Sarah’s node.
 
 Here are sample Cypher statement statements to support this:
+
+```
+// traverse the Michael node to return the Sarah node
+MATCH (p:Person {firstName: 'Michael'})-[:MARRIED_TO]-(n) RETURN n;
+
+// traverse the Michael node to return the Graph Inc node
+MATCH (p:Person {firstName: 'Michael'})-[:WORKS_AT]-(n) RETURN n;
+
+// traverse all relationships from the Michael node
+// to return the Sarah node and the Graph Inc node
+MATCH (p:Person {firstName: 'Michael'})--(n) RETURN n
+```
+
+## Relationship properties
+
+As with nodes, relationships can also have properties. These can refer to a cost or distance in a weighted graph or just provide additional context to a relationship.
+
+![Relationship properties](/img/neo4j/rp.png)
+
+In our graph, we can place a property on the `MARRIED_TO` relationship to hold the date in which Michael and Sarah were married. This `WORKS_AT` relationship has a roles property to signify any roles that the employee has filled at the company. If Michael also worked at another company, his `WORKS_AT` relationship to the other company would have a different value for the roles property.
