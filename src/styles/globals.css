@@ -1,12 +1,6 @@
 :root {
   --sl-font: 'Open Sans', sans-serif;
-  
-  --sl-color-accent: hsl(239, 95%, 29%);
-  --sl-color-accent-high: hsl(239, 95%, 29%);
-
-  
 }
-
 
 :root[data-theme='light'] {
   --sl-icon-color: #1b2631;
@@ -14,6 +8,6 @@
 }
 
 :root[data-theme='dark'] {
-	--sl-icon-color: #d6dbdf;
-  --sl-color-text-accent: #aeb6bf;
+	--sl-icon-color: #E3DCDC;
+  --sl-color-text-accent: #E3DCDC;
 }
