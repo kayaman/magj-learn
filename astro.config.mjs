@@ -31,10 +31,12 @@ export default defineConfig({
 			logo: {
 				src: './src/assets/logo.png'
 			},
-			title: 'MAGJ Learning',
+			title: 'Marco\'s Learning',
 			plugins: [starlightThemeRapide(), starlightLinksValidator()],
 			customCss: [
 				'./src/styles/custom.css',
+				'@fontsource/open-sans/400.css',
+				'@fontsource/open-sans/600.css',
 			],
 			components: {
 				SocialIcons: './src/components/CustomSocialIcons.astro',
