@@ -101,3 +101,98 @@ As with nodes, relationships can also have properties. These can refer to a cost
 In our graph, we can place a property on the `MARRIED_TO` relationship to hold the date in which Michael and Sarah were married. This `WORKS_AT` relationship has a roles property to signify any roles that the employee has filled at the company. If Michael also worked at another company, his `WORKS_AT` relationship to the other company would have a different value for the roles property.
 
 ## Native Graph Advantage
+
+### Neo4j is a native graph database
+
+Neo4j is a native graph database, meaning that everything from the storage of the data to the query language have been designed specifically with traversal in mind. Just like any other enterprise DBMS, Neo4j is **ACID** compliant. A group of modifications in a transaction will all either commit or fail.
+
+Where native graph databases stand apart from other databases is the concept of **index-free adjacency**. When a database transaction is committed, a reference to the relationship is stored with the nodes at both the start and end of the relationship. As each node is aware of every incoming and outgoing relationship connected to it, the underlying graph engine will simply chase pointers in memory - something that computers are exceptionally good at.
+
+### Index-free adjacency (IFA)
+
+One of the key features that makes Neo4j graph databases different from an RDBMS is that Neo4j implements **index-free adjacency**.
+
+### Neo4j storage
+
+With index-free adjacency, Neo4j stores nodes and relationships as objects that are linked to each other via pointers. Conceptually, the graph looks like:
+
+![storage](/img/neo4j/n4js1.png)
+
+These nodes and relationships are stored as:
+
+![storage](/img/neo4j/n4js2.png)
+
+### Neo4j Cypher statement
+
+Suppose we had this query in Cypher:
+
+```cypher
+MATCH (n) <-- (:Group) <-- (:Group) <-- (:Group {id: 3})
+RETURN n.id
+```
+
+Using IFA, the Neo4j graph engine starts with the anchor of the query which is the Group node with the id of 3. Then it uses the links stored in the relationship and node objects to traverse the graph pattern.
+
+![storage](/img/neo4j/n4js3.png)
+
+To perform this query, the Neo4j graph engine needed to:
+
+1. Plan the query based upon the anchor specified.
+2. Use an index to retrieve the anchor node.
+3. Follow pointers to retrieve the desired result node.
+
+The benefits of IFA compared to relational DBMS access are:
+
+- Fewer index lookups.
+- No table scans
+- Reduced duplication of data.
+
+## Non-graph Databases to Graph
+
+### Benefit of Neo4j over Relational
+
+As mentioned in the last lesson, index-free adjacency is a huge differentiator between relational and graph databases. While relationships are stored at write-time in a graph database, the joins made in a relational database are computed at read-time. This means that, as the number of records in a relational database increases, the slower the query becomes. The query time in a graph database will remain consistent to the size of the data that is actually touched during a query.
+
+Having relationships treated as first class citizens also provides an advantage when starting out. Modelling relationships in a graph is more natural than creating pivot tables to represent many-to-many relationships.
+
+### Northwind RDBMS to graph
+
+Let’s look at the Northwind RDBMS data model.
+
+![storage](/img/neo4j/ngd1.png)
+
+In this example, an order can contain one or more products and a product can appear in one or more orders. In a relational database, the Order Details table is required to handle the many-to-many relationships. The more orders added, and subsequently the larger the Order Details table grows, the slower order queries will become.
+
+![storage](/img/neo4j/ngd2.png)
+
+In a graph, we can simply model a CONTAINS relationship from the Order node to each Product node. The Product node has a unit price property and the CONTAINS relationship which has properties to represent the quantity and discount.
+
+### NoSQL datastores to graph
+
+NoSQL databases solve many of the problems, and they are great for write throughput.
+
+But there are problems with how data is queried. The two most common NoSQL databases represent key/value stores and documents.
+
+#### Key-value stores
+
+![storage](/img/neo4j/ngd3.png)
+
+The **key-value** model is great and highly performant for lookups of huge amounts of simple or even complex values. Here is how a typical key-value store is structured.
+
+#### Key-value as a graph
+
+However, when the values are themselves interconnected, you have a graph. Neo4j lets you traverse quickly among all the connected values and find insights in the relationships. The graph version shows how each key is related to a single value and how different values can be related to one another (like nodes connected to one another through relationships).
+
+![storage](/img/neo4j/ngd4.png)
+
+#### Document stores
+
+![storage](/img/neo4j/ngd5.png)
+
+The structured hierarchy of a Document model accommodates a lot of schema-free data that can easily be represented as a tree. Although trees are a type of graph, a tree represents only one projection or perspective of your data. This is how a document store hierarchy is structured as pieces within larger components.
+
+#### Document model as graph
+
+![storage](/img/neo4j/ngd6.png)
+
+If you refer to other documents (or contained elements) within that tree, you have a more expressive representation of the same data that you can easily navigate using a graph. A graph data model lets more than one natural representation emerge dynamically as needed. This graph version demonstrates how moving this data to a graph structure allows you to view different levels and details of the tree in different combinations.
