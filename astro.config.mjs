@@ -5,6 +5,7 @@ import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax';
 import remarkToc from 'remark-toc';
 import remarkGfm from 'remark-gfm';
+import externalAnchorPlugin from './src/plugins/externalAnchorPlugin.mjs';	
 import starlightThemeRapide from 'starlight-theme-rapide'
 import { astroExpressiveCode } from '@astrojs/starlight/expressive-code';
 import starlightLinksValidator from 'starlight-links-validator';
@@ -236,7 +237,7 @@ export default defineConfig({
 		}),
 	],
 	markdown: {
-		remarkPlugins: [remarkMath, [remarkToc, {heading: "contents"}], remarkGfm],
+		remarkPlugins: [remarkMath, [remarkToc, {heading: "contents"}], remarkGfm, externalAnchorPlugin],
 		rehypePlugins: [rehypeMathjax],
 	}
 });
