@@ -1,0 +1,10 @@
+# Ignore all the files
+*
+
+# The only files and directories included in the context
+!public
+!src
+!astro.config.mjs
+!tsconfig.json
+!package*.json
+!nginx

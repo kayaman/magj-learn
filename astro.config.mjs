@@ -7,11 +7,12 @@ import remarkToc from 'remark-toc';
 import starlightThemeRapide from 'starlight-theme-rapide'
 import { astroExpressiveCode } from '@astrojs/starlight/expressive-code';
 import starlightLinksValidator from 'starlight-links-validator';
-import mediaDirective from 'astro/runtime/client/media.js';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
 	site: 'https://learning.magj.dev',
 	integrations: [
+		sitemap({}),
 		astroExpressiveCode({
 			themes: ['github-dark-dimmed', 'github-light'],
 			frames: {

@@ -3,4 +3,17 @@
   
   --sl-color-accent: hsl(239, 95%, 29%);
   --sl-color-accent-high: hsl(239, 95%, 29%);
+
+  
+}
+
+
+:root[data-theme='light'] {
+  --sl-icon-color: #1b2631;
+  --sl-color-text-accent: #212f3c;
+}
+
+:root[data-theme='dark'] {
+	--sl-icon-color: #d6dbdf;
+  --sl-color-text-accent: #aeb6bf;
 }

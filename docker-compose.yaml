@@ -1,0 +1,12 @@
+services:
+  learning:
+    image: kayaman/magj-learning
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - SITE_DOMAIN
+    ports:
+      - target: 8080
+        published: 80
+        protocol: tcp
