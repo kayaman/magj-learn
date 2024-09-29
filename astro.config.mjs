@@ -4,6 +4,7 @@ import starlight from '@astrojs/starlight';
 import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax';
 import remarkToc from 'remark-toc';
+import remarkGfm from 'remark-gfm';
 import starlightThemeRapide from 'starlight-theme-rapide'
 import { astroExpressiveCode } from '@astrojs/starlight/expressive-code';
 import starlightLinksValidator from 'starlight-links-validator';
@@ -23,7 +24,7 @@ export default defineConfig({
 			defaultProps: {
 				wrap: false,
 				overridesByLang: {
-				  'json': { preserveIndent: true },
+				'json': { preserveIndent: true },
 				},
 			},
 		}),
@@ -235,7 +236,7 @@ export default defineConfig({
 		}),
 	],
 	markdown: {
-		remarkPlugins: [remarkMath, [remarkToc, {heading: "contents"}]],
+		remarkPlugins: [remarkMath, [remarkToc, {heading: "contents"}], remarkGfm],
 		rehypePlugins: [rehypeMathjax],
 	}
 });
