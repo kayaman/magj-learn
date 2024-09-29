@@ -30,7 +30,8 @@ export default defineConfig({
 		starlight({
 			favicon: '/favicon.png',
 			logo: {
-				src: './src/assets/logo.png'
+				light: './src/assets/logo-light.svg',
+				dark: './src/assets/logo-dark.svg',
 			},
 			title: 'Marco\'s Learning',
 			plugins: [starlightThemeRapide(), starlightLinksValidator()],
