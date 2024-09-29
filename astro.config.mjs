@@ -13,14 +13,14 @@ export default defineConfig({
 	site: 'https://learning.magj.dev',
 	integrations: [
 		astroExpressiveCode({
-			themes: ['dracula', 'github-light'],
+			themes: ['github-dark-dimmed', 'github-light'],
 			frames: {
 				showCopyToClipboardButton: true,
 			},
 			shiki: true,
 			tabWidth: 4,
 			defaultProps: {
-				wrap: true,
+				wrap: false,
 				overridesByLang: {
 				  'json': { preserveIndent: true },
 				},

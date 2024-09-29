@@ -121,7 +121,7 @@ To assess these trade-offs, you can use AWS services like Amazon SageMaker Debug
     
     Think about a classification model that identifies emails as spam or not. In this case, you don't want your model labeling an important email as spam and preventing your users from seeing it when the email was legitimate. 
 
-    $$ Precision = \frac{TP}{TP + FP}$$
+    $$ Precision = \frac{TP}{TP + FP} $$
 
   - Recall
 
