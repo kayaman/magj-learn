@@ -37,7 +37,7 @@ export default defineConfig({
 			title: 'Marco\'s Learning',
 			plugins: [starlightThemeRapide(), starlightLinksValidator()],
 			customCss: [
-				'./src/styles/custom.css',
+				'./src/styles/globals.css',
 				'@fontsource/open-sans/400.css',
 				'@fontsource/open-sans/600.css',
 			],
