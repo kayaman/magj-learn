@@ -196,3 +196,126 @@ The structured hierarchy of a Document model accommodates a lot of schema-free d
 ![storage](/img/neo4j/ngd6.png)
 
 If you refer to other documents (or contained elements) within that tree, you have a more expressive representation of the same data that you can easily navigate using a graph. A graph data model lets more than one natural representation emerge dynamically as needed. This graph version demonstrates how moving this data to a graph structure allows you to view different levels and details of the tree in different combinations.
+
+## Explore Neo4j
+
+### The Movie Graph
+
+GraphAcademy has created a Neo4j sandbox instance for you. The graph contains a dataset of movies and people.
+
+In this lesson, you will explore the graph and use Cypher to query it.
+
+#### Nodes
+
+The graph contains nodes labeled `Movie` and `Person`.
+
+Neo4j includes a query language called Cypher that allows you to query the graph.
+
+Run the following Cypher query to return the first 50 `Movie` nodes in the graph:
+
+```cypher
+MATCH (m:Movie) RETURN m LIMIT 50
+```
+
+You will see the `Movie` nodes returned as a graph.
+
+Click on a node to see it’s properties. `Movie` nodes have properties like `title`, `released`, and `plot`.
+
+Try modifying the query to return `Person` nodes instead of `Movie` nodes.
+
+```cypher
+MATCH (p:Person) RETURN p LIMIT 50
+```
+
+:::note All notes
+You can return all the nodes by removing the LIMIT clause. It may take longer to return all the nodes.
+```cypher
+MATCH (m:Movie) RETURN m
+```
+:::
+
+You can filter the nodes returned by adding a condition to the query. For example, you can filter `Movie` nodes by the `title` property.
+
+```cypher
+MATCH (m:Movie {title: 'Toy Story'}) RETURN m
+```
+
+#### Relationships
+
+The relationships between nodes describe how people are related to movies. For example, Person nodes have `ACTED_IN` and `DIRECTED` relationships with `Movie` nodes.
+
+Run this Cypher query to return the `Movie` node 'Hoffa' and `Person` nodes with an `ACTED_IN` relationship to the movie:
+
+```cypher
+MATCH (m:Movie {title: 'Hoffa'})<-[r:ACTED_IN]-(p:Person)
+RETURN m, r, p
+```
+
+The movie 'Hoffa' is a `Movie` node with relationships to `Person` nodes who acted in and directed the movie.
+
+The query doesn’t include the `DIRECTED` relationship, but it appears in the graph.
+
+Neo4j will also display other relationships between the returned nodes to give a complete view.
+
+:::note View relationships
+You can double-click on nodes in the graph to expand their relationships with other nodes.
+:::
+
+#### Properties
+
+Nodes have properties that describe them. For example, `Person` nodes have properties like `name` and `born`, `Movie` nodes have properties like `title` and `released`.
+
+Relationships in Neo4j can also have properties, the `ACTED_IN` relationship has a role property, storing the person’s role in the movie.
+
+Run the following Cypher to return the movie title and person’s name who acted in the movie "Top Gun":
+
+```cypher
+MATCH (m:Movie {title: 'Top Gun'})<-[r:ACTED_IN]-(p:Person)
+RETURN m.title, p.name
+```
+
+Note how the query returns the data as a table, rather than a graph, of the movie title and person’s name.
+
+### Get Neo4j
+
+There are many options to use Neo4j, including a fully hosted cloud solution ([AuraDB](https://neo4j.com/cloud/platform/aura-graph-database/)), local installations, and Docker containers.
+
+In this lesson, you will explore some of these options.
+
+#### Community and Enterprise Editions
+
+There are two editions of Neo4j to choose from, the Community Edition (CE) and the Enterprise Edition (EE). The Enterprise Edition includes all Community Edition offers, plus extra enterprise requirements such as backups, clustering, and failover capabilities.
+
+The **Community Edition** is a fully functional edition of Neo4j, suitable for single-instance deployments. It fully supports key Neo4j features, such as ACID-compliant transactions, Cypher, and programming APIs. It is ideal for learning Neo4j, do-it-yourself projects, and applications in small workgroups.
+
+The **Enterprise Edition** extends the functionality of Community Edition to include key features for performance and scalability, such as a clustering architecture and online backup functionality. Additional security features include role-based access control and LDAP support, for example, Active Directory. It is the choice for production systems with requirements for scale and availability, such as commercial and critical internal solutions.
+
+The [Neo4j Editions documentation](https://neo4j.com/docs/operations-manual/current/introduction/#_neo4j_editions) includes a comparison of the features available in each edition.
+
+#### AuraDB
+
+[AuraDB](https://neo4j.com/cloud/platform/aura-graph-database/) is a fully managed cloud service that provides a Neo4j database as a service. It is a fully managed, scalable, and secure cloud database service that allows you to focus on building applications without worrying about the operational aspects of managing a database.
+
+You can create a free Neo4j instance at console.neo4j.io and scale it up or down as needed. AuraDB is available in multiple regions, and you can choose the region that best fits your needs.
+
+#### Installation
+
+You can install Neo4j on most platforms, including Linux, macOS, and Windows. The [Neo4j Installation documentation](https://neo4j.com/docs/operations-manual/current/installation/) provides detailed instructions for each platform.
+
+In addition, Neo4j provides a Desktop development tool that includes a local installation of Neo4j, a browser-based interface, and a set of tools to help you develop and manage your Neo4j databases. Installation and usage instructions are on the [Neo4j Desktop download](https://neo4j.com/download/) page.
+
+#### Cloud deployments
+
+Neo4j’s cloud marketplace listings represent a quick and easy way of getting started with graph databases on the cloud platform of your choice.
+
+You can find more information in the [Neo4j Cloud deployments documentation](https://neo4j.com/docs/operations-manual/current/cloud-deployments/).
+
+#### Docker
+
+Neo4j provides Docker images for both the Community and Enterprise editions.
+
+The [Neo4j Docker documentation](https://neo4j.com/docs/operations-manual/current/docker/) provides instructions on how to run, configure, and deploy Neo4j in a Docker container.
+
+#### Get Started
+
+The right Neo4j deployment option will depend on your requirements. [Neo4j AuraDB](https://console.neo4j.io/) and [Neo4j Desktop](https://neo4j.com/download/) provide the easiest way to start with Neo4j.
