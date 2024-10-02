@@ -513,10 +513,77 @@ As data moves between different data stores like Amazon S3, Amazon Redshift, and
 
 ### Security best practices
 
+- Implement robust access control.
+
+  Create IAM roles and policies to control who can access what resources.
+
+- Encrypt data at rest and in transit.
+
+  Use AWS KMS to encrypt data at rest. For data in transit, AWS uses the HTTPS/TLS protocol that uses transport layer security to encrypt communication between services.
+
+- Use data masking.
+
+  Use masking and anonymization techniques to protect sensitive data like PII while still allowing analytics.
+
+- Use network isolation techniques.
+
+  Use a virtual private cloud (VPC) and network access control lists (network ACLs) to avoid exposing resources publicly.
+
+- Understand applicable laws.
+
+  Understand and follow industry and geographic data compliance laws and ensure the architecture conforms to them.
+
+- Classify data.
+
+  Create classes of data based on sensitivity and apply appropriate security controls for each class.
+
+- Plan for disaster recovery.
+
+  Implement recovery plans, backup procedures, and high availability (redundancy) to ensure continuity of operations and data availability.
+
+- Define and implement data governance.
+
+  Design comprehensive, flexible, and robust governance policies and techniques.
+
+To learn more about security in data analytics systems, refer to **Security** in the [Data Analytics Lens - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/analytics-lens/security.html) document.
+
 ### Monitoring
 
+Monitoring is crucial for maintaining the reliability, availability, and performance of AWS data analytics workflows. 
 
+The following are a few key aspects that should be monitored:
+
+- Resources
+
+  The AWS resources involved in the workflow like EC2 instances, databases, and data stores should be monitored. Metrics such as CPU utilization, memory usage, network traffic, and disk I/O can help identify performance bottlenecks.
+
+- Analytics jobs
+
+  Metrics for extract, transform, load (ETL), or extract, load, transform (ELT) jobs should be monitored. Metrics such as job run time, errors encountered, and records processed provide insights into job performance. Monitoring job statuses helps troubleshoot issues.
+
+- Data pipelines
+
+  Services such as AWS Glue, AWS Step Functions, and Lambda are commonly used to orchestrate ETL workflows and should be monitored. Monitoring metrics indicate pipeline health and identify bottlenecks.
+
+- Data access
+
+  Permissions and access logs should be tracked using services such as IAM and CloudTrail to help ensure security and data governance.
 
 ### AWS monitoring services
+
+![CloudWatch](/img/cloudwatch.png)
+**CloudWatch** collects metrics from AWS resources like EC2 instances, databases, and data pipelines. You can set alarms and visualize performance metrics.
+
+![CloudTrail](/img/cloudtrail.png)
+**CloudTrail** provides visibility into API calls made in your AWS account. You can use it to monitor user activity and troubleshoot access-related issues.
+
+![X-Ray](/img/x-ray.png)
+**X-Ray** provides end-to-end monitoring and performance insights for applications running on AWS and their underlying services.
+
+![Guard Duty](/img/guard-duty.png)
+**GuardDuty** helps detect potential security issues in workloads by monitoring for malicious or unauthorized behavior.
+
+![Systems Manager](/img/systems-manager.png)
+**Systems Manager** provides application-level monitoring for EC2 instances and helps automate operational tasks.
 
 ### Monitoring best practices
