@@ -20,7 +20,7 @@ sidebar:
 - POSIX file system (~Linux) that has a standard file API
 - File system scales automatically, pay-per-use, no capacity planning
 
-## Performance & Storage classes
+## Performance
 
 - EFS Scale
   - 1000s of concurrent NFS clients, 10 GB+/s throughput
@@ -29,3 +29,20 @@ sidebar:
   - General Purpose (default): latency-sensitive use cases (web server, CMS, ...)
   - Max I/O: higher latency, throughput, highly parallel (big data, media processing, ...)
 - Throughput Mode
+  - Bursting: 1 TB = 50 MiB/s + burst of up to 100 MiB/s
+  - Provisioned: set your throughput regardless of storage size (ex: 1 GiB/s for 1 TB storage)
+  - Elastic: automatically scales throughput up or down based on your workloads
+    - Up to 3GiB/s for reads and 1 GiB/s for writes
+    - Used for unpredictable workloads
+
+## Storage Classes
+
+- Storage Tiers (lifecycle management feature: move file after n days)
+  - Standard: for frequently accessed files
+  - Infrequently access (EFS-IA): cost to retrieve files, lower price to store
+  - Archive: rarely accessed data (few times each year), 50% cheaper
+  - Implement lifecycle policies to move files between storage tiers
+- Availability and durability
+  - Standard Multi-AZ, great for prod
+  - One Zone: one AZ, great for dev, backup enabled by default. compatible with IA (EFS One Zone-IA)
+- By using the right EFS storage classes, you can do up to 90% in cost savings
