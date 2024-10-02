@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-Which option describes the responsibility of the data engineer and the data analyst?
+**Which option describes the responsibility of the data engineer and the data analyst?**
 
 *The data engineer builds the system that delivers usable data to the data analyst, who analyzes the data to gain business insights.*
 
@@ -13,7 +13,7 @@ The data engineer builds a system that will deliver process and curated data for
 
 ---
 
-What are some key functions of the data engineer?
+**What are some key functions of the data engineer?**
 
 - *They build and manage data infrastructure platforms.*
 - *They catalog and document datasets.*
@@ -23,7 +23,7 @@ Some of the key data engineer functions are to build and manage data platforms, 
 
 ---
 
-What is the best definition of data discovery?
+**What is the best definition of data discovery?**
 
 *The process of finding and understanding relevant data sources within an organization and the relationships between them*
 
@@ -31,7 +31,7 @@ Data discovery involves interactive sessions to identify key data sources and st
 
 ---
 
-What are the steps in the data discovery process?
+**What are the steps in the data discovery process?**
 
 - *Identify key stakeholders and data sources across the organization.*
 - *Discover existing data types and formats.*
@@ -44,7 +44,7 @@ Ingesting, processing, and delivering data is the main function of the data anal
 
 ---
 
-Which questions are typically asked during the data discovery process?
+**Which questions are typically asked during the data discovery process?**
 
 - *Who are the key stakeholders and data owners?*
 - *Which formats and types of data are available?*
@@ -54,7 +54,7 @@ Some typical data discovery questions focus on understanding the available data 
 
 ---
 
-What is meant by the term data silos? 
+**What is meant by the term data silos?**
 
 *Independent data stores that are optimized for specific uses and are difficult to combine or access by other systems*
 
@@ -62,7 +62,7 @@ Data silos refer to isolated and incompatible data stores that are optimized for
 
 ---
 
-Which option best describes a basic data analytics workflow?
+**Which option best describes a basic data analytics workflow?**
 
 *Ingest → Store → Catalog → Process → Deliver*
 
@@ -70,7 +70,7 @@ Data analytics workflows vary to suit business needs, however most workflows fol
 
 ---
 
-Why is a data catalog important in a data analytics system? 
+**Why is a data catalog important in a data analytics system?**
 
 *A data catalog acts as a single source of truth for metadata, and tracks data location and quality.*
 
@@ -78,7 +78,7 @@ The data catalog provides transparency into the data landscape by tracking data 
 
 ---
 
-Which options are correct uses of AWS Step Functions in a data analytics workflow?
+**Which options are correct uses of AWS Step Functions in a data analytics workflow?**
 
 - *Coordinating multiple AWS Glue extract, transform, and load (ETL) jobs that process data from different sources and load it into a data warehouse*
 - *Orchestrating a machine learning workflow that involves data preprocessing, model training, evaluation, and deployment*
@@ -88,7 +88,7 @@ Step Functions is used to coordinate and orchestrate the components of a data an
 
 ---
 
-Which options are benefits of using zero-ETL approaches on AWS?
+**Which options are benefits of using zero-ETL approaches on AWS?**
 
 - *It streamlines data architecture and reduces data engineering efforts by automating custom extract, transform, and load (ETL) processes.*
 - *It provides real-time insights through real-time or near real-time data access.*
@@ -98,11 +98,21 @@ Zero-ETL aims to eliminate the need for custom ETL pipelines by using integratio
 
 ---
 
-Which option best describes a benefit of using serverless architectures for data analytics workloads on AWS?
+**Which option best describes a benefit of using serverless architectures for data analytics workloads on AWS?**
 
 *Organizations can optimize costs by paying only for the resources consumed. Serverless services are billed based on actual usage rather than provisioned capacity.*
 
 Serverless architectures are designed specifically to avoid provisioning and managing fleets of EC2 instances. Data encryption is always necessary, whether an architecture is serverless or server-based. With Serverless architectures, you do not directly deploy EC2 instances. Batch and scheduled workloads often use serverless architectures. One of the primary advantages of serverless architectures is cost optimization.
+
+---
+
+**What are typical considerations for securing data in AWS analytics environments?**
+
+- *Implementing least privilege access and preventing unintended access to analytics infrastructure and data.*
+- *Encrypting data at rest and in transit to protect sensitive information.*
+- *Monitoring infrastructure for changes and user activity with alerts for abnormal behavior.*
+
+Securing data in AWS analytics environments include implementing least privilege access controls, encrypting data, monitoring infrastructure security threats and anomalies, and auditing access. Automating the monitoring of changes helps maintain ongoing visibility and control over an environment subject to evolving analytics requirements. Referring to the AWS documentation on security best practices can provide more details about optimally configuring and managing security.
 
 ---
 
