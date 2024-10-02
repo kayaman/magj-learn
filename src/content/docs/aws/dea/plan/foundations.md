@@ -609,3 +609,20 @@ The following are a few key aspects that should be monitored:
   Identify inefficiencies and optimize performance over time based on usage patterns.
 
 To learn more about monitoring of data analytics systems, refer to **Reliability and Performance Efficiency** in the [Data Analytics Lens - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/analytics-lens/reliability.html) document.
+
+## Resources
+
+[Analytics on AWS](https://aws.amazon.com/big-data/datalakes-and-analytics/)  
+Find comprehensive information about data analytics services, features, and use cases.
+
+[Data engineering principles](https://docs.aws.amazon.com/prescriptive-guidance/latest/modern-data-centric-use-cases/data-engineering-principles.html)  
+Explore prescriptive guidance about data engineering on AWS.
+
+[Data analytics reference architecture](https://docs.aws.amazon.com/architecture-diagrams/latest/modern-data-analytics-on-aws/modern-data-analytics-on-aws.html)  
+Find detailed information about data analytics pipelines.
+
+[Workflow orchestration](https://aws.amazon.com/step-functions/)  
+Explore more information about Step Functions.
+
+[Data analytics security](https://docs.aws.amazon.com/wellarchitected/latest/analytics-lens/security.html)  
+Learn more about the security of your data analytics workflows.

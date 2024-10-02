@@ -116,3 +116,76 @@ Securing data in AWS analytics environments include implementing least privilege
 
 ---
 
+**What are some recommended monitoring best practices?**
+
+- *Test and validate jobs. *
+- *Integrate monitoring with visualization tools.*
+- *Set up alerts for critical failures.*
+
+It is important to test and validate transformation jobs on an ongoing basis to ensure quality is being maintained. Setting up alerts for failures is critical to catch problems early. Visualization of data can improve insights and make monitoring results more meaningful.  
+Many users besides data scientists may need to access logs.  
+Cost optimization and automation are not parts of monitoring workflows.
+
+---
+
+**Which options are areas or activities of data analytics systems that should be monitored?**
+
+- *Job submission and completion times for batch jobs using services like AWS Step Functions*
+- *Resource utilization of Amazon EC2 instances running analytics jobs to ensure they are not overused*
+- *Application performance metrics like request latency and error rates using services like Amazon CloudWatch*
+
+Some key areas and activities to be monitored include application performance, resource utilization, job statuses, data pipelines, streaming data, and application logs.  
+Monitoring internal email and calendars, storage naming conventions, and Availability Zone locations are not required to ensure reliability, performance, and availability of the system. The AWS services like CloudWatch, AWS CloudTrail, and Step Functions are useful for monitoring various operational aspects of analytics workloads on AWS.
+
+---
+
+**Which metrics would be most useful to monitor when analyzing the performance of extract, transform, and load (ETL) jobs running on AWS Glue?**
+
+- *Resource utilization of the Amazon EC2 instances running the ETL code*
+- *ETL job durations*
+- *ETL job failure and retry rates*
+
+Resource utilization, job durations, and the rate of failures and retries are all important metrics to monitor. Inventory levels, open support cases, and warehouse capacity are important, but not critical measures of ETL processes.
+
+---
+
+**A data engineer is working for a startup that collects data from various sources and needs to build out a data pipeline on AWS. The pipeline will ingest raw data from Amazon S3 buckets, process and transform the data, and load it into a data warehouse hosted on Amazon Redshift. Which tasks would typically be the responsibility of the data engineer?**
+
+*Writing extract, transform, and load (ETL) jobs to extract data from the raw files, transform it, and load it into the data warehouse*
+
+The data engineer's core responsibilities would be building and maintaining the data pipelines to ingest and process data for analytical use. Designing schemas, creating dashboards, and defining KPI metrics relate more closely to the roles of data analyst, business analyst, or data scientist.
+
+---
+
+**A data engineer at a startup is building out the company's data infrastructure on AWS. The company has limited engineering resources and budget. They asked the data engineer to design a data processing pipeline that minimizes cost. Which option should the engineer prioritize to meet this requirement?**
+
+*Building a serverless architecture using AWS Lambda, Amazon S3, and Amazon Athena instead of using provisioned services*
+
+To optimize for cost with limited budget and engineering resources, a serverless architecture using Amazon S3, Athena, and Lambda could be the most cost-efficient approach. Using on-demand clusters rather than reserved instances and storing all data in Amazon S3 without optimization might incur higher and unnecessary costs. Provisioning high-capacity EMR clusters could also increase cost.
+
+---
+
+**A data engineer at a financial services company has been asked to build an analytics platform on AWS that will process sensitive customer financial data. Compliance and information security leaders have mandated the platform meet strict regulatory and security requirements. What should be the data engineer's top priority?**
+
+*Implementing security controls like encryption, access controls, and data masking to protect sensitive data*
+
+When working with regulated, sensitive data, implementing proper security controls should be the data engineer's top priority. Optimizing performance, building data pipelines, and using open source to reduce costs are important but secondary to security.
+
+---
+
+**A data engineer at a large e-commerce company has built various data processing pipelines on AWS that need to run on daily, weekly, and monthly schedules. They want to implement an orchestration layer to automate the scheduling and operation of these pipelines. Which tools would BEST fit this requirement?**
+
+*AWS Step Functions with AWS Lambda and AWS Glue to schedule and automate data-driven workflows*
+
+Step Functions, along with Lambda and AWS Glue, is designed to automate the scheduling, orchestrating, and monitoring of data processing workflows and pipelines. OpsWorks, CodeDeploy, and AWS Config are unrelated to orchestration of data pipelines.
+
+---
+
+**A large retail company wants to gain insights from customer purchase data to improve their marketing strategies. Which role would a data engineer play in the data discovery process?**
+
+*Work with business stakeholders to understand their goals and define key metrics. Analyze data sources and processing requirements. Recommend modern data architecture*
+
+The best choice is that the data engineer would work with stakeholders to understand requirements, analyze existing data landscape, and recommend the best modern analytics solution. Owning data access policies, building machine learning models, and deploying a data mesh represent important ongoing activities. However, they are not the primary focus during the initial data discovery process.
+
+---
+
