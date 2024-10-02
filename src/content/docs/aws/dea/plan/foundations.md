@@ -587,3 +587,25 @@ The following are a few key aspects that should be monitored:
 **Systems Manager** provides application-level monitoring for EC2 instances and helps automate operational tasks.
 
 ### Monitoring best practices
+
+- Test and validate analytics jobs.
+
+  Test deployments before making changes in production. This helps validate performance and accuracy.
+
+- Monitor key metrics at each stage.
+
+  Monitoring ETL job success and failure rates, model training times, and the number of predictions made can help troubleshoot issues.
+
+- Set up alerts for critical failures.
+
+  Notify appropriate teams to troubleshoot issues in a timely manner.
+
+- Integrate monitoring with visualization tools.
+
+  Amazon Managed Grafana and QuickSight can be used for monitoring of end-to-end workflows. Dashboards provide a single view of overall system health.
+
+- Periodically review metrics.
+
+  Identify inefficiencies and optimize performance over time based on usage patterns.
+
+To learn more about monitoring of data analytics systems, refer to **Reliability and Performance Efficiency** in the [Data Analytics Lens - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/analytics-lens/reliability.html) document.
