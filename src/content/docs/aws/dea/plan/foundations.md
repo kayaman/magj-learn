@@ -1,7 +1,10 @@
 ---
 title: Foundations
 sidebar:
-  order: 1
+    order: 1
+    tableOfContents:
+        minHeadingLevel: 2
+        maxHeadingLevel: 4
 ---
 
 ## Introduction
