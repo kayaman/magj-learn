@@ -181,3 +181,19 @@ To learn more, see **Best Practices Design Patterns: Optimizing Amazon S3 Perfor
 
 **Cost optimization in analytics**  
 To learn more, see **Cost Optimization in Analytics Services: Storage** in the [Cost Modeling Data Lakes for Beginners Whitepaper](https://docs.aws.amazon.com/whitepapers/latest/cost-modeling-data-lakes/cost-optimization-in-analytics-services.html#storage).
+
+## Ingest Data
+
+
+
+## Build Data Catalog
+
+
+
+## Transform Data
+
+
+
+## Serve Data for Consumption
+
+
