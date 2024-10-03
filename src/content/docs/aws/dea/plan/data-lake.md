@@ -138,3 +138,46 @@ To learn more, see **Storage Class Analysis** in the [Amazon S3 User Guide](http
 
 ### Additional Amazon S3 optimization techniques
 
+The following are additional Amazon S3 performance and cost optimization techniques to consider.
+
+
+- Using S3 object tagging
+
+    S3 object tagging is used to granularly control access, analyze usage, manage lifecycle policies, and replicate objects.
+
+- Assessing your storage activity and estimating your costs
+
+    As your data lake grows, it can become increasingly complicated to assess usage of the data across your organization, evaluate your security posture, and optimize costs. 
+    Amazon S3 Storage Lens gives you visibility into your object storage across your organization with point-in-time metrics and actionable insights. It helps you visualize trends, identify outliers, and receive recommendations for storage cost optimization. You can generate insights at organization, account, AWS Region, bucket, and prefix level. For more information, see [S3 Storage Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html).  
+    The following are some of the insights you can access from the S3 Storage Lens dashboard.
+    - Bucket size, object size, and object count
+    - Data distribution on different storage classes
+    - Non-encrypted data
+    - Multiple versions of objects
+    - Incomplete multipart uploads
+    - Cold buckets (that have not been accessed for a long time)
+    - AWS Pricing Calculator is a web-based planning tool that you can use to create cost estimates for using AWS services. For more information, see [AWS Pricing Calculator](https://calculator.aws/).
+    You can use Pricing Calculator for the following use cases:  
+    - Model your solutions before building them.
+    - Explore price points for AWS services.
+    - Review the calculations for your estimates.
+    - Plan your AWS spend.
+    - Find cost-saving opportunities.
+  
+  - Considering a single account or multi-account strategy
+
+    The following are factors to consider when deciding whether to use a single AWS account or multi-account strategy for your data lake initiative.
+
+    | Factor | Account strategy |
+    |--------|------------------|
+    | You have a central IT department with data integration and security teams. | Single account |
+    | You are a large organization with multiple lines of business (LOBs) that operate independently and have separate IT departments. | Multi-account |
+| You are getting started with a proof of concept (POC) or minimal viable product (MVP) and want a straightforward setup. | Single account |
+
+    If you are undecided, you can start with a single AWS account and then shift to a multi-account strategy.
+
+**Optimizing Amazon S3 performance**  
+To learn more, see **Best Practices Design Patterns: Optimizing Amazon S3 Performance** in the [Amazon Simple Storage Service User Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/optimizing-performance.html).
+
+**Cost optimization in analytics**  
+To learn more, see **Cost Optimization in Analytics Services: Storage** in the [Cost Modeling Data Lakes for Beginners Whitepaper](https://docs.aws.amazon.com/whitepapers/latest/cost-modeling-data-lakes/cost-optimization-in-analytics-services.html#storage).
