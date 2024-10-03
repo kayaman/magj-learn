@@ -72,10 +72,10 @@ A data lake is an architectural approach that you can use to store all your data
 | Availability | Amazon S3 storage classes are designed to provide a range of object availability between 99.5 and 99.99 percent in a given year. This is backed by some of the strongest service-level agreements (SLAs) in the cloud. |
 | Cost | Data asset storage is often a significant portion of the costs associated with a data lake. By building a data lake on Amazon S3, you only pay for the data storage and data processing services that you actually use as you use them. |
 
-**Amazon S3**
+**Amazon S3**  
 To learn more, go to the [Amazon Simple Storage Service User Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html). 
 
-**Amazon S3 and data lakes**
+**Amazon S3 and data lakes**  
 To learn more, go to **Central Storage: Amazon S3 as the Data Lake Storage Platform** in the [Storage Best Practices for Data and Analytics Applications](https://docs.aws.amazon.com/whitepapers/latest/building-data-lakes/amazon-s3-data-lake-storage-platform.html) AWS Whitepaper.
 
 ### Data lake zones or layers
@@ -97,10 +97,10 @@ The following are some additional S3 buckets to consider.
 | **Archived Zone** | This zone is used for storing infrequently accessed, historical, or compliance-related data. |
 | **Sandbox Zone** | This zone is used for exploratory analysis and experimentation. |
 
-**Storage best practices**
+**Storage best practices**  
 To learn more, see **Data Lake Foundation** in the [Storage Best Practices for Data and Analytics Applications AWS Whitepaper](https://docs.aws.amazon.com/whitepapers/latest/building-data-lakes/data-lake-foundation.html).
 
-**Defining Amazon S3 bucket names**
+**Defining Amazon S3 bucket names**  
 To learn more, see **Defining S3 Bucket and Path Names for Data Lake Layers on the AWS Cloud** in the [AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/defining-bucket-names-data-lakes/welcome.html).
 
 ### Amazon S3 storage classes
@@ -109,11 +109,32 @@ To learn more, see **Defining S3 Bucket and Path Names for Data Lake Layers on t
 |---|---|---|---|
 | **S3 Intelligent-Tiering** <br> This storage class provides automatic cost savings for data with unknown or constantly changing access patterns. It automatically moves data to the most cost-effective storage tier without any performance impact or operational burden. | **S3 Standard** <br> This is general purpose storage for active, frequently accessed data. <br><br> **S3 Express One Zone** <br> This is a high-performance, Single-AZ storage class that is purpose-built to deliver the lowest latency storage for your most frequently accessed data. With this storage class, data is stored in a different bucket type—an S3 directory bucket—which supports hundreds of thousands of requests each second. | **S3 Standard-Infrequent Access (S3 Standard-IA)** <br> This is low-cost storage for data accessed monthly and requires milliseconds retrieval. <br><br> **S3 One Zone-Infrequent Access (S3 One Zone-IA)** <br> This is low-cost storage for infrequently accessed data in a Single-AZ. | **S3 Glacier Instant Retrieval** <br> This is low-cost storage for long-lived data that is accessed a few times each year and requires milliseconds retrieval. <br><br> **S3 Glacier Flexible Retrieval** <br> This is low-cost storage for long-lived data used for backups and archives, with bulk data retrieval from minutes to hours. <br><br> **S3 Glacier Deep Archive** <br> This is the lowest-cost storage for long-term archived data that is rarely accessed, with retrieval in hours. |
 
-**Amazon S3 storage classes**
+**Amazon S3 storage classes**  
 To learn more, see [Amazon S3 Storage Classes](https://aws.amazon.com/s3/storage-classes/).
 
-**Optimizing storage costs**
+**Optimizing storage costs**  
 To learn more, see [Optimizing Storage Costs Using Amazon S3](https://aws.amazon.com/s3/cost-optimization/).
 
 ### S3 lifecycle policies
+
+You can configure S3 Lifecycle rules to manage storage costs. They can automatically migrate data assets to a lower cost tier of storage such as the S3 Standard-IA or Amazon S3 Glacier Flexible Retrieval storage class . Rules can also be set up to expire assets when they are no longer needed.
+
+#### Lifecycle policy considerations
+
+To help you decide when to transition the right data to the right storage class, use Amazon analytics S3 Storage Class Analysis. After using storage class analysis to monitor access patterns, you can use the information to configure S3 Lifecycle policies to make the data transfer to the appropriate storage class. 
+
+The following are guidelines to consider when implementing lifecycle policies:
+
+- If your bucket is versioned, ensure that there is a rule action for both current and noncurrent objects to either transition or expire.
+- If you are uploading objects using multipart upload, there might be situations when the uploads fail or do not finish. The incomplete uploads remain in your buckets and are chargeable. You can configure lifecycle rules to automatically clean up incomplete multipart uploads after a certain time period.
+- To have a single lifecycle policy for all the source datasets (instead of one for each source prefix), you can keep all source data under one prefix.
+- S3 Lifecycle transition costs are directly proportional to the number of objects transitioned. Reduce the number of objects by aggregating or zipping and compressing them before moving them to archive tiers.
+
+**Amazon S3 storage lifecycle**  
+To learn more, see **Managing Your Storage Lifecycle** in the [Amazon S3 User Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/analytics-storage-class.html).
+
+**Amazon S3 storage classes**  
+To learn more, see **Storage Class Analysis** in the [Amazon S3 User Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/analytics-storage-class.html).
+
+### Additional Amazon S3 optimization techniques
 
