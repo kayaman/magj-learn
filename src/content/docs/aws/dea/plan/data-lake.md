@@ -91,6 +91,7 @@ An effective data lake zones or layers strategy helps with data organization, da
 The following are some additional S3 buckets to consider.
 
 | Bucket |	Description |
+|--------|--------------|
 | Landing Zone | When working with sensitive data (for example, personally identifiable information, or PII), it is recommended to use an additional S3 bucket as a landing zone. Mask the data before it is moved into the raw zone. |
 | Logs Zone | This zone is used for logs for Amazon S3 and other services in the data lake architecture. The logs can include S3 Access Logs, Amazon CloudWatch log files, or AWS CloudTrail log files. |
 | Archived Zone | This zone is used for storing infrequently accessed, historical, or compliance-related data. |
@@ -107,3 +108,12 @@ To learn more, see **Defining S3 Bucket and Path Names for Data Lake Layers on t
 | Storage Class for Automatically Moving Objects | Storage Classes for Frequently Accessed Objects	| Storage Classes for Infrequently Accessed Objects |	Storage Classes for Archiving Objects |
 |---|---|---|---|
 | **S3 Intelligent-Tiering** <br> This storage class provides automatic cost savings for data with unknown or constantly changing access patterns. It automatically moves data to the most cost-effective storage tier without any performance impact or operational burden. | **S3 Standard** <br> This is general purpose storage for active, frequently accessed data. <br><br> **S3 Express One Zone** <br> This is a high-performance, Single-AZ storage class that is purpose-built to deliver the lowest latency storage for your most frequently accessed data. With this storage class, data is stored in a different bucket type—an S3 directory bucket—which supports hundreds of thousands of requests each second. | **S3 Standard-Infrequent Access (S3 Standard-IA)** <br> This is low-cost storage for data accessed monthly and requires milliseconds retrieval. <br><br> **S3 One Zone-Infrequent Access (S3 One Zone-IA)** <br> This is low-cost storage for infrequently accessed data in a Single-AZ. | **S3 Glacier Instant Retrieval** <br> This is low-cost storage for long-lived data that is accessed a few times each year and requires milliseconds retrieval. <br><br> **S3 Glacier Flexible Retrieval** <br> This is low-cost storage for long-lived data used for backups and archives, with bulk data retrieval from minutes to hours. <br><br> **S3 Glacier Deep Archive** <br> This is the lowest-cost storage for long-term archived data that is rarely accessed, with retrieval in hours. |
+
+**Amazon S3 storage classes**
+To learn more, see [Amazon S3 Storage Classes](https://aws.amazon.com/s3/storage-classes/).
+
+**Optimizing storage costs**
+To learn more, see [Optimizing Storage Costs Using Amazon S3](https://aws.amazon.com/s3/cost-optimization/).
+
+### S3 lifecycle policies
+
