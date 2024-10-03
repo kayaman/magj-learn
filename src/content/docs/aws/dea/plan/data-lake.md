@@ -64,5 +64,9 @@ A data lake is an architectural approach that you can use to store all your data
 
 ### Amazon S3 for data lakes
 
+| Feature | Description |
+|---------|-------------|
+|         |             |
+
 
 
