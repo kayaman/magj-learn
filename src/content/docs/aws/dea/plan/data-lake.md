@@ -104,3 +104,6 @@ To learn more, see **Defining S3 Bucket and Path Names for Data Lake Layers on t
 
 ### Amazon S3 storage classes
 
+| Storage Class for Automatically Moving Objects | Storage Classes for Frequently Accessed Objects	| Storage Classes for Infrequently Accessed Objects |	Storage Classes for Archiving Objects |
+|---|---|---|---|
+| **S3 Intelligent-Tiering** <br> This storage class provides automatic cost savings for data with unknown or constantly changing access patterns. It automatically moves data to the most cost-effective storage tier without any performance impact or operational burden. | **S3 Standard** <br><br> This is general purpose storage for active, frequently accessed data. <br> **S3 Express One Zone** <br> This is a high-performance, Single-AZ storage class that is purpose-built to deliver the lowest latency storage for your most frequently accessed data. With this storage class, data is stored in a different bucket type—an S3 directory bucket—which supports hundreds of thousands of requests each second. | |
