@@ -189,3 +189,15 @@ The best choice is that the data engineer would work with stakeholders to unders
 
 ---
 
+**A data analyst is working for a large ecommerce company. Their team needs to store and analyze sales data from the past 5 years, which amounts to approximately 10 TB of data. They will access this data frequently for reporting and analysis purposes. Additionally, the data analyst has a smaller amount of archived sales data from the past 10 years (about 2 TB) that is rarely accessed but must be retained for compliance purposes.  
+Which combination of Amazon S3 storage classes is the most appropriate and cost-effective for storing and accessing this data?**
+
+*Store the 10 TB of frequently accessed data in S3 Standard and the 2 TB of archived data in S3 Glacier Deep Archive.*
+
+S3 Standard is the most suitable storage class for frequently accessed data because it provides low-latency and high-throughput access. For the archived data that is rarely accessed, S3 Glacier Deep Archive is the most cost-effective option, offering the lowest storage costs for long-term archival data.  
+S3 Standard-IA is designed for data that is infrequently accessed but requires rapid access when needed. Because the 10 TB of data is frequently accessed, S3 Standard is a better choice. Additionally, S3 Glacier Flexible Retrieval might not be the most cost-effective option for the archived data because S3 Glacier Deep Archive offers lower storage costs for long-term archival data.  
+S3 One Zone-IA is designed for data that is infrequently accessed and can tolerate a higher level of risk by storing data in a single Availability Zone. However, because the 10 TB of data is frequently accessed, S3 Standard is a better choice. Additionally, S3 Intelligent-Tiering is designed for data with unknown or changing access patterns. It might not be the most cost-effective option for the archived data that is rarely accessed.  
+S3 Standard is a suitable choice for the frequently accessed data. However, S3 Glacier Flexible Retrieval is designed for archives with unpredictable retrieval needs. It might not be the most cost-effective option for the archived data that is rarely accessed. S3 Glacier Deep Archive is a more cost-effective choice for long-term archival data.
+
+---
+
