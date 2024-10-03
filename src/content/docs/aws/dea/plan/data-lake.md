@@ -184,6 +184,83 @@ To learn more, see **Cost Optimization in Analytics Services: Storage** in the [
 
 ## Ingest Data
 
+### AWS DMS
+
+AWS DMS can ingest data into your AWS data lake from various data stores, such as relational databases, NoSQL databases, and data warehouses. AWS DMS can migrate from database to database, and from database to other storage, such as Amazon S3.
+
+By shifting analytical and transformation tasks to your data lake environment, you can reduce the computational load and demand on your source databases and business-critical applications.
+
+![DMS](/img/dms-flow.png)
+
+1. Source database
+
+    The source database can be located in an on-premises or cloud-based system.
+
+2. Source endpoint
+
+    The source endpoint provides connection, data store type, and location information about the source data store.  
+    AWS DMS uses this information to make a connection. 
+
+3. Replication instance
+
+    This is the compute resource that will be used to perform the replication tasks.
+
+4. Replication task
+   
+    Three phases of replication are as follows:
+    - Migrate existing data (Full load)
+    - Application of cached changes
+    - Replicate data changes only (change data capture)
+
+5. Target endpoint
+
+    The target endpoint provides connection, data store type, and location information about the target data store.  
+    AWS DMS uses this information to make a connection. 
+
+6. Amazon S3
+
+    This is the central storage repository for the data lake.
+
+#### Types of replication tasks
+
+- Full load
+
+    The full load is a one-time migration of existing data. Any changes to the database that occur during this initial migration are cached.
+
+- Application of cached changes
+
+    The second phase is the application of cached changes. After the full load is complete, AWS DMS begins applying changes that occurred up to that point.  
+    After the full load task is completed, AWS DMS begins to collect changes as transactions for the ongoing replication phase. After AWS DMS applies all cached changes, tables are transactionally consistent. At this point, AWS DMS moves to the ongoing replication phase.
+
+- Ongoing replication
+
+    The third phase is ongoing replication, referred to as change data capture (CDC), which keeps the source and target data stores in sync.  
+    After the table is loaded (Task 1) and the cached changes are applied (Task 2), AWS DMS performs ongoing replication.  
+    AWS DMS reads changes from the source database transaction logs, extracts these changes, converts them to the target format, and applies them to the target. This process provides near real-time replication to the target, reducing the complexity of replication monitoring.  
+    The following are two types of CDC workloads:
+    - Insert-only operations
+    - Full CDC, which includes update and delete operations
+
+| Aspect | Insert-only CDC | Full CDC (with updates and deletes) |
+|---|---|---|
+| Common use cases |	Suitable for append-only data, like logging |	Applies to dynamic datasets where records are modified or purged |
+| Data operations |	Inserts only |	Involves inserts, updates, and deletes, requiring handling of existing records |
+| Performance impact |	Generally lower, optimized for insertions |	Higher, due to the additional steps required to locate and modify or delete existing records |
+| Data consistency |	Straightforward to maintain because data is only added |	More challenging to ensure consistency and integrity across transactions |
+| CDC method |	Efficient capture of new entries. |	Might require sophisticated methods to capture and replicate changes accurately, including transaction logs or triggers |
+
+**Amazon S3 and AWS DMS**  
+To learn more specifics about AWS DMS and Amazon S3, see **Using Amazon S3 as a target for AWS Database Migration Service** in the [AWS DMS User Guide](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html). 
+
+**AWS DMS training**  
+For a self-paced training course about AWS DMS, see [AWS Database Migration Service (AWS DMS) Getting Started](https://explore.skillbuilder.aws/learn/course/15904/play/108922/aws-database-migration-service-aws-dms-getting-started) in AWS Skill Builder. 
+
+**AWS DMS and AWS Glue**  
+To learn more about DMS and automatic Glue data catalog population see **Create an AWS Glue Data Catalog with AWS DMS** in the [AWS Blog](https://aws.amazon.com/blogs/database/create-an-aws-glue-data-catalog-with-aws-dms/).
+
+
+### AWS DataSync
+
 
 
 ## Build Data Catalog
