@@ -172,7 +172,7 @@ The following are additional Amazon S3 performance and cost optimization techniq
     |--------|------------------|
     | You have a central IT department with data integration and security teams. | Single account |
     | You are a large organization with multiple lines of business (LOBs) that operate independently and have separate IT departments. | Multi-account |
-| You are getting started with a proof of concept (POC) or minimal viable product (MVP) and want a straightforward setup. | Single account |
+    | You are getting started with a proof of concept (POC) or minimal viable product (MVP) and want a straightforward setup. | Single account |
 
     If you are undecided, you can start with a single AWS account and then shift to a multi-account strategy.
 
