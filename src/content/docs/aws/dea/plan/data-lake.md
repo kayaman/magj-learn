@@ -66,7 +66,41 @@ A data lake is an architectural approach that you can use to store all your data
 
 | Feature | Description |
 |---------|-------------|
-|         |             |
+| Scalability | Amazon S3 is an exabyte-scale object store for storing any type of data. You can store structured data (such as relational data), semi-structured data (such as JSON, XML, and comma-separated values, or .csv, files), and unstructured data (such as images or media files). You can start small and grow your data lake as needed, with no compromise on performance or reliability. |
+| Durability | Amazon S3 is designed to deliver 99.999999999 percent (11 nines) data durability. Amazon S3 Standard automatically creates copies of all uploaded objects and stores them across at least three Availability Zones. This means your data is protected by a Multi-AZ resiliency model and against site-level failures. S3 One Zone-Infrequent Access (S3 One Zone-IA) creates copies in one Availability Zone. |
+| Security | Amazon S3 is designed to provide unmatched cloud storage security and compliance across all storage classes, including identity and access management, inventory scanning, automatic encryption, and more. |
+| Availability | Amazon S3 storage classes are designed to provide a range of object availability between 99.5 and 99.99 percent in a given year. This is backed by some of the strongest service-level agreements (SLAs) in the cloud. |
+| Cost | Data asset storage is often a significant portion of the costs associated with a data lake. By building a data lake on Amazon S3, you only pay for the data storage and data processing services that you actually use as you use them. |
 
+**Amazon S3**
+To learn more, go to the [Amazon Simple Storage Service User Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html). 
 
+**Amazon S3 and data lakes**
+To learn more, go to **Central Storage: Amazon S3 as the Data Lake Storage Platform** in the [Storage Best Practices for Data and Analytics Applications](https://docs.aws.amazon.com/whitepapers/latest/building-data-lakes/amazon-s3-data-lake-storage-platform.html) AWS Whitepaper.
+
+### Data lake zones or layers
+
+An effective data lake zones or layers strategy helps with data organization, data integrity, and access controls. The following is a common three zone approach to align with the stages of a data pipeline.
+
+![Zones](/img/dl-zones.png)
+
+|   |   |   |
+|---|---|---|
+| The raw zone stores the raw data as it is ingested into the data lake. To preserve data integrity, it is recommended to retain the original file format and turn on versioning in this S3 bucket. | The cleaned zone stores processed or transformed data. For example, filtering anomalies, standardizing formats, and correcting values that are not valid. | The curated Zone stores merged, aggregated, and quality-assured data for specific use cases in a consumption-ready format. |
+
+The following are some additional S3 buckets to consider.
+
+| Bucket |	Description |
+| Landing Zone | When working with sensitive data (for example, personally identifiable information, or PII), it is recommended to use an additional S3 bucket as a landing zone. Mask the data before it is moved into the raw zone. |
+| Logs Zone | This zone is used for logs for Amazon S3 and other services in the data lake architecture. The logs can include S3 Access Logs, Amazon CloudWatch log files, or AWS CloudTrail log files. |
+| Archived Zone | This zone is used for storing infrequently accessed, historical, or compliance-related data. |
+| Sandbox Zone | This zone is used for exploratory analysis and experimentation. |
+
+**Storage best practices**
+To learn more, see **Data Lake Foundation** in the [Storage Best Practices for Data and Analytics Applications AWS Whitepaper](https://docs.aws.amazon.com/whitepapers/latest/building-data-lakes/data-lake-foundation.html).
+
+**Defining Amazon S3 bucket names**
+To learn more, see **Defining S3 Bucket and Path Names for Data Lake Layers on the AWS Cloud** in the [AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/defining-bucket-names-data-lakes/welcome.html).
+
+### Amazon S3 storage classes
 
