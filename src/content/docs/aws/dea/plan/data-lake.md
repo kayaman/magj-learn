@@ -92,10 +92,10 @@ The following are some additional S3 buckets to consider.
 
 | Bucket |	Description |
 |--------|--------------|
-| Landing Zone | When working with sensitive data (for example, personally identifiable information, or PII), it is recommended to use an additional S3 bucket as a landing zone. Mask the data before it is moved into the raw zone. |
-| Logs Zone | This zone is used for logs for Amazon S3 and other services in the data lake architecture. The logs can include S3 Access Logs, Amazon CloudWatch log files, or AWS CloudTrail log files. |
-| Archived Zone | This zone is used for storing infrequently accessed, historical, or compliance-related data. |
-| Sandbox Zone | This zone is used for exploratory analysis and experimentation. |
+| **Landing Zone** | When working with sensitive data (for example, personally identifiable information, or PII), it is recommended to use an additional S3 bucket as a landing zone. Mask the data before it is moved into the raw zone. |
+| **Logs Zone** | This zone is used for logs for Amazon S3 and other services in the data lake architecture. The logs can include S3 Access Logs, Amazon CloudWatch log files, or AWS CloudTrail log files. |
+| **Archived Zone** | This zone is used for storing infrequently accessed, historical, or compliance-related data. |
+| **Sandbox Zone** | This zone is used for exploratory analysis and experimentation. |
 
 **Storage best practices**
 To learn more, see **Data Lake Foundation** in the [Storage Best Practices for Data and Analytics Applications AWS Whitepaper](https://docs.aws.amazon.com/whitepapers/latest/building-data-lakes/data-lake-foundation.html).
