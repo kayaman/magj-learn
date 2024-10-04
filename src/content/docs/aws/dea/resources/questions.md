@@ -189,8 +189,8 @@ The best choice is that the data engineer would work with stakeholders to unders
 
 ---
 
-**A data analyst is working for a large ecommerce company. Their team needs to store and analyze sales data from the past 5 years, which amounts to approximately 10 TB of data. They will access this data frequently for reporting and analysis purposes. Additionally, the data analyst has a smaller amount of archived sales data from the past 10 years (about 2 TB) that is rarely accessed but must be retained for compliance purposes.  
-Which combination of Amazon S3 storage classes is the most appropriate and cost-effective for storing and accessing this data?**
+**A data analyst is working for a large ecommerce company. Their team needs to store and analyze sales data from the past 5 years, which amounts to approximately 10 TB of data. They will access this data frequently for reporting and analysis purposes. Additionally, the data analyst has a smaller amount of archived sales data from the past 10 years (about 2 TB) that is rarely accessed but must be retained for compliance purposes.**    
+**Which combination of Amazon S3 storage classes is the most appropriate and cost-effective for storing and accessing this data?**
 
 *Store the 10 TB of frequently accessed data in S3 Standard and the 2 TB of archived data in S3 Glacier Deep Archive.*
 
@@ -198,6 +198,40 @@ S3 Standard is the most suitable storage class for frequently accessed data beca
 S3 Standard-IA is designed for data that is infrequently accessed but requires rapid access when needed. Because the 10 TB of data is frequently accessed, S3 Standard is a better choice. Additionally, S3 Glacier Flexible Retrieval might not be the most cost-effective option for the archived data because S3 Glacier Deep Archive offers lower storage costs for long-term archival data.  
 S3 One Zone-IA is designed for data that is infrequently accessed and can tolerate a higher level of risk by storing data in a single Availability Zone. However, because the 10 TB of data is frequently accessed, S3 Standard is a better choice. Additionally, S3 Intelligent-Tiering is designed for data with unknown or changing access patterns. It might not be the most cost-effective option for the archived data that is rarely accessed.  
 S3 Standard is a suitable choice for the frequently accessed data. However, S3 Glacier Flexible Retrieval is designed for archives with unpredictable retrieval needs. It might not be the most cost-effective option for the archived data that is rarely accessed. S3 Glacier Deep Archive is a more cost-effective choice for long-term archival data.
+
+---
+
+**Which AWS service is the best option to migrate data from on-premises or cloud-based relational databases to Amazon S3?**
+
+*AWS Database Migration Service (AWS DMS)*
+
+AWS DMS is a cloud service that can be used to migrate data from on-premises or cloud-based relational databases to Amazon S3 to build a data lake.  
+DataSync is used for transferring data between on-premises storage and Amazon S3, Amazon Elastic File System (Amazon EFS), or Amazon FSx. It is not used for migrating data from databases to Amazon S3.  
+AWS Glue is a fully managed extract, transform, and load (ETL) service that can be used for data integration tasks. While you can use AWS Glue to connect to relational databases and read data from tables, it is not used to handle database migrations tasks. DMS is purpose built for this task.  
+Lake Formation is a service that helps to build, secure, and manage data lakes, but it does not perform data migration from databases to Amazon S3.
+
+---
+
+**Which AWS service can be used to efficiently transfer large amounts of file-based data from on-premises or cloud-based storage to Amazon S3 in a continuous fashion?**
+
+*AWS DataSync*
+
+AWS DataSync is a data transfer service that can be used to efficiently transfer large amounts of file-based data from on-premises or cloud-based storage systems to Amazon S3. This makes it suitable for ingesting data into a data lake.  
+AWS DMS is used for migrating data from databases, not for transferring data from storage systems to Amazon S3.  
+AWS Snowball is a data migration solution that involves physically shipping storage devices, which might not be as efficient for regular data ingestion into a data lake.  
+Firehose is used for ingesting and delivering streaming data, but it is not optimized for transferring large amounts of static data from storage systems to Amazon S3.
+
+---
+
+**Which of these are DMS capabilities?**
+
+- *Perform a full load of existing tables and replicating change data capture events (inserts, deletes, updates)  in a continuous mode.*
+- *Automatic population of Glue Data Catalog with tables definitions during migration tasks.*
+
+DMS can perform full load replication tasks in a continuous mode.  
+DMS can be configured to automatically populate the Glue Data catalog while performing a migration task.  
+DMS supports writing both in CSV as well as Parquet format.  
+DMS does not support replicating CDC on a schedule.
 
 ---
 

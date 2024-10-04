@@ -261,7 +261,25 @@ To learn more about DMS and automatic Glue data catalog population see **Create 
 
 ### AWS DataSync
 
+AWS DataSync is a data transfer service optimized for moving large volumes of file-based and object data to, from, and between AWS storage services.
 
+Example file-based data include the following:
+
+- Content repositories (user home directories, project files, digital archives)
+Media libraries (collections of video, audio, and image files)
+- Research, engineering, and simulation files
+- Log files or file-based backups of critical data from enterprise applications
+
+DataSync automatically scales and handles scheduling, monitoring, encryption, and verification of your file and object transfers. With DataSync, you pay only for the amount of data copied, with no minimum commitments or upfront fees.
+
+**AWS DataSync**
+To learn more about AWS DataSync, see the [AWS DataSync User Guide](https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html).
+
+**AWS DataSync FAQs**
+To explore frequently asked questions about AWS DataSync, see [AWS DataSync FAQs](https://aws.amazon.com/datasync/faqs/).
+
+**AWS DataSync training**
+To start training on AWS DataSync, see [AWS DataSync Primer](https://explore.skillbuilder.aws/learn/course/external/view/elearning/102/aws-datasync-primer).
 
 ## Build Data Catalog
 
