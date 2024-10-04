@@ -235,3 +235,36 @@ DMS does not support replicating CDC on a schedule.
 
 ---
 
+**What is the primary purpose of AWS Glue Data Catalog?**
+
+*To store and manage metadata (for example location and schema) about data sets*
+
+AWS Glue Data Catalog is a centralized metadata repository that stores information about data sources like locations, partitions  and schemas, . Use it to discover, access, and manage data across various data stores and analytics applications.  
+AWS Glue Data Catalog does not provide compute processing capabilities. For real-time data streaming and analytics use  AWS Glue ETL streaming jobs or Spark Structured Streaming  Jobs in Amazon EMR or Amazon Managed Service for Apache Flink.  
+AWS Glue Data Catalog is not a Hadoop cluster. For managed Hadoop clusters, use Amazon EMR.  
+AWS Glue Data Catalog is not a data warehousing or querying service. For serverless data warehousing and querying, use Amazon Athena or Amazon Redshift.
+
+---
+
+**Which statement about AWS Glue Data Catalog is true?**
+
+*It integrates seamlessly with other AWS analytics services, like Amazon Athena and Amazon EMR.*
+
+Data Catalog is designed to work seamlessly with other AWS analytics services like Amazon Athena, Amazon EMR, and AWS Glue extract, transform, and load (ETL) jobs. With Data Catalog, these services can access and process data from various sources using the centralized metadata.  
+Data Catalog supports metadata for data stored in various data sources, including Amazon S3, Amazon RDS and on-premises databases.  
+Data Catalog does not automatically discover and catalog data sources. Manually define data sources or use AWS Glue crawlers to automatically scan and infer metadata from data sources.  
+Although metadata can be manually defined in the AWS Glue Data Catalog, there are also automated tools, like AWS Glue crawlers, to extract and populate metadata from data sources.
+
+---
+
+**Which statement about using AWS Glue Data Catalog in a data analytics workflow is correct?**
+
+*It makes it possible to discover, access, and combine data from multiple sources for analysis and reporting.*
+
+Data Catalog makes it possible to discover, access, and combine data from various sources for analysis and reporting within the data analytics workflow.  
+Although Data Catalog is commonly used in batch data processing workflows, it can also support real-time analytics. It provides metadata about streaming data sources and integrating with services like Amazon Kinesis.  
+Data Catalog does not provide data transformation capabilities. For data transformation and extract, transform, and load (ETL) jobs, use AWS Glue ETL or other services, like AWS Lambda or Amazon EMR.  
+Data Catalog is a metadata repository not a fully managed data lake solution. It works with various data storage services, like Amazon S3 (for data lake) and Amazon RDS and Amazon Redshift (for data warehousing).
+
+---
+
