@@ -156,6 +156,8 @@ Data discovery is an important prerequisite to architecting and deploying a data
   - What is the frequency of your data transformation? (for example, real time, micro-batching, overnight batch) 
   - Are there any constraints with your current tool of choice?
 
+### Resources
+
 To learn more about data discovery, refer to **Data Discovery** in the [Data Analytics Lens - Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/analytics-lens/data-discovery.html) document.
 
 ## AWS Data Services and the Modern Data Architecture
@@ -284,6 +286,7 @@ Use **Amazon DataZone** to catalog, discover, share, and govern data stored acro
 
 **Audit Manager** continuously audits usage to assess risk and compliance with regulations and industry standards.
 
+### Resources
 
 For more details about purpose-built AWS services for data analytics, refer to the [Analytics on AWS](https://aws.amazon.com/big-data/datalakes-and-analytics/) webpage.
 
@@ -300,8 +303,6 @@ Automation is suitable for simple repetitive tasks. Orchestration is needed for 
 Typically, they are used together in analytics workflows. For example, orchestration could involve coordinating multiple automated tasks in a defined sequence. Together, orchestration and automation can streamline operations, improve reliability, and empower non-programmers to manage complex workflows.
 
 ### Options for orchestration and automation
-
-
 
 - AWS Step Functions
 
@@ -430,6 +431,8 @@ Many AWS services have serverless options or can be used in serverless workflows
 
   OpenSearch Service Serverless streamlines running petabyte-scale search and analytics workloads and automatically provisions and scales underlying resources without needing to manage or scale OpenSearch clusters.
 
+### Resources
+
 To learn more about orchestration and [Step Functions](https://aws.amazon.com/step-functions/), see the AWS Step Functions webpage.  
 To learn  more about [zero-ETL](https://aws.amazon.com/what-is/zero-etl/), see the What is Zero-ETL webpage.  
 To learn more about serverless computing on AWS, see the [Serverless](https://aws.amazon.com/serverless/) on AWS webpage.
@@ -499,7 +502,6 @@ Use **AWS KMS** to encrypt and decrypt data at rest and in transit using custome
 
 #### Data and network security
 
-
 #### Data auditability
 
 ![CloudTrail](/img/cloudtrail.png)
@@ -548,9 +550,11 @@ As data moves between different data stores like Amazon S3, Amazon Redshift, and
 
   Design comprehensive, flexible, and robust governance policies and techniques.
 
+### Resources
+
 To learn more about security in data analytics systems, refer to **Security** in the [Data Analytics Lens - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/analytics-lens/security.html) document.
 
-### Monitoring
+## Monitoring
 
 Monitoring is crucial for maintaining the reliability, availability, and performance of AWS data analytics workflows. 
 

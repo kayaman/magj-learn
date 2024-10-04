@@ -176,6 +176,12 @@ The following are additional Amazon S3 performance and cost optimization techniq
 
     If you are undecided, you can start with a single AWS account and then shift to a multi-account strategy.
 
+
+
+
+
+### Resources
+
 **Optimizing Amazon S3 performance**  
 To learn more, see **Best Practices Design Patterns: Optimizing Amazon S3 Performance** in the [Amazon Simple Storage Service User Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/optimizing-performance.html).
 
@@ -272,6 +278,8 @@ Media libraries (collections of video, audio, and image files)
 
 DataSync automatically scales and handles scheduling, monitoring, encryption, and verification of your file and object transfers. With DataSync, you pay only for the amount of data copied, with no minimum commitments or upfront fees.
 
+### Resources
+
 **AWS DataSync**
 To learn more about AWS DataSync, see the [AWS DataSync User Guide](https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html).
 
@@ -282,6 +290,116 @@ To explore frequently asked questions about AWS DataSync, see [AWS DataSync FAQs
 To start training on AWS DataSync, see [AWS DataSync Primer](https://explore.skillbuilder.aws/learn/course/external/view/elearning/102/aws-datasync-primer).
 
 ## Build Data Catalog
+
+### Data Catalog
+
+The AWS Glue Data Catalog is the central metadata repository for all your data assets stored in your data lake locations.
+
+Data Catalog integrates seamlessly with other AWS analytics such as the following: 
+
+- **Amazon Athena** relies on the Data Catalog to store and retrieve metadata about the data sources (tables, columns, data types, and so on) that you want to query. 
+- **Amazon EMR** can directly access the metadata stored in the Data Catalog so it can understand the structure and location of the data it needs to process. 
+  
+You can use the metadata in the catalog to query and transform that data in a consistent manner across a wide variety of applications. This metadata is stored in the form of tables, which contain information like the location, schema, and runtime metrics of the data.
+
+#### Example of a Data Catalog table
+
+| Table entry | Description |
+|-------------|-------------|
+| Name | This is the name of the table. |
+| DatabaseName | This is the database the table belongs to. |
+| StorageDescriptor | This defines the physical storage properties of the data as follows: <br> - Data format (for example .csv, Parquet) <br> - Location of the data in Amazon S3 <br> - Serialization and deserialization libraries |
+| Schema |	This includes the schema (column names and data types), such as the following: <br> - name: string <br> - year: integer <br> - price: double |
+| PartitionKeys |	These are the columns used to partition the data, which can improve query performance. <br The following is an example of data partitioned by day and that has been ingested data for 2 days: <br> - Partition1: **year=2024/month=3/day=13** => Location = s3://doc-example-bucket/data/mytable/year=2024/month=3/day=13 <br> - Partition2: **year=2024/month=3/day=14/** => Location = s3://doc-example-bucket/data/mytable/year=2024/month=3/day=14/ |
+| Parameters |	These are key-value pairs that store additional metadata about the table, such as the table's description, creator, and creation time. |
+| Table Type |	This indicates the type of table, such as EXTERNAL_TABLE, VIRTUAL_VIEW, and so on. |
+
+#### Populating the catalog
+
+Software entities called crawlers populate the Data Catalog. Crawlers discover the data, recognize its structure, and then add metadata into the Data Catalog. Crawlers use classifiers to detect and infer schemas. 
+
+There are other ways to populate the data catalog:
+
+- Add metadata manually
+
+    Manually add and update table details using the AWS Glue console or by calling the API through the AWS Command Line Interface (AWS CLI).  
+    Now that you have reviewed how to add metadata manually, move to the next tab to learn about running data definition language (DDL) queries.
+
+- Run DDL queries
+
+    Run DDL queries in Athena, AWS Glue jobs, and AWS EMR jobs. 
+    DDL is a subset of SQL that is used to define and manage the structure of a database. It is responsible for creating, modifying, and deleting database objects, such as tables, indexes, views, stored procedures, and other database components.
+
+#### Crawlers
+
+AWS Glue crawlers can scan data in all kinds of repositories, classify it, extract schema information from it, and store the metadata automatically in the Data Catalog.
+
+When a crawler runs, it automatically takes the following actions.
+
+- Uses a classifier to discover and infer the structure of the data
+
+    AWS Glue crawlers can use built-in or custom classifiers to scan the data in the data store and recognize its format, schema, and associated properties. 
+
+- Groups data into tables or partitions
+
+    AWS Glue crawlers infer file types and schemas. They also automatically identify the partition structure of your dataset when they populate the Data Catalog. By partitioning your data, you can restrict the amount of data scanned by each query, which improves performance and reduces cost.
+
+- Populates metadata in the Data Catalog
+
+    On completion, the AWS Glue crawler creates or updates one or more tables in the Data Catalog with the corresponding table definitions and partitions. You can configure how the crawler adds, updates, and deletes tables and partition information. 
+
+- Creates a single schema for each Amazon S3 path
+
+    You can configure the crawler to combine compatible schemas into a common table definition. If the schemas that are compared match, meaning the partition threshold is higher than 70 percent, the schemas are denoted as partitions of a table. If they don’t match, the crawler creates a table for each Amazon S3 path, resulting in a higher number of tables. You can specify the maximum limit of tables that a crawler can generate.
+
+#### Configuration options
+
+The following are some AWS Glue crawler configuration options and features to consider:
+
+- You can configure the crawler to scan multiple data stores in a single run. 
+- You can run crawlers on a schedule or on demand, or you can invoke them based on an event to ensure that your metadata is up to date.
+- It is recommended to choose the default setting of always updating Data Catalog tables. This way, the Data Catalog metadata is always in sync with the Amazon S3 data lake.
+- You can configure the crawler to scan only new subfolders and perform incremental crawls for adding new partitions in AWS Glue.
+
+#### Classifiers
+
+When you define a crawler, you can rely on built-in classifiers or choose one or more custom classifiers to read the data and determine its structure or schema. When the crawler runs, the first classifier in your list to successfully recognize your data store is used to create a schema for your table. Considerations for each type of classifiers are as follows:
+
+- Built-in classifiers: AWS Glue provides built-in classifiers to infer schemas from common files with formats that include JSON, .csv, and Apache Avro. 
+- Custom classifiers: To configure the results of a classification, you can create a custom classifier. You provide the code for custom classifiers, and they run in the order that you specify. You define your custom classifiers in a separate operation before you define the crawlers.
+
+#### Data Catalog features and considerations
+
+The following are some features and considerations for using Data Catalog:
+
+- Each AWS account has one Data Catalog in each Region. 
+- You can manually edit the schemas in the Data Catalog. For example, you can change column data types, add new columns, or modify table properties.
+- The Data Catalog maintains a comprehensive schema version history so you can compare and review how your data has changed over time.
+- You can compute column-level statistics for Data Catalog tables, such as minimum value, maximum value, total null values, and total distinct values. 
+- You can measure and monitor the quality of your data using the AWS Glue Data Quality service. 
+
+### Resources
+
+**AWS Glue overview**  
+For an overview of the features and benefits of AWS Glue, go to the [What Is a Data Catalog?](https://aws.amazon.com/what-is/data-catalog/) website.
+
+**AWS Glue and column-level statistics**  
+To learn more about computing column-level statistics, go to **Optimizing Query Performance Using Column Statistics** in the [AWS Glue User Guide](https://docs.aws.amazon.com/glue/latest/dg/column-statistics.html).
+
+**AWS Glue data quality**  
+To learn more about data quality, go to **AWS Glue Data Quality** in the [AWS Glue User Guide](https://docs.aws.amazon.com/glue/latest/dg/glue-data-quality.html).
+
+**AWS Glue crawlers**  
+To learn more about crawlers, see **Data Discovery and Cataloging in AWS Glue** in the [AWS Glue User Guide](https://docs.aws.amazon.com/glue/latest/dg/catalog-and-crawler.html).
+
+**AWS Glue and AWS DMS**
+To learn more about the interaction between AWS Glue and AWS DMS, see **Create an AWS Glue Data Catalog with AWS DMS** in the [AWS Database Blog](https://aws.amazon.com/blogs/database/create-an-aws-glue-data-catalog-with-aws-dms/). 
+
+
+
+
+
+
 
 
 
