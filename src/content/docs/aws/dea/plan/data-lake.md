@@ -405,7 +405,90 @@ To learn more about the interaction between AWS Glue and AWS DMS, see **Create a
 
 ## Transform Data
 
+### Processing the data 
 
+The ingested raw data will typically be in different formats and of varying quality. It needs to be processed to make it useful in the later analysis stages of the workflow.  
+The terms preparation, cleansing, and transforming are often used to describe actions in the processing stage. Those actions are performed using extract, transform, and load (ETL) functions. 
+
+- **Extract**: Gathering data from a variety of data sources
+- **Transform**: Systematically changing raw data into useable formats
+- **Load**: Moving the transformed data into data lake storage or another location
+
+AWS offers multiple ways to transform, clean, and prepare your data assets, and create transform workflows.
+
+| Use case | AWS services | Considerations |
+|----------|--------------|----------------|
+| Big data processing | Amazon EMR <br> - Amazon EMR on EC2 clusters <br> - Amazon EMR serverless <br> - Amazon EMR on EKS clusters | Comfortable writing Apache Spark code |
+| - Impromptu log analysis <br> - Report generation <br> - Business intelligence | Amazon Athena | - Serverless (reduces costs) <br> - Good for basic transformations |
+| Scheduling and orchestration | - Amazon EventBridge with AWS Step Functions <br> - Amazon Managed Workflows for Apache Airflow (Amazon MWAA) | - Build event-driven transform pipelines <br> - Orchestrate transform pipeline workflows |
+
+### AWS Glue
+
+AWS Glue is a serverless data integration service that makes it convenient to integrate data from multiple sources. Functions include connecting to different data sources, data discovery, data cataloging, and data transformation.
+
+Because AWS Glue is serverless, you don’t need to manually provision or manage any infrastructure. AWS Glue handles provisioning, configuring, and scaling of the resources required to run your ETL jobs. You pay only for the resources consumed while your jobs are running.
+
+AWS Glue is a multi-faceted service, and provides a wide range of features and functions for processing data.
+
+You can develop your ETL jobs within AWS Glue Studio (visual ETL, notebooks, script editor), with Amazon SageMaker Studio notebooks or with local notebooks and IDEs. In each of these cases, you can run your code in the AWS Glue underlying serverless distributed Spark engine.
+
+Following is an overview of many of the components of AWS Glue. This is not an exhaustive list, nor does it detail the many options available. For more detailed information, refer to the links at the end of this lesson.
+
+![Glue](/img/glue-ecosystem.png)
+
+#### Connectors
+
+A connector is a piece of code that facilitates communication between AWS Glue and your data store (source or target). 
+
+You can use built-in connectors, connectors offered in AWS Marketplace, or create custom connectors.
+
+To learn more, go to Using Connectors and Connections with AWS Glue Studio(opens in a new tab).
+
+**Examples of connectors include the following:**
+
+- Data warehouses: Amazon Redshift
+- Data lakes: Amazon S3
+- Relational databases: JDBC, Amazon Aurora, MariaDB, MySQL, Microsoft SQL server, Oracle Database, PostgreSQL
+- Non-relational databases: Amazon DocumentDB, MongoDB, Amazon OpenSearch
+- Streams: Apache Kafka, Amazon Kinesis
+- Other cloud providers
+
+#### Discovery and cataloging
+
+Data will likely be stored in several formats with varying quality and accessibility. After being ingested into the data lake storage, it needs to be cataloged so that it is searchable. 
+
+##### Glue Data Catalog
+
+The AWS Glue Data Catalog is the central metadata repository for all data assets in the data lake. The catalog consists of a collection of tables organized within databases.  
+The purpose of the Data Catalog is to enable access to data lake data as if they were tables (for example, in a SQL-like fashion).
+
+- **Crawlers**
+
+    Crawlers are AWS Glue features that scan data and automatically populate the data catalog with metadata about the data assets.
+
+- **Classifiers**
+
+    Crawlers use classifiers to detect the schema of the data. Classifiers compare the data to a known set of schema types, or to custom types that you have specified. When there is a match, the data is extracted and written to the AWS Glue Data Catalog.
+
+#### Preparing, cleansing, and transforming
+
+The bulk of the functionality of AWS Glue is in this stage. This is where you configure and run your ETL jobs. 
+
+##### Glue ETL jobs
+
+AWS Glue ETL jobs are good for complex data transformations.
+
+They are flexible and customizable. For example you can:
+
+- Write code that defines the transformation logic using Python or Scala scripting languages.
+- Programmatically chain different AWS Glue components (for example crawlers, jobs, triggers) into workflows. 
+
+##### AWS Glue ETL library
+
+You can use code from the AWS Glue ETL library, which extends Apache Spark with additional data types and operations to streamline ETL workflows.  
+The library uses AWS Glue DynamicFrames. These help when dealing with messy data where the same field might be inconsistent across a dataset.
+
+To learn more, go to [DynamicFrame Class](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-crawler-pyspark-extensions-dynamic-frame.html).
 
 ## Serve Data for Consumption
 
