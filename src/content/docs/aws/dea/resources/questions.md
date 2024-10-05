@@ -268,3 +268,30 @@ Data Catalog is a metadata repository not a fully managed data lake solution. It
 
 ---
 
+**Which AWS service is used to extract, transform, and load (ETL) data in a data analytics system?**
+
+*AWS Glue*
+
+AWS Glue is the correct answer because it is a serverless data integration service that provides ETL capabilities for preparing and loading data into data stores for analytics.
+
+---
+
+**What is the primary benefit of using AWS Glue Studio Visual extract, transform, and load (ETL) for data transformation?**
+
+*Automatic code generation*
+
+AWS Glue Studio Visual ETL automatically generates the code to invoke data transformations based on the specifications provided, eliminating the need for manual coding.
+
+---
+
+**What are features of AWS Glue?**
+
+- *Job scheduling*
+- *Real-time or batch data processing*
+- *Data cataloging*
+
+AWS Glue is primarily designed for streaming or batch-based extract, transform, and load (ETL) processes. AWS Glue can be used to schedule ETL jobs. With AWS Glue it is also possible to achieve Real-time streaming analytics.  
+AWS Glue does not perform image recognition or manage users, and is not used for cost optimization.
+
+---
+

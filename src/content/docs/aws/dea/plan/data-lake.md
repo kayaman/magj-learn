@@ -490,6 +490,84 @@ The library uses AWS Glue DynamicFrames. These help when dealing with messy data
 
 To learn more, go to [DynamicFrame Class](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-crawler-pyspark-extensions-dynamic-frame.html).
 
+##### AWS Glue interactive sessions
+
+AWS Glue interactive sessions provide on-demand interactive access to a remote Spark runtime environment.
+
+AWS Glue interactive sessions can be used with the following:
+
+- Jupyter notebooks
+- SageMaker Studio notebooks
+- IDEs like Microsoft Visual Studio Code, IntelliJ, PyCharm
+
+##### AWS Glue Studio
+
+AWS Glue Studio is a graphical interface that makes it convenient to create, run, and monitor data integration jobs in AWS Glue. Following are components of AWS Glue Studio.
+
+##### AWS Glue Studio visual ETL
+
+With this is a drag and drop graphical user interface you can:
+
+- Build ETL pipelines
+- Review your data to see how they are transformed over the different steps. 
+- Achieve real-time schema inference without having to catalog your data.
+
+##### AWS Glue Studio notebook
+
+Provides a notebook interface based on Jupyter notebooks, which you can use to do the following:
+
+- Explore and visualize data.
+- Write code and view the output without having to run a full job.
+- Enhance code readability and organization with markdown cells.
+- Run code in a serverless distributed environment.
+- Run notebook code as an AWS Glue ETL job.
+
+##### AWS Glue Studio script editor
+
+You can use AWS Glue Studio script editor to edit a job script or upload your own script.
+
+##### AWS Glue ETL job monitoring
+
+AWS Glue ETL job monitoring provides the following features:
+
+- Monitor 1000s of jobs from a single screen.
+- View debugging recommendations and logs.
+- Track resource usage and identify expensive jobs.
+- Filter by job details and time periods.
+
+#### Data management
+
+##### AWS Glue Data Quality
+
+Measure data quality throughout the entire ETL job process, and take actions as needed, such as:
+
+- Evaluate quality in the AWS Glue Data Catalog (data quality at rest).
+- Check data quality in AWS Glue ETL jobs to identify and filter out bad data before it is loaded into the data lake (data quality in transit).
+
+Data quality rules are defined with the Data Quality Definition Language. You can get rule recommendations or build your own custom rules.
+
+To learn more go to [Data Quality Definition Language reference](https://docs.aws.amazon.com/glue/latest/dg/dqdl.html).
+
+##### AWS Glue sensitive data detection
+
+Use the Detect PII transform to detect, mask, or remove sensitive information from your data while processing them.
+
+AWS Glue can now detect 250 sensitive entity types from over 50 countries. In addition, it can detect identities by a regex pattern you provide.
+
+To learn more, see [Detect and Process Sensitive Data](https://docs.aws.amazon.com/glue/latest/dg/detect-PII.html).
+
+#### Data integration engines
+
+Choose the appropriate engine for any workload, based on the characteristics of your workload and the preferences of your developers and analysts. 
+
+##### AWS Glue for Python Shell
+
+Run code in a single node serverless Python engine. Ideal for small datasets or latency agnostic workloads. 
+
+##### AWS Glue for Apache Spark
+
+Speed up data ingestion, processing, and integration of batch and streaming workloads using a serverless distributed computing environment. 
+
 ## Serve Data for Consumption
 
 
