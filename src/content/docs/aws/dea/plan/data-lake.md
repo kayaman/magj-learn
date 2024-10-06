@@ -649,3 +649,16 @@ The following is a high-level description of the steps to set up Athena to query
 8. Connect to BI tools (optional)
 
     Athena can integrate with popular BI tools like QuickSight, Tableau, or Microsoft Power BI, that you can use to visualize and explore your data.
+
+#### Resources
+
+**Amazon Athena overview**  
+For an overview of Athena and tutorials about how to use it, see the [Getting Started with Amazon Athena](https://aws.amazon.com/athena/getting-started/) webpage.
+
+**Federated queries**  
+For more information about federated queries, see **Using Amazon Athena Federated Query** in the [Amazon Athena User Guide](https://docs.aws.amazon.com/athena/latest/ug/connect-to-a-data-source.html).
+
+**Partitioning in Amazon Athena**
+To learn more about partitioning with Athena, go to **Partitioning Data in Athena** in the [Amazon Athena User Guide](https://docs.aws.amazon.com/athena/latest/ug/partitions.html).
+
+### QuickSight
