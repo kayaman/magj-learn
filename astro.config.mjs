@@ -12,7 +12,7 @@ import starlightLinksValidator from 'starlight-links-validator';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-	site: 'https://learning.magj.dev',
+	site: 'https://learn.magj.dev',
 	integrations: [
 		sitemap({}),
 		astroExpressiveCode({

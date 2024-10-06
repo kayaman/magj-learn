@@ -1,5 +1,5 @@
 services:
-  learning:
+  learn:
     image: kayaman/magj-learning
     build:
       context: .
