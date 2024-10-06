@@ -1,6 +1,6 @@
 import { visit } from 'unist-util-visit';
 
-const site = "https://learning.magj.dev";
+const site = "https://learn.magj.dev";
 
 export default function externalAnchorPlugin() {
     return function (tree, file) {
