@@ -708,3 +708,48 @@ To learn more about key features and capabilities, explore the following categor
 #### Visualizing data with QuickSight 
 
 The following steps provide a high-level overview of the process for creating visualizations and dashboards in QuickSight. The specific options and features might vary depending on your dataset, requirements, and the version of QuickSight you're using. 
+
+1. Sign up for QuickSight 
+
+    Sign up for the QuickSight service through the AWS Management Console. 
+
+2. Connect to your data sources
+
+    Connect to your data sources directly or use AWS data preparation tools, like AWS Glue, to prepare and load your data into QuickSight.
+
+3. Create a dataset 
+
+    Create a dataset in QuickSight. This involves selecting the tables, views, or files you want to include in your dataset and defining any necessary data transformations or calculations. 
+
+4. Create visualizations and customize them
+
+    Create visualizations using the QuickSight, including bar charts, line graphs, pie charts, scatter plots, and more. Customize colors, fonts, labels, and other formatting options. Apply filters, add calculations, and create hierarchies to further analyze your data.
+
+5. Create dashboards and customize them
+
+    Combine multiple visualizations and datasets into a single-view dashboard. Arrange and resize the visualizations, add text boxes, and apply conditional formatting to highlight important data points.
+
+6. Share and collaborate 
+
+    Share your visualizations and dashboards with others in your organization or with external stakeholders. Control access permissions and enable collaborative features like commenting and annotation.
+
+7. Embed and integrate with other AWS services 
+
+    QuickSight dashboards and visualizations can be embedded into web applications or portals by using the QuickSight Embedding SDK or QuickSight APIs. Integrate QuickSight with other AWS services, such as Athena, Amazon Redshift, and Lambda, to build more advanced data pipelines and automate various processes. 
+
+#### Resources
+
+**Amazon QuickSight overview**
+
+For an overview of QuickSight and tutorials about using it, see the [Getting Started with Amazon QuickSight](https://aws.amazon.com/quicksight/getting-started/) webpage.
+
+## Resources
+
+[Data Lakes on AWS: Overview](https://aws.amazon.com/big-data/datalakes-and-analytics/datalakes/)
+Get an overview of data lakes on AWS with links to AWS analytics services documentation.
+
+[AWS Solutions Library: Data Lake on AWS](https://aws.amazon.com/solutions/implementations/data-lake-solution/)
+This solution deploys a highly-available, cost-effective data lake architecture on AWS.
+
+[AWS Documentation](https://docs.aws.amazon.com/)
+From this main webpage, search for documentation on all AWS services.
