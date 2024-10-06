@@ -3,6 +3,7 @@ title: Sample Questions
 description: questions
 sidebar:
   order: 3
+  tableOfContents: false
 ---
 
 An ML engineer wants to use Amazon SageMaker to create a model that predicts whether a student will pass an exam. The ML engineer is developing a logistic regression model and needs to find an optimal model with the most accurate classification threshold. The ML engineer must select a model evaluation technique to analyze the performance of the model based on the defined threshold. The dataset contains an equal amount of observations for passed and failed exam attempts.  

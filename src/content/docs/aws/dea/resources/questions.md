@@ -3,6 +3,7 @@ title: Sample Questions
 description: Skill Builder
 sidebar:
   order: 2
+  tableOfContents: false
 ---
 
 **Which option describes the responsibility of the data engineer and the data analyst?**
