@@ -4,7 +4,7 @@ sidebar:
     order: 2
     tableOfContents:
         minHeadingLevel: 2
-        maxHeadingLevel: 5
+        maxHeadingLevel: 4
 ---
 
 ## Introduction
@@ -394,14 +394,6 @@ To learn more about crawlers, see **Data Discovery and Cataloging in AWS Glue** 
 
 **AWS Glue and AWS DMS**
 To learn more about the interaction between AWS Glue and AWS DMS, see **Create an AWS Glue Data Catalog with AWS DMS** in the [AWS Database Blog](https://aws.amazon.com/blogs/database/create-an-aws-glue-data-catalog-with-aws-dms/). 
-
-
-
-
-
-
-
-
 
 ## Transform Data
 
