@@ -662,3 +662,45 @@ For more information about federated queries, see **Using Amazon Athena Federate
 To learn more about partitioning with Athena, go to **Partitioning Data in Athena** in the [Amazon Athena User Guide](https://docs.aws.amazon.com/athena/latest/ug/partitions.html).
 
 ### QuickSight
+
+#### Important features of QuickSight
+
+To learn more about key features and capabilities, explore the following categories. 
+
+- Data integration
+
+    QuickSight supports various data sources, including the following:
+
+    - AWS data sources, such as the following:
+        - Athena
+        - Amazon Redshift
+        - Amazon Relational Database Service (Amazon RDS)
+    - Cloud-based data sources, such as the following:
+        - Google BigQuery
+        - MariaDB 10.0 or later
+        - Microsoft SQL Server 2012 or later
+    - On-premises data sources, such as the following:
+        - MySQL 5.1 or later
+        - PostgreSQL 9.3.1 or later
+
+    For a complete list of supported data sources, see [Supported Data Sources](https://docs.aws.amazon.com/quicksight/latest/user/supported-data-sources.html).
+
+
+- SPICE
+
+    The QuickSight Super-fast, Parallel, In-memory Calculation Engine (SPICE) accelerates query performance by caching data in memory, providing fast response times for visualizations and analyses.  
+    When configuring data sources, you can choose between the direct query or SPICE query modes as follows:
+    - Direct query: To run the SELECT statement directly against the database
+    - SPICE: To run the SELECT statement against data that was previously stored in memory
+
+- Data preparation
+
+    QuickSight offers data preparation capabilities, such as data formatting, transformations, and calculations, that you can use to clean and enrich your data before visualization.
+
+- Embedded analytics
+
+    QuickSight can be embedded into applications or websites, so organizations can provide interactive dashboards and analytics to their customers or end users.
+
+- Security and access control
+
+    QuickSight supports row-level and column-level security, so administrators can control data access based on user roles and permissions
