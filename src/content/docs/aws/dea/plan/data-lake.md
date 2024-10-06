@@ -745,11 +745,11 @@ For an overview of QuickSight and tutorials about using it, see the [Getting Sta
 
 ## Resources
 
-[Data Lakes on AWS: Overview](https://aws.amazon.com/big-data/datalakes-and-analytics/datalakes/)
+[Data Lakes on AWS: Overview](https://aws.amazon.com/big-data/datalakes-and-analytics/datalakes/)  
 Get an overview of data lakes on AWS with links to AWS analytics services documentation.
 
-[AWS Solutions Library: Data Lake on AWS](https://aws.amazon.com/solutions/implementations/data-lake-solution/)
+[AWS Solutions Library: Data Lake on AWS](https://aws.amazon.com/solutions/implementations/data-lake-solution/)  
 This solution deploys a highly-available, cost-effective data lake architecture on AWS.
 
-[AWS Documentation](https://docs.aws.amazon.com/)
+[AWS Documentation](https://docs.aws.amazon.com/)  
 From this main webpage, search for documentation on all AWS services.
