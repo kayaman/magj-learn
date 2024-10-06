@@ -307,3 +307,123 @@ Together, Athena and QuickSight provide a way to query and visualize data, but t
 
 ---
 
+## Official Practice Question Set
+
+**A company is using an Amazon S3 data lake. The company ingests data into the data lake by using Amazon Kinesis Data Streams. The company reads and processes the incoming data from the stream by using AWS Lambda. The data being ingested has highly variable and unpredictable volume. Currently, the IteratorAge metric is high at peak times when a high volume of data is being posted to the stream. A data engineer must design a solution to increase performance when reading Kinesis Data Streams with Lambda. Which solution will meet these requirements?**
+
+- *Increase the number of shards for the Kinesis data stream.*
+- *Test different parallelization factor settings to find the most performant.*
+- *Register the Lambda function as a consumer with enhanced fan-out.*
+
+By default, Lambda will create one concurrent instance of the Lambda function for each shard. If you have three shards, you will have three concurrent functions. A high IteratorAge implies that the last record that is read from the Kinesis data stream is increasing in age. A high IteratorAge could mean that the data is not being processed in a timely manner. One way to increase throughput when you use Kinesis Data Streams and Lambda is to reshard. To reshard is to increase the number of shards for Kinesis Data Streams. If there are more shards, there will be more Lambda function invocations that concurrently process data.  
+By default, all consumers of a Kinesis data stream share throughput across consumers. Sharing can restrict throughput for any one consumer, such as the Lambda function that processes the data. A high IteratorAge implies that the last record that is read from the Kinesis data stream is increasing in age. A high IteratorAge could mean that the data is not being processed in a timely manner. One way to increase throughput when you use Kinesis Data Streams and Lambda is to register the Lambda function as a consumer with enhanced fan-out. This solution would give the Lambda function dedicated throughput capacity for the Kinesis data stream. Therefore, this solution could increase performance.  
+Learn more about [enhanced fan-out consumers and Kinesis](https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html#services-kinesis-configure).
+
+---
+
+**A company is running an Amazon Redshift data warehouse on AWS. The company has recently started using a software as a service (SaaS) sales application that is supported by several AWS services. The company wants to transfer some of the data in the SaaS application to Amazon Redshift for reporting purposes. A data engineer must configure a solution that can continuously send data from the SaaS application to Amazon Redshift. Which solution will meet these requirements with the LEAST operational overhead?**
+
+*Create an Amazon AppFlow flow to ingest the selected source data to Amazon Redshift. Configure the flow to run on event.*
+
+With Amazon AppFlow, a flow transfers data between a source and a destination. Amazon AppFlow supports many AWS services and SaaS applications as sources or destinations. A solution that uses Amazon AppFlow can continuously send data from the SaaS application to Amazon Redshift with the least operational overhead.  
+Learn more about [Amazon AppFlow flows](https://docs.aws.amazon.com/appflow/latest/userguide/create-flow-console.html).
+
+---
+
+**An ecommerce company is running an application on AWS. The application sources recent data from tables in Amazon Redshift. Data that is older than 1 year is accessible in Amazon S3. Recently, a new report has been written in SQL. The report needs to compare a few columns from the current year sales table with the same columns from tables with sales data from previous years. The report runs slowly, with poor performance and long wait times to get results. A data engineer must optimize the back-end storage to accelerate the query. Which solution will meet these requirements MOST efficiently?**
+
+*Run the report SQL statement to gather the data from Amazon S3. Store the result set in an Amazon Redshift materialized view. Configure the report to run SQL REFRESH. Then, query the materialized view.*
+
+You can use Redshift materialized views to speed up queries that are predictable and repeated. A solution that runs SQL REFRESH on the materialized view would ensure that the latest data from the current sales table is included in the report.  
+Learn more about [Redshift materialized views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html).
+
+---
+
+**A data engineer has created a new account to deploy an AWS Glue extract, transform, and load (ETL) pipeline. The pipeline jobs need to ingest raw data from a source Amazon S3 bucket. Then, the pipeline jobs write the transformed data to a destination S3 bucket in the same account. The data engineer has written an IAM policy with permissions for AWS Glue to access the source S3 bucket and destination S3 bucket. The data engineer needs to grant the permissions in the IAM policy to AWS Glue to run the ETL pipeline. Which solution will meet these requirements?**
+
+*Create a new IAM service role for AWS Glue. Attach the policy to the new role. Configure AWS Glue to use the new role.*
+
+Permissions for AWS Glue are granted through an IAM service role for AWS Glue. A default role exists in the account with loose permissions that allow the service to use any S3 bucket. You can create and attach a new IAM role to AWS Glue. This solution would give you the ability to use more strict permissions in the AWS Glue jobs.  
+Learn more about [how to grant permissions so that AWS Glue can access other AWS services](https://docs.aws.amazon.com/glue/latest/dg/create-an-iam-role.html).
+
+---
+
+**An ecommerce company runs several applications on AWS. The company wants to design a centralized streaming log ingestion solution. The solution needs to be able to convert the log files to Apache Parquet format. Then, the solution must store the log files in Amazon S3. The number of log files being created varies throughout the day. A data engineer must configure a solution that ensures the log files are delivered in near real time. Which solution will meet these requirements with the LEAST operational overhead?**
+
+*Configure the applications to send the log files to Amazon Kinesis Data Firehose. Configure Kinesis Data Firehose to invoke an AWS Lambda function that converts the log files to Parquet format. Configure Kinesis Data Firehose to deliver the Parquet files to an output S3 bucket.*
+
+You can use Kinesis Data Firehose to deliver log files to Amazon S3 with the least operational overhead. You can use a data-transformation Lambda function with Kinesis Data Firehose. This solution can convert log files to the correct format before the log files are delivered to Amazon S3.  
+Learn more about [how to transform incoming source data with Lambda functions on Kinesis Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html).
+
+---
+
+**A company is collecting data that is generated by its users for analysis by using an Amazon S3 data lake. Some of the data being collected and stored in Amazon S3 includes personally identifiable information (PII). The company wants a data engineer to design an automated solution to identify new and existing data that needs PII to be masked before analysis is performed. Additionally, the data engineer must provide an overview of the data that is identified. The task of masking the data will be handled by an application already created in the AWS account. The data engineer needs to design a solution that can invoke this application in real time when PII is found. Which solution will meet these requirements with the LEAST operational overhead?**
+
+*Enable Amazon Macie in the AWS account. Create an Amazon EventBridge rule for the default event bus for Macie findings. Set the masking application as the target for the rule.*
+
+Macie can analyze data in S3 buckets and determine if the data contains sensitive data like PII. Macie creates findings based on its analysis. Users can view the findings as a report in the AWS Management Console. Macie can also create events that are sent to the default event bus for EventBridge. You can create a rule that filters the findings being generated by Macie. Then, EventBridge can invoke the masking application. This solution meets all requirements and has the lowest operational overhead.  
+Learn more about [Macie and EventBridge integration](https://docs.aws.amazon.com/macie/latest/user/findings-monitor-events-eventbridge.html).
+
+---
+
+**A company ingests data into an Amazon S3 data lake from multiple operational sources. The company then ingests the data into Amazon Redshift for a business analysis team to analyze. The business analysis team requires access to only the last 3 months of customer data. Additionally, once a year, the company runs a detailed analysis of the past year's data to compare the overall results of the previous 12 months. After the analysis and comparison, the data is no longer accessed. However, the data must be kept after 12 months for compliance reasons. Which solution will meet these requirements in the MOST cost-effective manner?**
+
+*Ingest 3 months of data into Amazon Redshift. Automate an unload process from Amazon Redshift to Amazon S3 after the data is over 3 months old. Use Amazon Redshift Spectrum for the yearly analysis to include data up to 12 months old. Implement a lifecycle policy in Amazon S3 to move the unloaded data to S3 Glacier Deep Archive after the data is over 12 months old.*
+
+You can use Redshift Spectrum to access and query S3 data from Amazon Redshift. You do not need to keep data over 3 months old in Amazon Redshift. Instead, you can unload the data to Amazon S3. Then, you can use Redshift Spectrum for the yearly analysis. Additionally, S3 Glacier Deep Archive provides the most cost-effective option for long-term data storage for compliance reasons.  
+Learn more about [Redshift Spectrum](https://docs.aws.amazon.com/redshift/latest/dg/c-using-spectrum.html).  
+Learn more about [how to manage storage classes in Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html#sc-infreq-data-access).
+
+---
+
+**A finance company is storing paid invoices in an Amazon S3 bucket. After the invoices are uploaded, an AWS Lambda function uses Amazon Textract to process the PDF data and persist the data to Amazon DynamoDB. Currently, the Lambda execution role has the following S3 permission:**
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ExampleStmt",
+            "Action": ["s3:*"],
+            "Effect": "Allow",
+            "Resource": ["*"]
+        }
+    ]
+}
+```
+
+**The company wants to correct the role permissions specific to Amazon S3 according to security best practices. Which solution will meet these requirements?**
+
+*Modify the Action to be: "s3:GetObject." Modify the Resource to be only the bucket ARN.*
+
+According to the principle of least privilege, permissions should apply only to what is necessary. The Lambda function needs only the permissions to get the object. Therefore, this solution has the most appropriate modifications.
+
+Learn more about [least-privilege permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
+
+---
+
+**A finance company has developed a machine learning (ML) model to enhance its investment strategy. The model uses various sources of data about stock, bond, and commodities markets. The model has been approved for production. A data engineer must ensure that the data being used to run ML decisions is accurate, complete, and trustworthy. The data engineer must automate the data preparation for the model's production deployment. Which solution will meet these requirements?**
+
+*Use Amazon SageMaker workflows with an Amazon SageMaker ML Lineage Tracking step to prepare the data for the model.*
+
+SageMaker ML Lineage Tracking creates and stores information about the steps of an ML workflow. SageMaker ML Lineage Tracking gives you the ability to establish model governance and audit standards. SageMaker ML Lineage Tracking helps to ensure that the data being used to run ML decisions is accurate, complete, and trustworthy.  
+Learn more about [SageMaker ML Lineage Tracking](https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html).
+
+---
+
+**A company is storing data in an Amazon S3 bucket. The company is in the process of adopting a new data lifecycle and retention policy. The policy is defined as follows:**
+
+- **Any newly created data must be available online and will occasionally need to be analyzed with SQL.**
+- **Data older than 3 years must be securely stored and made available when needed for compliance evaluation within 12 hours.**
+- **Data older than 10 years must be securely deleted.**
+
+**A data engineer must configure a solution that would ensure that the data is stored cost effectively according to the lifecycle and retention policy. Which solution will meet these requirements?**
+
+*Store new data on the S3 Infrequent Access storage class. Query the data in-place on Amazon S3 with Amazon Athena. Create a lifecycle rule to migrate the data to the S3 Glacier Flexible Retrieval storage class after 3 years. Configure the lifecycle rule to delete the data after 10 years.*
+
+A solution that uses S3 Lifecycle policies ensures that data is stored cost effectively throughout the data lifecycle. You can lifecycle data to a cheaper storage class based on age when you have predictable usage patterns. You can use this solution to comply with lifecycle and retention policies. A solution that uses the S3 Infrequent-Access storage class will ensure that data is cost effectively made available for occasional analysis by using SQL with Athena. A lifecycle rule that migrates data to the S3 Glacier Flexible Retrieval storage class will ensure that data is available for compliance evaluation within 12 hours.  
+Learn more about [S3 Lifecycles](https://docs.aws.amazon.com/AmazonS3/latest/userguide/lifecycle-transition-general-considerations.html).  
+Learn more about [how to query S3 data with Athena](https://docs.aws.amazon.com/athena/latest/ug/using-athena-sql.html).
+
+---
+
