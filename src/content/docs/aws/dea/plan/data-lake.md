@@ -703,4 +703,8 @@ To learn more about key features and capabilities, explore the following categor
 
 - Security and access control
 
-    QuickSight supports row-level and column-level security, so administrators can control data access based on user roles and permissions
+    QuickSight supports row-level and column-level security, so administrators can control data access based on user roles and permissions.
+
+#### Visualizing data with QuickSight 
+
+The following steps provide a high-level overview of the process for creating visualizations and dashboards in QuickSight. The specific options and features might vary depending on your dataset, requirements, and the version of QuickSight you're using. 
