@@ -2,9 +2,9 @@
 title: A Data Lake Solution
 sidebar:
   order: 2
-  tableOfContents:
-    minHeadingLevel: 2
-    maxHeadingLevel: 5
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 5
 ---
 
 ## Introduction
