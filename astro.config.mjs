@@ -10,6 +10,11 @@ import starlightThemeRapide from 'starlight-theme-rapide'
 import { astroExpressiveCode } from '@astrojs/starlight/expressive-code';
 import starlightLinksValidator from 'starlight-links-validator';
 import sitemap from '@astrojs/sitemap';
+import starlightDocSearch from '@astrojs/starlight-docsearch';
+
+const ALGOLIA_APP_ID = import.meta.env.VITE_ALGOLIA_APP_ID;
+const ALGOLIA_SEARCH_API_KEY = import.meta.env.VITE_ALGOLIA_SEARCH_API_KEY
+const ALGOLIA_INDEX_NAME = import.meta.env.VITE_ALGOLIA_INDEX_NAME
 
 export default defineConfig({
 	site: 'https://learning.magj.dev',
@@ -36,7 +41,15 @@ export default defineConfig({
 				dark: './src/assets/logo-dark.svg',
 			},
 			title: 'Marco\'s Learning',
-			plugins: [starlightThemeRapide(), starlightLinksValidator()],
+			plugins: [
+				starlightThemeRapide(), 
+				starlightLinksValidator(),
+				starlightDocSearch({
+					appId: ALGOLIA_APP_ID,
+					apiKey: ALGOLIA_SEARCH_API_KEY,
+					indexName: ALGOLIA_INDEX_NAME,
+				})
+			],
 			customCss: [
 				'./src/styles/globals.css',
 				'@fontsource/open-sans/400.css',
