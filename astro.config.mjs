@@ -272,7 +272,7 @@ export default defineConfig({
 				},
 			],
 			editLink: {
-				baseUrl: 'https://github.com/kayaman/magj-learning/edit/main/',
+				baseUrl: 'https://github.com/kayaman/magj-learn/edit/main/',
 			},
 			social: {
 				linkedin: 'https://www.linkedin.com/in/marcoantoniogonzalezjunior/',
