@@ -16,7 +16,10 @@ export default defineConfig({
 	integrations: [
 		sitemap({}),
 		astroExpressiveCode({
-			themes: ['github-dark-dimmed', 'github-light'],
+			themes: [
+				'github-dark-dimmed', 
+				'github-light'
+			],
 			frames: {
 				showCopyToClipboardButton: true,
 			},
@@ -25,7 +28,9 @@ export default defineConfig({
 			defaultProps: {
 				wrap: false,
 				overridesByLang: {
-				'json': { preserveIndent: true },
+					'json': { 
+						preserveIndent: true 
+					},
 				},
 			},
 		}),
@@ -36,7 +41,10 @@ export default defineConfig({
 				dark: './src/assets/logo-dark.svg',
 			},
 			title: 'Marco\'s Learning',
-			plugins: [starlightThemeRapide(), starlightLinksValidator()],
+			plugins: [
+				starlightThemeRapide(), 
+				starlightLinksValidator(),
+			],
 			customCss: [
 				'./src/styles/globals.css',
 				'@fontsource/open-sans/400.css',
@@ -51,7 +59,7 @@ export default defineConfig({
 					items: [
 						{ 
 							label: 'Overview', 
-							link: 'aws/learning' 
+							link: 'aws/learning',
 						},
 						{ 
 							label: 'ML Engineer',
@@ -60,36 +68,49 @@ export default defineConfig({
 							items: [
 								{ 
 									label: 'Overview', 
-									link: 'aws/mla/overview' },
+									link: 'aws/mla/overview',
+								},
 								{ 
 									label: 'Domain 1', 
 									collapsed: true,
-									autogenerate: { directory: 'aws/mla/plan/domain1' } 
+									autogenerate: { 
+										directory: 'aws/mla/plan/domain1'
+									},
 								},
 								{ 
 									label: 'Domain 2', 
 									collapsed: true,
-									autogenerate: { directory: 'aws/mla/plan/domain2' } 
+									autogenerate: {
+										directory: 'aws/mla/plan/domain2' 
+									},
 								},
 								{ 
 									label: 'Domain 3', 
 									collapsed: true,
-									autogenerate: { directory: 'aws/mla/plan/domain3' } 
+									autogenerate: { 
+										directory: 'aws/mla/plan/domain3' 
+									},
 								},
 								{ 
 									label: 'Domain 4', 
 									collapsed: true,
-									autogenerate: { directory: 'aws/mla/plan/domain4' } 
+									autogenerate: { 
+										directory: 'aws/mla/plan/domain4' 
+									},
 								},
 								{ 
 									label: 'Services', 
 									collapsed: true,
-									autogenerate: { directory: 'aws/mla/services' } 
+									autogenerate: { 
+										directory: 'aws/mla/services' 
+									},
 								},
 								{ 
 									label: 'Resources', 
 									collapsed: true,
-									autogenerate: { directory: 'aws/mla/resources' } 
+									autogenerate: { 
+										directory: 'aws/mla/resources' 
+									},
 								},
 							]
 						},
@@ -99,10 +120,13 @@ export default defineConfig({
 						  	items: [
 								{ 
 									label: 'Overview', 
-									link: 'aws/dea/overview' },
+									link: 'aws/dea/overview' 
+								},
 								{ 
 									label: 'Plan', 
-									autogenerate: { directory: 'aws/dea/plan' } 
+									autogenerate: { 
+										directory: 'aws/dea/plan' 
+									},
 								},
 								{ 
 									label: 'Course', 
@@ -113,21 +137,29 @@ export default defineConfig({
 										},
 										{ 
 											label: 'Fundamentals',
-											autogenerate: { directory: 'aws/dea/course/section1' },
+											autogenerate: { 
+												directory: 'aws/dea/course/section1' 
+											},
 										},
 										{ 
 											label: 'Storage',
-											autogenerate: { directory: 'aws/dea/course/section2' },
+											autogenerate: { 
+												directory: 'aws/dea/course/section2' 
+											},
 										},
 										{ 
 											label: 'Database',
-											autogenerate: { directory: 'aws/dea/course/section3' },
-										}
-									] 
+											autogenerate: { 
+												directory: 'aws/dea/course/section3' 
+											},
+										},
+									]
 								},
 								{ 
 									label: 'Resources', 
-									autogenerate: { directory: 'aws/dea/resources' } 
+									autogenerate: { 
+										directory: 'aws/dea/resources' 
+									},
 								},
 							] 
 						},
@@ -137,17 +169,21 @@ export default defineConfig({
 							items: [
 								{
 									label: 'Overview',
-									link: 'aws/dva/overview' 
+									link: 'aws/dva/overview',
 								},
 								{ 
 									label: 'Resources', 
 									collapsed: true,
-									autogenerate: { directory: 'aws/dva/resources' } 
+									autogenerate: { 
+										directory: 'aws/dva/resources' 
+									},
 								},
 								{ 
 									label: 'Recommended', 
 									collapsed: true,
-									autogenerate: { directory: 'aws/dva/recommended' } 
+									autogenerate: { 
+										directory: 'aws/dva/recommended' 
+									},
 								},
 							]
 						},
@@ -159,7 +195,7 @@ export default defineConfig({
 					items: [
 						{ 
 							label: 'Overview', 
-							link: 'ms/learning' 
+							link: 'ms/learning',
 						},
 						{ 
 							label: 'AI Engineer',
@@ -168,7 +204,7 @@ export default defineConfig({
 								{ 
 									label: 'Overview', 
 									link: 'ms/ai-engineer/overview' 
-								} 
+								},
 							]
 						},
 					]
@@ -187,10 +223,13 @@ export default defineConfig({
 							items: [ 
 								{ 
 									label: '1: Data Warehousing', 
-									autogenerate: { directory: 'snowflake/badges/1-data-warehousing-workshop' } } 
+									autogenerate: { 
+										directory: 'snowflake/badges/1-data-warehousing-workshop' 
+									},
+								},
 							]
 						},
-					]
+					],
 				},
 				{
 					label: 'Neo4j',
@@ -205,12 +244,16 @@ export default defineConfig({
 							items: [
 								{
 									label: 'Neo4j Fundamentals',
-									autogenerate: { directory: 'neo4j/fundamentals/neo4j-fundamentals' }
+									autogenerate: { 
+										directory: 'neo4j/fundamentals/neo4j-fundamentals' 
+									},
 								},
 								{
 									label: 'Cypher Fundamentals',
-									autogenerate: { directory: 'neo4j/fundamentals/cypher-fundamentals' }
-								}
+									autogenerate: { 
+										directory: 'neo4j/fundamentals/cypher-fundamentals' 
+									},
+								},
 							]
 						},
 						{
@@ -219,8 +262,10 @@ export default defineConfig({
 							items: [
 								{ 
 									label: 'Neo4j & LLM Fundamentals',
-									autogenerate: { directory: 'neo4j/generative-ai/llm-fundamentals' }
-								}
+									autogenerate: { 
+										directory: 'neo4j/generative-ai/llm-fundamentals' 
+									},
+								},
 							]
 						},
 					]
