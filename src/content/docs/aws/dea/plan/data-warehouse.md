@@ -410,3 +410,41 @@ Different use cases involve different data volume, data format, transformation r
     Lambda is great solution for the following:
     - Invoking data ingestion into Amazon Redshift based on events, such as new data arriving in Amazon S3 or a scheduled event
     - Automating the ingestion of data from various sources, such as APIs, IoT devices, or streaming sources, into Amazon Redshift
+
+### Moving data between Amazon S3 and Amazon Redshift
+
+There are multiple ways to move data between Amazon S3 and Amazon Redshift.
+
+#### Load data from Amazon S3
+
+![load](/img/load.png)
+
+The **COPY** command uses Amazon Redshift to read and load data in parallel from a file or multiple files in an Amazon S3 bucket. You can take maximum advantage of parallel processing in cases where the files are compressed by splitting your data into multiple files.
+
+Data is loaded into the target table, one line per row. The fields in the data file are matched to table columns in order, left to right. Fields in the data files can be fixed width or character delimited. The default delimiter is a pipe (|). By default, all the table columns are loaded, but you can optionally define a comma-separated list of columns.
+
+ Here is the basic structure of the **COPY** command.
+
+ ```sql
+copy <table_name> from 's3://<bucket_name>/<object_prefix>' authorization;
+ ```
+
+#### Unload data from Amazon S3
+
+![load](/img/unload.png)
+
+Amazon Redshift splits the results of a select statement across a set of files, one or more files per node slice, to simplify parallel reloading of the data. Alternatively, you can specify that **UNLOAD** should write the results serially to one or more files by adding the PARALLEL OFF option. 
+
+The **UNLOAD** command is designed to use parallel processing. We recommend leaving PARALLEL enabled for most cases, especially if the files will be used to load tables using a COPY command.
+
+Here is a code snippet using the UNLOAD command.
+
+```sql
+unload ('select * from venue')
+to 's3://mybucket/tickit/unload/venue_'
+iam_role 'arn:aws:iam::0123456789012:role/MyRedshiftRole';
+```
+
+After you complete an **UNLOAD** operation, confirm that the data was unloaded correctly by navigating to the S3 bucket where **UNLOAD** wrote the files. You will see one or more numbered files per slice, starting with the number zero. If you specified the MANIFEST option, you will also see a file ending with manifest.
+
+
