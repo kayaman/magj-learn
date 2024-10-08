@@ -114,27 +114,27 @@ The following diagram provides a conceptual look at the components of a data war
 
 1. Client applications
 
-Redshift is based on open standard PostgreSQL, so most existing SQL client applications will work with only minimal changes. For information about important differences between Amazon Redshift SQL and PostgreSQL, see [Amazon Redshift and PostgreSQL](https://docs.aws.amazon.com/redshift/latest/dg/c_redshift-and-postgres-sql.html).
+    Redshift is based on open standard PostgreSQL, so most existing SQL client applications will work with only minimal changes. For information about important differences between Amazon Redshift SQL and PostgreSQL, see [Amazon Redshift and PostgreSQL](https://docs.aws.amazon.com/redshift/latest/dg/c_redshift-and-postgres-sql.html).
 
 2. Cluster
 
-The core infrastructure component of an Amazon Redshift data warehouse is a cluster.
+    The core infrastructure component of an Amazon Redshift data warehouse is a cluster.
 
 3. Internal network
 
-Amazon Redshift takes advantage of high-bandwidth connections, close proximity, and custom communication protocols to provide private, very high-speed network communication between the leader node and compute nodes. The compute nodes run on a separate, isolated network that client applications never access directly.
+    Amazon Redshift takes advantage of high-bandwidth connections, close proximity, and custom communication protocols to provide private, very high-speed network communication between the leader node and compute nodes. The compute nodes run on a separate, isolated network that client applications never access directly.
 
 4. Compute nodes
 
-These nodes perform the actual data processing and storage operations. The data is distributed across these nodes using various distribution styles, such as KEY, EVEN, and ALL.
+    These nodes perform the actual data processing and storage operations. The data is distributed across these nodes using various distribution styles, such as KEY, EVEN, and ALL.
 
 5. Leader node
 
-This node manages the cluster, receives queries, and distributes the workload across the compute nodes.
+    This node manages the cluster, receives queries, and distributes the workload across the compute nodes.
 
 6. Node slices
 
-A compute node is partitioned into slices. Each slice is allocated a portion of the node's memory and disk space where it processes a portion of the workload assigned to the node.
+    A compute node is partitioned into slices. Each slice is allocated a portion of the node's memory and disk space where it processes a portion of the workload assigned to the node.
 
 The architecture of an Amazon Redshift provisioned cluster consists of the following nodes. 
 
@@ -248,11 +248,7 @@ If you decide to migrate from an existing data warehouse to Amazon Redshift, the
 
 #### AWS DMS
 
-You can use AWS Database Migration Service (AWS DMS) to migrate data to Amazon Redshift. AWS DMS migrates data to and from most commercial and open-source databases, such as Oracle, PostgreSQL, and Microsoft SQL Server. 
-
-AWS Data Migration Service.
-AWS DMS
-
+You can use AWS Database Migration Service (AWS DMS) to migrate data to Amazon Redshift. AWS DMS migrates data to and from most commercial and open-source databases, such as Oracle, PostgreSQL, and Microsoft SQL Server.  
 When using AWS DMS to migrate your data, the source database remains fully operational during the migration. Thus, it minimizes downtime to applications that rely on the database. 
 
 You can use AWS DMS to migrate data to Amazon Redshift by using Amazon Redshift as a target endpoint for AWS DMS. The Amazon Redshift target endpoint provides full automation for the following processes:
