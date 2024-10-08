@@ -185,7 +185,7 @@ Amazon Redshift Serverless automatically provisions and manages capacity for you
 
 The architecture of Amazon Redshift Serverless is different from the provisioned model in the following ways:
 
--** Data warehouse**. This is a logical construct that represents your data warehouse environment. It manages the underlying compute resources and handles queries.
+-**Data warehouse**. This is a logical construct that represents your data warehouse environment. It manages the underlying compute resources and handles queries.
 
 - **Compute resources**. Instead of fixed compute nodes, Amazon Redshift Serverless automatically provisions and scales compute resources based on your workload demands. These resources are ephemeral and are spun up or down as needed.
 
@@ -202,3 +202,7 @@ To learn more about the benefits of a serverless solution, choose each of the fo
 - **Data persistence**: Data stored in a Redshift Serverless cluster is transient by default, which means it's deleted when the cluster is paused or resized. However, you can configure data persistence using Redshift Managed Storage.
 
 When choosing between Amazon Redshift provisioned and Amazon Redshift Serverless, consider factors such as your workload patterns, cost optimization needs, and the level of control you require over cluster management. Although provisioned clusters offer more control and advanced features, Redshift Serverless clusters provide automatic scaling and a pay-per-use pricing model. This makes the Redshift Serverless clusters well-suited for unpredictable or intermittent workloads.
+
+## Ingesting Data
+
+
