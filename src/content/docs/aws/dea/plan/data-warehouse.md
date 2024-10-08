@@ -205,4 +205,212 @@ When choosing between Amazon Redshift provisioned and Amazon Redshift Serverless
 
 ## Ingesting Data
 
+### Ingesting data in Amazon Redshift
 
+In today's data-driven world, organizations are constantly generating and collecting vast amounts of data from various sources, such as transactional systems, IoT devices, and web applications. However, simply having data is not enough. It needs to be effectively stored, processed, and analyzed to gather valuable insights that can drive business decisions and strategies.
+
+Amazon Redshift is designed to handle large-scale data analytics workloads efficiently and cost-effectively. By ingesting data into an Amazon Redshift warehouse, organizations can begin to understand their data and gain a competitive edge.
+
+The value of moving data into an Amazon Redshift warehouse lies in the following key benefits.
+
+- Scalability
+
+    Amazon Redshift can scale up or down seamlessly so organizations can handle growing data volumes and fluctuating workloads without compromising performance.
+
+- Performance
+
+    With its columnar data storage and advanced query optimization techniques, Amazon Redshift delivers lightning-fast query performance. Organizations can analyze vast amounts of data in near real time.
+
+- Cost-effectiveness
+
+    Amazon Redshift eliminates the need for upfront hardware investments and ongoing maintenance costs. This makes it a cost-effective solution for data warehousing.
+
+- Integration
+
+    Amazon Redshift seamlessly integrates with other AWS services, such as Amazon S3, AWS Glue, and AWS Lambda. This provides efficient data ingestion, transformation, and analysis pipelines.
+
+- Security
+
+    Amazon Redshift provides robust security features, including data encryption at rest and in transit, access control, and auditing capabilities to ensure that sensitive data is protected.
+
+### Using data migration tools
+
+Many businesses find that their on-premises data warehouses become unwieldy and expensive to maintain as they scale. Amazon Redshift is a cloud-based data warehouse that can easily and cost-effectively scale to petabytes of data and tens of thousands of queries per second.
+
+If you decide to migrate from an existing data warehouse to Amazon Redshift, the migration strategy you choose depends on the following factors: 
+
+- The size of the database and its tables and objects
+- Network bandwidth between the source server and AWS 
+- Whether the migration and switchover to AWS will be done in one step or a sequence of steps over time 
+- The data change rate in the source system 
+- Transformations during migration 
+- The tool that you plan to use for migration and ETL
+
+#### AWS DMS
+
+You can use AWS Database Migration Service (AWS DMS) to migrate data to Amazon Redshift. AWS DMS migrates data to and from most commercial and open-source databases, such as Oracle, PostgreSQL, and Microsoft SQL Server. 
+
+AWS Data Migration Service.
+AWS DMS
+
+When using AWS DMS to migrate your data, the source database remains fully operational during the migration. Thus, it minimizes downtime to applications that rely on the database. 
+
+You can use AWS DMS to migrate data to Amazon Redshift by using Amazon Redshift as a target endpoint for AWS DMS. The Amazon Redshift target endpoint provides full automation for the following processes:
+
+- Schema generation and data type mapping
+- Full load of source database tables
+- Incremental load of changes made to source tables
+- Application of schema changes in data definition language (DDL) made to the source tables
+- Synchronization between full load and change data capture (CDC) processes
+
+#### Zero-ETL integration
+
+Zero-ETL is a no-code, cloud-native data integration platform that can seamlessly integrate with AWS DMS to provide a comprehensive data processing solution. This can help you streamline your data migration and transformation processes, reduce the risk of manual errors, and gain greater visibility and control over your data processing workflows.
+
+- Automated AWS DMS task creation
+  
+    Zero-ETL can automatically create and configure AWS DMS tasks based on your data integration requirements. This eliminates the need for manual setup.
+
+- Data transformation and enrichment
+
+    With Zero-ETL's visual, no-code interface, you can define complex data transformation and enrichment rules, which can be applied during the data migration process.
+
+- Orchestration and scheduling
+
+    Zero-ETL can orchestrate the entire data processing workflow, including the AWS DMS migration task, and schedule it to run at regular intervals or in response to specific events.
+
+- Hybrid and multi-cloud support 
+
+    Zero-ETL can connect to a wide range of data sources, both on-premises and in the cloud. This streamlines the integration of AWS DMS into your existing data processing system.
+
+- Monitoring and alerting
+
+    Zero-ETL provides comprehensive monitoring and alerting capabilities to track the status of your DMS tasks and receive notifications in case of any issues.
+
+#### Amazon EMR
+
+You can use Amazon EMR to extract, transform, and load data from various sources, including Amazon S3, into Amazon Redshift. Amazon EMR processes and transforms large datasets stored in Amazon S3 using Apache Spark or Hadoop before loading into Amazon Redshift.
+
+Amazon EMR supports a wide range of data formats and can handle complex data processing tasks.
+
+#### AWS Glue
+
+AWS Glue is a serverless data integration service. Analytics users can use AWS Glue to discover, prepare, move, and integrate data from multiple sources. 
+
+An AWS Glue connection is an AWS Glue Data Catalog object that stores login credentials, URI strings, virtual private cloud (VPC) information, and more for a particular data store.
+
+![Glue Redshift](/img/glue-redshift.png)
+
+AWS Glue crawlers, jobs, and development endpoints use connections to access certain types of data stores. You can use connections for both sources and targets, and you can reuse the same connection across multiple crawlers or ETL jobs. AWS Glue provides built-in connectors that you can use to connect to Amazon Redshift from AWS Glue jobs and crawlers. You can do the following with a Redshift connector:
+
+- Read data directly from Redshift tables inside AWS Glue jobs written in Python, Scala, or Java to migrate or transform data from Amazon Redshift to other data stores.
+- Configure Amazon Redshift as both a source and target in ETL jobs created visually using AWS Glue Studio. You can add Redshift nodes to extract and load data. 
+- Crawl Redshift databases and tables using AWS Glue crawlers. Crawlers discover and catalog metadata that can then be used for further processing.
+- Specify the Redshift database, schema, and table details when creating a Redshift connection in AWS Glue. 
+- Provide an AWS Identity and Access Management (IAM) role with necessary permissions to access Amazon Redshift on behalf of AWS Glue jobs and crawlers.
+- Use features of AWS Glue like scheduling, monitoring and integration with other AWS services when working with Amazon Redshift.
+
+### Ingesting streaming data into Amazon Redshift
+
+As businesses modernize, they are constantly looking for ways to see their data in real time or near real time. This situation is where streaming ingestion fits in and can be beneficial to those use cases. AWS has multiple ways to gather your streaming data into Amazon Redshift. This section discusses Amazon Kinesis and Amazon Managed Streaming for Apache Kafka (Amazon MSK).  
+Amazon Kinesis has a suite of applications that you can use to collect, process, and transform streaming data.
+
+- Kinesis Data Streams
+
+    Amazon Redshift supports streaming ingestion from Amazon Kinesis Data Streams directly into Amazon Redshift materialized views.  
+    This provides a low-latency way to ingest real-time streaming data from Kinesis into Amazon Redshift for analysis. The streaming data bypasses the need to stage in Amazon S3.  
+    Lambda functions can also be used to retrieve data records from Kinesis and load them into Amazon Redshift. Lambda provides a serverless way to ingest data on a schedule or based on Kinesis events.  
+    Some key points to note about getting data from Kinesis into Amazon Redshift are batching records for efficiency and using appropriate partition keys for distribution.
+
+- Amazon Data Firehose
+
+    Amazon Data Firehose integrates with Amazon S3 and Amazon Redshift to load massive volumes of streaming data directly into them. Firehose provides an interface to capture and deliver streaming data continuously to Amazon Redshift without requiring you to write applications or manage infrastructure.   
+    It seamlessly scales to match the throughput of your streaming data without requiring your intervention. Firehose manages the batching, compression, logging, and encryption of streaming data for delivery to data destinations in as little as 60 seconds.  
+    Firehose issues synchronous COPY commands to load data into the Redshift cluster. It includes a path to a manifest file that specifies the files to load. After a load completes and Amazon Redshift returns an acknowledgement to Firehose, another COPY command starts to load the next set of data.
+
+![Firehose-BI](/img/firehose-bi.png)
+
+- Amazon MSK
+
+    Amazon MSK is a fully managed service that you can use to build and run applications that use Apache Kafka to process streaming data.  
+    Setting up Amazon MSK service can happen in a few steps:
+
+    1. Write a Lambda function that reads data from Amazon MSK topics and loads it into Amazon Redshift using the COPY command. Lambda provides a serverless way to ingest data on a schedule or based on Kafka events. 
+    2. Use an EMR cluster to read data from Amazon MSK topics using tools like Spark Streaming. The EMR cluster can then load the processed data into Redshift for analysis. This allows joining streaming and batch data sources.
+    3. Set up a Firehose delivery stream to deliver Amazon MSK data to Amazon S3. Then configure a Lambda trigger on new Amazon S3 objects to load data into Amazon Redshift. Firehose handles the real-time data ingestion from Amazon MSK and delivery to Amazon S3.
+
+For near real-time analytics use cases, where you want to query data in low latency scenarios, you can use the Amazon Redshift streaming ingestion feature. With Redshift streaming ingestion, you can connect to Kinesis Data Streams or Amazon MSK directly. You won’t have the latency and complexity associated with staging the data in Amazon S3 and loading it into the cluster. 
+
+#### Materialized view
+
+Amazon Redshift streaming ingestion works by acting as a stream consumer. A materialized view is the landing area for data that is consumed from the stream. When the materialized view is refreshed, Amazon Redshift compute nodes allocate each data shard to a compute slice. Each slice consumes data from the allocated shards until the materialized view attains parity with the stream. 
+
+The materialized views can also include SQL transformations as part of your ELT pipeline. You can manually refresh defined materialized views to query the most recent stream data. As a result, you can perform downstream processing and transformations of streaming data by using SQL at no additional cost. You can use your existing business intelligence (BI) and analytics tools for real-time analytics. 
+
+**Amazon Redshift streaming ingestion** To learn more, see [Streaming Ingestion](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-streaming-ingestion.html).
+
+### Ingesting batch data in Amazon Redshift
+
+When ingesting data from batch sources into Amazon Redshift, it's essential to consider factors such as data volume, data format, transformation requirements, and the frequency of data ingestion. Based on these factors, you can choose the most suitable option or combine multiple options to create an efficient and scalable data ingestion pipeline. 
+
+- Amazon S3
+
+    You can load data directly from Amazon S3 into Amazon Redshift using the COPY command. This command supports various file formats, such as CSV, JSON, Avro, and Parquet. You can also use AWS Glue or Amazon EMR to process and transform data stored in Amazon S3 before loading it into Amazon Redshift.
+
+- AWS Glue
+
+    AWS Glue is a fully managed ETL service that can be used to prepare and load data from various sources, including Amazon S3, into Amazon Redshift.
+
+- AWS EMR
+
+    Amazon EMR is a big data platform that can be used to process and transform large datasets using Apache Spark, Hadoop, or other frameworks. It can be used to preprocess and transform data before loading it into Amazon Redshift.
+
+
+- AWS DMS.
+
+    With AWS DMS, you can migrate data from on-premises databases or other cloud data stores into Amazon Redshift. AWS DMS supports continuous data replication, which ensures that your Redshift cluster remains up-to-date with the latest changes in the source database.
+
+
+- AWS Lambda
+
+    You can use Lambda functions to process and transform data stored in Amazon S3 or other sources, and then load it into Amazon Redshift. Lambda functions can be initiated by events, such as new data arriving in Amazon S3 or a scheduled event. This makes it a flexible and scalable option for data ingestion.
+
+#### Common use cases
+
+To learn more about common use cases of batch data ingestion, choose the arrow buttons to display each of the following five cases.  
+Different use cases involve different data volume, data format, transformation requirements, and the frequency of data ingestion. Here are some typical use cases solved by AWS services to ingest batch data.
+
+- Amazon S3
+
+    ![S3](/img/uc-s3.png)
+
+    Amazon S3 is the recommended choice for the following:
+
+    - Loading large datasets from CSV, JSON, or Parquet files stored in Amazon S3 into Amazon Redshift for analytics or reporting purposes
+    - Ingesting log files or clickstream data from various applications or services into Amazon Redshift for analysis
+
+- AWS Glue
+
+    ![Glue](/img/uc-glue.png)
+
+    Think of AWS Glue for performing complex data transformations, such as joining data from multiple sources, applying business rules, or cleaning and enriching data before loading into Amazon Redshift.
+
+- Amazon EMR
+
+    ![EMR](/img/uc-emr.png)
+
+    Rely on Amazon EMR when processing and transforming large datasets in Amazon S3 using Apache Spark or Hadoop before loading into Amazon Redshift.
+
+- AWS DMS
+
+    ![DMS](/img/uc-dms.png)
+
+    Use AWS DMS for migrating data from on-premises databases or other cloud databases into Amazon Redshift for data consolidation or analytics purposes.
+
+- AWS Lambda
+
+    ![Lambda](/img/uc-lambda.png)
+
+    Lambda is great solution for the following:
+    - Invoking data ingestion into Amazon Redshift based on events, such as new data arriving in Amazon S3 or a scheduled event
+    - Automating the ingestion of data from various sources, such as APIs, IoT devices, or streaming sources, into Amazon Redshift
