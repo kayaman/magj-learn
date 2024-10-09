@@ -13,12 +13,9 @@ tableOfContents:
 
 Amazon Redshift is a powerful, fully managed, petabyte-scale cloud data warehouse service that can significantly enhance your data analytics capabilities. The following are some key features of Amazon Redshift that you will find valuable.
 
-
-
 - MPP architecture
 
     Amazon Redshift uses a massively parallel processing (MPP) architecture that distributes computational workloads across multiple nodes. This provides efficient parallel processing of complex queries against large datasets.
-
 
 - Columnar data storage
 
