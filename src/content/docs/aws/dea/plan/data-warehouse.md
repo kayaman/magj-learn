@@ -447,4 +447,24 @@ iam_role 'arn:aws:iam::0123456789012:role/MyRedshiftRole';
 
 After you complete an **UNLOAD** operation, confirm that the data was unloaded correctly by navigating to the S3 bucket where **UNLOAD** wrote the files. You will see one or more numbered files per slice, starting with the number zero. If you specified the MANIFEST option, you will also see a file ending with manifest.
 
+### Consuming APIs for data collection
+
+![APIs](/img/consuming-apis.png)
+
+For certain use cases, you might want Amazon Redshift to load data with an API endpoint, without having to manage persistent connections. With Amazon Redshift Data API, you can interact with Amazon Redshift without having to configure Java Database Connectivity (JDBC) or Open Database Connectivity (ODBC). You can use the Amazon Redshift Data API to connect to Amazon Redshift with other services, such as Amazon EventBridge and Amazon SageMaker notebooks.   
+The Data API doesn't require a persistent connection to the cluster. Instead, it provides a secure HTTP endpoint, which you can use to run SQL statements without managing connections. Calls to the Data API are asynchronous. The Data API uses either credentials stored in AWS Secrets Manager or temporary database credentials. You are not required to pass passwords in the API calls with either method.   
+To use the Data API, a user must be authorized. You can authorize a user to access the Data API by adding the IAM AmazonRedshiftDataFullAccess managed policy. This policy provides full access to Amazon Redshift Data API operations.  
+The Amazon Redshift Data API allows applications to securely access data in Amazon Redshift clusters and run SQL statements without needing to manage database connections. It supports running queries, data definition language (DDL) commands like CREATE/DROP, and data manipulation language (DML) commands like INSERT/UPDATE/DELETE.   
+You can use the Data API for the following:
+
+- List databases, schemas, and tables and get table metadata in a cluster
+- Run SQL SELECT, DML, DDL, COPY, and UNLOAD commands 
+- Run statements with parameters
+- Run a batch of multiple statements in a single transaction
+- Cancel running queries
+- Fetch query results
+
+The Data API supports authentication using IAM credentials or secrets stored in Secrets Manager. It provides SDK support for languages like Java, Python, and JavaScript.  
+Some key use cases of the Data API are accessing Amazon Redshift from serverless applications, supporting ETL and ELT workflows, running one-time queries from notebooks or integrated development environment (IDE), and building reporting systems on top of Amazon Redshift. The "execute-statement", "batch-execute-statement", "describe-statement" APIs allow running queries and managing results programmatically.
+
 
