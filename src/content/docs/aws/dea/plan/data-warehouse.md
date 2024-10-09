@@ -440,8 +440,7 @@ The **UNLOAD** command is designed to use parallel processing. We recommend leav
 Here is a code snippet using the UNLOAD command.
 
 ```sql
-unload ('select * from venue')
-to 's3://mybucket/tickit/unload/venue_'
+unload ('select * from venue') to 's3://mybucket/tickit/unload/venue_'
 iam_role 'arn:aws:iam::0123456789012:role/MyRedshiftRole';
 ```
 
