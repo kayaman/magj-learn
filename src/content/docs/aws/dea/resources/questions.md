@@ -307,6 +307,12 @@ Together, Athena and QuickSight provide a way to query and visualize data, but t
 
 ---
 
+**Which term represents an AWS Glue Data Catalog object that stores login credentials, URI strings, virtual private cloud (VPC) information, and more for a particular data store?**
+
+*An AWS Glue connection*
+
+An AWS Glue connection is a Data Catalog object that stores login credentials, URI strings, virtual private cloud (VPC) information, and more for a particular data store.
+
 ## Official Practice Question Set
 
 **A company is using an Amazon S3 data lake. The company ingests data into the data lake by using Amazon Kinesis Data Streams. The company reads and processes the incoming data from the stream by using AWS Lambda. The data being ingested has highly variable and unpredictable volume. Currently, the IteratorAge metric is high at peak times when a high volume of data is being posted to the stream. A data engineer must design a solution to increase performance when reading Kinesis Data Streams with Lambda. Which solution will meet these requirements?**
