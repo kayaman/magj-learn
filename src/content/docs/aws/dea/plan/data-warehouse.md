@@ -894,7 +894,7 @@ Users can view and delete saved queries in the Queries tab.
 
 #### Advanced features
 
-![QE](/img/qv-adv-feats.png)
+![QE](/img/qe-adv-feats.png)
 
 ### Visualizing data using query editor v2 and generative SQL
 
