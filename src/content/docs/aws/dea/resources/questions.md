@@ -301,7 +301,7 @@ AWS Glue does not perform image recognition or manage users, and is not used for
 *Athena and QuickSight provide a cost-effective and scalable solution for querying and visualizing data Amazon S3 without the need to provision or manage any infrastructure.*
 
 Together, Athena and QuickSight provide a serverless and scalable solution without the need to provision or manage any infrastructure. With Athena, you can use SQL to query data stored in Amazon S3. With QuickSight, you can create interactive dashboards and visualizations from that data.   
-Athena is more suitable for impromptu, batch-oriented SQL queries on data stored in Amazon S3, which may not be ideal for real-time monitoring use cases. For a real-time monitoring dashboard, Amazon OpenSearch Service and its dashboarding capabilities may be a better choice compared to Amazon Athena and Amazon QuickSight.   
+Athena is more suitable for impromptu, batch-oriented SQL queries on data stored in Amazon S3, which may not be ideal for real-time monitoring use cases. For a real-time monitoring dashboard, Amazon OpenSearch Service and its dashboarding capabilities may be a better choice compared to Amazon Athena and Amazon QuickSight.  
 You can build Quicksight dashboards using queries on Athena tables as sources.   
 Together, Athena and QuickSight provide a way to query and visualize data, but they do not constitute a complete, fully managed data warehouse solution. They are separate AWS services that integrate well, but each has its own distinct purpose and capabilities. 
 
