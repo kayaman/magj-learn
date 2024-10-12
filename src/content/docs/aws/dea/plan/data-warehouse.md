@@ -537,9 +537,9 @@ To learn more about a potential ETL workflow using the **AWS Step Functions**:
 
     After the data is successfully loaded into Amazon Redshift, the Step Functions workflow completes.
 
-### Extract, Transform, Load (ETL) workload
+### Extract, Load, Transform (ELT) workload
 
-The ETL workload adds data to Amazon Redshift through a process with three main phases: Extract, Transform, and Load. This section examines these phases.
+The following image provides a general overview of how the ELT process in Amazon Redshift can be carried out.
 
 ![ELT](/img/elt.png)
 
