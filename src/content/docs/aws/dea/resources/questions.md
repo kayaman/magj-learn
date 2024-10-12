@@ -323,6 +323,22 @@ For complex or computationally intensive transformations, **Amazon EMR (Elastic 
 
 ---
 
+**What is a SPICE query?**
+
+*An in-memory data store that Amazon QuickSight uses to accelerate query performance*
+
+SPICE is an **in-memory data store that Amazon QuickSight uses to accelerate query performance**. When you load data into SPICE, QuickSight automatically optimizes the data for fast queries. SPICE is optimized for aggregations, filtering, and grouping operations, which means that it is ideal for interactive data exploration and dashboards.
+
+---
+
+**What is the name for clusters that you want to share data from?**
+
+*Datashare producers*
+
+Datashare producers (also known as data sharing producers or datashare producers) are clusters that you want to share data from. Producer cluster administrators and database owners can create datashares using the CREATE DATASHARE command.
+
+---
+
 ## Official Practice Question Set
 
 **A company is using an Amazon S3 data lake. The company ingests data into the data lake by using Amazon Kinesis Data Streams. The company reads and processes the incoming data from the stream by using AWS Lambda. The data being ingested has highly variable and unpredictable volume. Currently, the IteratorAge metric is high at peak times when a high volume of data is being posted to the stream. A data engineer must design a solution to increase performance when reading Kinesis Data Streams with Lambda. Which solution will meet these requirements?**

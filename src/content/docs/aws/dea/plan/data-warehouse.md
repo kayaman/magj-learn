@@ -895,3 +895,107 @@ Users can view and delete saved queries in the Queries tab.
 #### Advanced features
 
 ![QE](/img/qv-adv-feats.png)
+
+### Visualizing data using query editor v2 and generative SQL
+
+After you run a query, you can turn to the chart feature to display a graphic of the current results. You use traces to define the structure of your charts. Traces represents related graphical marks in a chart. You can define multiple traces in a chart.
+
+You can define the trace type to represent data as one of the following:
+
+![traces](/img/traces.png)
+
+- Scatter chart
+- Bar chart
+- Area chart
+- Histogram
+- Pie chart
+- Funnel or Funnel Area chart
+- Open-high-low-close (OHLC) chart
+- Candlestick chart
+- Waterfall chart
+- Line chart
+
+### Using materialized views in Amazon Redshift
+
+In a data warehouse environment, applications perform complex queries on large tables. An example is SELECT statements that perform multi-table joins and aggregations on tables that contain billions of rows. Processing these queries are expensive, in system resources and time to compute the results.
+
+Materialized views in Amazon Redshift address these issues. A materialized view contains a precomputed result set, based on an SQL query over one or more base tables. You can issue SELECT statements to query a materialized view, the same way you query other tables or views in the database. Amazon Redshift returns the precomputed results from the materialized view, without accessing the base tables at all. From the user standpoint, the query results are much faster compared to retrieving the same data from the base tables.
+
+Users can define a materialized view using other materialized views. A materialized view plays the same role as a base table.
+
+This approach is useful for reusing precomputed joins for different aggregate or GROUP BY options. For example, take a materialized view that joins customer information (containing millions of rows) with item order detail information (containing billions of rows). This is an expensive query to compute repeatedly. Users can use different GROUP BY options for the materialized views created on top of this materialized view and join with other tables. This saves compute time. The STV_MV_DEPS table shows the dependencies of a materialized view on other materialized views.
+
+#### An example of a materialized view
+
+When someone creates a materialized view, Amazon Redshift runs the user-specified SQL statement to gather data from the base table(s) and stores the result. The following illustration provides an overview of the materialized view named tickets_mv that an SQL query defines by using two base tables, events and sales.
+
+![An example of materialized views using two tables](/img/mv.png)
+
+Analysts can then use these materialized views in queries to speed them up. Amazon Redshift can automatically rewrite these queries to use materialized views, even when the query doesn't explicitly reference a materialized view. Automatic rewrite of queries is powerful in enhancing performance when users can't change the queries to use materialized views.
+
+To update the data in the materialized view, users can use the REFRESH MATERIALIZED VIEW statement to manually refresh materialized views. Amazon Redshift provides a few ways to keep materialized views up to date for automatic rewriting. Analysts can configure materialized views to refresh materialized views when base tables of materialized views are updated. 
+
+This autorefresh operation runs when cluster resources are available to minimize disruptions to other workloads. Users can schedule a materialized view refresh job by using Amazon Redshift scheduler API and console integration.
+
+### Using Amazon Redshift ML
+
+Amazon Redshift ML is a feature within Amazon Redshift that enables users to create, train, and deploy machine learning models directly from their data stored in Amazon Redshift data warehouses. It allows data analysts and data scientists to use the power of machine learning without moving data out of the Redshift environment.
+
+The following is a brief overview of how Redshift ML is used within Amazon Redshift:
+
+- Data preparation
+
+    With SQL commands, you can extract, transform, and prepare the data stored in Redshift for machine learning model training.
+
+- Model creation
+
+    Using SQL statements, you can create machine learning models by specifying the algorithm type (such as linear regression, logistic regression, or XGBoost), target variable, and input features.
+
+- Model training
+
+    Redshift ML automatically distributes the model training process across multiple nodes in the Redshift cluster, parallelizing the computations for improved performance.
+
+- Model evaluation
+
+    You can evaluate the performance of your trained models using built-in metrics like accuracy, precision, recall, and F1-score.
+
+- Model deployment
+
+    When satisfied with the model's performance, you can deploy the trained model within the Redshift cluster using SQL commands.
+
+- Prediction and scoring
+
+    The deployed model can be used to generate predictions or scores on new data directly within Amazon Redshift, without the need to move data out of the data warehouse.
+
+By integrating machine learning capabilities into Amazon Redshift, Redshift ML simplifies the process of building and deploying machine learning models for data analysts and data scientists. It eliminates the need for separate data movement and specialized machine learning environments.
+
+### Using datashares with Amazon Redshift
+
+With Amazon Redshift, you can share data at different levels. These levels include databases, schemas, tables, views (including regular, late-binding, and materialized views), and SQL UDFs. You can create multiple datashares for a database. A datashare can contain objects from multiple schemas in the database on which sharing is created.  
+A datashare is the unit of sharing data in Amazon Redshift. Use datashares in the same AWS account or different AWS accounts.  
+Datashare objects are objects from specific databases on a cluster that producer cluster administrators can add to share with data consumers. Datashare objects are read-only for data consumers. Examples of datashare objects are tables, views, and user-defined functions. Data sharing continues to work when clusters are resized or when the producer cluster is paused.  
+The following are different types of datashares:
+
+- Standard datashares
+
+    With standard datashares, you can share data across provisioned clusters, serverless workgroups, Availability Zones, AWS accounts, and AWS Regions. You can share between cluster types and between provisioned clusters and Amazon Redshift Serverless.  
+    Now that you have reviewed Standard Datashares, move on to the next tab to learn about AWS Data Exchange Datashares.
+
+- AWS data exchange datashares
+
+    An AWS Data Exchange datashare is a unit of licensing for sharing your data through AWS Data Exchange. AWS manages all billing and payments associated with subscriptions to AWS Data Exchange and the use of Amazon Redshift data sharing.  
+    Approved data providers can add AWS Data Exchange datashares to AWS Data Exchange products. When customers subscribe to a product with AWS Data Exchange datashares, they get access to the datashares in the product.  
+    Now that you have reviewed AWS Data Exchange Datashares, move on to the next tab to learn about AWS Lake Formation-managed Datashares.
+
+#### Datashare producers
+
+Data producers (also known as data sharing producers or datashare producers) are clusters that you want to share data from. Producer cluster administrators and database owners can create datashares using the CREATE DATASHARE command. You can add objects such as schemas, tables, views, and SQL UDFs from a database you want the producer cluster to share with consumer clusters.  
+Data producers (also known as providers) for AWS Data Exchange datashares can license data through AWS Data Exchange.  
+When a customer subscribes or unsubscribe to a product with AWS Data Exchange datashares, AWS Data Exchange automatically adds or removes the customer as a data consumer on all AWS Data Exchange datashares included with the product.
+
+#### Datashare consumers
+
+Data consumers (also known as data sharing consumers or datashare consumers) are clusters that receive datashares from producer clusters.  
+Redshift clusters that share data can be in the same or different AWS accounts or different AWS Regions. You can share data across organizations and collaborate with other parties. Consumer cluster administrators receive the datashares that they are granted usage for and review the contents of each datashare.  
+To consume shared data, the consumer cluster administrator creates an Amazon Redshift database from the datashare. The administrator then assigns permissions for the database to users and roles in the consumer cluster. After permissions are granted, users and roles can list the shared objects as part of the standard metadata queries.  
+If you are a consumer with an active AWS Data Exchange subscription (also known as subscribers on AWS Data Exchange), you can find, subscribe to, and query granular, up-to-date data in Amazon Redshift without the need to extract, transform, and load the data.
