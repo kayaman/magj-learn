@@ -759,3 +759,139 @@ The following is an example of a stored procedure. Performing SQL queries to tra
 
 ### Deep dive into transformation tools
 
+Amazon EMR is a managed cluster platform. The service simplifies running big data frameworks, such as Apache Hadoop and Apache Spark, on AWS to process and analyze vast amounts of data. By using these frameworks and related open-source projects, such as Apache Hive and Apache Pig, you can process data for analytics and business intelligence (BI) workloads. Additionally, you can use Amazon EMR to transform and move large volumes of data. You can move this data in and out of other AWS data stores and databases, such as Amazon S3 and Amazon DynamoDB.
+
+#### Serverless option
+
+**Amazon EMR** (Elastic MapReduce) Serverless is a serverless deployment option for Apache Spark and Apache Hudi applications on Amazon EMR. It allows you to run analytics applications without having to provision and manage the underlying compute resources. EMR Serverless automatically provisions and scales the compute resources based on the workload, enabling you to focus on writing and running your analytics applications without worrying about cluster management. It simplifies the deployment and scaling of Spark and Hudi applications, reduces operational overhead, and provides cost optimization by automatically scaling resources up or down based on the workload demand.
+
+**AWS Glue** is a serverless data integration service that analytics users use to discover, prepare, move, and integrate data from multiple sources. You can use it for analytics, machine learning, and application development. It also includes additional productivity and data operations tooling for authoring, running jobs, and implementing business workflows.  
+With AWS Glue, you can discover and connect to more than 70 diverse data sources and manage your data in a centralized data catalog. You can visually create, run, and monitor ETL pipelines to load data into your data lakes. Also, you can immediately search and query cataloged data using Athena, Amazon EMR, and Amazon Redshift Spectrum.  
+AWS Glue capabilities include data discovery, modern ETL, cleansing, transforming, and centralized cataloging. It's also serverless, which means there's no infrastructure to manage. With flexible support for all workloads like ETL, ELT, and streaming in one service, AWS Glue supports users across various workloads and types of users.  
+AWS Glue integrates with AWS analytics services and Amazon S3 data lakes. It scales for any data size, and supports all data types and schema variances.
+
+**AWS Lambda** can be used in conjunction with Amazon Redshift to perform various tasks related to data processing, loading, and transformations.  
+
+The following is a general overview of how you can use Lambda with Amazon Redshift.
+
+- Data loading
+
+    You can load data from various sources, such as Amazon S3, DynamoDB, or Kinesis, into Amazon Redshift. Lambda functions can be invoked by events from these sources. It can process the data and then use the Amazon Redshift Data API or the AWS SDK for Python (Boto3) to load the data into Redshift tables.
+
+- Data transformations
+
+    Perform data transformations before loading data into Amazon Redshift. You can write Lambda functions to clean, filter, or aggregate data before inserting it into Redshift tables.
+
+- Scheduled tasks
+
+    Use Lambda in combination with Amazon CloudWatch Events to schedule tasks related to Amazon Redshift, such as running queries, generating reports, or performing maintenance operations on a regular basis.
+
+- Event-driven processing
+
+    Lambda can be invoked by events from other AWS services, such as Amazon S3 or DynamoDB, to perform data processing tasks on data stored in Amazon Redshift. For example, you can invoke a Lambda function whenever a new file is uploaded to an S3 bucket, and the function can then load the data from the file into a Redshift table.
+
+- Amazon Redshift automation
+
+    Lambda can be used to automate various tasks related to Amazon Redshift, such as resizing clusters, creating snapshots, or running vacuum and analyze operations.
+
+To use Lambda with Amazon Redshift, you will need to create a Lambda function and configure the necessary permissions and policies. You can use the right Lambda role to grant the necessary permissions to run your Lambda function and access Amazon Redshift and other AWS services.
+
+## Serving Data for Consumption
+
+### Using Amazon Redshift Spectrum
+
+By using Amazon Redshift Spectrum, you can efficiently query and retrieve structured and semi-structured data from files in Amazon S3 without having to load the data into Amazon Redshift tables. Redshift Spectrum resides on dedicated Amazon Redshift servers that are independent of your cluster. Redshift Spectrum queries employ massive parallelism to run very fast against large datasets. Much of the processing occurs in the Redshift Spectrum layer, and most of the data remains in Amazon S3. Multiple clusters can concurrently query the same dataset in Amazon S3 without the need to make copies of the data for each cluster.
+
+Redshift Spectrum resides on dedicated Amazon Redshift servers that are independent of your cluster. Amazon Redshift pushes many compute-intensive tasks, such as predicate filtering and aggregation, down to the Redshift Spectrum layer. Thus, Redshift Spectrum queries use much less of your cluster's processing capacity than other queries. Redshift Spectrum also scales intelligently. Based on the demands of your queries, Redshift Spectrum can potentially use thousands of instances to take advantage of massively parallel processing.
+
+![Spectrum](/img/spectrum.png)
+
+#### Tables in Redshift Spectrum
+
+You create Redshift Spectrum tables by defining the structure for your files and registering them as tables in an external data catalog. The external data catalog can be AWS Glue, the data catalog that comes with Athena, or your own Apache Hive metastore. You can create and manage external tables either from Amazon Redshift using data definition language (DDL) commands or using any other tool that connects to the external data catalog. Changes to the external data catalog are immediately available to any of your Redshift clusters.
+
+Optionally, you can partition the external tables on one or more columns. Defining partitions as part of the external table can improve performance. The improvement occurs because the Amazon Redshift query optimizer eliminates partitions that don't contain data for the query.
+
+After your Redshift Spectrum tables have been defined, you can query and join the tables as you would do any other Amazon Redshift table.
+
+- Data lake integration
+
+    Redshift Spectrum integrates seamlessly with the AWS data lake stored in Amazon S3. It can query structured and semi-structured data formats like CSV, Parquet, JSON, and more, directly from Amazon S3 without the need for data movement or transformation.
+
+- Query optimization
+
+    Redshift Spectrum employs various optimization techniques, such as partition pruning and predicate pushdown, to minimize the amount of data scanned and improve query performance.
+
+- Scalability
+
+    Because Redshift Spectrum queries data directly from Amazon S3, it can scale to analyze vast amounts of data without the need to provision or scale the Redshift cluster itself.
+
+- Cost-effective
+
+    With Redshift Spectrum, you only pay for the data scanned during queries, not for storing or processing the entire data set. This makes it a cost-effective solution for analyzing large datasets.
+
+- SQL interface
+
+    Redshift Spectrum supports standard SQL syntax and integrates with existing SQL-based applications and BI tools.
+- Security
+
+    Redshift Spectrum uses AWS Identity and Access Management (IAM) policies and Amazon S3 bucket policies to control access to data in Amazon S3 for data security and compliance.
+
+### Using federated queries
+
+By using federated queries in Amazon Redshift, you can query and analyze data across operational databases, data warehouses, and data lakes. With the federated query feature, you can integrate queries from Amazon Redshift on live data in external databases with queries across your Amazon Redshift and Amazon S3 environments. Federated queries can work with external databases in Amazon RDS for PostgreSQL, Amazon Aurora PostgreSQL-Compatible Edition, Amazon RDS for MySQL, and Amazon Aurora MySQL-Compatible Edition.
+
+ You can use federated queries to do the following:
+
+- Query operational databases directly.
+- Apply transformations quickly.
+- Load data into the target tables without the need for complex ETL pipelines.
+  
+To reduce data movement over the network and improve performance, Amazon Redshift distributes part of the computation for federated queries directly into the remote operational databases. Amazon Redshift also uses its parallel processing capacity to support running these queries, as needed.
+
+When running federated queries, Amazon Redshift first makes a client connection to the RDS instance or Aurora DB instance from the leader node to retrieve table metadata. From a compute node, Amazon Redshift issues subqueries with a predicate pushed down and retrieves the result rows. Amazon Redshift then distributes the result rows among the compute nodes for further processing.
+
+### Visualizing data using QuickSight with Amazon Redshift
+
+Amazon QuickSight supports a variety of data sources that can be used to provide data for analyses. This section focuses on Amazon Redshift as the data source.  
+QuickSight connects to Amazon Redshift and creates a dataset. Using that dataset, QuickSight can generate visualizations for interactive dashboards, email reports, and embedded analytics.
+
+![Quicksight](/img/quicksight-sample.png)
+
+**Amazon QuickSight**  
+To learn more, see [Creating Datasets](https://docs.aws.amazon.com/quicksight/latest/user/creating-data-sets.html).
+
+### Creating a query in QuickSight
+
+When you create or edit a dataset, you choose to use either a direct query or Super-fast, Parallel, In-memory Calculation Engine (SPICE).
+
+![SPICE](/img/spice.png)
+
+With direct query in Amazon QuickSight, you can connect directly to a data source and run queries in real time. You can analyze live data from various sources such as Amazon Redshift, Amazon RDS, or Athena. Thus, any changes that are made to the data source will immediately reflect in your analysis. Direct query is suitable when you need up-to-the-minute data.
+
+Conversely, SPICE is an in-memory data store that Amazon QuickSight uses to accelerate query performance. When you load data into SPICE, QuickSight automatically optimizes the data for fast queries. SPICE is optimized for aggregations, filtering, and grouping operations, which means that it is ideal for interactive data exploration and dashboards.
+
+SPICE capacity is allocated separately for each AWS Region. Default SPICE capacity is automatically allocated to your home AWS Region.
+
+**Amazon QuickSight**  
+To learn more, see [Managing SPICE Memory Capacity](https://docs.aws.amazon.com/quicksight/latest/user/managing-spice-capacity.html).
+
+### Querying data using query editor v2 and generative SQL
+
+Amazon Redshift query editor v2 is a web-based SQL client that teams can use to explore, share, and collaborate on data through a common interface. Users can create databases, schemas, and tables.  
+With query editor v2, analysts can browse multiple databases. They can run queries on the Amazon Redshift data warehouse, data lake, or federated query to operational databases such as Aurora. With a few clicks, they can gain insights by using charts and graphs.  
+Query editor v2 helps to organize related queries by saving them together in a folder. Users can combine them into a single saved query with multiple statements.  
+The browser doesn’t need to download any raw data. The filtering and reordering happen directly in the browser without wait time.  
+Query editor v2 functionality includes increased size of queries, the ability to author and run multi-statement queries, support for session variables, and query parameters.
+
+![QE-v2](/img/query-editor-v2.png)
+
+Analysts can enter a query in the editor or run a saved query from the Queries list.  
+For a successful query, a success message appears. The results display in the Results section. The default limit of results is 100 rows. Users can turn off this option. When this option is off, users can include the LIMIT option in the SQL statement to avoid very large result sets.  
+In case of an error, the query editor v2 displays a message in the results area. It provides information about how to correct the query.  
+The query tab either uses an isolated session or not. In an isolated session, the results of a SQL command aren’t visible in another tab. A new tab is an isolated session by default.  
+Users can view and delete saved queries in the Queries tab.
+
+#### Advanced features
+
+![QE](/img/qv-adv-feats.png)

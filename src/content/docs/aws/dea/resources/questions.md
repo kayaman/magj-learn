@@ -313,6 +313,16 @@ Together, Athena and QuickSight provide a way to query and visualize data, but t
 
 An AWS Glue connection is a Data Catalog object that stores login credentials, URI strings, virtual private cloud (VPC) information, and more for a particular data store.
 
+---
+
+**You are working on an ETL pipeline that involves extracting data from multiple sources, transforming it using complex computations and aggregations, and then loading it into Amazon Redshift. Which AWS service would be most suitable for the transformation step of this pipeline?**
+
+*Amazon EMR*
+
+For complex or computationally intensive transformations, **Amazon EMR (Elastic MapReduce)** is the most suitable choice. Amazon EMR provides a managed Hadoop system that includes tools like Apache Spark, Apache Hive, and Apache Pig, which can be used for data transformation tasks involving complex computations, aggregations, and joining data from multiple sources. AWS Glue is suitable for simpler transformations, while Lambda is more suitable for event-driven processing and not recommended for computationally intensive tasks.
+
+---
+
 ## Official Practice Question Set
 
 **A company is using an Amazon S3 data lake. The company ingests data into the data lake by using Amazon Kinesis Data Streams. The company reads and processes the incoming data from the stream by using AWS Lambda. The data being ingested has highly variable and unpredictable volume. Currently, the IteratorAge metric is high at peak times when a high volume of data is being posted to the stream. A data engineer must design a solution to increase performance when reading Kinesis Data Streams with Lambda. Which solution will meet these requirements?**
