@@ -18,10 +18,10 @@ tableOfContents: false
 
 **Gain hands-on experience with these resources**
 
-1. Engage in the Best of re:Invent Analytics 2022(opens in a new tab) (AWS Jam)
+1. Engage in the Best of re:Invent Analytics 2022 (AWS Jam)
 
-2. AWS Cloud Quest: Data Analytics(opens in a new tab)
+2. AWS Cloud Quest: Data Analytics
 
-3. Performing a Basic Audit of Your AWS Environment(opens in a new tab)
+3. Performing a Basic Audit of Your AWS Environment
 
 4. Introduction to AWS Identity and Access Management (IAM) (self-paced lab)
