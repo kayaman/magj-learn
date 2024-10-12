@@ -598,7 +598,7 @@ Transformations might include the following:
 
 After looking into the workflow, let’s look at the tools involved in transforming the data.
 
-#### Aggregation extensions
+### Aggregation extensions
 
 Amazon Redshift supports aggregation extensions to do the work of multiple GROUP BY operations in a single statement.
 
@@ -618,7 +618,7 @@ These extensions include the following:
 
 - Nested grouping
 
-#### User-defined scalar functions
+### User-defined scalar functions
 
 Amazon Redshift supports creating and running user-defined scalar functions (UDFs) and user-defined stored procedures (UDPs) using Python or SQL. These user-defined functions and procedures can be used to extend the functionality of Amazon Redshift by performing custom operations or transformations on data.
 
@@ -668,4 +668,94 @@ You can create Lambda UDFs that use custom functions defined in Lambda as part o
 
     The result is presented to the user.
 
-#### Amazon Redshift stored procedures
+### Amazon Redshift stored procedures
+
+Amazon Redshift supports stored procedures that are written in the Procedural Language/PostgreSQL (PL/pgSQL) dialect. They can include variable declaration, control logic, and loops. They support raising errors, working with security definers, and other common features that are used in stored-procedure logic.
+
+Users can use procedural language, including looping and conditional expressions, to control logical flow.
+
+You can create stored procedures to perform functions without giving access to the underlying tables for fine-grained access control. For example, only the owner or a superuser can truncate a table, and a user must write privileges to insert data into a table. You can create a stored procedure that performs a task, and then give a user privileges to run the stored procedure.
+
+#### Stored procedures
+
+Stored procedures in Amazon Redshift are SQL scripts that encapsulate a set of SQL statements and can be called from other SQL statements or applications. They provide several benefits, such as code reusability, modularity, and enhanced security.
+
+#### Materialized views
+
+Materialized views in Amazon Redshift are pre-computed views that store the result of a complex queries on large tables for faster access. They provide improved query performance by minimizing the need to recalculate the underlying queries when the same or similar queries are performed repeatedly.
+
+- Procedural logic
+
+    With stored procedures, you can implement complex procedural logic within your data warehouse. This includes control flow statements (IF, CASE, and LOOP), variable declarations, and error handling mechanisms. This can simplify and centralize complex data manipulation tasks.
+
+- Performance
+
+    Stored procedures can improve performance by reducing network roundtrips between the client application and the Redshift cluster. Instead of sending multiple SQL statements, you can run the entire procedure on the Redshift cluster to minimize network overhead.
+
+- Security
+
+    Stored procedures can be granted permissions separately from the underlying database objects they access. Therefore, you can control access to sensitive data or operations at a more granular level.
+
+- Reusability
+
+    By encapsulating logic in stored procedures, you can promote code reuse across different applications or processes that interact with your data warehouse.
+
+- Maintenance
+
+    Stored procedures centralize the logic for performing specific tasks to maintain and update the code as requirements change.
+
+- Transaction management
+
+    Stored procedures can be used to ensure data consistency by wrapping multiple SQL statements within a single transaction.
+
+- Temporary tables
+
+    Amazon Redshift supports the creation of temporary tables within stored procedures, which can be useful for intermediate data processing or staging purposes.
+
+- Debugging and monitoring
+  
+    Amazon Redshift provides tools and utilities for debugging and monitoring stored procedures, such as logging and profiling.
+
+- Limitations
+
+    Although stored procedures offer many benefits, they also have some limitations in Amazon Redshift. For example, they cannot be called recursively, and there are restrictions on certain SQL statements that can be used within procedures.
+
+You can use Amazon Redshift stored procedures to implement complex data transformations, handle data quality checks, manage ETL processes, or implement custom business logic within your data warehouse. However, it's important to carefully design and test your stored procedures to ensure optimal performance, security, and maintainability.
+
+#### An example
+
+The following is an example of a stored procedure. Performing SQL queries to transform data is a common approach in data engineering and analytics. In this process, data is first extracted from various sources and loaded into a staging area or data lake, often in its raw or semi-structured format. The transformation step then occurs within the target database or data warehouse, using the power of SQL queries to manipulate and reshape the data as needed. 
+
+- Extract
+
+    Retrieve the raw data from various sources such as databases, flat files, APIs, or streaming data sources. This step typically involves extracting the data and storing it in a staging area or data lake without performing any transformations.
+
+
+- Load
+
+    Load the extracted data into the target database or data warehouse. This step might involve creating temporary or staging tables to hold the raw data before transformation.
+
+
+- Transform
+
+    Use SQL queries to transform the loaded data into the desired format. This step involves a series of operations such as filtering, joining, aggregating, pivoting, and cleaning data. Some common SQL operations used for transformation include the following:  
+    Filtering: Use 'WHERE' clauses or 'JOIN' conditions to filter out unnecessary data.  
+    Joining: Combine data from multiple tables using 'JOIN' operations, such as 'INNER JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'FULL OUTER JOIN'.  
+    Aggregating: Use 'GROUP BY' and aggregate functions like 'SUM', 'AVG', 'COUNT', 'MAX', and 'MIN' to summarize data.  
+    Pivoting: Reshape data from rows to columns or vice versa using 'PIVOT' or 'UNPIVOT' clauses (syntax might vary across database systems).  
+    Cleaning: Use string manipulation functions, for example 'TRIM', 'REPLACE', 'SUBSTRING', and data type conversions to clean and format data.  
+    Derived Columns: Create new columns or calculate values using expressions, functions, or case statements.
+
+
+- Window Functions
+
+    Use window functions like 'ROW_NUMBER', 'RANK', 'LEAD', and 'LAG' for advanced data manipulation and analysis.
+
+
+- Load Transformed Data
+
+    After the data is transformed, create the final target tables or views and load the transformed data into them. This step might involve creating indexes, constraints, or partitions as needed.  
+    After the transformed data is loaded, you are able to make data-driven decisions at a faster pace.
+
+### Deep dive into transformation tools
+
