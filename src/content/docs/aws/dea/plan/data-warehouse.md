@@ -543,3 +543,129 @@ The following image provides a general overview of how the ELT process in Amazon
 
 ![ELT](/img/elt.png)
 
+#### Extract
+
+You can use the following AWS services during the extract portion of the ETL workflow:
+
+- Use **AWS DMS** to ingest data from your relational databases.
+
+- Use **AWS Glue** to extract data from different sources. Glue crawlers can automatically discover and extract data from various data stores, such as Amazon S3, Amazon RDS, DynamoDB, and more.
+
+#### Load
+
+You can use the following AWS services during the load portion of the ETL workflow:
+
+- Use **Amazon Redshift** to directly load data in the data warehouse using the COPY command.
+
+- With **Amazon S3**, you can store the extracted data temporarily in Amazon S3 before loading it into Amazon Redshift. This can be useful when the data needs to be transformed before loading.
+
+#### Transform
+
+During this phase, the data undergoes various transformations to reshape, clean, and prepare it for further analysis or reporting purposes. These transformations are typically performed using SQL queries and can include operations such as joins, filtering, aggregations, pivoting, data type conversions, and custom business logic implementations. The transformed data is then stored in dedicated target tables within the Redshift cluster. It is optimized for efficient querying and analysis.
+
+Transformations might include the following:
+
+- Joining tables
+- Filtering data
+- Aggregating data
+- Cleaning and formatting data
+- Applying business logic
+- Creating derived columns or measures
+- Creating views, materialized views, or new tables to store the transformed data
+- Using parallel processing capabilities and advanced SQL features of Amazon Redshift (such as window functions and subqueries) for efficient transformations
+
+#### ELT workflow
+
+1. Initial event
+
+    A Lambda function is initiated by an event, such as a file upload to Amazon S3, API call, or scheduled event.
+
+2. Extract
+
+    The Lambda function extracts data from the source and stores it in Amazon S3.
+
+3. Metadata
+
+    A Glue crawler discovers the data in Amazon S3 and creates metadata tables in the AWS Glue Data Catalog.
+
+4. Load
+
+    Use the **COPY** command in Amazon Redshift to load the extracted data from Amazon S3 or other data sources directly into Redshift tables. The **COPY** command supports parallel and compressed file loading, which can significantly improve the loading performance.
+
+5. Transform
+
+    SQL queries perform various transformations, such as data cleansing, deduplication, joining tables, and creating aggregates. The powerful parallel processing capabilities and advanced SQL features like window functions, materialized views, and stored procedures to perform complex transformations efficiently.
+
+After looking into the workflow, let’s look at the tools involved in transforming the data.
+
+#### Aggregation extensions
+
+Amazon Redshift supports aggregation extensions to do the work of multiple GROUP BY operations in a single statement.
+
+These extensions include the following:
+
+- GROUPING SETS
+
+- ROLLUP
+
+- CUBE
+
+- GROUPING/GROUPING_ID functions
+
+- Partial ROLLUP and CUBE
+
+- Concatenated grouping
+
+- Nested grouping
+
+#### User-defined scalar functions
+
+Amazon Redshift supports creating and running user-defined scalar functions (UDFs) and user-defined stored procedures (UDPs) using Python or SQL. These user-defined functions and procedures can be used to extend the functionality of Amazon Redshift by performing custom operations or transformations on data.
+
+Analysts can create a custom scalar UDF by using either a SQL SELECT clause or a Python program. The new function is stored in the database and is available for any user with sufficient privileges to run. A user can run a custom scalar UDF the same way as existing Amazon Redshift functions.
+
+For Python UDFs, you can use the standard Python functionality and custom Python modules. You can also use Lambda to define the UDF and process the data before importing into Amazon Redshift. To learn more, choose each of the following numbered markers.
+
+![UDF](/img/udf.png)
+
+1. Call of UDF function
+
+    The Amazon Redshift query calls a Python UDF.
+
+2. Conversion to Python data type
+
+    The UDF converts the input arguments to Python data types and passes them to the Python program to run.
+
+3. Single value returned
+
+    The Python code returns a single value to the UDF. The data type of the return value must correspond to the RETURNS data type that the function definition has specified.
+
+4. Conversion and return to caller
+
+    The UDF converts the Python return value to the specified Amazon Redshift data type and then returns that value to the query.
+
+You can create Lambda UDFs that use custom functions defined in Lambda as part of SQL queries. Analysts can use Lambda UDFs to write complex UDFs and integrate with AWS services and third-party components. They can help overcome some of the limitations of current Python and SQL UDFs. For example, they can help access network and storage resources and write more full-fledged SQL statements. Users can create Lambda UDFs in languages that Lambda supports, such as Java, Go, PowerShell, Node.js, C#, Python, Ruby, or use a custom runtime.
+
+![Lambda UDF](/img/lambda-udf.png)
+
+1. Query sent to Amazon Redshift
+
+    A query is issued to Amazon Redshift.
+
+2. Batch creation
+
+    Amazon Redshift batches the data.
+
+3. Data goes to function
+
+    Amazon Redshift passes the data to the Lambda functions concurrently.
+
+4. Result returns to Redshift
+
+    The Lambda function is processed and passes the result back to Amazon Redshift.
+
+5. Result returns to user
+
+    The result is presented to the user.
+
+#### Amazon Redshift stored procedures
