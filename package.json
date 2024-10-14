@@ -14,7 +14,7 @@
     "@astrojs/check": "^0.9.3",
     "@astrojs/starlight": "^0.28.1",
     "@fontsource/open-sans": "^5.1.0",
-    "astro": "^4.15.3",
+    "astro": "^4.15.12",
     "rehype-accessible-emojis": "^0.3.2",
     "rehype-mathjax": "^6.0.0",
     "remark-gfm": "^4.0.0",
