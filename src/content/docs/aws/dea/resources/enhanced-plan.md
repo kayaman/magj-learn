@@ -12,7 +12,7 @@ tableOfContents: false
 
 3. [Data Engineering on AWS: A Data Warehouse Solution](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19816/data-engineering-on-aws-a-data-warehouse-solution)
 
-4. [Data Engineering on AWS: A Batch Data Pipeline Solution](https://explore.skillbuilder.aws/learn/course/external/view/elearning/120/introduction-to-aws-identity-and-access-management-iam)
+4. [Data Engineering on AWS: A Batch Data Pipeline Solution](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19883/data-engineering-on-aws-a-batch-data-pipeline-solution-includes-labs)
 
 5. [Data Engineering on AWS: A Streaming Data Pipeline Solution](https://explore.skillbuilder.aws/learn/course/external/view/elearning/19779/data-engineering-on-aws-a-streaming-data-pipeline-solution)
 
