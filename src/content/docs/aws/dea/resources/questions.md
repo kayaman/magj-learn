@@ -339,6 +339,71 @@ Datashare producers (also known as data sharing producers or datashare producers
 
 ---
 
+**How does Amazon Redshift Spectrum integrate with the AWS data lake?**
+
+*Redshift Spectrum integrates seamlessly with the AWS data lake stored in Amazon S3. It can query structured and semi-structured data formats directly.*
+
+Redshift Spectrum integrates seamlessly with the AWS data lake stored in Amazon S3. It can query structured and semi-structured data formats directly. Amazon Redshift Spectrum resides on dedicated Amazon Redshift servers that are independent of your cluster. Redshift Spectrum queries employ massive parallelism to run very fast against large datasets.
+
+---
+
+**Which services can be used to ingest batch data into Amazon Redshift?**
+
+- *AWS Glue*
+- *Amazon EMR*
+
+AWS Glue and Amazon EMR are the services used to ingest batch data into Amazon Redshift. When ingesting data from batch sources into Amazon Redshift, it's essential to consider factors such as data volume, data format, transformation requirements, and the frequency of data ingestion.
+
+---
+
+**What is the name for pre-computed views that store the result of a complex queries on large tables for faster access in Amazon Redshift?**
+
+*Materialized views*
+
+Materialized views in Amazon Redshift are pre-computed views that store the result of a complex queries on large tables for faster access. They provide improved query performance by minimizing the need to recalculate the underlying queries when the same or similar queries are performed repeatedly.
+
+---
+
+**In Amazon QuickSight, what is the difference between using Super-fast, Parallel, In-memory Calculation Engine (SPICE) and a direct query when connecting to Amazon Redshift?**
+
+*SPICE is an in-memory data store optimized for fast queries, whereas direct query connects directly to Amazon Redshift for real-time data access.*
+
+SPICE is an in-memory data store optimized for fast queries, whereas direct query connects directly to Amazon Redshift for real-time data access. QuickSight uses SPICE to accelerate query performance. When data is loaded data into SPICE, QuickSight automatically optimizes the data for fast queries. SPICE is optimized for aggregations, filtering, and grouping operations, which means that it is ideal for interactive data exploration and dashboards.
+
+---
+
+**A data analyst needs to access the latest data across operational databases and combine it with historical data in Amazon Redshift for real-time reporting. Which Amazon Redshift feature should they use?**
+
+*Federated queries*
+
+They should use federated queries. By using federated queries in Amazon Redshift, the analyst can query and analyze data across operational databases, data warehouses, and data lakes. They can integrate queries from Amazon Redshift on live data in external databases with queries across the Amazon Redshift and Amazon S3 environments. Federated queries can work with external databases in Amazon RDS for PostgreSQL, Amazon Aurora PostgreSQL-Compatible Edition, Amazon RDS for MySQL, and Amazon Aurora MySQL-Compatible Edition.
+
+---
+
+**What is the purpose of the GROUPING SETS, ROLLUP, and CUBE extensions in Amazon Redshift?**
+
+*To perform multiple GROUP BY operations in a single statement*
+
+Amazon Redshift supports aggregation extensions to do the work of multiple GROUP BY. Use GROUPING SETS, ROLLUP, and CUBE extensions in Amazon Redshift to perform multiple GROUP BY operations in a single statement.
+
+---
+
+**Which Amazon Redshift feature can be used to scale compute resources independently from storage to accommodate growing data volumes?**
+
+*Redshift Managed Storage (RMS)*
+
+The feature is Redshift Managed Storage (RMS). Data warehouse data is stored in a separate storage tier. RMS provides the ability to scale your storage to petabytes using Amazon S3 storage. With RMS, organizations can scale and pay for computing and storage independently. It automatically uses high-performance SSD-based local storage as tier-1 cache.
+
+---
+
+**A data analyst wants to implement a data transformation pipeline that can handle large volumes of data and complex transformations. Which combination of AWS services would be most suitable for this task?**
+
+*AWS Step Functions and AWS Glue*
+
+Throughout the entire extract, transform, and load (ETL) workflow, Step Functions orchestrates running AWS Glue jobs. Step Functions provides monitoring and logging capabilities to track the progress of the workflow and troubleshoot any issues that might arise. The combination of services is AWS Step Functions and AWS Glue.
+
+---
+
 ## Official Practice Question Set
 
 **A company is using an Amazon S3 data lake. The company ingests data into the data lake by using Amazon Kinesis Data Streams. The company reads and processes the incoming data from the stream by using AWS Lambda. The data being ingested has highly variable and unpredictable volume. Currently, the IteratorAge metric is high at peak times when a high volume of data is being posted to the stream. A data engineer must design a solution to increase performance when reading Kinesis Data Streams with Lambda. Which solution will meet these requirements?**

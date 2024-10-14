@@ -999,3 +999,20 @@ Data consumers (also known as data sharing consumers or datashare consumers) are
 Redshift clusters that share data can be in the same or different AWS accounts or different AWS Regions. You can share data across organizations and collaborate with other parties. Consumer cluster administrators receive the datashares that they are granted usage for and review the contents of each datashare.  
 To consume shared data, the consumer cluster administrator creates an Amazon Redshift database from the datashare. The administrator then assigns permissions for the database to users and roles in the consumer cluster. After permissions are granted, users and roles can list the shared objects as part of the standard metadata queries.  
 If you are a consumer with an active AWS Data Exchange subscription (also known as subscribers on AWS Data Exchange), you can find, subscribe to, and query granular, up-to-date data in Amazon Redshift without the need to extract, transform, and load the data.
+
+## Resources
+
+**Amazon Redshift**  
+To learn more, see [Amazon Redshift](https://aws.amazon.com/solutions/enterprise-resource-planning/).
+
+**Amazon Redshift**  
+To learn more, see [Amazon Redshift Advisor Recommendations](https://docs.aws.amazon.com/redshift/latest/dg/advisor-recommendations.html).
+
+**Amazon Redshift**  
+To learn more, see [Streaming Ingestion](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-streaming-ingestion.html).
+
+**Amazon QuickSight**  
+To learn more, see [Creating Datasets](https://docs.aws.amazon.com/quicksight/latest/user/creating-data-sets.html).
+
+**Amazon QuickSight**  
+To learn more, see [Managing SPICE Memory Capacity](https://docs.aws.amazon.com/quicksight/latest/user/managing-spice-capacity.html).
