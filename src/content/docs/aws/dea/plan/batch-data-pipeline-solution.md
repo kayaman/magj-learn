@@ -147,3 +147,40 @@ Consider the following opportunities to manage costs for your Amazon EMR cluster
 
   Optimize options for distributed storage and best practices for storage.
   
+### Distributed file systems (HDFS and EMRFS)
+
+**Hadoop Distributed File System (HDFS)**  
+HDFS is a distributed, scalable, and portable file system for Hadoop. An advantage of HDFS is data awareness between the Hadoop cluster nodes managing the clusters and the Hadoop cluster nodes managing the individual steps.
+
+**EMR File System (EMRFS)**  
+EMRFS is an implementation of HDFS used for reading and writing regular files from Amazon EMR directly to Amazon S3.
+
+![HDFS](/img/emr-hdfs.png)
+
+**Hadoop Distributed File System (HDFS)** is used by the primary and core nodes. One advantage is that it's fast. A disadvantage is that it's ephemeral storage that is reclaimed when the cluster ends. It's best used for caching the results produced by intermediate job-flow steps.
+
+![EMRFS](/img/emr-emrfs.png)
+
+**EMRFS** makes Amazon S3 look like the local file system, or HDFS, and it provides features like data encryption and persistent data storage. EMRFS adds strong consistency to Amazon S3, which helps extend Hadoop to allow users to directly access data stored in Amazon S3 as if it were a file system like HDFS. 
+
+### Data Partitioning
+
+Partitioning and bucketing can improve performance and lower costs by reducing the amount of data that a query needs to scan. Partitioning organizes similar types of data into groups based on a particular column. Bucketing groups data within a partition into equal groups or files. Partitioning is best for low cardinality columns, and bucketing is best for high cardinality columns.
+
+![Partitioning](/img/partitioning.png)
+
+1. Amazon EMR uses a date-based partitioning scheme to identify the relevant partitions for a query and avoid scanning larger amounts of data.
+
+2. Bucketing is a form of data partitioning that can divide data into a set number of files within each partition. Bucketing works well when bucketing on columns with high cardinality and uniform distribution. Bucketing can be a powerful tool to increase performance of big data operations.
+
+3. For the purposes of sorting, Apache Hive supports bucketing that can be created from high cardinality key columns such as user-id or, as in this example, country code. Each query can optimally scan a certain amount of data thanks to partitioning, which is possible with any key. A common practice is to partition data based on time, which can lead to a multi-level partitioning scheme.
+
+Combining partitioning and bucketing can further improve query performance because queries can narrow down the data being scanned even further.
+
+### Choosing the appropriate batch processing technology
+
+|   |   |   |
+|---|---|---|
+| ![EMR](/img/emr.png) | ![Glue](/img/glue.png) | ![EMR Serverless](/img/emr-serverless.png) |
+| **Amazon EMR** | **AWS Glue** | **Amazon EMR Serverless** |
+
