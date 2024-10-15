@@ -115,7 +115,7 @@ The batch data pipeline solution uses Amazon S3 for storing financial data, AWS 
 
 3. Configure cluster
 
-  ![Cluster](/img/emt-configure-cluster.png)
+  ![Cluster](/img/emr-configure-cluster.png)
 
   After you have chosen a release and the application bundle, you need to configure your cluster. This includes setting the number of nodes, the type of nodes, and the storage options. You can also configure other options, such as security and networking.
 
