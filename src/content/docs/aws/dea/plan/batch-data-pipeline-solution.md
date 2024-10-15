@@ -1,5 +1,5 @@
 ---
-title: A Batch Data Pipeline Solution
+title: A Batch Pipeline Solution
 sidebar:
   order: 4
 tableOfContents:
