@@ -72,9 +72,15 @@ To learn more, see [What is Streaming Data?](https://aws.amazon.com/what-is/stre
 
 ### Streaming components
 
+- **Producers** put records into Amazon Kinesis Data Streams. For example, a web server sending log data to a stream is a producer.
+- **Stream storage** receives data from the producers and stores that data in the data stream for downstream consumers.
+- **Stream processing** takes the previously stored data and normalizes or otherwise alters it.
+- **Consumers** get records from Kinesis Data Streams and process them. They can deliver the stream to storage options for processing.  
+- **Outputs** gather the streaming data and present it with analytic tools or process it for different services.
 
+![streaming components](/img/streaming-components.png)
 
-
+### Benefits of an AWS streaming data pipeline
 
 
 
