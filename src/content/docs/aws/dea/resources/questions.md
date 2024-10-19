@@ -505,6 +505,33 @@ With Amazon Managed Streaming for Apache Kafka (Amazon MSK), you can deploy prod
 
 ---
 
+**Which AWS service is suitable for short-term storage of streaming data when real-time analytics is required?**
+
+*Amazon Kinesis Data Streams*
+
+Amazon Kinesis Data Streams is a service that allows you to collect and process large amounts of streaming data in real time. It can be used as a short-term storage solution for a streaming data pipeline, acting as a buffer or temporary storage for data before it is processed or loaded into a more permanent storage solution. This makes it suitable for scenarios where real-time analytics on streaming data is required.
+
+---
+
+**What is a benefit of using short-term storage services like Amazon Kinesis Data Streams or Amazon Managed Streaming for Apache Kafka (Amazon MSK) in a streaming data pipeline?**
+
+- *Provide a buffer against network issues or downstream system outages.*
+- *Decouple data ingestion from processing for improved flexibility.*
+
+Services like Amazon Kinesis Data Streams and Amazon MSK are designed to provide short-term storage for streaming data. This storage acts as a buffer, allowing the data to be temporarily stored in case of network issues or downstream system outages. If there is a disruption in the downstream processing systems or network connectivity issues, the streaming data can be retained in the short-term storage until the issue is resolved, preventing data loss.  
+By using short-term storage services like Kinesis Data Streams or Amazon MSK, the data ingestion process is decoupled from the processing or consumption of the data. This decoupling provides flexibility in the architecture, as the data producers (ingestion) and consumers (processing) can operate independently.
+
+---
+
+**A data engineering team is building a streaming data pipeline to ingest clickstream data from various sources. They plan to use Amazon Kinesis Data Streams for short-term storage and Amazon Redshift for long-term storage and analytics. Which statement best describes the zero-ETL capabilities of Amazon Redshift in this scenario?**
+
+*
+Amazon Redshift supports streaming ingestion directly from Kinesis Data Streams, eliminating the need for an extract, transform, load (ETL) pipeline to stage data in Amazon S3.*
+
+Amazon Redshift, a cloud data warehousing service, supports streaming ingestion directly from Amazon Kinesis Data Streams. This feature, known as the Redshift Streaming Ingestion, allows data to be loaded directly from Kinesis Data Streams into Redshift without the need for an intermediate ETL (Extract, Transform, Load) pipeline or staging in Amazon S3. This zero-ETL capability simplifies the data pipeline and reduces latency by eliminating the need for additional data movement and processing steps.
+
+---
+
 ## Official Practice Question Set
 
 **A company is using an Amazon S3 data lake. The company ingests data into the data lake by using Amazon Kinesis Data Streams. The company reads and processes the incoming data from the stream by using AWS Lambda. The data being ingested has highly variable and unpredictable volume. Currently, the IteratorAge metric is high at peak times when a high volume of data is being posted to the stream. A data engineer must design a solution to increase performance when reading Kinesis Data Streams with Lambda. Which solution will meet these requirements?**
