@@ -240,6 +240,7 @@ export default defineConfig({
 				},
 				{
 					label: 'Neo4j',
+					collapsed: true,
 					items: [
 						{
 							label: 'Overview',
@@ -277,6 +278,19 @@ export default defineConfig({
 						},
 					]
 				},
+				{
+					label: 'Kubernetes',
+					collapsed: true,
+					items: [
+								{
+									label: 'Basics',
+									collapsed: true,
+									autogenerate: { 
+										directory: 'kubernetes/basics',
+									},
+								}
+							]
+				}
 			],
 			editLink: {
 				baseUrl: 'https://github.com/kayaman/magj-learn/edit/main/',
