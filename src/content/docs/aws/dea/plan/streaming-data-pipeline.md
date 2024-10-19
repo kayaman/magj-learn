@@ -142,7 +142,7 @@ By querying the data stream, you can gain insight into the data flowing through 
 
 A **partition key** is used to group data by shard within a stream. The partition key that is associated with each data record determines which shard a given data record belongs to.
 
-### Choosing ingestion services
+## Choosing ingestion services
 
 The first part of the data pipeline is the ingestion of data. Choose ingestion services based on the type of data and the workload requirements. Typical choices for ingesting streaming data are Kinesis, Firehose, Amazon MSK, and AWS Glue.
 
