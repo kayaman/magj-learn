@@ -254,7 +254,67 @@ AWS Glue streaming ETL jobs can enrich and aggregate data, join batch and stream
 
 To learn more, see [AWS Glue](https://aws.amazon.com/glue/).
 
-## Storing Streamin Data
+## Storing Streaming Data
+
+### Data storage
+
+The next step in a streaming data pipeline is data storage. Storage entails the storing of data from a source or sources into another location for further processing and analysis.
+
+![Storage](/img/s-data-storage.png)
+
+### Using streaming storage temporarily
+
+During the process of streaming data, you might need to temporarily store the data before it is processed or moved to a longer-term storage solution. The time period from when a record is added to when it is no longer accessible is called the **retention period**. It's important to consider the retention period based on your application's needs. The retention period acts as a buffer to allow consumers time to process data in case of any issues. You should set a retention period that is longer than the time it might take for your slowest consumers to read the data.
+
+#### Benefits of storing data temporarily
+
+In today's data-driven world, where real-time insights are paramount, streaming pipelines have become essential for processing and analyzing data as it arrives. However, the transient nature of streaming data poses challenges in terms of buffering, fault tolerance, and data replication. This is where temporary data storage solutions like Amazon Kinesis and Amazon MSK come into play. By providing a temporary storage layer, organizations can use these services to decouple data ingestion from processing. This ensures reliable and scalable data streaming pipelines.
+
+- **Run analytics on real-time data**
+
+  By buffering streaming data for a short period, you can run analytics on recent events as they occur and generate insights from real-time data streams.
+
+- **Handle transient data**
+
+  Some streaming data like clickstreams or tweets are transient in nature. Storing them short-term is sufficient as losing a few events does not significantly impact analysis. It's not necessary to keep this type of data for long periods.
+
+- **Meet processing requirements**
+
+  Services like Kinesis, Amazon MSK, or Amazon Redshift might require batching data to maintain optimal load performance and to efficiently process the data. Buffering for a short interval collects enough records before processing them.
+
+- **Handle network or destination issues**
+
+  Temporary storage provides reliability against transient network issues or outages in downstream systems. Data is not lost if delivery fails temporarily. You can decouple services that improve your flexibility and ability to scale.
+
+- **Encourage data minimization **
+
+  Organizations need to consider the size of payloads being sent to streaming services. With short-term storage data payloads can be reviewed to reduce unnecessary fields before long-term archival. This helps optimize resource usage.
+
+- **Cost optimization**
+
+  By using short-term storage, you can store the data for just as long as you need, sometimes bypassing long-term storage all together. With this. you can optimize your cost savings when building a streaming data pipeline.
+
+Amazon MSK and Kinesis Data Streams are AWS services used for ingesting and processing real-time data streams. You can use these services to store data temporarily for a configurable retention period. Let's look at how you can use Amazon MSK and Kinesis Data Streams as short-term storage in your data pipeline.
+
+#### Amazon MSK
+
+With Amazon MSK, you can build and run applications that use Apache Kafka for building real-time streaming data pipelines where data is consumed and processed as it arrives rather than stored for long periods of time. Consuming messages does not automatically remove them from the log in Amazon MSK. Amazon MSK can configure the Kafka topics with a retention period, which determines how long the data is stored before being automatically removed. 
+
+Amazon MSK stores the streaming data temporarily in a performance-optimized primary storage tier until it reaches the retention limits. Then, the data is automatically moved into a new low-cost storage tier. The default retention period in low-cost storage is 3 days. There is no minimum retention period for primary storage.
+
+![MSK](/img/s-msk.png)
+
+#### Kinesis Data Streams
+
+Kinesis Data Streams is a service you can use to collect and process large amounts of streaming data in real time. A Kinesis Data Stream stores records for 24 hours by default and can store them up to 8760 hours (365 days). You can use it as a short-term storage solution for a streaming data pipeline to act as a buffer or temporary storage for data before it is processed or loaded into a more permanent storage solution.
+
+![KDS](/img/s-kds.png)
+
+
+
+
+
+
 
 
 
