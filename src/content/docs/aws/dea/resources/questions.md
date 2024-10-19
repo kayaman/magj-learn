@@ -525,8 +525,7 @@ By using short-term storage services like Kinesis Data Streams or Amazon MSK, th
 
 **A data engineering team is building a streaming data pipeline to ingest clickstream data from various sources. They plan to use Amazon Kinesis Data Streams for short-term storage and Amazon Redshift for long-term storage and analytics. Which statement best describes the zero-ETL capabilities of Amazon Redshift in this scenario?**
 
-*
-Amazon Redshift supports streaming ingestion directly from Kinesis Data Streams, eliminating the need for an extract, transform, load (ETL) pipeline to stage data in Amazon S3.*
+*Amazon Redshift supports streaming ingestion directly from Kinesis Data Streams, eliminating the need for an extract, transform, load (ETL) pipeline to stage data in Amazon S3.*
 
 Amazon Redshift, a cloud data warehousing service, supports streaming ingestion directly from Amazon Kinesis Data Streams. This feature, known as the Redshift Streaming Ingestion, allows data to be loaded directly from Kinesis Data Streams into Redshift without the need for an intermediate ETL (Extract, Transform, Load) pipeline or staging in Amazon S3. This zero-ETL capability simplifies the data pipeline and reduces latency by eliminating the need for additional data movement and processing steps.
 
