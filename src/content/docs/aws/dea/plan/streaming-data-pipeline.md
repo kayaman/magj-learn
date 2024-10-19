@@ -420,23 +420,23 @@ Adopting zero-ETL approaches provides the following benefits:
 
 #### Zero-ETL using Amazon Redshift
 
-  You can use zero-ETL integrations with Amazon Redshift to access your data in place using federated queries or ingest it into Amazon Redshift with a fully managed solution from across their databases. This bypasses the need for separate data transformation and loading stages. With this solution, you can configure an integration from your source to an Amazon Redshift data warehouse. You don't need to maintain an ETL pipeline.
+    You can use zero-ETL integrations with Amazon Redshift to access your data in place using federated queries or ingest it into Amazon Redshift with a fully managed solution from across their databases. This bypasses the need for separate data transformation and loading stages. With this solution, you can configure an integration from your source to an Amazon Redshift data warehouse. You don't need to maintain an ETL pipeline.
 
 - **Amazon Aurora PostgreSQL-compatible and Amazon Aurora MySQL-compatible**
 
-  An Aurora zero-ETL integration with Amazon Redshift enables near real-time analytics and ML using Amazon Redshift on petabytes of transactional data from Aurora.  
-  The integration monitors the health of the data pipeline and recovers from issues when possible. You can create integrations from multiple Aurora DB clusters into a single Amazon Redshift namespace to derive insights across multiple applications.  
-  Aurora MySQL-compatible integration processes more than 1 million transactions per minute and makes data available in Amazon Redshift within seconds of being written in Aurora.
+    An Aurora zero-ETL integration with Amazon Redshift enables near real-time analytics and ML using Amazon Redshift on petabytes of transactional data from Aurora.  
+    The integration monitors the health of the data pipeline and recovers from issues when possible. You can create integrations from multiple Aurora DB clusters into a single Amazon Redshift namespace to derive insights across multiple applications.  
+    Aurora MySQL-compatible integration processes more than 1 million transactions per minute and makes data available in Amazon Redshift within seconds of being written in Aurora.
 
 ![Aurora compat](/img/zetl-aurora-compat.png)
 
 - **Amazon DynamoDB**
 
-  Amazon Redshift complements DynamoDB with advanced business intelligence capabilities and a powerful SQL-based interface. When you copy data from a DynamoDB table into Amazon Redshift, you can perform complex data analysis queries on that data, including joins with other tables in your Amazon Redshift cluster.
+    Amazon Redshift complements DynamoDB with advanced business intelligence capabilities and a powerful SQL-based interface. When you copy data from a DynamoDB table into Amazon Redshift, you can perform complex data analysis queries on that data, including joins with other tables in your Amazon Redshift cluster.
 
 - **Amazon RDS for MySQL**
 
-  A zero-ETL integration makes the data in your Amazon Relational Database Service (Amazon RDS) database available in Amazon Redshift in near real-time. After that data is in Amazon Redshift, you can power your analytics, ML, and AI workloads using the built-in capabilities of Amazon Redshift, such as machine learning, materialized views, data sharing, federated access to multiple data stores and data lakes, and integrations with SageMaker, QuickSight, and other AWS services.
+    A zero-ETL integration makes the data in your Amazon Relational Database Service (Amazon RDS) database available in Amazon Redshift in near real-time. After that data is in Amazon Redshift, you can power your analytics, ML, and AI workloads using the built-in capabilities of Amazon Redshift, such as machine learning, materialized views, data sharing, federated access to multiple data stores and data lakes, and integrations with SageMaker, QuickSight, and other AWS services.
 
 ![RDS](/img/zetl-rds.png)
 
@@ -448,13 +448,13 @@ To optimize business operations and create a more engaging experience for users,
 
 - **OpenSearch service with Amazon DynamoDB**
 
-You can use Amazon OpenSearch Service direct queries to query data in Amazon S3. Amazon OpenSearch Service provides a direct query integration with Amazon S3 as a way to analyze operational logs in Amazon S3 and data lakes based in Amazon S3 without having to switch between services. You can now analyze data in cloud object stores—and simultaneously use the operational analytics and visualizations of OpenSearch Service.
+  You can use Amazon OpenSearch Service direct queries to query data in Amazon S3. Amazon OpenSearch Service provides a direct query integration with Amazon S3 as a way to analyze operational logs in Amazon S3 and data lakes based in Amazon S3 without having to switch between services. You can now analyze data in cloud object stores—and simultaneously use the operational analytics and visualizations of OpenSearch Service.
 
 ![z-ETL OpenSearch DynamoDB](/img/zetl-opensearch-dynamodb.png)
 
 - **OpenSearch service with Amazon S3**
 
-You can use Amazon OpenSearch Service direct queries to query data in Amazon S3. Amazon OpenSearch Service provides a direct query integration with Amazon S3 as a way to analyze operational logs in Amazon S3 and data lakes based in Amazon S3 without having to switch between services. You can now analyze data in cloud object stores—and simultaneously use the operational analytics and visualizations of OpenSearch Service.
+  You can use Amazon OpenSearch Service direct queries to query data in Amazon S3. Amazon OpenSearch Service provides a direct query integration with Amazon S3 as a way to analyze operational logs in Amazon S3 and data lakes based in Amazon S3 without having to switch between services. You can now analyze data in cloud object stores—and simultaneously use the operational analytics and visualizations of OpenSearch Service.
 
 ![z-ETL OpenSearch S3](/img/zetl-opensearch-s3.png)
 
