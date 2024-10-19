@@ -56,19 +56,19 @@ To learn more, see [What is Streaming Data?](https://aws.amazon.com/what-is/stre
 
 1. **Ingestion**
 
-  Data is collected from various data sources in real time and sent into the data stream.
+    Data is collected from various data sources in real time and sent into the data stream.
 
 2. **Storage**
 
-  Streams of data are harnessed and then stored for processing.
+    Streams of data are harnessed and then stored for processing.
 
 3. **Processing**
 
-  Multiple processes are run, such as consuming data, running computations, and deleting unnecessary data.
+    Multiple processes are run, such as consuming data, running computations, and deleting unnecessary data.
 
 4. **Analytics**
 
-  The processed data is served to support data analytics, such as visualization.
+    The processed data is served to support data analytics, such as visualization.
 
 ### Streaming components
 
