@@ -580,7 +580,7 @@ AWS takes care of provisioning, patching, and scaling the Flink clusters, so you
 
 With Amazon Managed Service for Apache Flink, you can use Java, Scala, Python, or SQL to process and analyze streaming data. You can build and run code against streaming sources and static sources to perform time-series analytics, feed real-time dashboards, and create real-time metrics.
 
-[App with Flink](/img/app-w-flink.png)
+![App with Flink](/img/app-w-flink.png)
 
 1. **Build an application**
 
