@@ -425,6 +425,70 @@ AWS Glue is the most suitable service for building the batch data pipeline in th
 
 ---
 
+**AnyCompany Financials needs to ingest only the new or updated data from their financial transaction database since the last ingestion process. Which data ingestion technique would be most appropriate in this scenario?**
+
+*Incremental ingestion*
+
+Incremental Ingestion is the most appropriate technique in this scenario, as it involves ingesting only the new or updated data since the last ingestion process, reducing redundancy and improving efficiency.
+
+---
+
+**AnyCompany Financials needs to configure the ingestion process for their financial data sources stored in Amazon S3. Which of the following configuration options would be most relevant for improving query performance and optimizing storage utilization?**
+
+*Partitioning*
+
+Partitioning is a configuration option that can significantly improve query performance and optimize storage utilization by dividing the data into logical partitions based on specific criteria, such as date or location.
+
+---
+
+**AnyCompany Financials wants to set up a scheduled ingestion process to ingest financial data from various sources on a daily basis. Which AWS service or tool would be most suitable for this task?**
+
+*Amazon EventBridge*
+
+Amazon EventBridge is the most suitable service for setting up scheduled ingestion processes. EventBridge allows you to create scheduled rules that trigger AWS Lambda functions or other AWS services to initiate the ingestion process at predefined intervals, such as daily.
+
+---
+
+**AnyCompany Financials needs to process a large volume of financial data from various sources, including databases and file-based sources. They have complex data transformation requirements and need a high degree of control and customization over the data processing environment. Which AWS service would be the most suitable for their batch data processing needs?**
+
+*Amazon EMR*
+
+Amazon EMR provides a flexible and customizable environment for running big data processing frameworks like Apache Spark, Hive, and Presto. It is suitable for scenarios where you need more control over the cluster configuration, advanced tuning, or the ability to run custom code and applications. Given AnyCompany Financials' complex data transformation requirements and the need for a high degree of control, Amazon EMR would be the most suitable choice.
+
+---
+
+**A financial services company has a large volume of financial transaction data stored in Amazon S3 in CSV format. The data engineering team needs to transform this data into Apache Parquet format for efficient querying and analysis. Which AWS service or tool would be the most suitable for this data transformation?**
+
+*AWS Glue ETL Jobs*
+
+AWS Glue ETL Jobs are designed for performing data transformation tasks, such as converting data formats. AWS Glue ETL Jobs can leverage Apache Spark to efficiently process and transform large volumes of data, making it the most suitable choice for converting the financial transaction data from CSV to Apache Parquet format.
+
+---
+
+**AnyCompany Financials wants to process financial transaction data stored in Amazon S3 using Apache Spark on Amazon EMR. Which file system should they use to access and process the data directly from S3?**
+
+*EMRFS (EMR File System)*
+
+EMRFS is a file system layer built on top of Amazon S3, allowing you to seamlessly access and process data stored in S3 as if it were a local file system. EMRFS provides features like consistent view, data encryption, and performance optimizations, making it a suitable choice for processing data directly from S3 using Apache Spark on Amazon EMR.
+
+---
+
+**A retail company has a large dataset of sales transactions stored in a relational database. They want to ingest this data into their batch data pipeline on AWS for further processing and analysis. Which technique would be most suitable for ingesting the data from the database?**
+
+*Apache Spark on Amazon EMR*
+
+Apache Spark on Amazon EMR provides built-in connectors and APIs for reading data from various sources, including relational databases. By using Spark on Amazon EMR, the retail company can efficiently ingest and process the sales transaction data from their database into the batch data pipeline.
+
+---
+
+**A financial analytics company has a large dataset of stock market data stored in a relational database. They want to ingest this data into their batch data pipeline on AWS for further analysis and reporting. Which AWS service would be most suitable for automatically discovering and cataloging the database as a data source?**
+
+*AWS Glue Crawlers*
+
+AWS Glue Crawlers are designed to automatically discover and catalog data sources, including relational databases, NoSQL databases, and file-based sources. In this scenario, the financial analytics company can use AWS Glue Crawlers to automatically discover and catalog the relational database containing the stock market data, making it easier to ingest and process the data in their batch data pipeline.
+
+---
+
 ## Official Practice Question Set
 
 **A company is using an Amazon S3 data lake. The company ingests data into the data lake by using Amazon Kinesis Data Streams. The company reads and processes the incoming data from the stream by using AWS Lambda. The data being ingested has highly variable and unpredictable volume. Currently, the IteratorAge metric is high at peak times when a high volume of data is being posted to the stream. A data engineer must design a solution to increase performance when reading Kinesis Data Streams with Lambda. Which solution will meet these requirements?**
