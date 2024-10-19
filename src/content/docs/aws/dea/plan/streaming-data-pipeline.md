@@ -554,23 +554,23 @@ Managed Service for Apache Flink simplifies the deployment, management, and scal
 
 Setting up and configuring Amazon Managed Services for Apache Flink is a straightforward process that uses the power of Apache Flink for real-time data processing without the hassle of managing the underlying infrastructure.
 
-1. Creating a Flink cluster
+1. **Creating a Flink cluster**
 
     Amazon Managed Services for Apache Flink simplifies the process of creating and managing Flink clusters. You can create a new cluster through the AWS Management Console, AWS Command Line Interface (AWS CLI), or AWS CloudFormation templates.
 
-2. Configuring Flink cluster properties
+2. **Configuring Flink cluster properties**
 
     When creating a Flink cluster, you can configure various properties such as the instance type, number of task managers, and network settings. These configurations ensure that your cluster meets the performance and scalability requirements of your streaming applications.
 
-3. Submitting and monitoring Flink jobs
+3. **Submitting and monitoring Flink jobs**
 
     When your Flink cluster is up and running, you can submit and monitor your streaming applications through the AWS Management Console, AWS CLI, or Apache Flink web interface. AWS provides tools and integrations to simplify job submission, monitoring, and troubleshooting.
 
-4. Integrating with other AWS services
+4. **Integrating with other AWS services**
 
     Amazon Managed Services for Apache Flink integrates seamlessly with other AWS services. You can build end-to-end data processing pipelines. You can ingest data from services like Kinesis Data Streams, process it with Flink, and store the results in services like Amazon S3.
 
-5. Security and access control
+5. **Security and access control**
 
     AWS provides various security features and access control mechanisms to ensure the safety and privacy of your Flink clusters and data. You can configure network access control lists (network ACLs), encryption, and authentication methods to meet your organization's security requirements.
 
