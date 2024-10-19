@@ -142,11 +142,11 @@ By querying the data stream, you can gain insight into the data flowing through 
 
 A **partition key** is used to group data by shard within a stream. The partition key that is associated with each data record determines which shard a given data record belongs to.
 
-## Choosing ingestion services
+### Choosing ingestion services
 
 The first part of the data pipeline is the ingestion of data. Choose ingestion services based on the type of data and the workload requirements. Typical choices for ingesting streaming data are Kinesis, Firehose, Amazon MSK, and AWS Glue.
 
-### Amazon Kinesis
+#### Amazon Kinesis
 
 You can use Kinesis to cost-effectively ingest and process streaming data at any scale. Kinesis provides the flexibility to choose the tools that best suit the requirements of your application.  
 **Kinesis Data Streams** is a fully managed service that you can use to ingest, transform, and analyze streaming data in real time.
@@ -179,17 +179,17 @@ Data can be ingested into Kinesis Data Streams through Amazon API Gateway. Data 
 
 Kinesis Data Streams provides configuration options to help you address the scaling needs of your pipeline. There are three primary controls to consider.
 
-#### Retention period
+##### Retention period
 
 The retention period tells the stream how long to keep records on the stream before they expire. By default, a Kinesis Data Stream stores records for 24 hours. This is configurable (up to 8,760 hours or 365 days), but the costs increase as the retention period increases.
 
-#### Write capaccity
+##### Write capaccity
 
 The write capacity is controlled by how many shards are allocated to the stream, which sets the limit on how much data can be written to the stream in a given period. You can choose either on-demand or provisioned capacity mode.  
 Data streams that use on-demand mode require no capacity planning and automatically scale to handle gigabytes of write and read throughput per minute. With on-demand mode, Kinesis Data Streams automatically manages the shards to provide the necessary throughput.  
 If you choose provisioned mode, you must specify the number of shards for the data stream. The total capacity of a data stream is the sum of the capacities of its shards. You can increase or decrease the number of shards in a data stream as needed.
 
-#### Read capacity
+##### Read capacity
 
 Read capacity scales the throughput for consumers of your stream. You can choose between shared fan out and enhanced fan out consumer types.  
 When a consumer uses the shared fan out configuration, it shares a single pipe of read capacity with other consumers of the stream using the Kinesis Client Library (KCL), which consumes and processes data from a Kinesis data stream and taking care of many of the complex tasks associated with distributed computing.  
@@ -201,7 +201,7 @@ Both AWS CloudTrail and Amazon CloudWatch are integrated with Kinesis Data Strea
 
 To learn more, see [Amazon Kinesis](https://aws.amazon.com/kinesis/).
 
-### Amazon Data Firehose
+#### Amazon Data Firehose
 
 Firehose is an AWS service used to acquire, transform, and deliver data streams. Firehose can deliver data from Kinesis Data Streams to common destinations such as Amazon S3, Amazon Redshift, and OpenSearch Service.
 
@@ -213,7 +213,9 @@ You can also use Firehose to ingest data directly from streaming data sources an
 
 To learn more, see [Amazon Data Firehose](https://aws.amazon.com/firehose/).
 
-### Amazon MSK
+#### Amazon MSK
+
+Amazon MSK helps you reduce the operational overhead of running Apache Kafka and Kafka Connect clusters. Amazon MSK manages the provisioning, configuration, and maintenance of Apache Kafka and Kafka Connect clusters. You can use applications and tools built for Apache Kafka without any code changes and scale cluster capacity automatically.
 
 :::note
 Data engineers choose Amazon MSK over Kinesis Data Streams in instances such as the following:
@@ -225,8 +227,32 @@ Data engineers choose Amazon MSK over Kinesis Data Streams in instances such as 
 
 :::
 
+![MSK](/img/msk-pic.png)
 
+Apache Kafka is used to build real-time streaming data pipelines and real-time streaming applications. For example, you might want to create a data pipeline that takes in user activity data to track how people use your website in real time. Kafka would be used to ingest and store streaming data while serving reads for the applications that power the data pipeline.
 
+With Amazon MSK, you can deploy production-ready applications by using AWS integrations, and you can connect other applications using the Kafka APIs. Kafka has the following four APIs:
+
+- **Producer API** is used to publish a stream of records to a Kafka topic.
+- **Consumer API** is used to subscribe to topics and process their streams of records.
+- **Streams API** lets applications behave as stream processors, which take in an input stream from topics and transform it to an output stream that goes into different output topics.
+- **Connector API** is used to seamlessly automate the addition of another application or data system to their current Kafka topics.
+
+Manually running Kafka Connect clusters requires you to plan and provision the required infrastructure, deal with cluster operations, and scale it in response to load changes. You can use Amazon MSK to build and run applications that use the Apache Kafka data framework.
+
+Amazon MSK Connect is a feature of Amazon MSK that works with MSK clusters and with compatible self-managed Kafka clusters to run fully managed Kafka Connect workloads.
+
+To learn more, see [Amazon Managed Streaming for Apache Kafka](https://aws.amazon.com/msk/).
+
+#### AWS Glue
+
+Serverless streaming extract, transform, and load (ETL) jobs in AWS Glue continuously consume data from streaming sources, including Kinesis Data Streams. AWS Glue uses built-in transforms and transforms that are part of Apache Spark Structured Streaming to clean and transform streaming data in transit.
+
+AWS Glue streaming ETL jobs can enrich and aggregate data, join batch and streaming sources, and run a variety of complex analytics and ML operations. Output is available for analysis in seconds in your target data store. This feature supports event data workloads such as IoT event streams, clickstreams, and network logs.
+
+![Glue](/img/glue-pic.png)
+
+To learn more, see [AWS Glue](https://aws.amazon.com/glue/).
 
 ## Storing Streamin Data
 
