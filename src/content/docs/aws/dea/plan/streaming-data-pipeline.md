@@ -310,7 +310,8 @@ Kinesis Data Streams is a service you can use to collect and process large amoun
 
 ![KDS](/img/s-kds.png)
 
-
+To learn more, see [Getting started using Amazon MSK](https://docs.aws.amazon.com/msk/latest/developerguide/getting-started.html).  
+To learn more, see [What Is Amazon Kinesis Data Streams?](https://docs.aws.amazon.com/streams/latest/dev/introduction.html)
 
 
 
