@@ -240,3 +240,102 @@ To learn more about big data on AWS, refer to [AWS Big Data Blog: Best Practices
 
 ## Ingesting Data
 
+### What is data ingestion?
+
+Data ingestion is the process of importing data from various sources into a centralized location or system for further processing, analysis, or storage. It is the initial step in building a data pipeline, ensuring that data is collected, validated, and prepared for subsequent stages.
+
+The choice of ingestion pattern depends on factors such as data volume, data freshness requirements, and the complexity of the data transformation processes.
+
+Investigate the following considerations for the data ingestion phase of the batch data pipeline:
+
+
+#### Data ingestion value
+
+Effective data ingestion is crucial for several reasons:
+
+- **Data Integration**: It enables the consolidation of data from disparate sources, facilitating a comprehensive view of the data landscape.
+- **Data Quality**: Proper ingestion processes can include data validation, cleansing, and transformation, improving the overall quality of the ingested data.
+- **Scalability**: Well-designed ingestion systems can handle large volumes of data and scale as data sources and volumes grow.
+- **Automation**: Automated ingestion processes reduce manual effort, minimize errors, and ensure timely and consistent data availability.
+
+#### Data Ingestion Challenges
+
+While ingesting data may seem straightforward, several challenges can arise:
+
+- **Data Variety**: Handling diverse data formats, structures, and schemas from multiple sources can be complex.
+- **Data Volume**: Ingesting and processing large volumes of data can strain system resources and require scalable solutions.
+- **Data Velocity**: Ingesting data in real-time or near real-time can introduce additional complexities.
+- **Data Quality**: Ensuring data quality and consistency during ingestion is essential for downstream processes.
+- **Security and Compliance**: Adhering to data security and compliance requirements during ingestion is crucial, especially when dealing with sensitive data.
+
+#### Data Ingestion Patterns
+
+Several patterns and techniques can be employed for data ingestion, depending on the specific requirements and characteristics of the data sources:
+
+- **Batch Ingestion**: Data is ingested in batches or groups, typically on a scheduled basis (e.g., daily, weekly, monthly).
+- **Streaming Ingestion**: Data is ingested continuously as it becomes available, often in real-time or near real-time.
+- **Incremental Ingestion**: Only new or updated data is ingested since the last ingestion process, reducing redundancy and improving efficiency.
+- **Full Refresh**: All data is ingested from the source, overwriting any existing data in the target location.
+
+Data ingestion involves efficiently retrieving data from various sources, such as databases, files, and cloud storage, and preparing it for further processing and analysis, with techniques like scheduled or event driven ingestion processes.
+
+### Ingesting data
+
+Batch data can originate from various sources such as databases, file-based sources, cloud storage, and streaming sources. To ingest this data into a data pipeline solution, services like AWS Glue Crawlers, AWS Glue DataBrew, Amazon Athena, and Apache Spark can be employed. 
+
+When configuring batch ingestion, considerations include data format, partitioning strategies, data sampling, and compression to optimize performance, storage utilization, and costs.
+
+#### Sources of batch data
+
+Batch data can originate from various sources, including:
+
+- **Databases**: Relational databases (e.g., MySQL, PostgreSQL), NoSQL databases (e.g., Amazon DynamoDB, MongoDB), and data warehouses.
+- **File-based Sources**: Flat files (e.g., CSV, JSON, XML), log files, and other structured or semi-structured data files.
+- **Cloud Storage**: Data stored in cloud storage services like Amazon S3, Google Cloud Storage, or Azure Blob Storage.
+- **Streaming Sources**: Data from streaming sources like Apache Kafka or Amazon Kinesis can be batched and ingested periodically.
+
+#### Configurations
+
+When configuring batch ingestion, you may need to consider various options and settings, such as:
+
+- **Data Format**: Specify the input data format (e.g., CSV, JSON, Parquet) and any associated settings (e.g., delimiters, compression).
+- **Partitioning**: Define partitioning strategies to improve query performance and optimize storage utilization.
+- **Data Sampling**: Configure data sampling options to improve performance and reduce costs during ingestion and processing.
+- **Compression**: Enable data compression to reduce storage costs and improve data transfer speeds.
+
+### Starting data ingestion workflows
+
+|   |   |   |
+|---|---|---|
+| Amazon EventBridge | Amazon MWAA | Time-based schedules |
+| Use EventBridge to create scheduled rules that initiate AWS Lambda functions or other AWS services to initiate the ingestion process. | Use Amazon Managed Workflows for Apache Airflow (MWAA) to orchestrate and schedule data ingestion workflows. | Configure time-based schedules for AWS Glue jobs and crawlers to run at specific intervals or cron expressions. |
+
+#### Event-driven ingestion
+
+Event-driven ingestion involves initiating the data ingestion process based on specific events or changes in the data sources. This approach is suitable for scenarios where data needs to be ingested as soon as it becomes available or when changes occur.  
+AWS provides the following services and features for event-driven ingestion:
+
+- **Amazon S3 Event Notifications**
+
+  Configure S3 event notifications to initiate Lambda functions or other AWS services when new data is added or updated in an S3 bucket.
+
+- **EventBridge**
+
+  Use EventBridge to capture and respond to events from various AWS services, including Amazon S3, DynamoDB, and Kinesis.
+
+
+#### Scheduled ingestion
+
+Scheduled ingestion involves running data ingestion processes at predefined intervals or schedules. This approach is suitable for scenarios where data needs to be ingested periodically, such as in daily, weekly, or monthly batch loads.
+
+- **Amazon Managed Workflows for Apache Airflow (Amazon MWAA)** is a managed service that allows you to create and run Apache Airflow environments for orchestrating data ingestion workflows. With Amazon MWAA, you can create and manage Apache Airflow environments, which include the web server interface and a scheduler to author, schedule, and monitor data ingestion workflows. These workflows can be defined as directed acyclic graphs (DAGs) written in Python, and they can be used to automate various data processing tasks, such as data ingestion, data extraction, transformation, and loading (ETL), data quality checks, and machine learning model training.
+
+- You can use **Amazon CloudWatch Events** to schedule and automatically trigger AWS Glue jobs, which can include data ingestion workflows and ETL processes. CloudWatch Events allows you to create time-based schedules or rules that define when and how often your Glue jobs should run. You can specify a cron expression or a rate expression to define the schedule, and then configure the rule to invoke an AWS Lambda function or an AWS Glue trigger when the schedule is met.
+
+### Resources
+
+To learn more about **batch data ingestion**, go to this [overview documentation](https://docs.aws.amazon.com/whitepapers/latest/ml-best-practices-public-sector-organizations/data-ingestion-and-preparation.html).
+
+To learn more about **data ingestion patterns**, go to this [whitepaper](https://docs.aws.amazon.com/whitepapers/latest/aws-cloud-data-ingestion-patterns-practices/data-ingestion-patterns.html).
+
+For more information on **data ingestion with Amazon EMR**, go to this [overview page](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-get-data-in.html).
