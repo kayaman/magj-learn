@@ -64,7 +64,10 @@ export default defineConfig({
 						{ 
 							label: 'ML Engineer',
 							collapsed: true,
-							badge: 'done',
+							badge: {
+								text: 'done',
+								variant: 'success',
+							},
 							items: [
 								{ 
 									label: 'Overview', 
@@ -117,7 +120,11 @@ export default defineConfig({
 						{ 
 							label: 'Data Engineer', 
 							collapsed: false,
-						  	items: [
+							badge: {
+								text: 'current',
+								variant: 'tip'
+							},
+							items: [
 								{ 
 									label: 'Overview', 
 									link: 'aws/dea/overview',
