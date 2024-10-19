@@ -1,5 +1,5 @@
 ---
-title: A Data Warehouse Solution
+title: A Data Warehouse
 sidebar:
   order: 3
 tableOfContents:

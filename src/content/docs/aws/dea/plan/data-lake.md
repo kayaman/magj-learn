@@ -1,5 +1,5 @@
 ---
-title: A Data Lake Solution
+title: A Data Lake
 sidebar:
   order: 2
 tableOfContents:
