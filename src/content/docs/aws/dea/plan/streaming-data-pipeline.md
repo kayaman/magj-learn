@@ -82,13 +82,21 @@ To learn more, see [What is Streaming Data?](https://aws.amazon.com/what-is/stre
 
 ### Benefits of an AWS streaming data pipeline
 
+When streaming data, you can encounter difficulties with setup, management, and scaling. AWS streaming provides the following benefits:
+
+- Flexible scaling 
+
+  Automatically scales capacity in response to changing data volumes
 
 
+- High availability 
+
+  Provides built-in availability and fault tolerance by default
 
 
+- Lower costs 
 
-
-
+  Incurs costs per gigabyte of data that is written, read, and stored
 
 ## Ingestiong Data from Stream Sources
 
