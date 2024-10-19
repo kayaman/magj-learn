@@ -489,6 +489,22 @@ AWS Glue Crawlers are designed to automatically discover and catalog data source
 
 ---
 
+**What is a uniquely identified sequence of data records in a stream?**
+
+*Shard*
+
+A stream is composed of one or more shards, each of which provides a fixed unit of capacity. Increasing the capacity of a stream involves increasing the number of shards. In Amazon Managed Streaming for Apache Kafka (Amazon MSK), a shard is known as a topic.
+
+---
+
+**Which Kafka API is used to subscribe to topics and process their streams of records?**
+
+*Consumer API*
+
+With Amazon Managed Streaming for Apache Kafka (Amazon MSK), you can deploy production-ready applications by using native AWS integrations, and you can connect other applications using the Kafka APIs.
+
+---
+
 ## Official Practice Question Set
 
 **A company is using an Amazon S3 data lake. The company ingests data into the data lake by using Amazon Kinesis Data Streams. The company reads and processes the incoming data from the stream by using AWS Lambda. The data being ingested has highly variable and unpredictable volume. Currently, the IteratorAge metric is high at peak times when a high volume of data is being posted to the stream. A data engineer must design a solution to increase performance when reading Kinesis Data Streams with Lambda. Which solution will meet these requirements?**
