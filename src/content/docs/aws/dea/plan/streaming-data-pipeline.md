@@ -458,9 +458,154 @@ To optimize business operations and create a more engaging experience for users,
 
 ![z-ETL OpenSearch S3](/img/zetl-opensearch-s3.png)
 
-
 ## Processing Data
 
+The next action in a streaming data pipeline is processing data. Your business can use **processing data** to extract valuable insights as data is generated. These insights help to make timely decisions, identify trends, and respond to events in near real-time.
 
+![processing](/img/processing.png)
+
+### Introduction to processing data in a streaming data pipeline
+
+With the power of streaming data processing, businesses can gain a competitive edge, improve operational efficiency, and enhance customer experiences.
+
+AWS offers a number of services you can use to process the data as it is ingested. In this lesson, you will look at some of those services.
+
+- **Apache Managed Services for Flink** streamlines the deployment, scaling, and management of Flink clusters, so businesses can focus on developing their applications rather than managing the underlying infrastructure.
+
+- **AWS Lambda** is a serverless compute service you can use run code in response to events or triggers, such as data arriving in a stream. Your streaming data processing will be efficient, scalable, and cost-effective without managing servers or infrastructure.
+
+- **Amazon Data Firehose** is a fully managed service that simplifies the process of loading streaming data into data stores and analytics services. It can automatically scale to handle large volumes of data and transform and deliver the data in real-time. It is a valuable tool for processing streaming data.
+
+- **AWS Glue Streaming** is a serverless stream processing service that can ingest, transform, and deliver streaming data to various destinations. It provides a managed environment for running Apache Spark Structured Streaming applications, which results in efficient and scalable processing of streaming data without the need for infrastructure management.
+
+- **Amazon EMR** can be used to process and analyze real-time data streams from sources like Kinesis Data Streams or Apache Kafka. By using the scalable and cost-effective compute resources provided by Amazon EMR, organizations can efficiently process and extract valuable insights from continuous data streams.
+
+### Designing and implementing real-time data processing solutions 
+
+**Apache Flink** is a powerful, open source, distributed stream processing framework for real-time data processing and analysis. It provides a unified API for batch and stream processing. Developers use Apache Flink to build scalable, fault-tolerant, and high-performing data pipelines. Apache Flink's core strength lies in its ability to handle high-volume, high-velocity data streams, making it an ideal choice for building real-time applications.
+
+**Amazon Managed Service for Apache Flink** integrates the deployment, management, and scaling of Flink clusters with AWS. These services handle the operational complexity of running and maintaining Apache Flink, so developers can focus on building their applications rather than managing the underlying infrastructure.
+
+The following are common use cases for Apache Flink and Amazon Managed Service for Apache Flink.
+
+- **Fraud detection**
+
+    With Flink's real-time processing capabilities, financial institutions can detect of fraudulent activities. They can respond quickly and mitigate losses without having to wait for the data to reach the final destination.
+
+- **Predictive maintenance**
+
+    Predictive maintenance models use sensor data from industrial equipment to identify potential failures before they occur and reduce downtime and maintenance costs.
+
+- **Clickstream analysis**
+
+    Flink can be used to analyze user interactions and behavior in real-time and provide valuable insights for personalization, targeted advertising, and user experience optimization.
+
+- **Geospatial analytics**
+
+    Flink can process and analyze geospatial data streams, such as GPS coordinates from mobile devices, for real-time location-based services and traffic monitoring.
+
+- **Generative AI adjustments**
+
+    Flink can be used to process and analyze data streams from generative AI models. The real-time adjustments and optimizations can improve the quality and performance of the AI-generated content.
+
+In addition to the AWS integrations, the Managed Service for Apache Flink libraries include more than 10 Apache Flink connectors. It also has the ability to build custom integrations with AWS services, such as Amazon S3 and Kinesis Data Streams. With minimal coding, you can modify how each integration behaves with advanced functionality. You can also build custom integrations using a set of Apache Flink primitives. This helps you to read and write from files, directories, sockets, or other sources accessed over the internet.
+
+The following features of Apache Flink help with real-time data processing:
+
+- With the **Simplified deployment** and management of Flink clusters, developers can focus on their applications without cluster administration overhead.
+
+- **Exactly-once semantics** ensure data is not lost during failures and the results of stream processing are consistent and correct. This is important for real-time systems.
+
+- With **State management** intermediate results and state are cached for future stream processing. This enables features like sessionization and entity tracking.
+
+- **Windowing** support allows aggregating and analyzing data in tumbling, sliding time windows or custom event-time windows. This is useful for analytics over streams.
+
+- With **Stream transformations** like joins, aggregations, and filtering, developers can build complex event processing pipelines over data streams.
+
+- **Monitoring and security** features allow for reliable, high-performance, and compliant real-time data processing. This lets organizations make informed decisions based on accurate and secure data.
+
+#### How Managed Service for Apache Flink works
+
+Managed Service for Apache Flink simplifies the deployment, management, and scaling of Apache Flink applications. The service leverages key components like the Job Manager, which coordinates and distributes tasks across the cluster, Task Managers, which execute the actual data processing tasks, and Apache ZooKeeper, a distributed coordination service used for managing the state and configuration of the Flink cluster.
+
+![Flink](/img/amsa-flink.png)
+
+1. **Apache Flink job**
+
+    Apache Flink job is the running lifecycle of your Kinesis Data Analytics application. 
+
+2. **Apache Zookeeper**
+
+    Apache Zookeeper is a service for maintaining configuration information, naming, providing distributed synchronization, and providing group services. 
+
+3. **Job manager**
+
+    Job manager manages the running of the job and the resources it uses. The job manager separates the running of the application into tasks.
+
+4. **Task manager**
+
+    Task manager manages tasks given by the job manager.
+
+5. **Amazon CloudWatch**
+
+    With CloudWatch, you can monitor the performance of each task manager or the entire application.
+
+### Setting up Amazon Managed Services for Apache Flink on AWS
+
+Setting up and configuring Amazon Managed Services for Apache Flink is a straightforward process that uses the power of Apache Flink for real-time data processing without the hassle of managing the underlying infrastructure.
+
+1. Creating a Flink cluster
+
+    Amazon Managed Services for Apache Flink simplifies the process of creating and managing Flink clusters. You can create a new cluster through the AWS Management Console, AWS Command Line Interface (AWS CLI), or AWS CloudFormation templates.
+
+2. Configuring Flink cluster properties
+
+    When creating a Flink cluster, you can configure various properties such as the instance type, number of task managers, and network settings. These configurations ensure that your cluster meets the performance and scalability requirements of your streaming applications.
+
+3. Submitting and monitoring Flink jobs
+
+    When your Flink cluster is up and running, you can submit and monitor your streaming applications through the AWS Management Console, AWS CLI, or Apache Flink web interface. AWS provides tools and integrations to simplify job submission, monitoring, and troubleshooting.
+
+4. Integrating with other AWS services
+
+    Amazon Managed Services for Apache Flink integrates seamlessly with other AWS services. You can build end-to-end data processing pipelines. You can ingest data from services like Kinesis Data Streams, process it with Flink, and store the results in services like Amazon S3.
+
+5. Security and access control
+
+    AWS provides various security features and access control mechanisms to ensure the safety and privacy of your Flink clusters and data. You can configure network access control lists (network ACLs), encryption, and authentication methods to meet your organization's security requirements.
+
+AWS takes care of provisioning, patching, and scaling the Flink clusters, so you can focus on developing and deploying your streaming applications.
+
+#### Building an application with Flink
+
+With Amazon Managed Service for Apache Flink, you can use Java, Scala, Python, or SQL to process and analyze streaming data. You can build and run code against streaming sources and static sources to perform time-series analytics, feed real-time dashboards, and create real-time metrics.
+
+[App with Flink](/img/app-w-flink.png)
+
+1. **Build an application**
+
+    Create a Kinesis Data Analytics application notebook in Kinesis Data Analytics Studio or directly author your code with the IDE of your choice.
+
+2. **Test and publish**
+
+    Test it with live streaming data, and then publish the jar file to production.
+
+3. **Run the Flink application**
+
+    Register the jar file as a Kinesis Data Analytics application with the console or CLI. The application will run in Kinesis Data Analytics running the Apache Flink framework.
+
+### Using Lambda functions with Kinesis
+
+
+
+### Transforming and delivering data continuously with Firehose
+
+
+
+### Using AWS Glue to transform data
+
+
+
+### Spark streaming used to process data with Amazon EMR clusters
 
 ## Analyzing Data
