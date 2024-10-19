@@ -215,7 +215,15 @@ To learn more, see [Amazon Data Firehose](https://aws.amazon.com/firehose/).
 
 ### Amazon MSK
 
+:::note
+Data engineers choose Amazon MSK over Kinesis Data Streams in instances such as the following:
 
+- When they need lower latency
+- When they need higher throughput
+- When the stream needs to handle larger incoming messages
+- When migrating from an on-premises Kafka solution
+
+:::
 
 
 
