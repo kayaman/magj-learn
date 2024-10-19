@@ -286,7 +286,7 @@ In today's data-driven world, where real-time insights are paramount, streaming 
 
   Temporary storage provides reliability against transient network issues or outages in downstream systems. Data is not lost if delivery fails temporarily. You can decouple services that improve your flexibility and ability to scale.
 
-- **Encourage data minimization **
+- **Encourage data minimization**
 
   Organizations need to consider the size of payloads being sent to streaming services. With short-term storage data payloads can be reviewed to reduce unnecessary fields before long-term archival. This helps optimize resource usage.
 
@@ -296,7 +296,7 @@ In today's data-driven world, where real-time insights are paramount, streaming 
 
 Amazon MSK and Kinesis Data Streams are AWS services used for ingesting and processing real-time data streams. You can use these services to store data temporarily for a configurable retention period. Let's look at how you can use Amazon MSK and Kinesis Data Streams as short-term storage in your data pipeline.
 
-#### Amazon MSK
+##### Amazon MSK
 
 With Amazon MSK, you can build and run applications that use Apache Kafka for building real-time streaming data pipelines where data is consumed and processed as it arrives rather than stored for long periods of time. Consuming messages does not automatically remove them from the log in Amazon MSK. Amazon MSK can configure the Kafka topics with a retention period, which determines how long the data is stored before being automatically removed. 
 
@@ -304,7 +304,7 @@ Amazon MSK stores the streaming data temporarily in a performance-optimized prim
 
 ![MSK](/img/s-msk.png)
 
-#### Kinesis Data Streams
+##### Kinesis Data Streams
 
 Kinesis Data Streams is a service you can use to collect and process large amounts of streaming data in real time. A Kinesis Data Stream stores records for 24 hours by default and can store them up to 8760 hours (365 days). You can use it as a short-term storage solution for a streaming data pipeline to act as a buffer or temporary storage for data before it is processed or loaded into a more permanent storage solution.
 
@@ -313,10 +313,102 @@ Kinesis Data Streams is a service you can use to collect and process large amoun
 To learn more, see [Getting started using Amazon MSK](https://docs.aws.amazon.com/msk/latest/developerguide/getting-started.html).  
 To learn more, see [What Is Amazon Kinesis Data Streams?](https://docs.aws.amazon.com/streams/latest/dev/introduction.html)
 
+### AWS long term storage solutions
 
+The storage option you use when storing data long term largely depends on your use case. Some of the long-term storage options and common use cases for the storage service are listed in the next section.
 
+#### Long-term storage use cases
 
+When streaming data from thousands of sources, you can use a long-term storage strategy to plan for the future and comply with any regulatory requirements. In the following use cases, storing data long term is beneficial:
 
+- **Compliance and regulatory requirements**: Certain industries like healthcare and financial services have regulations that require data to be retained for auditing purposes for periods ranging from a few months to several years.
+
+- **Machine learning and analytics**: By storing streaming data historically, you can reprocess and analyze the data over time to improve models and insights. You can backtest machine learning (ML) algorithms on historical data to evaluate performance.
+
+- **Monitoring and operational control**: With historical streaming data, you can debug production issues, investigate anomalies, or analyze outages that occurred in the past.
+
+#### Data movement
+
+With the capacity to move data, you can build flexible, scalable, and secure data pipelines that meet your specific requirements. These requirements might include ingesting data from external sources, integrating with external systems, or moving data between AWS services for processing and analysis.
+
+![Data movement](/img/data-movement.png)
+
+1. **Inside-out data movement**
+
+    Inside-out data movement includes moving stored streaming data from a data lake out to a data warehouse. For example, storing the streaming data in a data lake for offline analytics and then moving data to a data warehouse for daily reporting.
+
+2. **Around the perimeter data movement**
+
+    Perimeter movement involves moving streaming data from one purpose-built data store to another. For example, loading streaming data into Amazon Redshift to offload the search queries from the database.
+
+3. **Outside-in data movement**
+
+    Outside-in movement involves moving streaming data from Kinesis Data Streams into a data lake. For example, moving data from a Kinesis Data Stream into a data lake for product recommendations by using ML algorithms.
+
+#### Data lakes
+
+Amazon S3 is an object storage service that offers scalability, data availability, security, and performance. Amazon S3 is typically used as the primary data store for a data lake. A data lake is a centralized repository where you can store all your structured and unstructured data at any scale and then run different types of analytics to guide your business decisions.
+
+![DL](/img/s-dl.png)
+
+#### Amazon Redshift
+
+Amazon Redshift supports streaming ingestion from Kinesis Data Streams. The Amazon Redshift streaming ingestion feature provides low-latency, high-speed ingestion of streaming data from Kinesis Data Streams into an Amazon Redshift materialized view. Amazon Redshift streaming ingestion removes the need to stage data in Amazon S3 before ingesting into Amazon Redshift.
+
+![Redshift](/img/s-redshift.png)
+
+#### Amazon OpenSearch Service
+
+Amazon OpenSearch Service is a fully managed service offered by AWS to deploy, operate, and scale OpenSearch Service clusters in the AWS Cloud or on-premises data centers. It can also be used as a storage solution for your streaming data. There are a few ways in which you can store streaming data in OpenSearch Service.
+
+- Firehose delivery
+
+  Firehose can deliver streaming data from Kinesis to OpenSearch Service. It handles transforming and loading the data automatically in near real-time. You can store large volumes of streaming data in OpenSearch Service for long-term analysis and querying.
+
+- OpenSearch service ingest node plugin
+
+The OpenSearch Service Ingest Node plugin can be used to build a custom pipeline that reads data from Kinesis and indexes it into OpenSearch Service. This provides more control over transformations during ingestion.
+
+- Kinesis streaming data
+
+Storing streaming data from Kinesis in OpenSearch Service provides the ability to run queries, aggregations, and visualizations on large datasets for insights over time. The data can be stored cost effectively in OpenSearch Service for long term retrieval and analysis, as needed.
+
+![OpenSearch](/img/s-opensearch.png)
+
+To learn more, see [What is Amazon OpenSearch Service?](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html)
+
+### Cost optimization strategies for storing streaming data
+
+#### Using Amazon S3 storage tiers
+
+Develop an appropriate data storage strategy based on the access patterns of your data. Frequently accessed data can be stored in Amazon S3 Standard storage while infrequently accessed data can be moved to S3 Glacier or Glacier Deep Archive for cost savings. You can automate data tiering using S3 Lifecycle policies.
+
+Monitor data access patterns using S3 Analytics and S3 Intelligent Tiering to understand how your data is being used and to refine your storage strategy over time. Ingest data into the same AWS Region and Availability Zone where it will be processed to reduce data transfer costs.
+
+![storage tiers](/img/s3-st.png)
+
+#### Adjusting data size and distribution
+
+Partitioning data in Kinesis Data Streams brings advantages like faster processing, improved throughput, efficient resource use, and more straightforward error handling. By optimizing how the data is distributed and processed in the streaming pipeline, costs can be reduced through efficiently using resources and avoiding overprovisioned compute or storage capacity. 
+
+- **Partitioning**: Partitioning and bucketing the data helps distribute it across compute resources in a way that optimizes performance. This reduces the amount of data each individual compute resource must process.
+- **Smaller data**: By processing smaller, partitioned chunks of data in parallel, the pipeline can scale out with additional compute capacity only where needed. This improves throughput and avoids overprovisioning resources. 
+- **Distribution**: Distributing the workload means the pipeline can finish processing faster, so the resources don't need to be running as long. Shorter processing times can directly translate to lower costs.
+- **Filtering**: Real-time filtering or aggregation of streaming data before storing it can reduce the amount of long-term storage you need. Only the relevant processed data is stored rather than all raw records.
+
+![P-S-C](/img/psc.png)
+
+#### Compressing data
+
+Applying data compression prior to transmitting it to Kinesis Data Streams has numerous advantages. This approach not only reduces the data’s size for faster travel and efficient resource use, but it also leads to cost savings when it comes to storage expenses. 
+
+Additionally, this practice makes storage and data retention more cost efficient. By using compression algorithms such as GZIP, Snappy, or LZO, you can achieve substantial reduction in the size of large records. Compression is implemented seamlessly without requiring the caller to make changes to the item or use extra AWS services to support storage. 
+
+However, compression introduces additional CPU overhead and latency on the producer side, and its impact on the compression ratio and efficiency can vary depending on the data type and format. Also, compression can enhance consumer throughput at the expense of some decompression overhead.
+
+![compressing](/img/compressing.png)
+
+### AWS zero-ETL capabilities
 
 
 ## Processing Data
