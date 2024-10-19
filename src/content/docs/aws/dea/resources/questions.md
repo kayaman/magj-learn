@@ -404,6 +404,27 @@ Throughout the entire extract, transform, and load (ETL) workflow, Step Function
 
 ---
 
+**AnyCompany Financials needs to process and transform financial data stored in Amazon S3 using Apache Spark. Which AWS service would be most suitable for this requirement?**
+
+*Amazon EMR*
+
+Amazon EMR (Elastic MapReduce) is a cloud-based big data platform that supports open-source frameworks like Apache Spark, Hadoop, and Presto. It is designed for distributed data processing and is a suitable choice for running Apache Spark workloads on the financial data stored in Amazon S3.
+
+---
+
+**A financial services company needs to process and analyze large volumes of transaction data, customer information, and market data to generate reports and gain insights. Which AWS service would be most suitable for building the batch data pipeline in this scenario?**
+
+*AWS Glue*
+
+AWS Glue is the most suitable service for building the batch data pipeline in this scenario. AWS Glue is a fully managed extract, transform, and load (ETL) service that makes it easy to prepare and load data for analytics. It can handle the key requirements of the financial services company, such as:
+
+- Data Ingestion: AWS Glue can ingest data from various sources, including databases, data warehouses, and data lakes, into Amazon S3.
+- Data Transformation: AWS Glue provides a visual interface and a code-free ETL tool to transform and enrich the data, ensuring data quality and consistency.
+- Data Cataloging: AWS Glue Data Catalog can be used to create a centralized metadata repository for the processed data, enabling data discovery and lineage tracking.
+- Data Serving: The processed data can be served for consumption by various analytics tools, such as Amazon Athena, Amazon QuickSight, or custom applications.
+
+---
+
 ## Official Practice Question Set
 
 **A company is using an Amazon S3 data lake. The company ingests data into the data lake by using Amazon Kinesis Data Streams. The company reads and processes the incoming data from the stream by using AWS Lambda. The data being ingested has highly variable and unpredictable volume. Currently, the IteratorAge metric is high at peak times when a high volume of data is being posted to the stream. A data engineer must design a solution to increase performance when reading Kinesis Data Streams with Lambda. Which solution will meet these requirements?**

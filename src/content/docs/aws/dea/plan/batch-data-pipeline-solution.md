@@ -184,3 +184,59 @@ Combining partitioning and bucketing can further improve query performance becau
 | ![EMR](/img/emr.png) | ![Glue](/img/glue.png) | ![EMR Serverless](/img/emr-serverless.png) |
 | **Amazon EMR** | **AWS Glue** | **Amazon EMR Serverless** |
 
+**Amazon EMR** and **AWS Glue** are AWS services for batch processing. Amazon EMR is better for data that already exists in the desired format. AWS Glue is better for unprocessed data and ETL. 
+
+Amazon EMR is more flexible and can be used for small-scale and large-scale data operations. AWS Glue is used when required and better for small batch jobs. Amazon EMR can be provisioned on Amazon EC2 servers, in containers with Amazon Elastic Kubernetes Service (Amazon EKS) and Serverless. Amazon EMR Serverless is a serverless deployment of Amazon EMR that offers on-demand scaling, scalability, and cost optimization.
+
+AWS Glue is a serverless data integration service that helps users discover, prepare, move, and integrate data from multiple sources. It's best suited when organizations are resource-constrained and need to build data processing workloads at scale. AWS Glue can also streamline ETL processes to enhance data preparation and movement.
+
+The choice between **EMR Serverless** and **AWS Glue** depends on specific data processing needs. For example, you can use Amazon EMR for data loading and processing, and then use batch to run code on the resources you declare. 
+
+### Amazon EMR or AWS Glue decision tree
+
+- You want to migrate from legacy ETL platforms like Informatica, Talend, and Matillion.ouou
+
+  **AWS Glue**
+
+- You want to use built-in connectors and transformations to move data from and to different data stores as data sources and targets.
+
+  **AWS Glu**
+
+- You want collaborative real-time code editing.
+
+  **Amazon EMR Studio**
+
+- Your team needs to run the latest, performance-optimized versions of Apache Spark.
+
+  **Amazon EMR on Amazon EC2 (Spot), EMR Serverless, or Amazon EMR on Amazon EC2 (Savings Plan)**
+
+- You need to run API-compatible Spark code (batch or streaming) in Serverless mode.
+
+  **EMR Serverless or AWS Glue**
+
+- You want interactive script and query development experience.
+
+  **AWS Glue interactive sessions or Amazon EMR Studio**
+
+- Your team needs a solution that can manage data quality, data duplications, or sensitive data detection.
+
+  **AWS Glue**
+
+- You want to use other big data frameworks such as Hive, Pig, or Sqoop on the same compute as I use Apache Spark.
+
+  **Amazon EMR on Amazon EC2**
+
+- You need to optimize processing with custom Apache Spark configurations.
+
+  **Amazon EMR (Amazon EC2, Amazon EKS, or Serverless)**
+
+### Resources
+
+To learn more about **Amazon EMR Serverless**, refer to the [Amazon EMR Serverless documentation](https://docs.aws.amazon.com/emr/latest/EMR-Serverless-UserGuide/emr-serverless.html).
+
+To learn more about **Amazon S3**, refer to the "How it works" page in the [Amazon S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html#CoreConcepts).
+
+To learn more about big data on AWS, refer to [AWS Big Data Blog: Best Practices for Amazon EMR](https://aws.amazon.com/blogs/big-data/).
+
+## Ingesting Data
+
