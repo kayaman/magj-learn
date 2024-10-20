@@ -24,7 +24,7 @@ at the edge, and migrate data into and out of AWS
 If it takes more than a week to transfer over the network, use Snowball
 devices!
 
-![Snow Family](/img/udemy/with-snow-family.pmg)
+![Snow Family](/img/udemy/with-snow-family.png)
 
 ### Usage process
 
