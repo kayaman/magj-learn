@@ -12,13 +12,15 @@ sidebar:
   - Amazon S3 (any storage classes, including Glacier)
   - Amazon EFS
   - Amazon FSx
-- Replication tasks can be scheduled hourly, daily, weekly
+- Replication tasks can be scheduled hourly, daily, weekly - not continuous
 - File permissions and metadata are preserved (NFS POSIX, SMB, ...)
 - One agent task can use 10 Gbps, can setup a bandwidth limit
 
 ## NFS / SMB to AWS (S3, EFS, FSx, ...)
 
 ![DataSync](/img/udemy/datasync-onprem-aws.png)
+
+Notice the usage of Snowcone if needed.
 
 ## AWS to AWS
 
