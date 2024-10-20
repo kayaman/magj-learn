@@ -531,6 +531,22 @@ Amazon Redshift, a cloud data warehousing service, supports streaming ingestion 
 
 ---
 
+**Which AWS service can capture, transform, and store streaming data in real-time to deliver data from Amazon Kinesis Data Streams to common destinations and perform record-level transformations?**
+
+*Amazon Data Firehose*
+
+Amazon Data Firehose is a fully managed service that can capture, transform, and load streaming data into the storage of your choice for near real-time analytics with existing business intelligence tools. It can perform record-level transformations using AWS Lambda functions.
+
+---
+
+**What is the purpose of checkpointing in Spark Streaming applications running on Amazon EMR clusters?**
+
+*To enable the application to recover from failures and maintain exactly-once semantics*
+
+According to the content, Spark Streaming provides built-in support for checkpointing. This enables the application to recover from failures and maintain exactly-once semantics. The EMR cluster can be used to store the checkpoint data, which ensures that the Spark Streaming application can resume processing from the last checkpoint in the event of a failure.
+
+---
+
 ## Official Practice Question Set
 
 **A company is using an Amazon S3 data lake. The company ingests data into the data lake by using Amazon Kinesis Data Streams. The company reads and processes the incoming data from the stream by using AWS Lambda. The data being ingested has highly variable and unpredictable volume. Currently, the IteratorAge metric is high at peak times when a high volume of data is being posted to the stream. A data engineer must design a solution to increase performance when reading Kinesis Data Streams with Lambda. Which solution will meet these requirements?**
