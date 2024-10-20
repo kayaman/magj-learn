@@ -160,6 +160,12 @@ export default defineConfig({
 												directory: 'aws/dea/course/section3',
 											},
 										},
+										{ 
+											label: 'Migration and Transfer',
+											autogenerate: { 
+												directory: 'aws/dea/course/section4',
+											},
+										},
 									]
 								},
 								{ 
