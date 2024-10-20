@@ -742,8 +742,7 @@ Each AWS account has one AWS Glue Data Catalog per AWS Region. Each Data Catalog
 1. **Runs custom classifiers**
 
     A crawler runs any custom classifiers that you choose to infer the format and schema of your data. You provide the code for custom classifiers, and they run in the order that you specify.
-
-The first custom classifier to successfully recognize the structure of your data is used to create a schema. Custom classifiers lower in the list are skipped.
+    The first custom classifier to successfully recognize the structure of your data is used to create a schema. Custom classifiers lower in the list are skipped.
 
 2. **Run built-in classifiers**
 
