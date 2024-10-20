@@ -786,7 +786,7 @@ To learn more, see [AWS Glue Streaming](https://docs.aws.amazon.com/glue/latest/
 
 Apache Spark Streaming is a powerful stream processing engine that enables high-throughput, fault-tolerant processing of live data streams. Amazon EMR is a cloud-based big data solution that simplifies running Spark and other big data frameworks.
 
-![Spark Streaming EMR](/img/spark-streaming-emr.ppng)
+![Spark Streaming EMR](/img/spark-streaming-emr.png)
 
 By using the capabilities of Spark Streaming and Amazon EMR clusters, organizations can build robust, scalable, and fault-tolerant real-time data processing pipelines to handle large-scale data streams and derive valuable insights in a timely manner.
 
