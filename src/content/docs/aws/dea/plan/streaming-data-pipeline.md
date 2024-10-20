@@ -875,7 +875,8 @@ To learn more, see [Amazon OpenSearch Service](https://aws.amazon.com/opensearch
 
 ### Amazon SageMaker streaming endpoints
 
-Data preparation for ML is a difficult process. It requires extracting and normalizing data and performing feature engineering, which can be time consuming. You can use SageMaker, a fully managed ML service, to complete each step of the data preparation workflow. These steps include data selection, cleansing, exploration, bias detection, and visualization from a single visual interface. SageMaker can reduce the time it takes to aggregate and prepare structured data for ML from weeks to minutes.  
+Data preparation for ML is a difficult process. It requires extracting and normalizing data and performing feature engineering, which can be time consuming. You can use SageMaker, a fully managed ML service, to complete each step of the data preparation workflow. These steps include data selection, cleansing, exploration, bias detection, and visualization from a single visual interface. SageMaker can reduce the time it takes to aggregate and prepare structured data for ML from weeks to minutes.
+
 Real-time inference is ideal for workloads where you have real-time, interactive, low latency requirements. You can deploy your model to SageMaker hosting services and get an endpoint that can be used for inference. This will let you continuously stream inference responses back to the consumer to help you build interactive experiences for generative AI applications such as chatbots, virtual assistants, and music generators.
 
 ![SageMaker](/img/da-sagemaker.png)
