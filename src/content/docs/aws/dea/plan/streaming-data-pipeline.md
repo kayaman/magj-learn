@@ -729,8 +729,37 @@ With AWS services like Firehose, you can apply these transformations and process
 
 ### Using AWS Glue to transform data
 
+Serverless streaming ETL jobs in AWS Glue continuously consumes data from streaming sources, including Kinesis Data Streams. AWS Glue streaming is used to clean and transform streaming data in transit. AWS Glue streaming ETL jobs can enrich and aggregate data, join batch and streaming sources, and run a variety of complex analytics and ML operations. Output is available for analysis in seconds in your target data store. This feature supports event data workloads such as IoT event streams, clickstreams, and network logs.
 
+#### Building an AWS Glue Data Catalog
 
+The AWS Glue Data Catalog contains references to data that is used as sources and targets of your ETL jobs in AWS Glue. The AWS Glue Data Catalog is an index to the location, schema, and runtime metrics of your data. You can use the information in the Data Catalog to create and monitor your ETL jobs.
+
+Each AWS account has one AWS Glue Data Catalog per AWS Region. Each Data Catalog is a highly scalable collection of tables organized into databases. The AWS Glue Data Catalog provides a uniform repository where disparate systems can store and find metadata to keep track of data in data silos. You can then use the metadata to query and transform that data in a consistent manner across a wide variety of applications.
+
+![Glue Data Catalog](/img/ds-glue-data-catalog.png)
+
+1. **Runs custom classifiers**
+
+    A crawler runs any custom classifiers that you choose to infer the format and schema of your data. You provide the code for custom classifiers, and they run in the order that you specify.
+
+The first custom classifier to successfully recognize the structure of your data is used to create a schema. Custom classifiers lower in the list are skipped.
+
+2. **Run built-in classifiers**
+
+    If no custom classifier matches your data's schema, built-in classifiers try to recognize your data's schema. An example of a built-in classifier is one that recognizes JSON.
+
+3. **Connect to data store**
+
+    The crawler connects to the data store. Some data stores require connection properties for crawler access.
+
+4. **Infers schemas**
+
+    The inferred schema is created for your data.
+
+5. **Writes metadata**
+
+    The crawler writes metadata to the Data Catalog. A table definition contains metadata about the data in your data store. The table is written to a database, which is a container of tables in the Data Catalog. Attributes of a table include classification, which is a label created by the classifier that inferred the table schema.
 
 
 ### Spark streaming used to process data with Amazon EMR clusters
