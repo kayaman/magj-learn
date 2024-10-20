@@ -760,6 +760,27 @@ Each AWS account has one AWS Glue Data Catalog per AWS Region. Each Data Catalog
 
     The crawler writes metadata to the Data Catalog. A table definition contains metadata about the data in your data store. The table is written to a database, which is a container of tables in the Data Catalog. Attributes of a table include classification, which is a label created by the classifier that inferred the table schema.
 
+After your data has been crawled and a Data Catalog has been created, you can do the following:
+
+- **Classify and organize your data**: As the crawlers scan your data sources, AWS Glue will automatically classify the data and generate a schema for each dataset. You can further organize your data by creating databases and tables within the AWS Glue Data Catalog.
+
+- **Enrich metadata**: After the data is cataloged, you can enrich the metadata with additional information, such as data lineage, data quality metrics, business glossary terms, and access control policies.
+
+#### AWS Glue streaming jobs with Spark or Ray frameworks
+
+AWS Glue provides a serverless environment for running streaming ETL jobs using Apache Spark or Ray frameworks.
+
+##### Spark framework
+
+AWS Glue provides a performance-optimized, serverless infrastructure for running Apache Spark for data integration and ETL jobs. AWS Glue with Apache Spark supports batch and stream processing. It speeds up data ingestion, processing, and integration so you can hydrate your data lake and quickly extract insights from the data.  
+For distributed processing, useful for large dataset, AWS Glue offers a Spark-based engine.
+
+##### Ray framework
+
+AWS Glue for Ray facilitates the distributed processing of your Python code over multi-node clusters. You can create and run Ray jobs anywhere that you can run AWS Glue ETL jobs. This includes existing AWS Glue jobs, command line interfaces (CLIs), and APIs.  
+Ray is a serverless deployment of a new open source framework for distributing Python. It automates the work of scaling Python code. It can auto scale in seconds based on the load.
+
+To learn more, see [AWS Glue Streaming](https://docs.aws.amazon.com/glue/latest/dg/streaming-chapter.html).
 
 ### Spark streaming used to process data with Amazon EMR clusters
 
