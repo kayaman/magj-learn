@@ -125,12 +125,13 @@ export default defineConfig({
 								variant: 'tip'
 							},
 							items: [
-								{ 
-									label: 'Overview', 
+								{
+									label: 'Overview',
 									link: 'aws/dea/overview',
 								},
 								{ 
-									label: 'Plan', 
+									label: 'Plan',
+									collapsed: true,
 									autogenerate: { 
 										directory: 'aws/dea/plan',
 									},
