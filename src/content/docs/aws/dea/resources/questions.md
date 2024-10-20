@@ -547,6 +547,22 @@ According to the content, Spark Streaming provides built-in support for checkpoi
 
 ---
 
+**What is an interactive query service in which you can use standard SQL to query and analyze data?**
+
+*Amazon Athena*
+
+You can use Athena to query data in place and combine data sources. This functionality is helpful for data analysts to perform one-time queries.
+
+---
+
+**Which service can business analysts use for real-time threat detection and incident management?**
+
+*Amazon OpenSearch Service*
+
+OpenSearch Service integration supports real-time application monitoring, log analytics for real-time threat detection and incident management, and clickstream analysis. You can search, explore, filter, aggregate, and visualize the data to gain real-time insights.
+
+---
+
 ## Official Practice Question Set
 
 **A company is using an Amazon S3 data lake. The company ingests data into the data lake by using Amazon Kinesis Data Streams. The company reads and processes the incoming data from the stream by using AWS Lambda. The data being ingested has highly variable and unpredictable volume. Currently, the IteratorAge metric is high at peak times when a high volume of data is being posted to the stream. A data engineer must design a solution to increase performance when reading Kinesis Data Streams with Lambda. Which solution will meet these requirements?**
