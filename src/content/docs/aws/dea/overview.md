@@ -18,3 +18,9 @@ sidebar:
 - [Exam Prep Official Pretest](https://explore.skillbuilder.aws/learn/course/external/view/elearning/18609/exam-prep-official-pretest-aws-certified-data-engineer-associate-dea-c01-english)
 - [Udemy Course](https://www.udemy.com/course/aws-data-engineer/)
 - [Udemy Practice Exams](https://www.udemy.com/course/practice-exams-aws-certified-data-engineer-associate-r/)
+
+## Resources
+
+- [Udemy Slides](/resources/AWSCertifiedDataEngineerSlides_Udemy.pdf)
+- [Whizlabs Cheat Sheet](/resources/Whiz-Cheat-Sheet-AWS-Data-Engineer-Associate-v2.pdf)
+- [Digital Cloud Cheat Sheet](https://digitalcloud.training/aws-certified-data-engineer-associate-cheat-sheet/)
