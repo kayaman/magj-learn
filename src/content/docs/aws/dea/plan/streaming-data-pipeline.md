@@ -596,9 +596,92 @@ With Amazon Managed Service for Apache Flink, you can use Java, Scala, Python, o
 
 ### Using Lambda functions with Kinesis
 
+#### Invoking Lambda functions from Kinesis
 
+Lambda is integrated with Kinesis as a consumer to process data ingested through the data stream. You can map a Lambda function to a shared-throughput consumer (standard iterator) or to a dedicated-throughput consumer with enhanced fan-out. We will discuss enhanced fan-out later in this lesson. Lambda invokes one instance per Kinesis shard and invokes the function as soon as it has gathered a full batch or the batch window expires.
+
+- **Parallelization factor**: This is the number of Lambda invocations that concurrently read a single shard.
+- **De-aggregation**: The Lambda consumer has a library to de-aggregate records from the Kinesis Producer Library (KPL).
+- **ETL**: Use Lambda to run lightweight ETL. Destinations include Amazon S3, DynamoDB, Amazon Redshift, and OpenSearch Service.
+- Integration with notifications: **Amazon Simple Notification Service** (Amazon SNS), Lambda can be used to send notifications or emails in real time.
+- **Batch size**: Lambda has a configurable batch size.
+- **Serverless**: Lambda has a serverless nature and automatically scales resources up or down based on the incoming data load. This eliminates the need for manual server management and provides cost-effective, real-time data processing.
+
+#### Integrating Kinesis and Lambda
+
+Kinesis Data Streams can be configured to invoke a Lambda function when new data is added to the stream. With this integration, you can process the incoming data in real-time using the Lambda function. The Lambda function can perform various operations, such as data transformation, anomaly detection, or data enrichment, before storing the processed data in a data store or sending it to another service.
+
+#### Calling a Lambda function from Kinesis
+
+Kinesis Data Streams can be configured to automatically invoke a Lambda function when new data is added to the stream. This is done by creating an event source mapping, which connects the Kinesis stream to the Lambda function.
+
+Lambda reads data stream records and invokes your function synchronously with an event that contains stream records. Lambda reads the records in batches and invokes your function to process the records from the batch. Each batch contains records from a single shard or data stream.
+
+![Lambda/Kinesis](/img/lambda-kinesis.png)
+
+This example shows an event source mapping that reads from a Kinesis stream. If a batch of events fails all processing attempts, the event source mapping sends details about the batch to an SQS queue.
+
+By using event source mapping with Lambda and Amazon Kinesis, you can provide other benefits for your streaming pipeline, such as the following.
+
+- **Checkpointing**
+
+    You can use Lambda to automatically checkpoint records that have been successfully processed for Kinesis using the parameter FunctionResponseType. If a failure occurs, Lambda prioritizes checkpointing, if enabled, over other mechanisms to minimize duplicate processing.
+
+- **Retry on error**
+
+    By default, if your function returns an error, the event source mapping reprocesses the entire batch until the function succeeds or the items in the batch expire. To ensure in-order processing, the event source mapping pauses processing for the affected shard until the error is resolved.
+
+- **Poison-pill message handling**
+
+    You can configure Lambda to write any poison messaging to a stream and send an Amazon Simple Queue Service (Amazon SQS) or Amazon SNS message and continue processing the rest of the messages.
+
+- **Concurrency control**
+
+    For each concurrent request, Lambda provisions a separate instance of your runtime environment. You can run up to 10 concurrent Lambda functions per partition. As your functions receive more requests, Lambda automatically handles scaling the number of runtime environments until you reach your account's concurrency limit.
+
+- **Batching**
+
+    With batching, you can collect a batch of records by size or window and deliver them to the Lambda function immediately.
+
+- **Windowing**
+
+    You can specify a tumbling window to accumulate records for a fixed period and dispatch all the records into a Lambda function immediately.
+
+To learn more, see [Using AWS Lambda with Amazon Kinesis](https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html).
 
 ### Transforming and delivering data continuously with Firehose
+
+Firehose captures, transforms, and stores streaming data in real-time. You can use this to simplify delivering data from Kinesis Data Streams to common destinations. You can also use it to ingest data directly from streaming data sources and producers and persist that data to a myriad of storage and analytics destinations.
+
+You can use Lambda or Firehose to perform record-level transformations to the streaming data. You can automatically provision and scale to meet any workload requirement without additional administration overhead. With over 30 fully integrated AWS services and destinations, Firehose is an ETL service for the AWS Cloud.
+
+![Lambda/Firehose](/img/lambda-firehose.png)
+
+When it comes to consuming data from Kinesis Data Streams, there are two main approaches:
+
+- Using unregistered consumers without enhanced fan-out
+- Using registered consumers with enhanced fan-out
+
+Each approach has its own advantages and trade-offs. Unregistered consumers without enhanced fan-out offer simplicity and lower overhead. This makes them suitable for scenarios with lower throughput requirements or when strict ordering of records is not critical. 
+
+On the other hand, registered consumers with enhanced fan-out provide higher throughput, better scalability, and more efficient load balancing across multiple consumers. This makes them a better choice for high-volume, mission-critical applications that require strict ordering of records.
+
+| Characteristics |	Unregistered consumers without enhanced fan-out | Registered consumers with enhanced fan-out |
+| - | - | - |
+| Shard Read Throughput | Fixed at a total of 2 MBps per shard. If there are multiple consumers reading from the same shard, they all share this throughput. The sum of the throughputs they receive from the shard doesn't exceed 2 MBps. | Scales as consumers register to use enhanced fan-out. Each consumer registered to use enhanced fan-out receives its own read throughput per shard, up to 2 MBps, independently of other consumers. |
+| Message propagation delay | The delay averages around 200 ms if you have one consumer reading from the stream. This average goes up to around 1000 ms if you have five consumers. | Typically, the delay averages 70 ms whether you have one consumer or five consumers. |
+| Cost | N/A | There is a data retrieval cost and a consumer-shard hour cost. |
+| Record delivery model | Pull model over HTTP using GetRecords. | Kinesis Data Streams pushes the records to you over HTTP/2 using SubscribeToShard. |
+
+#### Managing fan-out for streaming data distribution
+
+To minimize latency and maximize read throughput, you can create a data stream consumer with enhanced fan-out. Stream consumers get a dedicated connection to each shard that doesn't impact other applications reading from the stream. The dedicated throughput can help if you have many applications reading the same data or if you're reprocessing a stream with large records.
+
+![EFO](/img/efo.png)
+
+1. 
+
+
 
 
 
