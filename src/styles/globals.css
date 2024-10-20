@@ -11,3 +11,8 @@
 	--sl-icon-color: #E3DCDC;
   --sl-color-text-accent: #E3DCDC;
 }
+
+.social-icon {
+  width: 24px; /* Set desired width */
+  height: 24px; /* Set desired height */
+}
