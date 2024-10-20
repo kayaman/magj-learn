@@ -679,13 +679,57 @@ To minimize latency and maximize read throughput, you can create a data stream c
 
 ![EFO](/img/efo.png)
 
-1. 
+1. **Kinesis Data Streams**
 
+    A stream with three shards.
 
+2. **Fan-out for streaming data distribution**
 
+    Arrows representing the enhanced fan-out pipes that the consumers use to receive data from the stream. An enhanced fan-out pipe provides up to 2 MB/sec of data per shard, independently of any other pipes or of the total number of consumers.
 
+3. **Consumers**
+
+    Three consumers that are using enhanced fan-out to receive data from the stream. Each of the consumers is subscribed to all of the shards and all of the records of the stream. If you use version 2.0 or later of the KCL to build a consumer, the KCL automatically subscribes that consumer to all the shards of the stream. On the other hand, if you use the API to build a consumer, you can subscribe to individual shards.
+
+#### Setting up and configuring Firehose
+
+Setting up and configuring Firehose involves creating a delivery stream, specifying the data source, and configuring the delivery destination and data transformation options.
+
+1. **Create a Firehose delivery stream**
+
+    Creating a Firehose delivery stream involves specifying a name for the stream, choosing the source of the data (such as Kinesis Data Streams or direct PUT), and selecting the delivery destination (such as Amazon S3, Amazon Redshift, or OpenSearch Service).
+
+2. **Configure the data source**
+
+    Specify the source of the streaming data, which can be a Kinesis Data Stream, a CloudWatch Log group, or an HTTP endpoint. Provide the necessary details, such as the Kinesis stream name or the CloudWatch Log group name, to establish the connection between the data source and the delivery stream.
+
+3. **Select the delivery destination**
+
+    Choose the destination where the transformed or unmodified data will be delivered. Firehose supports various destinations, including Amazon S3, Amazon Redshift, OpenSearch Service, and HTTP endpoints. Configure the destination settings, such as the S3 bucket name or the Redshift cluster details.
+
+4. **Configure data transformation options**
+
+    With the data transformation options in Firehose, you can modify the data before delivering it to the destination. This includes options like data conversion (such as Apache Log to JSON), data filtering, data masking, and running Lambda functions for custom transformations.
+
+5. **Monitor and manage the delivery stream**
+
+    Monitoring and managing the delivery stream involves tracking metrics like incoming data volume, delivery throughput, and failed delivery attempts. You can also configure backup delivery destinations, set up alerts, and manage the stream's lifecycle (such as starting, stopping, or updating the stream).
+
+Data transformations play a crucial role in the streaming data pipeline using Firehose. As data is ingested from various sources and delivered to Amazon S3 or other AWS services in near real-time, it might require processing or formatting before being used effectively. With data transformations, you can modify, enrich, or filter data as it's being loaded into your data lake or data store. This is essential for ensuring data consistency, accuracy, and compatibility with downstream applications and analytics tools.
+
+With AWS services like Firehose, you can apply these transformations and process and deliver high-quality data in real-time. This can enhance your organization's data processing capabilities and improve the overall efficiency of your data pipeline.
+
+- **Data conversion**: Firehose can convert the format of your input data from JSON to Apache Parquet or Apache ORC before storing the data in Amazon S3.
+
+- **Data compression**: Use Firehose to compress your data before delivering it to Amazon S3. The service currently supports GZIP, ZIP, and SNAPPY compression formats.
+
+- **Data encryption**: Use Firehose to encrypt your data after it’s delivered to your S3 bucket. While creating your Firehose stream, you can choose to encrypt your data with an AWS Key Management Service (AWS KMS) key that you own.
+
+- **Custom data transformation using Lambda**: In addition to the built-in format conversion option in Firehose, you can also use a Lambda function to prepare and transform incoming raw data in your Firehose stream before loading it to destinations. You can configure a Lambda function for data transformation when you create a new Firehose stream or when you edit an existing Firehose stream.
 
 ### Using AWS Glue to transform data
+
+
 
 
 
