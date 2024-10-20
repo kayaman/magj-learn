@@ -828,8 +828,7 @@ AWS tools and services that are commonly used to query and visualize data includ
 
 ### Amazon Managed Service for Apache Flink
 
-Data engineers use Amazon Managed Service for Apache Flink in streaming solutions because it lets users analyze streaming data in real time with Apache Flink.
-
+Data engineers use Amazon Managed Service for Apache Flink in streaming solutions because it lets users analyze streaming data in real time with Apache Flink.  
 Amazon Managed Service for Apache Flink uses responsive real-time analytics applications to send real-time alarms or notifications when certain metrics reach predefined thresholds. In more advanced cases, it sends notifications when applications detect anomalies in ML algorithms. With these applications, organizations can respond to changes in the business in real time, such as predicting user abandonment in mobile apps and identifying degraded systems.
 
 ![Flink](/img/da-flink.png)
@@ -840,12 +839,9 @@ To learn more, see [Amazon Managed Service for Apache Flink](https://aws.amazon.
 
 ### Amazon Athena
 
-Athena is an interactive query service in which you can use standard SQL to query and analyze data.
-
-With Athena, you don’t need to set up anything, and you don’t need to manage servers or data warehouses.
-
-You can use Athena to query data in place and combine data sources. This functionality is helpful for data analysts to perform one-time queries.
-
+Athena is an interactive query service in which you can use standard SQL to query and analyze data.  
+With Athena, you don’t need to set up anything, and you don’t need to manage servers or data warehouses.  
+You can use Athena to query data in place and combine data sources. This functionality is helpful for data analysts to perform one-time queries.  
 You can use Athena with business intelligence (BI) tools, such as QuickSight.
 
 ![Athena](/img/da-athena.png)
@@ -854,8 +850,7 @@ To learn more, see [Amazon Athena](https://aws.amazon.com/athena/).
 
 ### Amazon QuickSight
 
-QuickSight is a serverless cloud-scale BI service used to deliver insights. It connects to data in the cloud and combines data from many different sources.
-
+QuickSight is a serverless cloud-scale BI service used to deliver insights. It connects to data in the cloud and combines data from many different sources.  
 It gives decision-makers the opportunity to explore and analyze information in an interactive visual environment, such as dashboards. It provides forecasting visualization capabilities and provides the ability to ask questions using natural language with the Amazon Q in QuickSight feature.
 
 #### Amazon Q in QuickSight
@@ -869,8 +864,7 @@ To learn more, see [Amazon Q in QuickSight](https://aws.amazon.com/quicksight/q/
 
 ### Amazon OpenSearch Service
 
-OpenSearch Service is a managed service that provisions all the resources for your OpenSearch clusters in the AWS Cloud.
-
+OpenSearch Service is a managed service that provisions all the resources for your OpenSearch clusters in the AWS Cloud.  
 OpenSearch Service integration supports real-time application monitoring, log analytics for real-time threat detection and incident management, and clickstream analysis. You can search, explore, filter, aggregate, and visualize the data to gain real-time insights.
 
 ![OpenSearch](/img/da-opensearch.png)
@@ -881,8 +875,7 @@ To learn more, see [Amazon OpenSearch Service](https://aws.amazon.com/opensearch
 
 ### Amazon SageMaker streaming endpoints
 
-Data preparation for ML is a difficult process. It requires extracting and normalizing data and performing feature engineering, which can be time consuming. You can use SageMaker, a fully managed ML service, to complete each step of the data preparation workflow. These steps include data selection, cleansing, exploration, bias detection, and visualization from a single visual interface. SageMaker can reduce the time it takes to aggregate and prepare structured data for ML from weeks to minutes.
-
+Data preparation for ML is a difficult process. It requires extracting and normalizing data and performing feature engineering, which can be time consuming. You can use SageMaker, a fully managed ML service, to complete each step of the data preparation workflow. These steps include data selection, cleansing, exploration, bias detection, and visualization from a single visual interface. SageMaker can reduce the time it takes to aggregate and prepare structured data for ML from weeks to minutes.  
 Real-time inference is ideal for workloads where you have real-time, interactive, low latency requirements. You can deploy your model to SageMaker hosting services and get an endpoint that can be used for inference. This will let you continuously stream inference responses back to the consumer to help you build interactive experiences for generative AI applications such as chatbots, virtual assistants, and music generators.
 
 ![SageMaker](/img/da-sagemaker.png)
@@ -891,6 +884,5 @@ To learn more, see [Amazon SageMaker](https://aws.amazon.com/sagemaker/).
 
 ### Amazon Redshift
 
-Amazon Redshift can be used as another query service to generate insights by visualizing streaming data within a business intelligence solution. You can use Amazon Redshift to build charts and other visuals within a solution like QuickSight to help make data-driven decisions. You can use it with Amazon Q in QuickSight to ask conversational questions of data and receive answers through relevant visualizations.
-
+Amazon Redshift can be used as another query service to generate insights by visualizing streaming data within a business intelligence solution. You can use Amazon Redshift to build charts and other visuals within a solution like QuickSight to help make data-driven decisions. You can use it with Amazon Q in QuickSight to ask conversational questions of data and receive answers through relevant visualizations.  
 Like Athena, Amazon Redshift can be serverless, and it can access data from a data lake.
