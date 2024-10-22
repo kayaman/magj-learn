@@ -167,6 +167,12 @@ export default defineConfig({
 												directory: 'aws/dea/course/section4',
 											},
 										},
+										{ 
+											label: 'Application Integration',
+											autogenerate: { 
+												directory: 'aws/dea/course/section8',
+											},
+										},
 									]
 								},
 								{ 
