@@ -1,5 +1,8 @@
 :root {
   --sl-font: 'Open Sans', sans-serif;
+  --sl-mardown-content {
+    margin-top: 0 !important;
+  }
 }
 
 :root[data-theme='light'] {
