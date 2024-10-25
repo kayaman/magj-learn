@@ -28,4 +28,4 @@ When you deploy applications on Kubernetes, you tell the control plane to start 
 
 A Kubernetes cluster can be deployed on either physical or virtual machines. To get started with Kubernetes development, you can use Minikube. Minikube is a lightweight Kubernetes implementation that creates a VM on your local machine and deploys a simple cluster containing only one node. Minikube is available for Linux, macOS, and Windows systems. The Minikube CLI provides basic bootstrapping operations for working with your cluster, including start, stop, status, and delete.
 
-Now that you know more about what Kubernetes is, visit [Hello Minikube](https://kubernetes.io/docs/tutorials/hello-minikube/) to try this out on your computer.
+Now that you know more about what Kubernetes is, visit [Hello Minikube](kubernetes/minikube/hello) to try this out on your computer.
