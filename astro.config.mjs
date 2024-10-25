@@ -301,7 +301,14 @@ export default defineConfig({
 									autogenerate: { 
 										directory: 'kubernetes/basics',
 									},
-								}
+								},
+								{
+									label: 'Minikube',
+									collapsed: true,
+									autogenerate: { 
+										directory: 'kubernetes/minikube',
+									},
+								},
 							]
 				}
 			],
