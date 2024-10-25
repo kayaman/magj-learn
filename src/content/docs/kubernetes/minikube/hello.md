@@ -3,7 +3,6 @@ title: Hello Minikube
 description: https://kubernetes.io/docs/tutorials
 sidebar:
   order: 1
-tableOfContents: false
 ---
 
 This tutorial shows you how to run a sample app on Kubernetes using minikube. The tutorial provides a container image that uses NGINX to echo back all the requests.
