@@ -17,7 +17,7 @@ Objectives
 
 This tutorial assumes that you have already set up `minikube`. See **Step 1** in [minikube start](https://minikube.sigs.k8s.io/docs/start/) for installation instructions.
 
-:::note
+::: note
 Only execute the instructions in **Step 1, Installation**. The rest is covered on this page.
 :::
 
@@ -94,7 +94,7 @@ kubectl config view
 
 6. View application logs for a container in a pod (replace pod name with the one you got from `kubectl get pods`).
 
-:::note
+::: note
 Replace hello-node-5f76cf6ccf-br9b5 in the kubectl logs command with the name of the pod from the kubectl get pods command output.
 :::
 
@@ -109,7 +109,7 @@ I0911 09:19:26.677397       1 log.go:195] Started HTTP server on port 8080
 I0911 09:19:26.677586       1 log.go:195] Started UDP server on port  8081
 ```
 
-:::note
+::: note
 For more information about kubectl commands, see the [kubectl overview](https://kubernetes.io/docs/reference/kubectl/).
 :::
 
@@ -117,7 +117,7 @@ For more information about kubectl commands, see the [kubectl overview](https://
 
 By default, the Pod is only accessible by its internal IP address within the Kubernetes cluster. To make the `hello-node` Container accessible from outside the Kubernetes virtual network, you have to expose the Pod as a Kubernetes Service.
 
-:::warning
+::: warning
 The agnhost container has a `/shell` endpoint, which is useful for debugging, but dangerous to expose to the public internet. Do not run this on an internet-facing cluster, or a production cluster.
 :::
 
