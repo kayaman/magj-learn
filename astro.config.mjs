@@ -15,25 +15,6 @@ export default defineConfig({
 	site: 'https://learn.magj.dev',
 	integrations: [
 		sitemap({}),
-		astroExpressiveCode({
-			themes: [
-				'github-dark-dimmed', 
-				'github-light'
-			],
-			frames: {
-				showCopyToClipboardButton: true,
-			},
-			shiki: true,
-			tabWidth: 4,
-			defaultProps: {
-				wrap: false,
-				overridesByLang: {
-					'json': { 
-						preserveIndent: true 
-					},
-				},
-			},
-		}),
 		starlight({
 			favicon: '/favicon.png',
 			logo: {
@@ -318,7 +299,26 @@ export default defineConfig({
 			social: {
 				linkedin: 'https://www.linkedin.com/in/marcoantoniogonzalezjunior/',
 				github: 'https://github.com/kayaman',
-			}
+			},
+			expressiveCode: {
+				themes: [
+					'github-dark-dimmed', 
+					'github-light',
+				],
+				frames: {
+					showCopyToClipboardButton: true,
+				},
+				shiki: true,
+				tabWidth: 4,
+				defaultProps: {
+					wrap: false,
+					overridesByLang: {
+						'json': { 
+							preserveIndent: true,
+						},
+					},
+				},
+			},
 		}),
 	],
 	markdown: {
