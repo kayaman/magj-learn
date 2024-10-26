@@ -51,7 +51,7 @@ Labels can be attached to objects at creation time or later on. They can be modi
 
 ### Step 1: Creating a new Service
 
-Let’s verify that our application is running. We’ll use the kubectl get command and look for existing Pods:
+Let's verify that our application is running. We'll use the kubectl get command and look for existing Pods:
 
 ```sh
 kubectl get pods
@@ -59,7 +59,7 @@ kubectl get pods
 
 If no Pods are running then it means the objects from the previous tutorials were cleaned up. In this case, go back and recreate the deployment from the [Using kubectl to create a Deployment](https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro#deploy-an-app) tutorial. Please wait a couple of seconds and list the Pods again. You can continue once you see the one Pod running.
 
-Next, let’s list the current Services from our cluster:
+Next, let's list the current Services from our cluster:
 
 ```sh
 kubectl get services
@@ -79,7 +79,7 @@ kubectl get services
 
 We have now a running Service called kubernetes-bootcamp. Here we see that the Service received a unique cluster-IP, an internal port and an external-IP (the IP of the Node).
 
-To find out what port was opened externally (for the type: NodePort Service) we’ll run the `describe service` subcommand:
+To find out what port was opened externally (for the type: NodePort Service) we'll run the `describe service` subcommand:
 
 ```sh
 kubectl describe services/kubernetes-bootcamp
@@ -92,6 +92,7 @@ export NODE_PORT="$(kubectl get services/kubernetes-bootcamp -o go-template='{{(
 dex .spec.ports 0).nodePort}}')"
 echo "NODE_PORT=$NODE_PORT"
 ```
+
 Now we can test that the app is exposed outside of the cluster using curl, the IP address of the Node and the externally exposed port:
 
 ```sh
@@ -120,6 +121,83 @@ Then use the given URL to access the app:
 curl 127.0.0.1:51082
 ```
 
+:::
+
 And we get a response from the server. The Service is exposed.
 
 ### Step 2: Using labels
+
+The Deployment created automatically a label for our Pod. With the `describe deployment` subcommand you can see the name (the key) of that label:
+
+```sh
+kubectl describe deployment
+```
+
+Let's use this label to query our list of Pods. We'll use the `kubectl get pods` command with -l as a parameter, followed by the label values:
+
+```sh
+kubectl get pods -l app=kubernetes-bootcamp
+```
+
+You can do the same to list the existing Services:
+
+```sh
+kubectl get services -l app=kubernetes-bootcamp
+```
+
+Get the name of the Pod and store it in the POD_NAME environment variable:
+
+```sh
+export POD_NAME="$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')"
+echo "Name of the Pod: $POD_NAME"
+```
+
+To apply a new label we use the `label` subcommand followed by the object type, object name and the new label:
+
+```sh
+kubectl label pods "$POD_NAME" version=v1
+```
+
+This will apply a new label to our Pod (we pinned the application version to the Pod), and we can check it with the describe pod command:
+
+```sh
+kubectl describe pods "$POD_NAME"
+```
+
+We see here that the label is attached now to our Pod. And we can query now the list of pods using the new label:
+
+```sh
+kubectl get pods -l version=v1
+```
+
+And we see the Pod.
+
+### Step 3: Deleting a service
+
+To delete Services you can use the `delete service` subcommand. Labels can be used also here:
+
+```sh
+kubectl delete service -l app=kubernetes-bootcamp
+```
+
+Confirm that the Service is gone:
+
+```sh
+kubectl get services
+```
+
+This confirms that our Service was removed. To confirm that route is not exposed anymore you can curl the previously exposed IP and port:
+
+```sh
+curl http://"$(minikube ip):$NODE_PORT"
+```
+
+This proves that the application is not reachable anymore from outside of the cluster. You can confirm that the app is still running with a curl from inside the pod:
+
+```sh
+kubectl exec -ti $POD_NAME -- curl http://localhost:8080
+```
+
+We see here that the application is up. This is because the Deployment is managing the application. To shut down the application, you would need to delete the Deployment as well.
+
+Once you're ready, move on to [Running Multiple Instances of Your App](/kubernetes/basics/scale-up-your-app).
