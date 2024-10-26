@@ -23,7 +23,7 @@ Only execute the instructions in **Step 1, Installation**. The rest is covered o
 
 :::
 
-You also need to install `kubectl`. See Install tools for installation instructions.
+You also need to install `kubectl`. See [Install tools](https://kubernetes.io/docs/tasks/tools/#kubectl) for installation instructions.
 
 ## Create a minikube cluster
 

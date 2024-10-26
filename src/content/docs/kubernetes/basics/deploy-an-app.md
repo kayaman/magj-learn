@@ -116,4 +116,3 @@ curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME:8080/proxy/
 In order for the new Deployment to be accessible without using the proxy, a Service is required which will be explained in [Module 4](/kubernetes/basics/expose-your-app).
 
 Once you're ready, move on to [Viewing Pods and Nodes](/kubernetes/basics/explore-your-app).
-
