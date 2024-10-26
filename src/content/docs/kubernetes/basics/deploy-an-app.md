@@ -74,7 +74,7 @@ We see that there is 1 deployment running a single instance of your app. The ins
 
 [Pods](https://kubernetes.io/docs/concepts/workloads/pods/) that are running inside Kubernetes are running on a private, isolated network. By default they are visible from other pods and services within the same Kubernetes cluster, but not outside that network. When we use `kubectl`, we're interacting through an API endpoint to communicate with our application.
 
-We will cover other options on how to expose your application outside the Kubernetes cluster later, in [Module 4](/kubernetes/basics/expose-your-app). Also as a basic tutorial, we're not explaining what Pods are in any detail here, it will be covered in later topics.
+We will cover other options on how to expose your application outside the Kubernetes cluster later, in [Module 4](/kubernetes/basics/expose-your-app-publicly). Also as a basic tutorial, we're not explaining what Pods are in any detail here, it will be covered in later topics.
 
 The `kubectl proxy` command can create a proxy that will forward communications into the cluster-wide, private network. The proxy can be terminated by pressing control-C and won't show any output while it's running.
 
@@ -113,6 +113,6 @@ You can access the Pod through the proxied API, by running:
 curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME:8080/proxy/
 ```
 
-In order for the new Deployment to be accessible without using the proxy, a Service is required which will be explained in [Module 4](/kubernetes/basics/expose-your-app).
+In order for the new Deployment to be accessible without using the proxy, a Service is required which will be explained in [Module 4](/kubernetes/basics/expose-your-app-publicly).
 
 Once you're ready, move on to [Viewing Pods and Nodes](/kubernetes/basics/explore-your-app).
