@@ -144,3 +144,75 @@ The application code inside the test image only listens on TCP port 8080. If you
 ```sh
 kubectl get services
 ```
+
+On cloud providers that support load balancers, an external IP address would be provisioned to access the Service. On minikube, the `LoadBalancer` type makes the Service accessible through the `minikube service` command.
+
+3. Run the following command:
+
+```sh
+minikube service hello-node
+```
+
+This opens up a browser window that serves your app and shows the app's response.
+
+## Enable addons
+
+The minikube tool includes a set of built-in addons that can be enabled, disabled and opened in the local Kubernetes environment.
+
+1. List the currently supported addons:
+
+```sh
+minikube addons list
+```
+
+2. Enable an addon, for example, metrics-server:
+
+```sh
+minikube addons enable metrics-server
+```
+
+3. View the Pod and Service you created by installing that addon:
+
+```sh
+kubectl get pod,svc -n kube-system
+```
+
+4. Check the output from metrics-server:
+
+```sh
+kubectl top pods
+```
+
+5. Disable metrics-server:
+
+```sh
+minikube addons disable metrics-server
+```
+
+## Clean up
+
+Now you can clean up the resources you created in your cluster:
+
+```sh
+kubectl delete service hello-node
+kubectl delete deployment hello-node
+```
+
+Stop the Minikube cluster
+
+```sh
+minikube stop
+```
+
+Optionally, delete the Minikube VM:
+
+```sh
+# Optional
+minikube delete
+```
+
+If you want to use minikube again to learn more about Kubernetes, you don't need to delete it.
+
+## Conclusion
+
+This page covered the basic aspects to get a minikube cluster up and running. You are now ready to deploy applications.
