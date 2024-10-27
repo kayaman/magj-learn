@@ -143,7 +143,7 @@ export default defineConfig({
 											label: 'Database',
 											collapsed: true,
 											autogenerate: { 
-												directory: 'aws/dea/course/section3',
+												directory: 'aws/dea/course/databases',
 											},
 										},
 										{ 

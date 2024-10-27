@@ -3,6 +3,7 @@ title: AWS Certified Data Engineer - Associate
 description: Skill Builder
 sidebar:
   order: 1
+tableOfContents: false
 ---
 
 ## About

@@ -3,6 +3,7 @@ title: Services Covered 😱
 description: Udemy
 sidebar:
   order: 1
+tableOfContents: false
 ---
 
 ## Analytics
