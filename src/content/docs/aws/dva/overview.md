@@ -12,11 +12,11 @@ description: DVA
 
 ## Recommended courses
 
-  - [AWS Technical Essentials](https://explore.skillbuilder.aws/learn/course/external/view/elearning/1851/aws-technical-essentials)
-  - [Deploying Applications with AWS Elastic Beanstalk](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/17354/deploying-applications-with-aws-elastic-beanstalk)
-  - [Introduction to Containers](https://explore.skillbuilder.aws/learn/course/external/view/elearning/106/introduction-to-containers)
-  - [Introduction to Serverless Development](https://explore.skillbuilder.aws/learn/course/external/view/elearning/37/introduction-to-serverless-development)
-  - [Amazon Elastic Container Services (ECS) Primer](https://explore.skillbuilder.aws/learn/course/external/view/elearning/91/amazon-elastic-container-service-ecs-primer)
-  - [Amazon Elastic Kubernetes Service (EKS) Primer](https://explore.skillbuilder.aws/learn/course/external/view/elearning/57/amazon-elastic-kubernetes-service-eks-primer)
-  - [Getting Started with DevOps on AWS](https://explore.skillbuilder.aws/learn/course/external/view/elearning/2000/getting-started-with-devops-on-aws)
-  - [Developing on AWS (paid classroom training)](https://aws.amazon.com/training/classroom/developing-on-aws/)
+- [AWS Technical Essentials](https://explore.skillbuilder.aws/learn/course/external/view/elearning/1851/aws-technical-essentials)
+- [Deploying Applications with AWS Elastic Beanstalk](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/17354/deploying-applications-with-aws-elastic-beanstalk)
+- [Introduction to Containers](https://explore.skillbuilder.aws/learn/course/external/view/elearning/106/introduction-to-containers)
+- [Introduction to Serverless Development](https://explore.skillbuilder.aws/learn/course/external/view/elearning/37/introduction-to-serverless-development)
+- [Amazon Elastic Container Services (ECS) Primer](https://explore.skillbuilder.aws/learn/course/external/view/elearning/91/amazon-elastic-container-service-ecs-primer)
+- [Amazon Elastic Kubernetes Service (EKS) Primer](https://explore.skillbuilder.aws/learn/course/external/view/elearning/57/amazon-elastic-kubernetes-service-eks-primer)
+- [Getting Started with DevOps on AWS](https://explore.skillbuilder.aws/learn/course/external/view/elearning/2000/getting-started-with-devops-on-aws)
+- [Developing on AWS (paid classroom training)](https://aws.amazon.com/training/classroom/developing-on-aws/)

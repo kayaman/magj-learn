@@ -8,8 +8,8 @@
 }
 
 :root[data-theme='dark'] {
-	--sl-icon-color: #E3DCDC;
-  --sl-color-text-accent: #E3DCDC;
+  --sl-icon-color: #e3dcdc;
+  --sl-color-text-accent: #e3dcdc;
 }
 
 .social-icon {

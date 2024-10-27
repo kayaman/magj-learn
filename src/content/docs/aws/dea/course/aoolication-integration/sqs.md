@@ -47,7 +47,7 @@ sidebar:
 - Newer offering (First In / First out)
 - Name of the queue must end in .fifo • Lower throughput (up to 3,000 per second with batching, 300/s without)
 - Messages are processed in order by the consumer
-- Messages are sent exactly once • 5-minute interval de-duplication usin *Duplication ID*
+- Messages are sent exactly once • 5-minute interval de-duplication usin _Duplication ID_
 
 ### Use Cases
 
@@ -82,31 +82,31 @@ sidebar:
 
 ### Kinesis Data Stream vs SQS
 
-| Kinesis Data Stream | SQS |
-| - | - |
-| Data can be consumed many times | Queue, decouple applications |
-| Data is deleted after the retention period | One application per queue |
-| Ordering of records is preserved (at the shard level), even during replays | Records are deleted after consumption (ack / fail) |
-| Build multiple applications reading from the same stream independently (Pub/Sub) | Records are deleted after consumption (ack / fail) |
-| "Streaming MapReduce" querying capability (Spark, Flink…) | Messages are processed independently for standard queue |
-| Checkpointing needed to track progress of consumption (ex: KCL with DynamoDB) | Ordering for FIFO queues (decreased throughtput) |
-| Provisioned mode or on-demand mode | Capability to "delay" messages |
-| | Dynamic scaling of load (no-ops) |
+| Kinesis Data Stream                                                              | SQS                                                     |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| Data can be consumed many times                                                  | Queue, decouple applications                            |
+| Data is deleted after the retention period                                       | One application per queue                               |
+| Ordering of records is preserved (at the shard level), even during replays       | Records are deleted after consumption (ack / fail)      |
+| Build multiple applications reading from the same stream independently (Pub/Sub) | Records are deleted after consumption (ack / fail)      |
+| "Streaming MapReduce" querying capability (Spark, Flink…)                        | Messages are processed independently for standard queue |
+| Checkpointing needed to track progress of consumption (ex: KCL with DynamoDB)    | Ordering for FIFO queues (decreased throughtput)        |
+| Provisioned mode or on-demand mode                                               | Capability to "delay" messages                          |
+|                                                                                  | Dynamic scaling of load (no-ops)                        |
 
 ![KDS vs SQS](/img/udemy/kds-vs-sqs.png)
 
 ### SQS vs Kinesis use cases
 
 - SQS use cases
-  
+
   - Order processing
   - Image Processing
   - Auto scaling queues according to messages.
   - Buffer and Batch messages for future processing.
   - Request Offloading
-  
+
 - Kinesis Data Streams use cases
-  
+
   - Fast log and event data collection and processing
   - Real Time metrics and reports
   - Mobile data capture
@@ -120,7 +120,7 @@ sidebar:
 ![DLQ](/img/udemy/dlq.png)
 
 - If a consumer fails to process a message within the Visibility Timeout…
-the message goes back to the queue!
+  the message goes back to the queue!
 - We can set a threshold of how many times a message can go back to the queue
 - After the MaximumReceives threshold is exceeded, the message goes into a Dead Letter Queue (DLQ)
 - Useful for debugging!

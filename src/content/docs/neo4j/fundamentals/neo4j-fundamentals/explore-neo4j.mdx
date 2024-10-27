@@ -38,9 +38,11 @@ MATCH (p:Person) RETURN p LIMIT 50
 
 :::note[All nodes]
 You can return all the nodes by removing the LIMIT clause. It may take longer to return all the nodes.
+
 ```cypher
 MATCH (m:Movie) RETURN m
 ```
+
 :::
 
 You can filter the nodes returned by adding a condition to the query. For example, you can filter `Movie` nodes by the `title` property.

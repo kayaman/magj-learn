@@ -6,7 +6,7 @@ sidebar:
 ---
 
 - Move large amount of data to and from
-  - On-premises / other cloud to AWS (NFS,  SMB, HDFS, S3, ...) - needs agent
+  - On-premises / other cloud to AWS (NFS, SMB, HDFS, S3, ...) - needs agent
   - AWS to AWS (different storage services) - no agent needed
 - Can synchronize to:
   - Amazon S3 (any storage classes, including Glacier)
@@ -25,4 +25,3 @@ Notice the usage of Snowcone if needed.
 ## AWS to AWS
 
 ![DataSync](/img/udemy/datasync-aws-aws.png)
-

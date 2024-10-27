@@ -61,7 +61,7 @@ Now that we know more about our cluster components and the command line, let's e
 
 :::note
 
-A node is a worker machine in Kubernetes and may be a VM or physical machine, depending on the cluster. Multiple Pods  can run on one Node.
+A node is a worker machine in Kubernetes and may be a VM or physical machine, depending on the cluster. Multiple Pods can run on one Node.
 
 :::
 

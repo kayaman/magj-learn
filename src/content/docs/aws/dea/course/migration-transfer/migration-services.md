@@ -26,4 +26,3 @@ sidebar:
 - Converts your physical, virtual and cloud-based servers to run natively on AWS
 - Supports wide range of platforms, Operating Systems, and databases
 - Minimal downtime, reduced costs
-

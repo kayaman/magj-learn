@@ -4,6 +4,7 @@ description: Skill Builder
 sidebar:
   order: 4
 ---
+
 :::note
 **Domain 2: Model Development**
 :::
@@ -14,38 +15,36 @@ sidebar:
 
 - Establish evaluation metrics
 
-    When building a performance baseline, it is essential to establish appropriate evaluation metrics that align with the specific problem and business objectives. Common metrics include accuracy, precision, recall, F1-score, mean squared error, and area under the receiver operating characteristic curve (AUC-ROC) depending on the task such as classification, regression, or ranking.
+  When building a performance baseline, it is essential to establish appropriate evaluation metrics that align with the specific problem and business objectives. Common metrics include accuracy, precision, recall, F1-score, mean squared error, and area under the receiver operating characteristic curve (AUC-ROC) depending on the task such as classification, regression, or ranking.
 
 - Start with a simple model
 
-    To create a robust baseline, we recommend that you to start with a simple model, such as a linear regression, and evaluate its performance on the validation and test datasets. This initial baseline serves as a reference point and provides insights into the complexity of the problem. Subsequently, more sophisticated models can be explored, and their performance can be compared against the baseline to quantify the improvements.
+  To create a robust baseline, we recommend that you to start with a simple model, such as a linear regression, and evaluate its performance on the validation and test datasets. This initial baseline serves as a reference point and provides insights into the complexity of the problem. Subsequently, more sophisticated models can be explored, and their performance can be compared against the baseline to quantify the improvements.
 
 - Ensure real-world data
 
-    It is crucial to ensure that the evaluation datasets are representative of the real-world data distribution and do not contain any leakage or bias. Proper data preprocessing, handling of missing values, and feature engineering should be applied consistently across the training, validation, and test datasets to maintain the integrity of the evaluation process.
-
-
+  It is crucial to ensure that the evaluation datasets are representative of the real-world data distribution and do not contain any leakage or bias. Proper data preprocessing, handling of missing values, and feature engineering should be applied consistently across the training, validation, and test datasets to maintain the integrity of the evaluation process.
 
 ### Assessing trade-offs
 
 **Balance model performance, training time, and cost**
 
-Striking the right balance between model performance, training time, and cost when working with machine learning workloads is important. These three factors are interconnected. If you optimize one, you might impact the others. In this section, you will explore the trade-offs.  
+Striking the right balance between model performance, training time, and cost when working with machine learning workloads is important. These three factors are interconnected. If you optimize one, you might impact the others. In this section, you will explore the trade-offs.
 
 ![Trade-offs](/img/trade-offs.png)
 
 - Model performance
 
-    Model performance refers to the accuracy, precision, and other metrics that measure how well a model performs on a given task. Generally, more complex models with a larger number of parameters tend to achieve better performance, but they also require more computational resources and longer training times. Improving model performance often involves techniques like increasing model depth, using more advanced architectures, or incorporating additional data.  
-    Additional factors that impact model performance include feature engineering, data quality, hyperparameter tuning, regularization, and the choice of optimization algorithm.
+  Model performance refers to the accuracy, precision, and other metrics that measure how well a model performs on a given task. Generally, more complex models with a larger number of parameters tend to achieve better performance, but they also require more computational resources and longer training times. Improving model performance often involves techniques like increasing model depth, using more advanced architectures, or incorporating additional data.  
+   Additional factors that impact model performance include feature engineering, data quality, hyperparameter tuning, regularization, and the choice of optimization algorithm.
 
 - Cost of training
 
-    The cost of training and deploying machine learning models is a crucial consideration, especially in cloud environments like AWS. Factors that contribute to cost include the type and number of compute instances used, the amount of data storage required, and the duration of training and inference. More powerful compute resources and longer training times generally lead to higher costs. AWS offers a range of cost-effective solutions, such as Amazon Elastic Compute Cloud (Amazon EC2) instances optimized for machine learning, Amazon SageMaker, and AWS Inferentia chips, to help you manage costs while maintaining performance.
+  The cost of training and deploying machine learning models is a crucial consideration, especially in cloud environments like AWS. Factors that contribute to cost include the type and number of compute instances used, the amount of data storage required, and the duration of training and inference. More powerful compute resources and longer training times generally lead to higher costs. AWS offers a range of cost-effective solutions, such as Amazon Elastic Compute Cloud (Amazon EC2) instances optimized for machine learning, Amazon SageMaker, and AWS Inferentia chips, to help you manage costs while maintaining performance.
 
 - Training time
 
-    Training time is the duration required to train a machine learning model on a given dataset. Longer training times are typically associated with larger datasets, more complex models, and more extensive hyperparameter tuning. Although faster training times are desirable for rapid iteration and experimentation, they can come at the cost of reduced model performance.
+  Training time is the duration required to train a machine learning model on a given dataset. Longer training times are typically associated with larger datasets, more complex models, and more extensive hyperparameter tuning. Although faster training times are desirable for rapid iteration and experimentation, they can come at the cost of reduced model performance.
 
 ### How to choose
 
@@ -63,7 +62,6 @@ Use moderately complex models and moderately sized datasets with more computatio
 
 If time and cost are the primary concerns, simpler models and less powerful compute instances might be preferred. With this approach, understand that performance might be compromised.
 
-
 To assess these trade-offs, you can use AWS services like Amazon SageMaker Debugger and Amazon SageMaker Model Monitor to analyze your model's performance, resource use, and cost. Additionally, AWS provides tools like AWS Cost Explorer and AWS Budgets to monitor and optimize your spending.
 
 ## Model Evaluation
@@ -74,16 +72,16 @@ To assess these trade-offs, you can use AWS services like Amazon SageMaker Debug
 
 - Validation helps identify where your model needs improvement
 
-    To begin evaluating how your model responds in a non-training environment, you want to start by looking at the data you set aside as your validation set. This is because you want to make sure that the model generalizes to data it has not seen, and because you will still want to make improvements to the model before determining that it’s ready for production. 
+  To begin evaluating how your model responds in a non-training environment, you want to start by looking at the data you set aside as your validation set. This is because you want to make sure that the model generalizes to data it has not seen, and because you will still want to make improvements to the model before determining that it’s ready for production.
 
 - Evaluation determines how well your model will predict the label on future data
 
-    After you’ve improved your model using that validation data, you’re ready to test it one last time to ensure its predictive quality meets your standards. This is where you will use your testing dataset, the last 10 percent, to evaluate your model.
+  After you’ve improved your model using that validation data, you’re ready to test it one last time to ensure its predictive quality meets your standards. This is where you will use your testing dataset, the last 10 percent, to evaluate your model.
 
 **Model metrics**
 
 - Regression problems
-  
+
   - MSE
   - RMSE
   - R-squared
@@ -91,10 +89,10 @@ To assess these trade-offs, you can use AWS services like Amazon SageMaker Debug
 
 - Classification problems
 
-  - **Confusion Matrix**  
+  - **Confusion Matrix**
 
     - True positive
-  
+
       If the actual label or class is a cat, which is identified as P for positive in the confusion matrix, and the predicted label or class is also cat, then you have a true positive result. This is a good outcome for your model.
 
     - True negative
@@ -117,27 +115,27 @@ To assess these trade-offs, you can use AWS services like Amazon SageMaker Debug
 
   - Precision
 
-    Precision is best when the cost of false positives is high.  
-    
-    Think about a classification model that identifies emails as spam or not. In this case, you don't want your model labeling an important email as spam and preventing your users from seeing it when the email was legitimate. 
+    Precision is best when the cost of false positives is high.
+
+    Think about a classification model that identifies emails as spam or not. In this case, you don't want your model labeling an important email as spam and preventing your users from seeing it when the email was legitimate.
 
     $$ Precision = \frac{TP}{TP + FP} $$
 
   - Recall
 
-    Recall is best when the cost of false negatives is high.  
+    Recall is best when the cost of false negatives is high.
 
-    Think about an example of a model that needs to predict whether or not a patient has a terminal illness or not. In this case, using precision as your evaluation metric does not account for the false negatives in your model. It is vital to the success of the model that it does not identify a patient as illness-free when that patient actually does have that illness. 
+    Think about an example of a model that needs to predict whether or not a patient has a terminal illness or not. In this case, using precision as your evaluation metric does not account for the false negatives in your model. It is vital to the success of the model that it does not identify a patient as illness-free when that patient actually does have that illness.
 
     $$ Recall = \frac{TP}{TP + FN}$$
 
   - F1 Score
 
-    F1 Score helps express precision and recall with a single value.  
+    F1 Score helps express precision and recall with a single value.
 
     You should look at using the F1 score when you have a class imbalance, but also want to preserve the equality between precision and recall.
 
-    $$ F1 Score = \frac{2 * Precision * Recall}{Precision + Recall}$$
+    $$ F1 Score = \frac{2 _ Precision _ Recall}{Precision + Recall}$$
 
   - AUC-ROC
 
@@ -151,25 +149,25 @@ To assess these trade-offs, you can use AWS services like Amazon SageMaker Debug
 
   - Mean Squared Error
 
-    $$ MSE = \frac{1}{n}\sum_{i=1}^{n}(y_{i} - \hat{y}_{i})^2 $$ 
+    $$ MSE = \frac{1}{n}\sum*{i=1}^{n}(y*{i} - \hat{y}\_{i})^2 $$
 
 - Root Mean Squared Error
 
-    $$ RMSE = \sqrt{\frac{\sum_{i=1}^{n}(y_{i} - \hat{y}_{i})^2}{n}} $$ 
+  $$ RMSE = \sqrt{\frac{\sum*{i=1}^{n}(y*{i} - \hat{y}\_{i})^2}{n}} $$
 
 - R-squared
 
-    R-squared is another commonly used metric with linear regression problems. R-squared explains the fraction of variance accounted for by the model. It's like a percentage, reporting a number from zero to one. When R squared is close to one, it usually indicates that a lot of the variabilities in the data can be explained by the model.
+  R-squared is another commonly used metric with linear regression problems. R-squared explains the fraction of variance accounted for by the model. It's like a percentage, reporting a number from zero to one. When R squared is close to one, it usually indicates that a lot of the variabilities in the data can be explained by the model.
 
 - Adjusted R-squared
 
-    To counter this potential issue, there's another metric called adjusted R-squared. The adjusted R-squared has already accounted for the added effect for additional variables. It only increases when the added variables have significant effects in the prediction. The adjusted R-squared adjusts your final value, based on the number of features and number of data points you have in your dataset. A recommendation, therefore, is to look at both R-squared and adjusted R-squared. This will ensure that your model is performing well, but that there is not too much overfitting.
+  To counter this potential issue, there's another metric called adjusted R-squared. The adjusted R-squared has already accounted for the added effect for additional variables. It only increases when the added variables have significant effects in the prediction. The adjusted R-squared adjusts your final value, based on the number of features and number of data points you have in your dataset. A recommendation, therefore, is to look at both R-squared and adjusted R-squared. This will ensure that your model is performing well, but that there is not too much overfitting.
 
 ### Convergence Issues
 
 **Mitigating convergence issues with Amazon SageMaker Automatic Model Tuning (AMT)**
 
-Amazon SageMaker AMT helps to mitigate convergence issues and improves the model training process. SageMaker AMT can automatically tune the hyperparameters of your machine learning models to find the best configuration for your specific use case. This service can help overcome convergence issues by exploring different combinations of hyperparameters to find the optimal settings that lead to better convergence and model performance. These hyperparameters include learning rates, batch sizes, and regularization techniques. 
+Amazon SageMaker AMT helps to mitigate convergence issues and improves the model training process. SageMaker AMT can automatically tune the hyperparameters of your machine learning models to find the best configuration for your specific use case. This service can help overcome convergence issues by exploring different combinations of hyperparameters to find the optimal settings that lead to better convergence and model performance. These hyperparameters include learning rates, batch sizes, and regularization techniques.
 
 **How Amazon SageMaker Training Compiler can help**
 
@@ -186,23 +184,23 @@ Convergence issues pose common challenges in machine learning during post-traini
 
 **SageMaker Debugger**: Monitoring and debugging ML models
 
-SageMaker Debugger is a capability of SageMaker that allows you to monitor and debug machine learning models during training and deployment. It provides insights into the model's performance, accuracy, and potential issues, enabling you to identify and resolve problems before deploying the model to production. 
+SageMaker Debugger is a capability of SageMaker that allows you to monitor and debug machine learning models during training and deployment. It provides insights into the model's performance, accuracy, and potential issues, enabling you to identify and resolve problems before deploying the model to production.
 
 - Improved Model Performance
 
-    By monitoring and analyzing the model's behavior during training, SageMaker Debugger helps identify issues such as overfitting, underfitting, or data quality problems. This allows you to make informed decisions and adjustments to improve the model's performance and accuracy.
+  By monitoring and analyzing the model's behavior during training, SageMaker Debugger helps identify issues such as overfitting, underfitting, or data quality problems. This allows you to make informed decisions and adjustments to improve the model's performance and accuracy.
 
 - Explainability and Bias Detection
 
-    SageMaker Debugger provides insights into the model's decision-making process, helping you understand how the model arrives at its predictions. It also identifies potential biases in the model, ensuring fairness and compliance with regulatory requirements.
+  SageMaker Debugger provides insights into the model's decision-making process, helping you understand how the model arrives at its predictions. It also identifies potential biases in the model, ensuring fairness and compliance with regulatory requirements.
 
 - Automated Monitoring and Alerts
 
-    SageMaker Debugger continuously monitors the model's performance during training and deployment, alerting you to any deviations or anomalies. This proactive approach helps you address issues promptly, minimizing the risk of deploying suboptimal models.
+  SageMaker Debugger continuously monitors the model's performance during training and deployment, alerting you to any deviations or anomalies. This proactive approach helps you address issues promptly, minimizing the risk of deploying suboptimal models.
 
 - Debugging Capabilities
 
-    With its debugging features, SageMaker Debugger allows you to inspect the model's internal state, visualize data distributions, and analyze feature importance. This empowers you to identify and troubleshoot issues more effectively.
+  With its debugging features, SageMaker Debugger allows you to inspect the model's internal state, visualize data distributions, and analyze feature importance. This empowers you to identify and troubleshoot issues more effectively.
 
 To learn more, visit Use [Amazon SageMaker Debugger to debug and improve model performance](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
 
@@ -251,19 +249,19 @@ To learn more about how to use SageMaker Clarify, visit [Use SageMaker Clarify](
 
 - Data bias metrics
 
-  - Class Imbalance: Measures the imbalance in the distribution of classes or labels in your training data. 
-  - Facet Imbalance: Evaluates the imbalance in the distribution of facets or sensitive attributes, such as age, gender, or race across different classes or labels. 
+  - Class Imbalance: Measures the imbalance in the distribution of classes or labels in your training data.
+  - Facet Imbalance: Evaluates the imbalance in the distribution of facets or sensitive attributes, such as age, gender, or race across different classes or labels.
   - Facet Correlation: Measures the correlation between facets or sensitive attributes and the target variable.
 
 - Model bias metrics
 
   - Differential validity: Evaluates the difference in model performance such as accuracy, precision, and recall across different facet groups.
-  - Differential prediction bias: Measures the difference in predicted outcomes or probabilities for different facet groups, given the same input features. 
+  - Differential prediction bias: Measures the difference in predicted outcomes or probabilities for different facet groups, given the same input features.
   - Differential feature importance: Analyzes the difference in feature importance across different facet groups, helping to identify potential biases in how the model uses features for different groups.
 
 - Model explanability metrics
 
-  - SHAP (SHapley Additive exPlanations): Provides explanations for individual predictions by quantifying the contribution of each feature to the model's output. 
+  - SHAP (SHapley Additive exPlanations): Provides explanations for individual predictions by quantifying the contribution of each feature to the model's output.
   - Feature Attribution: Identifies the most important features contributing to a specific prediction, helping to understand the model's decision-making process.
   - Partial Dependence Plots (PDPs): Visualizes the marginal effect of one or more features on the model's predictions, helping to understand the relationship between features and the target variable.
 

@@ -56,26 +56,26 @@ To learn more, see [What is Streaming Data?](https://aws.amazon.com/what-is/stre
 
 1. **Ingestion**
 
-    Data is collected from various data sources in real time and sent into the data stream.
+   Data is collected from various data sources in real time and sent into the data stream.
 
 2. **Storage**
 
-    Streams of data are harnessed and then stored for processing.
+   Streams of data are harnessed and then stored for processing.
 
 3. **Processing**
 
-    Multiple processes are run, such as consuming data, running computations, and deleting unnecessary data.
+   Multiple processes are run, such as consuming data, running computations, and deleting unnecessary data.
 
 4. **Analytics**
 
-    The processed data is served to support data analytics, such as visualization.
+   The processed data is served to support data analytics, such as visualization.
 
 ### Streaming components
 
 - **Producers** put records into Amazon Kinesis Data Streams. For example, a web server sending log data to a stream is a producer.
 - **Stream storage** receives data from the producers and stores that data in the data stream for downstream consumers.
 - **Stream processing** takes the previously stored data and normalizes or otherwise alters it.
-- **Consumers** get records from Kinesis Data Streams and process them. They can deliver the stream to storage options for processing.  
+- **Consumers** get records from Kinesis Data Streams and process them. They can deliver the stream to storage options for processing.
 - **Outputs** gather the streaming data and present it with analytic tools or process it for different services.
 
 ![streaming components](/img/streaming-components.png)
@@ -84,17 +84,15 @@ To learn more, see [What is Streaming Data?](https://aws.amazon.com/what-is/stre
 
 When streaming data, you can encounter difficulties with setup, management, and scaling. AWS streaming provides the following benefits:
 
-- Flexible scaling 
+- Flexible scaling
 
   Automatically scales capacity in response to changing data volumes
 
-
-- High availability 
+- High availability
 
   Provides built-in availability and fault tolerance by default
 
-
-- Lower costs 
+- Lower costs
 
   Incurs costs per gigabyte of data that is written, read, and stored
 
@@ -153,7 +151,7 @@ You can use Kinesis to cost-effectively ingest and process streaming data at any
 
 ![KDS](/img/kds.png)
 
-A **producer** is an application that writes data to Kinesis Data Streams. The stream producer collects data from multiple sources and prepares it for stream storage. To write to a Kinesis data stream, you must specify the name of the stream, a partition key, and the data blob to be written. The partition key is used to determine which shard in the stream the data record is added to. In this example, the producer is a web server running on an instance of Amazon Elastic Compute Cloud (Amazon EC2). 
+A **producer** is an application that writes data to Kinesis Data Streams. The stream producer collects data from multiple sources and prepares it for stream storage. To write to a Kinesis data stream, you must specify the name of the stream, a partition key, and the data blob to be written. The partition key is used to determine which shard in the stream the data record is added to. In this example, the producer is a web server running on an instance of Amazon Elastic Compute Cloud (Amazon EC2).
 
 A robust producer must also handle the complexities of streaming data, such as the following:
 
@@ -161,7 +159,7 @@ A robust producer must also handle the complexities of streaming data, such as t
 - Error handling and retry logic
 - Scaling and resharding
 
-You can build producers for Kinesis Data Streams by using the AWS SDK or the Amazon Kinesis Producer Library (KPL). The KPL includes features such as retries and error handling. It also helps developers fully use shard capacity to optimize throughput. 
+You can build producers for Kinesis Data Streams by using the AWS SDK or the Amazon Kinesis Producer Library (KPL). The KPL includes features such as retries and error handling. It also helps developers fully use shard capacity to optimize throughput.
 
 In addition to using the KPL, you can build a custom producer for Kinesis Data Streams by using other AWS toolkits and libraries.
 
@@ -298,7 +296,7 @@ Amazon MSK and Kinesis Data Streams are AWS services used for ingesting and proc
 
 ##### Amazon MSK
 
-With Amazon MSK, you can build and run applications that use Apache Kafka for building real-time streaming data pipelines where data is consumed and processed as it arrives rather than stored for long periods of time. Consuming messages does not automatically remove them from the log in Amazon MSK. Amazon MSK can configure the Kafka topics with a retention period, which determines how long the data is stored before being automatically removed. 
+With Amazon MSK, you can build and run applications that use Apache Kafka for building real-time streaming data pipelines where data is consumed and processed as it arrives rather than stored for long periods of time. Consuming messages does not automatically remove them from the log in Amazon MSK. Amazon MSK can configure the Kafka topics with a retention period, which determines how long the data is stored before being automatically removed.
 
 Amazon MSK stores the streaming data temporarily in a performance-optimized primary storage tier until it reaches the retention limits. Then, the data is automatically moved into a new low-cost storage tier. The default retention period in low-cost storage is 3 days. There is no minimum retention period for primary storage.
 
@@ -335,15 +333,15 @@ With the capacity to move data, you can build flexible, scalable, and secure dat
 
 1. **Inside-out data movement**
 
-    Inside-out data movement includes moving stored streaming data from a data lake out to a data warehouse. For example, storing the streaming data in a data lake for offline analytics and then moving data to a data warehouse for daily reporting.
+   Inside-out data movement includes moving stored streaming data from a data lake out to a data warehouse. For example, storing the streaming data in a data lake for offline analytics and then moving data to a data warehouse for daily reporting.
 
 2. **Around the perimeter data movement**
 
-    Perimeter movement involves moving streaming data from one purpose-built data store to another. For example, loading streaming data into Amazon Redshift to offload the search queries from the database.
+   Perimeter movement involves moving streaming data from one purpose-built data store to another. For example, loading streaming data into Amazon Redshift to offload the search queries from the database.
 
 3. **Outside-in data movement**
 
-    Outside-in movement involves moving streaming data from Kinesis Data Streams into a data lake. For example, moving data from a Kinesis Data Stream into a data lake for product recommendations by using ML algorithms.
+   Outside-in movement involves moving streaming data from Kinesis Data Streams into a data lake. For example, moving data from a Kinesis Data Stream into a data lake for product recommendations by using ML algorithms.
 
 #### Data lakes
 
@@ -389,10 +387,10 @@ Monitor data access patterns using S3 Analytics and S3 Intelligent Tiering to un
 
 #### Adjusting data size and distribution
 
-Partitioning data in Kinesis Data Streams brings advantages like faster processing, improved throughput, efficient resource use, and more straightforward error handling. By optimizing how the data is distributed and processed in the streaming pipeline, costs can be reduced through efficiently using resources and avoiding overprovisioned compute or storage capacity. 
+Partitioning data in Kinesis Data Streams brings advantages like faster processing, improved throughput, efficient resource use, and more straightforward error handling. By optimizing how the data is distributed and processed in the streaming pipeline, costs can be reduced through efficiently using resources and avoiding overprovisioned compute or storage capacity.
 
 - **Partitioning**: Partitioning and bucketing the data helps distribute it across compute resources in a way that optimizes performance. This reduces the amount of data each individual compute resource must process.
-- **Smaller data**: By processing smaller, partitioned chunks of data in parallel, the pipeline can scale out with additional compute capacity only where needed. This improves throughput and avoids overprovisioning resources. 
+- **Smaller data**: By processing smaller, partitioned chunks of data in parallel, the pipeline can scale out with additional compute capacity only where needed. This improves throughput and avoids overprovisioning resources.
 - **Distribution**: Distributing the workload means the pipeline can finish processing faster, so the resources don't need to be running as long. Shorter processing times can directly translate to lower costs.
 - **Filtering**: Real-time filtering or aggregation of streaming data before storing it can reduce the amount of long-term storage you need. Only the relevant processed data is stored rather than all raw records.
 
@@ -400,9 +398,9 @@ Partitioning data in Kinesis Data Streams brings advantages like faster processi
 
 #### Compressing data
 
-Applying data compression prior to transmitting it to Kinesis Data Streams has numerous advantages. This approach not only reduces the data’s size for faster travel and efficient resource use, but it also leads to cost savings when it comes to storage expenses. 
+Applying data compression prior to transmitting it to Kinesis Data Streams has numerous advantages. This approach not only reduces the data’s size for faster travel and efficient resource use, but it also leads to cost savings when it comes to storage expenses.
 
-Additionally, this practice makes storage and data retention more cost efficient. By using compression algorithms such as GZIP, Snappy, or LZO, you can achieve substantial reduction in the size of large records. Compression is implemented seamlessly without requiring the caller to make changes to the item or use extra AWS services to support storage. 
+Additionally, this practice makes storage and data retention more cost efficient. By using compression algorithms such as GZIP, Snappy, or LZO, you can achieve substantial reduction in the size of large records. Compression is implemented seamlessly without requiring the caller to make changes to the item or use extra AWS services to support storage.
 
 However, compression introduces additional CPU overhead and latency on the producer side, and its impact on the compression ratio and efficiency can vary depending on the data type and format. Also, compression can enhance consumer throughput at the expense of some decompression overhead.
 
@@ -424,19 +422,19 @@ Adopting zero-ETL approaches provides the following benefits:
 
 - **Amazon Aurora PostgreSQL-compatible and Amazon Aurora MySQL-compatible**
 
-    An Aurora zero-ETL integration with Amazon Redshift enables near real-time analytics and ML using Amazon Redshift on petabytes of transactional data from Aurora.  
-    The integration monitors the health of the data pipeline and recovers from issues when possible. You can create integrations from multiple Aurora DB clusters into a single Amazon Redshift namespace to derive insights across multiple applications.  
-    Aurora MySQL-compatible integration processes more than 1 million transactions per minute and makes data available in Amazon Redshift within seconds of being written in Aurora.
+  An Aurora zero-ETL integration with Amazon Redshift enables near real-time analytics and ML using Amazon Redshift on petabytes of transactional data from Aurora.  
+   The integration monitors the health of the data pipeline and recovers from issues when possible. You can create integrations from multiple Aurora DB clusters into a single Amazon Redshift namespace to derive insights across multiple applications.  
+   Aurora MySQL-compatible integration processes more than 1 million transactions per minute and makes data available in Amazon Redshift within seconds of being written in Aurora.
 
 ![Aurora compat](/img/zetl-aurora-compat.png)
 
 - **Amazon DynamoDB**
 
-    Amazon Redshift complements DynamoDB with advanced business intelligence capabilities and a powerful SQL-based interface. When you copy data from a DynamoDB table into Amazon Redshift, you can perform complex data analysis queries on that data, including joins with other tables in your Amazon Redshift cluster.
+  Amazon Redshift complements DynamoDB with advanced business intelligence capabilities and a powerful SQL-based interface. When you copy data from a DynamoDB table into Amazon Redshift, you can perform complex data analysis queries on that data, including joins with other tables in your Amazon Redshift cluster.
 
 - **Amazon RDS for MySQL**
 
-    A zero-ETL integration makes the data in your Amazon Relational Database Service (Amazon RDS) database available in Amazon Redshift in near real-time. After that data is in Amazon Redshift, you can power your analytics, ML, and AI workloads using the built-in capabilities of Amazon Redshift, such as machine learning, materialized views, data sharing, federated access to multiple data stores and data lakes, and integrations with SageMaker, QuickSight, and other AWS services.
+  A zero-ETL integration makes the data in your Amazon Relational Database Service (Amazon RDS) database available in Amazon Redshift in near real-time. After that data is in Amazon Redshift, you can power your analytics, ML, and AI workloads using the built-in capabilities of Amazon Redshift, such as machine learning, materialized views, data sharing, federated access to multiple data stores and data lakes, and integrations with SageMaker, QuickSight, and other AWS services.
 
 ![RDS](/img/zetl-rds.png)
 
@@ -480,7 +478,7 @@ AWS offers a number of services you can use to process the data as it is ingeste
 
 - **Amazon EMR** can be used to process and analyze real-time data streams from sources like Kinesis Data Streams or Apache Kafka. By using the scalable and cost-effective compute resources provided by Amazon EMR, organizations can efficiently process and extract valuable insights from continuous data streams.
 
-### Designing and implementing real-time data processing solutions 
+### Designing and implementing real-time data processing solutions
 
 **Apache Flink** is a powerful, open source, distributed stream processing framework for real-time data processing and analysis. It provides a unified API for batch and stream processing. Developers use Apache Flink to build scalable, fault-tolerant, and high-performing data pipelines. Apache Flink's core strength lies in its ability to handle high-volume, high-velocity data streams, making it an ideal choice for building real-time applications.
 
@@ -490,23 +488,23 @@ The following are common use cases for Apache Flink and Amazon Managed Service f
 
 - **Fraud detection**
 
-    With Flink's real-time processing capabilities, financial institutions can detect of fraudulent activities. They can respond quickly and mitigate losses without having to wait for the data to reach the final destination.
+  With Flink's real-time processing capabilities, financial institutions can detect of fraudulent activities. They can respond quickly and mitigate losses without having to wait for the data to reach the final destination.
 
 - **Predictive maintenance**
 
-    Predictive maintenance models use sensor data from industrial equipment to identify potential failures before they occur and reduce downtime and maintenance costs.
+  Predictive maintenance models use sensor data from industrial equipment to identify potential failures before they occur and reduce downtime and maintenance costs.
 
 - **Clickstream analysis**
 
-    Flink can be used to analyze user interactions and behavior in real-time and provide valuable insights for personalization, targeted advertising, and user experience optimization.
+  Flink can be used to analyze user interactions and behavior in real-time and provide valuable insights for personalization, targeted advertising, and user experience optimization.
 
 - **Geospatial analytics**
 
-    Flink can process and analyze geospatial data streams, such as GPS coordinates from mobile devices, for real-time location-based services and traffic monitoring.
+  Flink can process and analyze geospatial data streams, such as GPS coordinates from mobile devices, for real-time location-based services and traffic monitoring.
 
 - **Generative AI adjustments**
 
-    Flink can be used to process and analyze data streams from generative AI models. The real-time adjustments and optimizations can improve the quality and performance of the AI-generated content.
+  Flink can be used to process and analyze data streams from generative AI models. The real-time adjustments and optimizations can improve the quality and performance of the AI-generated content.
 
 In addition to the AWS integrations, the Managed Service for Apache Flink libraries include more than 10 Apache Flink connectors. It also has the ability to build custom integrations with AWS services, such as Amazon S3 and Kinesis Data Streams. With minimal coding, you can modify how each integration behaves with advanced functionality. You can also build custom integrations using a set of Apache Flink primitives. This helps you to read and write from files, directories, sockets, or other sources accessed over the internet.
 
@@ -532,23 +530,23 @@ Managed Service for Apache Flink simplifies the deployment, management, and scal
 
 1. **Apache Flink job**
 
-    Apache Flink job is the running lifecycle of your Kinesis Data Analytics application. 
+   Apache Flink job is the running lifecycle of your Kinesis Data Analytics application.
 
 2. **Apache Zookeeper**
 
-    Apache Zookeeper is a service for maintaining configuration information, naming, providing distributed synchronization, and providing group services. 
+   Apache Zookeeper is a service for maintaining configuration information, naming, providing distributed synchronization, and providing group services.
 
 3. **Job manager**
 
-    Job manager manages the running of the job and the resources it uses. The job manager separates the running of the application into tasks.
+   Job manager manages the running of the job and the resources it uses. The job manager separates the running of the application into tasks.
 
 4. **Task manager**
 
-    Task manager manages tasks given by the job manager.
+   Task manager manages tasks given by the job manager.
 
 5. **Amazon CloudWatch**
 
-    With CloudWatch, you can monitor the performance of each task manager or the entire application.
+   With CloudWatch, you can monitor the performance of each task manager or the entire application.
 
 ### Setting up Amazon Managed Services for Apache Flink on AWS
 
@@ -556,23 +554,23 @@ Setting up and configuring Amazon Managed Services for Apache Flink is a straigh
 
 1. **Creating a Flink cluster**
 
-    Amazon Managed Services for Apache Flink simplifies the process of creating and managing Flink clusters. You can create a new cluster through the AWS Management Console, AWS Command Line Interface (AWS CLI), or AWS CloudFormation templates.
+   Amazon Managed Services for Apache Flink simplifies the process of creating and managing Flink clusters. You can create a new cluster through the AWS Management Console, AWS Command Line Interface (AWS CLI), or AWS CloudFormation templates.
 
 2. **Configuring Flink cluster properties**
 
-    When creating a Flink cluster, you can configure various properties such as the instance type, number of task managers, and network settings. These configurations ensure that your cluster meets the performance and scalability requirements of your streaming applications.
+   When creating a Flink cluster, you can configure various properties such as the instance type, number of task managers, and network settings. These configurations ensure that your cluster meets the performance and scalability requirements of your streaming applications.
 
 3. **Submitting and monitoring Flink jobs**
 
-    When your Flink cluster is up and running, you can submit and monitor your streaming applications through the AWS Management Console, AWS CLI, or Apache Flink web interface. AWS provides tools and integrations to simplify job submission, monitoring, and troubleshooting.
+   When your Flink cluster is up and running, you can submit and monitor your streaming applications through the AWS Management Console, AWS CLI, or Apache Flink web interface. AWS provides tools and integrations to simplify job submission, monitoring, and troubleshooting.
 
 4. **Integrating with other AWS services**
 
-    Amazon Managed Services for Apache Flink integrates seamlessly with other AWS services. You can build end-to-end data processing pipelines. You can ingest data from services like Kinesis Data Streams, process it with Flink, and store the results in services like Amazon S3.
+   Amazon Managed Services for Apache Flink integrates seamlessly with other AWS services. You can build end-to-end data processing pipelines. You can ingest data from services like Kinesis Data Streams, process it with Flink, and store the results in services like Amazon S3.
 
 5. **Security and access control**
 
-    AWS provides various security features and access control mechanisms to ensure the safety and privacy of your Flink clusters and data. You can configure network access control lists (network ACLs), encryption, and authentication methods to meet your organization's security requirements.
+   AWS provides various security features and access control mechanisms to ensure the safety and privacy of your Flink clusters and data. You can configure network access control lists (network ACLs), encryption, and authentication methods to meet your organization's security requirements.
 
 AWS takes care of provisioning, patching, and scaling the Flink clusters, so you can focus on developing and deploying your streaming applications.
 
@@ -584,15 +582,15 @@ With Amazon Managed Service for Apache Flink, you can use Java, Scala, Python, o
 
 1. **Build an application**
 
-    Create a Kinesis Data Analytics application notebook in Kinesis Data Analytics Studio or directly author your code with the IDE of your choice.
+   Create a Kinesis Data Analytics application notebook in Kinesis Data Analytics Studio or directly author your code with the IDE of your choice.
 
 2. **Test and publish**
 
-    Test it with live streaming data, and then publish the jar file to production.
+   Test it with live streaming data, and then publish the jar file to production.
 
 3. **Run the Flink application**
 
-    Register the jar file as a Kinesis Data Analytics application with the console or CLI. The application will run in Kinesis Data Analytics running the Apache Flink framework.
+   Register the jar file as a Kinesis Data Analytics application with the console or CLI. The application will run in Kinesis Data Analytics running the Apache Flink framework.
 
 ### Using Lambda functions with Kinesis
 
@@ -625,27 +623,27 @@ By using event source mapping with Lambda and Amazon Kinesis, you can provide ot
 
 - **Checkpointing**
 
-    You can use Lambda to automatically checkpoint records that have been successfully processed for Kinesis using the parameter FunctionResponseType. If a failure occurs, Lambda prioritizes checkpointing, if enabled, over other mechanisms to minimize duplicate processing.
+  You can use Lambda to automatically checkpoint records that have been successfully processed for Kinesis using the parameter FunctionResponseType. If a failure occurs, Lambda prioritizes checkpointing, if enabled, over other mechanisms to minimize duplicate processing.
 
 - **Retry on error**
 
-    By default, if your function returns an error, the event source mapping reprocesses the entire batch until the function succeeds or the items in the batch expire. To ensure in-order processing, the event source mapping pauses processing for the affected shard until the error is resolved.
+  By default, if your function returns an error, the event source mapping reprocesses the entire batch until the function succeeds or the items in the batch expire. To ensure in-order processing, the event source mapping pauses processing for the affected shard until the error is resolved.
 
 - **Poison-pill message handling**
 
-    You can configure Lambda to write any poison messaging to a stream and send an Amazon Simple Queue Service (Amazon SQS) or Amazon SNS message and continue processing the rest of the messages.
+  You can configure Lambda to write any poison messaging to a stream and send an Amazon Simple Queue Service (Amazon SQS) or Amazon SNS message and continue processing the rest of the messages.
 
 - **Concurrency control**
 
-    For each concurrent request, Lambda provisions a separate instance of your runtime environment. You can run up to 10 concurrent Lambda functions per partition. As your functions receive more requests, Lambda automatically handles scaling the number of runtime environments until you reach your account's concurrency limit.
+  For each concurrent request, Lambda provisions a separate instance of your runtime environment. You can run up to 10 concurrent Lambda functions per partition. As your functions receive more requests, Lambda automatically handles scaling the number of runtime environments until you reach your account's concurrency limit.
 
 - **Batching**
 
-    With batching, you can collect a batch of records by size or window and deliver them to the Lambda function immediately.
+  With batching, you can collect a batch of records by size or window and deliver them to the Lambda function immediately.
 
 - **Windowing**
 
-    You can specify a tumbling window to accumulate records for a fixed period and dispatch all the records into a Lambda function immediately.
+  You can specify a tumbling window to accumulate records for a fixed period and dispatch all the records into a Lambda function immediately.
 
 To learn more, see [Using AWS Lambda with Amazon Kinesis](https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html).
 
@@ -662,16 +660,16 @@ When it comes to consuming data from Kinesis Data Streams, there are two main ap
 - Using unregistered consumers without enhanced fan-out
 - Using registered consumers with enhanced fan-out
 
-Each approach has its own advantages and trade-offs. Unregistered consumers without enhanced fan-out offer simplicity and lower overhead. This makes them suitable for scenarios with lower throughput requirements or when strict ordering of records is not critical. 
+Each approach has its own advantages and trade-offs. Unregistered consumers without enhanced fan-out offer simplicity and lower overhead. This makes them suitable for scenarios with lower throughput requirements or when strict ordering of records is not critical.
 
 On the other hand, registered consumers with enhanced fan-out provide higher throughput, better scalability, and more efficient load balancing across multiple consumers. This makes them a better choice for high-volume, mission-critical applications that require strict ordering of records.
 
-| Characteristics |	Unregistered consumers without enhanced fan-out | Registered consumers with enhanced fan-out |
-| - | - | - |
-| Shard Read Throughput | Fixed at a total of 2 MBps per shard. If there are multiple consumers reading from the same shard, they all share this throughput. The sum of the throughputs they receive from the shard doesn't exceed 2 MBps. | Scales as consumers register to use enhanced fan-out. Each consumer registered to use enhanced fan-out receives its own read throughput per shard, up to 2 MBps, independently of other consumers. |
-| Message propagation delay | The delay averages around 200 ms if you have one consumer reading from the stream. This average goes up to around 1000 ms if you have five consumers. | Typically, the delay averages 70 ms whether you have one consumer or five consumers. |
-| Cost | N/A | There is a data retrieval cost and a consumer-shard hour cost. |
-| Record delivery model | Pull model over HTTP using GetRecords. | Kinesis Data Streams pushes the records to you over HTTP/2 using SubscribeToShard. |
+| Characteristics           | Unregistered consumers without enhanced fan-out                                                                                                                                                                  | Registered consumers with enhanced fan-out                                                                                                                                                         |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Shard Read Throughput     | Fixed at a total of 2 MBps per shard. If there are multiple consumers reading from the same shard, they all share this throughput. The sum of the throughputs they receive from the shard doesn't exceed 2 MBps. | Scales as consumers register to use enhanced fan-out. Each consumer registered to use enhanced fan-out receives its own read throughput per shard, up to 2 MBps, independently of other consumers. |
+| Message propagation delay | The delay averages around 200 ms if you have one consumer reading from the stream. This average goes up to around 1000 ms if you have five consumers.                                                            | Typically, the delay averages 70 ms whether you have one consumer or five consumers.                                                                                                               |
+| Cost                      | N/A                                                                                                                                                                                                              | There is a data retrieval cost and a consumer-shard hour cost.                                                                                                                                     |
+| Record delivery model     | Pull model over HTTP using GetRecords.                                                                                                                                                                           | Kinesis Data Streams pushes the records to you over HTTP/2 using SubscribeToShard.                                                                                                                 |
 
 #### Managing fan-out for streaming data distribution
 
@@ -681,15 +679,15 @@ To minimize latency and maximize read throughput, you can create a data stream c
 
 1. **Kinesis Data Streams**
 
-    A stream with three shards.
+   A stream with three shards.
 
 2. **Fan-out for streaming data distribution**
 
-    Arrows representing the enhanced fan-out pipes that the consumers use to receive data from the stream. An enhanced fan-out pipe provides up to 2 MB/sec of data per shard, independently of any other pipes or of the total number of consumers.
+   Arrows representing the enhanced fan-out pipes that the consumers use to receive data from the stream. An enhanced fan-out pipe provides up to 2 MB/sec of data per shard, independently of any other pipes or of the total number of consumers.
 
 3. **Consumers**
 
-    Three consumers that are using enhanced fan-out to receive data from the stream. Each of the consumers is subscribed to all of the shards and all of the records of the stream. If you use version 2.0 or later of the KCL to build a consumer, the KCL automatically subscribes that consumer to all the shards of the stream. On the other hand, if you use the API to build a consumer, you can subscribe to individual shards.
+   Three consumers that are using enhanced fan-out to receive data from the stream. Each of the consumers is subscribed to all of the shards and all of the records of the stream. If you use version 2.0 or later of the KCL to build a consumer, the KCL automatically subscribes that consumer to all the shards of the stream. On the other hand, if you use the API to build a consumer, you can subscribe to individual shards.
 
 #### Setting up and configuring Firehose
 
@@ -697,23 +695,23 @@ Setting up and configuring Firehose involves creating a delivery stream, specify
 
 1. **Create a Firehose delivery stream**
 
-    Creating a Firehose delivery stream involves specifying a name for the stream, choosing the source of the data (such as Kinesis Data Streams or direct PUT), and selecting the delivery destination (such as Amazon S3, Amazon Redshift, or OpenSearch Service).
+   Creating a Firehose delivery stream involves specifying a name for the stream, choosing the source of the data (such as Kinesis Data Streams or direct PUT), and selecting the delivery destination (such as Amazon S3, Amazon Redshift, or OpenSearch Service).
 
 2. **Configure the data source**
 
-    Specify the source of the streaming data, which can be a Kinesis Data Stream, a CloudWatch Log group, or an HTTP endpoint. Provide the necessary details, such as the Kinesis stream name or the CloudWatch Log group name, to establish the connection between the data source and the delivery stream.
+   Specify the source of the streaming data, which can be a Kinesis Data Stream, a CloudWatch Log group, or an HTTP endpoint. Provide the necessary details, such as the Kinesis stream name or the CloudWatch Log group name, to establish the connection between the data source and the delivery stream.
 
 3. **Select the delivery destination**
 
-    Choose the destination where the transformed or unmodified data will be delivered. Firehose supports various destinations, including Amazon S3, Amazon Redshift, OpenSearch Service, and HTTP endpoints. Configure the destination settings, such as the S3 bucket name or the Redshift cluster details.
+   Choose the destination where the transformed or unmodified data will be delivered. Firehose supports various destinations, including Amazon S3, Amazon Redshift, OpenSearch Service, and HTTP endpoints. Configure the destination settings, such as the S3 bucket name or the Redshift cluster details.
 
 4. **Configure data transformation options**
 
-    With the data transformation options in Firehose, you can modify the data before delivering it to the destination. This includes options like data conversion (such as Apache Log to JSON), data filtering, data masking, and running Lambda functions for custom transformations.
+   With the data transformation options in Firehose, you can modify the data before delivering it to the destination. This includes options like data conversion (such as Apache Log to JSON), data filtering, data masking, and running Lambda functions for custom transformations.
 
 5. **Monitor and manage the delivery stream**
 
-    Monitoring and managing the delivery stream involves tracking metrics like incoming data volume, delivery throughput, and failed delivery attempts. You can also configure backup delivery destinations, set up alerts, and manage the stream's lifecycle (such as starting, stopping, or updating the stream).
+   Monitoring and managing the delivery stream involves tracking metrics like incoming data volume, delivery throughput, and failed delivery attempts. You can also configure backup delivery destinations, set up alerts, and manage the stream's lifecycle (such as starting, stopping, or updating the stream).
 
 Data transformations play a crucial role in the streaming data pipeline using Firehose. As data is ingested from various sources and delivered to Amazon S3 or other AWS services in near real-time, it might require processing or formatting before being used effectively. With data transformations, you can modify, enrich, or filter data as it's being loaded into your data lake or data store. This is essential for ensuring data consistency, accuracy, and compatibility with downstream applications and analytics tools.
 
@@ -741,24 +739,24 @@ Each AWS account has one AWS Glue Data Catalog per AWS Region. Each Data Catalog
 
 1. **Runs custom classifiers**
 
-    A crawler runs any custom classifiers that you choose to infer the format and schema of your data. You provide the code for custom classifiers, and they run in the order that you specify.
-    The first custom classifier to successfully recognize the structure of your data is used to create a schema. Custom classifiers lower in the list are skipped.
+   A crawler runs any custom classifiers that you choose to infer the format and schema of your data. You provide the code for custom classifiers, and they run in the order that you specify.
+   The first custom classifier to successfully recognize the structure of your data is used to create a schema. Custom classifiers lower in the list are skipped.
 
 2. **Run built-in classifiers**
 
-    If no custom classifier matches your data's schema, built-in classifiers try to recognize your data's schema. An example of a built-in classifier is one that recognizes JSON.
+   If no custom classifier matches your data's schema, built-in classifiers try to recognize your data's schema. An example of a built-in classifier is one that recognizes JSON.
 
 3. **Connect to data store**
 
-    The crawler connects to the data store. Some data stores require connection properties for crawler access.
+   The crawler connects to the data store. Some data stores require connection properties for crawler access.
 
 4. **Infers schemas**
 
-    The inferred schema is created for your data.
+   The inferred schema is created for your data.
 
 5. **Writes metadata**
 
-    The crawler writes metadata to the Data Catalog. A table definition contains metadata about the data in your data store. The table is written to a database, which is a container of tables in the Data Catalog. Attributes of a table include classification, which is a label created by the classifier that inferred the table schema.
+   The crawler writes metadata to the Data Catalog. A table definition contains metadata about the data in your data store. The table is written to a database, which is a container of tables in the Data Catalog. Attributes of a table include classification, which is a label created by the classifier that inferred the table schema.
 
 After your data has been crawled and a Data Catalog has been created, you can do the following:
 
@@ -794,27 +792,27 @@ To learn more of the benefits of using Apache Spark Streaming with Amazon EMR fo
 
 - **Data ingestion**
 
-    Spark Streaming can be configured to ingest data from various sources, such as Apache Kafka, Amazon Kinesis, or Amazon S3. The EMR cluster can be used to provision the necessary infrastructure, including the Spark Streaming application and the data ingestion components.
+  Spark Streaming can be configured to ingest data from various sources, such as Apache Kafka, Amazon Kinesis, or Amazon S3. The EMR cluster can be used to provision the necessary infrastructure, including the Spark Streaming application and the data ingestion components.
 
 - **Real-time processing**
 
-    Spark Streaming applications can be deployed on the EMR cluster to process the incoming data streams in real-time. The Spark Streaming engine can be used to perform various data processing tasks, such as filtering, aggregation, transformation, and ML model inference.
+  Spark Streaming applications can be deployed on the EMR cluster to process the incoming data streams in real-time. The Spark Streaming engine can be used to perform various data processing tasks, such as filtering, aggregation, transformation, and ML model inference.
 
 - **Scalability and fault tolerance**
 
-    EMR clusters provide a scalable and fault-tolerant environment for running Spark Streaming applications. The EMR cluster can be dynamically scaled up or down based on the processing requirements. This ensures that the application can handle increased data volumes or spikes in traffic.
+  EMR clusters provide a scalable and fault-tolerant environment for running Spark Streaming applications. The EMR cluster can be dynamically scaled up or down based on the processing requirements. This ensures that the application can handle increased data volumes or spikes in traffic.
 
 - **Integration with other AWS services**
 
-    EMR clusters can be integrated with other AWS services, such as Amazon S3 for data storage, Kinesis for real-time data ingestion, and DynamoDB for storing processed data. This integration allows Spark Streaming applications to use the full suite of AWS services for a comprehensive data processing pipeline.
+  EMR clusters can be integrated with other AWS services, such as Amazon S3 for data storage, Kinesis for real-time data ingestion, and DynamoDB for storing processed data. This integration allows Spark Streaming applications to use the full suite of AWS services for a comprehensive data processing pipeline.
 
 - **Checkpointing and exactly-once semantics**
 
-    Spark Streaming provides built-in support for checkpointing, which enables the application to recover from failures and maintain exactly-once semantics. The EMR cluster can be used to store the checkpoint data, ensuring that the Spark Streaming application can resume processing from the last checkpoint in the event of a failure.
+  Spark Streaming provides built-in support for checkpointing, which enables the application to recover from failures and maintain exactly-once semantics. The EMR cluster can be used to store the checkpoint data, ensuring that the Spark Streaming application can resume processing from the last checkpoint in the event of a failure.
 
 - **Monitoring and logging**
 
-    EMR clusters provide comprehensive monitoring and logging capabilities, which can be used to track the performance and health of the Spark Streaming application. This includes metrics such as processing throughput, latency, and resource utilization, which can be used to optimize the application's performance and troubleshoot issues.
+  EMR clusters provide comprehensive monitoring and logging capabilities, which can be used to track the performance and health of the Spark Streaming application. This includes metrics such as processing throughput, latency, and resource utilization, which can be used to optimize the application's performance and troubleshoot issues.
 
 ## Analyzing Data
 

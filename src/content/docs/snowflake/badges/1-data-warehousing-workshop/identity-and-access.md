@@ -16,7 +16,7 @@ Databases are used to group datasets (tables) together. A second-level organizat
 
 The INFORMATION_SCHEMA schema holds a collection of views. The INFORMATION_SCHEMA schema cannot be deleted (dropped), renamed, or moved.
 
-The PUBLIC schema is created empty and you can fill it with tables, views and other things over time. The PUBLIC schema can be dropped, renamed, or moved at any time.  
+The PUBLIC schema is created empty and you can fill it with tables, views and other things over time. The PUBLIC schema can be dropped, renamed, or moved at any time.
 
 5. Transfer Ownership of Your Database to the **SYSADMIN** Role
 6. Switch Your System Role Back to **SYSADMIN**

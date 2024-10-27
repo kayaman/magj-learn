@@ -4,6 +4,7 @@ description: Skill Builder
 sidebar:
   order: 3
 ---
+
 :::note
 **Domain 4: ML Solution Monitoring, Maintenance, and Security**
 :::
@@ -26,19 +27,19 @@ sidebar:
 
 1. VPC endpoints
 
-    With VPC endpoints, you can privately connect your VPC to supported AWS services without requiring an internet gateway, NAT device, or VPN connection. You can further limit access to these services by using endpoint policies, which act as a secure entry point for accessing resources within your VPC.
+   With VPC endpoints, you can privately connect your VPC to supported AWS services without requiring an internet gateway, NAT device, or VPN connection. You can further limit access to these services by using endpoint policies, which act as a secure entry point for accessing resources within your VPC.
 
 2. SageMaker Studio
 
-    SageMaker Studio runs in a service VPC by default. When notebooks in your studio environment access AWS resources, such as Amazon S3 buckets, the VPC routes this traffic over the internet by default. You can instead route traffic over the AWS network by launching your SageMaker Studio and SageMaker notebook instances in an Amazon VPC of your choice.
+   SageMaker Studio runs in a service VPC by default. When notebooks in your studio environment access AWS resources, such as Amazon S3 buckets, the VPC routes this traffic over the internet by default. You can instead route traffic over the AWS network by launching your SageMaker Studio and SageMaker notebook instances in an Amazon VPC of your choice.
 
 3. Elastic Network Interfaces
 
-    When you launch SageMaker Studio instances with a VPC of your choice, they communicate with the domain through the Elastic Network Interface (ENI) in a private subnet. The ENI is protected by a security group. You then create interface VPC endpoints for the AWS services and resources that SageMaker Studio will access through their own elastic network interfaces in the same subnet.
+   When you launch SageMaker Studio instances with a VPC of your choice, they communicate with the domain through the Elastic Network Interface (ENI) in a private subnet. The ENI is protected by a security group. You then create interface VPC endpoints for the AWS services and resources that SageMaker Studio will access through their own elastic network interfaces in the same subnet.
 
 4. VPC endpoints
 
-    These endpoints could connect to the SageMaker runtime, SageMaker API, CloudWatch Logs, and Amazon S3. You can then route traffic to these endpoints. You can also use VPC endpoint policies (and Amazon S3 access point policies) to limit access to SageMaker resources further.
+   These endpoints could connect to the SageMaker runtime, SageMaker API, CloudWatch Logs, and Amazon S3. You can then route traffic to these endpoints. You can also use VPC endpoint policies (and Amazon S3 access point policies) to limit access to SageMaker resources further.
 
 #### Use NAT Gateways for Egress Traffic
 
@@ -48,7 +49,7 @@ VPC endpoints provide secure access to supported AWS services from within the VP
 
 1. NAT Gateway
 
-  Your ML model running in private subnets must download updates or dependencies from a public software repository. You can configure a NAT Gateway in a public subnet to allow outbound internet access for your private ML instances. This setup still prevents the internet from initiating connections with those instances. For example, you enable ML instances in private subnets to download dependencies or docker images from public repositories through a NAT Gateway.
+Your ML model running in private subnets must download updates or dependencies from a public software repository. You can configure a NAT Gateway in a public subnet to allow outbound internet access for your private ML instances. This setup still prevents the internet from initiating connections with those instances. For example, you enable ML instances in private subnets to download dependencies or docker images from public repositories through a NAT Gateway.
 
 #### Allow access only from within the VPC
 
@@ -62,7 +63,7 @@ Security Groups act as virtual firewalls that control inbound and outbound traff
 
 #### Network Access Control List
 
-NACLs are an additional layer of security that act as a firewall for controlling traffic in and out of the subnets in your VPC. NACLs evaluate traffic based on rules you define, allowing or denying traffic based on IP addresses, protocols, and ports. NACLs provide an additional level of in-depth defense against unauthorized access to your ML resources. For example, you configure an NACL to block all inbound traffic from 0.0.0.0/0 to private subnets hosting ML training jobs as an additional security layer. Using NACLs supports an in-depth defense strategy by restricting all traffic not explicitly allowed to ML resources. 
+NACLs are an additional layer of security that act as a firewall for controlling traffic in and out of the subnets in your VPC. NACLs evaluate traffic based on rules you define, allowing or denying traffic based on IP addresses, protocols, and ports. NACLs provide an additional level of in-depth defense against unauthorized access to your ML resources. For example, you configure an NACL to block all inbound traffic from 0.0.0.0/0 to private subnets hosting ML training jobs as an additional security layer. Using NACLs supports an in-depth defense strategy by restricting all traffic not explicitly allowed to ML resources.
 
 ![nacl](/img/nacl.png)
 

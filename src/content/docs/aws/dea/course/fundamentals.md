@@ -24,7 +24,7 @@ sidebar:
 
 - Semi-structured
 
-  Data that is not as organized as structured data but has some level  of structure in the form of tags, hierarchies or other patterns.
+  Data that is not as organized as structured data but has some level of structure in the form of tags, hierarchies or other patterns.
 
   - elements might be tagged or chategorized in some way
   - more flexible than structured data but not as chaotic as unstructured data
@@ -32,11 +32,11 @@ sidebar:
 ## Properties of data
 
 - Volume
-  
+
   Refers to the amount or size of data that organizations are dealing with at any given time.
 
 - Velocity
-  
+
   Refers to the speed at which new data is generated, collected and processed.
 
 - Variety
@@ -47,22 +47,24 @@ sidebar:
 
 ### Data Warehouse
 
-  A centralized repository optimized  for analysis where data from different sources is stored in a structured format.
+A centralized repository optimized for analysis where data from different sources is stored in a structured format.
 
 ### Data Lake
 
-  A storage repository that holds vast amounts of raw data in its native format, including structured, semi-structured, and unstructured data.
+A storage repository that holds vast amounts of raw data in its native format, including structured, semi-structured, and unstructured data.
 
 ### Schema
 
 - **Data Warehouse**
 
   Schema on write: predefined schema before writing data.
+
   - Extract - Transform - Load (**ETL**)
 
 - **Data Lake**
 
   Schema on read: schema is defined at the time of reading data.
+
   - Extract - Load - Transform (**ELT**)
 
 ### Data Lakehouse
@@ -77,7 +79,7 @@ It's more about governance and organization. Individual teams own "data products
 
 ## ETL Pipelines
 
-ETL stands for Extract, Transform and Load. It's a  process used to move data from source systems into a data warehouse
+ETL stands for Extract, Transform and Load. It's a process used to move data from source systems into a data warehouse
 
 - **Extract**
 
@@ -86,7 +88,7 @@ ETL stands for Extract, Transform and Load. It's a  process used to move data fr
   - Can be done in real-time or in batches, depending on requirements.
 
 - **Transform**
-  
+
   - Convert the extracted data into a format suitable for the target data warehouse.
   - Can involve various operations such as:
     - data cleansing
@@ -95,33 +97,25 @@ ETL stands for Extract, Transform and Load. It's a  process used to move data fr
     - aggregations or computations
     - encoding or decoding
     - handling missing values
-  
+
 - **Load**
-    
   - Move the transformed data into the target data warehouse or another data repository.
   - Can be done in batches or in a streaming manner.
   - Ensure that data maintains its integrity during the load phase.
-  
 - Managing ETL Pipelines
-    
   - This process must be automated in some reliable way.
 
 ## Data Sources
 
-  - JDBC: Java Database Connectivity
-  - ODBC: Open Database Connectivity
-  - Raw logs
-  - APIs
-  - Streams
+- JDBC: Java Database Connectivity
+- ODBC: Open Database Connectivity
+- Raw logs
+- APIs
+- Streams
 
 ## Data Formats
 
-  - CSV
-  - JSON
-  - Avro
-  - Parquet
- 
-
-
-
-
+- CSV
+- JSON
+- Avro
+- Parquet

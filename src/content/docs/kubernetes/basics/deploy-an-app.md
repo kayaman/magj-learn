@@ -62,7 +62,7 @@ Great! You just deployed your first application by creating a deployment. This p
 - searched for a suitable node where an instance of the application could be run (we have only 1 available node)
 - scheduled the application to run on that Node
 - configured the cluster to reschedule the instance on a new Node when needed
-To list your deployments use the kubectl get deployments command:
+  To list your deployments use the kubectl get deployments command:
 
 ```sh
 kubectl get deployments
