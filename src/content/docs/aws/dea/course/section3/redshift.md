@@ -13,7 +13,7 @@ tableOfContents:
 - Fully-managed, petabyte scale data warehouse service
 - 10X better performance than other DW's
   - Via machine learning
-  - massively parallel query execution
+  - massively parallel query execution (MPP)
   - columnar storage
 - Designed for OLAP, not OLTP
 - Cost effective
@@ -35,4 +35,29 @@ tableOfContents:
 
 ## Architecture
 
-![Architecture](/img/udemy/redhift-architecture.png)
+![Architecture](/img/udemy/redshift-architecture.png)
+
+## Redshift Spectrum
+
+- Query exabytes of unstructured data in S3 without loading
+- Limitless concurrency
+- Horizontal scaling
+- Separate storage & compute resources
+- Wide variety of data formats
+- Support of Gzip and Snappy compression
+
+## Performance
+
+- Massively Parallel Processing (MPP)
+- Columnar Data Storage
+- Column Compression
+
+## Durability
+
+- Replication within cluster
+- Backup to S3
+- Asynchronously replicated to another region
+- Automated snapshots
+- Failed drives / nodes automatically replaced
+- ~~However, limited to a single availability zone (AZ)~~
+- Multi-AZ for RA3 clusters now available
