@@ -1,17 +1,16 @@
 ---
 title: Learning AWS
-sidebar:
-  hidden: true
+tableOfContents: false
 ---
 
 ## About
 
-[AWS](https://aws.amazon.com)
+What is [AWS](https://aws.amazon.com)?
 
-## Training
+![AWS](/img/aws.png)
+
+## Resources
 
 - [Documentation](https://docs.aws.amazon.com/)
 - [Skill Builder](https://skillbuilder.aws/)
 - [Training and Certification](https://www.aws.training/)
-
-

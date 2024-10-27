@@ -39,8 +39,8 @@ export default defineConfig({
 					label: 'AWS',
 					items: [
 						{ 
-							label: 'Overview', 
-							link: 'aws/learning',
+							label: 'About', 
+							link: 'aws/about',
 						},
 						{ 
 							label: 'ML Engineer',
@@ -276,6 +276,10 @@ export default defineConfig({
 					label: 'Kubernetes',
 					collapsed: true,
 					items: [
+								{ 
+									label: 'About', 
+									link: 'kubernetes/about',
+								},
 								{
 									label: 'Basics',
 									collapsed: true,
