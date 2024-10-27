@@ -167,36 +167,12 @@ export default defineConfig({
 									collapsed: true,
 									items: [
 										{ 
+											label: 'Sample Questions',
+											slug: 'aws/dea/practice/questions',
+										},
+										{ 
 											label: 'Exam 1',
-											slug: '/aws/dea/exams/exam-1',
-										},
-										{ 
-											label: 'Storage',
-											collapsed: true,
-											autogenerate: { 
-												directory: 'aws/dea/course/section2',
-											},
-										},
-										{ 
-											label: 'Database',
-											collapsed: true,
-											autogenerate: { 
-												directory: 'aws/dea/course/databases',
-											},
-										},
-										{ 
-											label: 'Migration & Transfer',
-											collapsed: true,
-											autogenerate: { 
-												directory: 'aws/dea/course/section4',
-											},
-										},
-										{ 
-											label: 'Application Integration',
-											collapsed: true,
-											autogenerate: { 
-												directory: 'aws/dea/course/section8',
-											},
+											slug: 'aws/dea/practice/exam-1',
 										},
 									]
 								},
