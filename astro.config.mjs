@@ -168,11 +168,11 @@ export default defineConfig({
 									items: [
 										{ 
 											label: 'Sample Questions',
-											slug: 'aws/dea/practice/questions',
+											link: '/aws/dea/practice/questions',
 										},
 										{ 
 											label: 'Exam 1',
-											slug: 'aws/dea/practice/exam-1',
+											link: '/aws/dea/practice/exam-1',
 										},
 									]
 								},
