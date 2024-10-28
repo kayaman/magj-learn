@@ -312,6 +312,13 @@ export default defineConfig({
 										directory: 'kubernetes/minikube',
 									},
 								},
+								{
+									label: 'LFS158x',
+									collapsed: true,
+									autogenerate: { 
+										directory: 'kubernetes/LFS158x',
+									},
+								},
 							]
 				}
 			],
