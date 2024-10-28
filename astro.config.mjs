@@ -127,37 +127,34 @@ export default defineConfig({
 										},
 										{ 
 											label: 'Fundamentals',
-											collapsed: true,
-											autogenerate: { 
-												directory: 'aws/dea/course/section1',
-											},
+											link: 'aws/dea/course/fundamentals',
 										},
 										{ 
 											label: 'Storage',
 											collapsed: true,
 											autogenerate: { 
-												directory: 'aws/dea/course/section2',
+												directory: 'aws/dea/course/storage',
 											},
 										},
 										{ 
 											label: 'Database',
 											collapsed: true,
 											autogenerate: { 
-												directory: 'aws/dea/course/databases',
+												directory: 'aws/dea/course/database',
 											},
 										},
 										{ 
 											label: 'Migration & Transfer',
 											collapsed: true,
 											autogenerate: { 
-												directory: 'aws/dea/course/section4',
+												directory: 'aws/dea/course/migration-transfer',
 											},
 										},
 										{ 
 											label: 'Application Integration',
 											collapsed: true,
 											autogenerate: { 
-												directory: 'aws/dea/course/section8',
+												directory: 'aws/dea/course/aoolication-integration',
 											},
 										},
 									]
