@@ -3,9 +3,16 @@ title: MLA Overview
 description: A guide in my new Starlight docs site.
 sidebar:
   order: 1
+tableOfContents: false
 ---
 
-**AWS Certified Machine Learning Engineer - Associate**
+### AWS Certified Machine Learning Engineer - Associate
+
+:::caution
+
+Some sections are missing content, specially the first domain and beginning of the second. But there is a lot of good material afterwards.
+
+:::
 
 ## About
 
