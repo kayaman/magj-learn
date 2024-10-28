@@ -6,7 +6,7 @@ sidebar:
 ---
 
 - Highly-secure, portable devices to collect and process data
-at the edge, and migrate data into and out of AWS
+  at the edge, and migrate data into and out of AWS
 
 ![Snow Family](/img/udemy/snow-family.png)
 

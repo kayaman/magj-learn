@@ -15,15 +15,15 @@ sidebar:
 
 ### DMS Sources and Targets
 
-| Sources | Targets |
-|    -    |    -    |
+| Sources                                                                                                             | Targets                                                                                                                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | On-Premises and EC2 instance databases <br> Azure <br> Amazon RDS <br> Amazon Aurora <br> Amazon S3 <br> DocumentDB | On-Premises and EC2 instance databases <br> Amazon RDS <br> Redshift <br> DynamoDB <br> S3 <br> OpenSearch Service <br> Kinesis Data Streams <br> Apache Kafka <br> DocumentDB <br> Amazon Neptune <br> Redis <br> Babelfish |
 
 ### AWS Schema Conversion Tool (SCT)
 
 - Convert your database's schema from one engine to another
 - Example OLTP: (SQL Server or Oracle) to MySQL, PostgreSQL, Aurora
-- Example OLAP: (Teradata or Oracle) to  Amazon Redshift
+- Example OLAP: (Teradata or Oracle) to Amazon Redshift
 - You do not need to use SCT if you are migrating the same DB engine
   - Ex: On-Premise PostgreSQL => RDS PostgreSQL
   - The DB engine is still PostgreSQL, RDS is the platform

@@ -15,69 +15,69 @@ Amazon Redshift is a powerful, fully managed, petabyte-scale cloud data warehous
 
 - MPP architecture
 
-    Amazon Redshift uses a massively parallel processing (MPP) architecture that distributes computational workloads across multiple nodes. This provides efficient parallel processing of complex queries against large datasets.
+  Amazon Redshift uses a massively parallel processing (MPP) architecture that distributes computational workloads across multiple nodes. This provides efficient parallel processing of complex queries against large datasets.
 
 - Columnar data storage
 
-    Amazon Redshift stores data in a columnar format, which is optimized for analytical workloads involving large datasets with complex queries. This storage format reduces I/O operations and improves query performance.
+  Amazon Redshift stores data in a columnar format, which is optimized for analytical workloads involving large datasets with complex queries. This storage format reduces I/O operations and improves query performance.
 
 - Advanced compression
 
-    Amazon Redshift employs advanced compression techniques, including columnar and row-level compression, which can significantly reduce storage requirements and improve query performance.
+  Amazon Redshift employs advanced compression techniques, including columnar and row-level compression, which can significantly reduce storage requirements and improve query performance.
 
 - Automatic workload management
 
-    Amazon Redshift automatically manages and provisions resources based on your workload requirements. This provides optimal performance and cost-efficiency without the need for manual intervention.
+  Amazon Redshift automatically manages and provisions resources based on your workload requirements. This provides optimal performance and cost-efficiency without the need for manual intervention.
 
 - Integration with AWS Services
 
-    Amazon Redshift seamlessly integrates with other AWS services. It integrates with Amazon Simple Storage Service (Amazon S3) for data loading and unloading and with AWS Glue for data preparation and extract, transform, and load (ETL) operations. It also integrates with Amazon Athena for querying data in Amazon S3 and with Amazon QuickSight for data visualization.
+  Amazon Redshift seamlessly integrates with other AWS services. It integrates with Amazon Simple Storage Service (Amazon S3) for data loading and unloading and with AWS Glue for data preparation and extract, transform, and load (ETL) operations. It also integrates with Amazon Athena for querying data in Amazon S3 and with Amazon QuickSight for data visualization.
 
 - Data encryption
 
-    Amazon Redshift supports encryption at rest and in transit. This ensures that your data is secure. You can also integrate Amazon Redshift with AWS Key Management Service (AWS KMS) for enhanced key management.
+  Amazon Redshift supports encryption at rest and in transit. This ensures that your data is secure. You can also integrate Amazon Redshift with AWS Key Management Service (AWS KMS) for enhanced key management.
 
 - Federated queries
 
-    Amazon Redshift supports federated queries. You can query data across multiple data sources, including other Redshift clusters, Amazon Relational Database Service (Amazon RDS) databases, Amazon Aurora databases, and Amazon DynamoDB, without the need to move or duplicate data.
+  Amazon Redshift supports federated queries. You can query data across multiple data sources, including other Redshift clusters, Amazon Relational Database Service (Amazon RDS) databases, Amazon Aurora databases, and Amazon DynamoDB, without the need to move or duplicate data.
 
 - Concurrency scaling
 
-    With Amazon Redshift, you can scale out your cluster by adding additional nodes to handle increased concurrency and workload demands without disrupting ongoing operations.  
+  With Amazon Redshift, you can scale out your cluster by adding additional nodes to handle increased concurrency and workload demands without disrupting ongoing operations.
 
 - Backup and restore
 
-    Amazon Redshift provides automated backup and restore capabilities. This provides data durability and point-in-time recovery in case of accidental data loss or corruption.
+  Amazon Redshift provides automated backup and restore capabilities. This provides data durability and point-in-time recovery in case of accidental data loss or corruption.
 
 - SQL compatibility
 
-    Amazon Redshift uses a SQL-based querying language that is compatible with PostgreSQL to make it easier for developers and analysts familiar with PostgreSQL to work with Amazon Redshift.
+  Amazon Redshift uses a SQL-based querying language that is compatible with PostgreSQL to make it easier for developers and analysts familiar with PostgreSQL to work with Amazon Redshift.
 
 ### Amazon Redshift benefits
 
 - Scale
 
-    Amazon Redshift uses custom-designed hardware and machine learning (ML) to deliver price performance at any scale.
+  Amazon Redshift uses custom-designed hardware and machine learning (ML) to deliver price performance at any scale.
 
 - Multiple sources
 
-    Load and query structured or semi-structured data from multiple sources.
+  Load and query structured or semi-structured data from multiple sources.
 
 - Security
 
-    Configure built-in data security features such as encryption and network isolation. Audit Amazon Redshift API calls by using AWS CloudTrail. Third-party auditors assess the security and compliance of Amazon Redshift as part of multiple AWS compliance programs.
+  Configure built-in data security features such as encryption and network isolation. Audit Amazon Redshift API calls by using AWS CloudTrail. Third-party auditors assess the security and compliance of Amazon Redshift as part of multiple AWS compliance programs.
 
 - Decoupling (RA3 nodes)
 
-    Size your cluster based on consistent compute requirements. Scale compute separately when needed and pay only for the managed storage that you use. You can choose between tightly coupled or decoupled configurations to best support workload and organizational requirements.
+  Size your cluster based on consistent compute requirements. Scale compute separately when needed and pay only for the managed storage that you use. You can choose between tightly coupled or decoupled configurations to best support workload and organizational requirements.
 
 - Integrations
 
-    Query data and write data back to your data lake in open formats. Use integration with other AWS analytics services to streamline end-to-end analytics workflows.
+  Query data and write data back to your data lake in open formats. Use integration with other AWS analytics services to streamline end-to-end analytics workflows.
 
 - Reduced Total cost of ownership (TCO)
 
-    Amazon Redshift automates common maintenance tasks so that you can focus on your data insights. Reduce costs by scaling compute and storage separately, pausing unused clusters, or using Reserved Instances for long-running clusters.
+  Amazon Redshift automates common maintenance tasks so that you can focus on your data insights. Reduce costs by scaling compute and storage separately, pausing unused clusters, or using Reserved Instances for long-running clusters.
 
 ## Designing the Data Warehouse Solution
 
@@ -111,45 +111,44 @@ The following diagram provides a conceptual look at the components of a data war
 
 1. Client applications
 
-    Redshift is based on open standard PostgreSQL, so most existing SQL client applications will work with only minimal changes. For information about important differences between Amazon Redshift SQL and PostgreSQL, see [Amazon Redshift and PostgreSQL](https://docs.aws.amazon.com/redshift/latest/dg/c_redshift-and-postgres-sql.html).
+   Redshift is based on open standard PostgreSQL, so most existing SQL client applications will work with only minimal changes. For information about important differences between Amazon Redshift SQL and PostgreSQL, see [Amazon Redshift and PostgreSQL](https://docs.aws.amazon.com/redshift/latest/dg/c_redshift-and-postgres-sql.html).
 
 2. Cluster
 
-    The core infrastructure component of an Amazon Redshift data warehouse is a cluster.
+   The core infrastructure component of an Amazon Redshift data warehouse is a cluster.
 
 3. Internal network
 
-    Amazon Redshift takes advantage of high-bandwidth connections, close proximity, and custom communication protocols to provide private, very high-speed network communication between the leader node and compute nodes. The compute nodes run on a separate, isolated network that client applications never access directly.
+   Amazon Redshift takes advantage of high-bandwidth connections, close proximity, and custom communication protocols to provide private, very high-speed network communication between the leader node and compute nodes. The compute nodes run on a separate, isolated network that client applications never access directly.
 
 4. Compute nodes
 
-    These nodes perform the actual data processing and storage operations. The data is distributed across these nodes using various distribution styles, such as KEY, EVEN, and ALL.
+   These nodes perform the actual data processing and storage operations. The data is distributed across these nodes using various distribution styles, such as KEY, EVEN, and ALL.
 
 5. Leader node
 
-    This node manages the cluster, receives queries, and distributes the workload across the compute nodes.
+   This node manages the cluster, receives queries, and distributes the workload across the compute nodes.
 
 6. Node slices
 
-    A compute node is partitioned into slices. Each slice is allocated a portion of the node's memory and disk space where it processes a portion of the workload assigned to the node.
+   A compute node is partitioned into slices. Each slice is allocated a portion of the node's memory and disk space where it processes a portion of the workload assigned to the node.
 
-The architecture of an Amazon Redshift provisioned cluster consists of the following nodes. 
+The architecture of an Amazon Redshift provisioned cluster consists of the following nodes.
 
 - Leader node
 
-    The leader node manages distributing data to the slices. It also apportions the workload for any queries or other database operations to the slices.  
-    The slices then work in parallel to complete the operation. The number of slices per node is determined by the node size of the cluster.  
-    The leader node compiles code for individual elements of the query plan and assigns the code to individual compute nodes.   
-    The leader node manages communications with client programs and all communication with compute nodes. It parses and develops query plans to carry out database operations, in particular, the series of steps necessary to obtain results for complex queries.
-    Based on the query plan, the leader node compiles code, distributes the compiled code to the compute nodes, and assigns a portion of the data to each compute node.  
-    The leader node distributes SQL statements to the compute nodes only when a query references tables that are stored on the compute nodes. All other queries run exclusively on the leader node. Amazon Redshift is designed to implement certain SQL functions only on the leader node.   
-    A query that uses any of these functions will return an error if it references tables that reside on the compute nodes. For more information, see [SQL Functions Supported on the Leader Node](https://docs.aws.amazon.com/redshift/latest/dg/c_sql-functions-leader-node.html).
+  The leader node manages distributing data to the slices. It also apportions the workload for any queries or other database operations to the slices.  
+   The slices then work in parallel to complete the operation. The number of slices per node is determined by the node size of the cluster.  
+   The leader node compiles code for individual elements of the query plan and assigns the code to individual compute nodes.  
+   The leader node manages communications with client programs and all communication with compute nodes. It parses and develops query plans to carry out database operations, in particular, the series of steps necessary to obtain results for complex queries.
+  Based on the query plan, the leader node compiles code, distributes the compiled code to the compute nodes, and assigns a portion of the data to each compute node.  
+   The leader node distributes SQL statements to the compute nodes only when a query references tables that are stored on the compute nodes. All other queries run exclusively on the leader node. Amazon Redshift is designed to implement certain SQL functions only on the leader node.  
+   A query that uses any of these functions will return an error if it references tables that reside on the compute nodes. For more information, see [SQL Functions Supported on the Leader Node](https://docs.aws.amazon.com/redshift/latest/dg/c_sql-functions-leader-node.html).
 
 - Compute nodes
-    
-    The compute nodes run the compiled code and send intermediate results back to the leader node for final aggregation.   
-    Each compute node has its own dedicated CPU and memory, which are determined by the node type. As your workload grows, you can increase the compute capacity of a cluster by increasing the number of nodes, upgrading the node type, or both.  
-    Amazon Redshift provides several node types for your compute needs. For details of each node type, see [Amazon Redshift provisioned clusters overview](https://docs.aws.amazon.com/redshift/latest/mgmt/overview.html) in the Amazon Redshift Management Guide.
+  The compute nodes run the compiled code and send intermediate results back to the leader node for final aggregation.  
+   Each compute node has its own dedicated CPU and memory, which are determined by the node type. As your workload grows, you can increase the compute capacity of a cluster by increasing the number of nodes, upgrading the node type, or both.  
+   Amazon Redshift provides several node types for your compute needs. For details of each node type, see [Amazon Redshift provisioned clusters overview](https://docs.aws.amazon.com/redshift/latest/mgmt/overview.html) in the Amazon Redshift Management Guide.
 
 #### Amazon Redshift Serverless
 
@@ -163,22 +162,22 @@ With Amazon Redshift Serverless, you can access and analyze data without having 
 
 - Client applications
 
-    Amazon Redshift is based on open-standard PostgreSQL, so most existing SQL client applications will work with only minimal changes.
+  Amazon Redshift is based on open-standard PostgreSQL, so most existing SQL client applications will work with only minimal changes.
 
 - Serverless resources
 
-    When you submit a query to your Amazon Redshift Serverless data warehouse, Amazon Redshift automatically provisions the necessary compute resources to run the query. These resources are scaled up or down based on the workload so you can handle variable or unpredictable loads without manually managing the cluster size.
+  When you submit a query to your Amazon Redshift Serverless data warehouse, Amazon Redshift automatically provisions the necessary compute resources to run the query. These resources are scaled up or down based on the workload so you can handle variable or unpredictable loads without manually managing the cluster size.
 
 - Redshift managed storage
 
-    Data warehouse data is stored in a separate storage tier Redshift Managed Storage (RMS). With RMS, you can scale your storage to petabytes using Amazon S3 storage. You can scale and pay for computing and storage independently. It automatically uses high-performance SSD-based local storage as tier-1 cache.  
-    It also takes advantage of optimizations, such as data block temperature, data block age, and workload patterns to deliver high performance while scaling storage automatically to Amazon S3 when needed without requiring any action.
+  Data warehouse data is stored in a separate storage tier Redshift Managed Storage (RMS). With RMS, you can scale your storage to petabytes using Amazon S3 storage. You can scale and pay for computing and storage independently. It automatically uses high-performance SSD-based local storage as tier-1 cache.  
+   It also takes advantage of optimizations, such as data block temperature, data block age, and workload patterns to deliver high performance while scaling storage automatically to Amazon S3 when needed without requiring any action.
 
 You can organize your compute resources and data using workgroups and namespaces for granular cost controls. With **Workgroups**, you can separate users and their queries from each other. Namespaces help in organizing schemas, tables, and other database objects for each workgroup.
 
 Amazon Redshift Serverless can integrate with the same SQL clients and business intelligence tools as Amazon Redshift provisioned. It also takes advantage of Redshift Managed Storage. The main difference between provisioned and serverless is that Amazon Redshift Serverless doesn't have the concept of a cluster or node.
 
-Amazon Redshift Serverless automatically provisions and manages capacity for you. You can optionally specify the base data warehouse capacity to select the right balance of price and performance for your workloads. You can also specify maximum Redshift Processing Units (RPU) hours to set cost controls to make sure that costs are predictable. You’ll discuss RPUs in more detail later in this module. 
+Amazon Redshift Serverless automatically provisions and manages capacity for you. You can optionally specify the base data warehouse capacity to select the right balance of price and performance for your workloads. You can also specify maximum Redshift Processing Units (RPU) hours to set cost controls to make sure that costs are predictable. You’ll discuss RPUs in more detail later in this module.
 
 The architecture of Amazon Redshift Serverless is different from the provisioned model in the following ways:
 
@@ -212,41 +211,41 @@ The value of moving data into an Amazon Redshift warehouse lies in the following
 
 - Scalability
 
-    Amazon Redshift can scale up or down seamlessly so organizations can handle growing data volumes and fluctuating workloads without compromising performance.
+  Amazon Redshift can scale up or down seamlessly so organizations can handle growing data volumes and fluctuating workloads without compromising performance.
 
 - Performance
 
-    With its columnar data storage and advanced query optimization techniques, Amazon Redshift delivers lightning-fast query performance. Organizations can analyze vast amounts of data in near real time.
+  With its columnar data storage and advanced query optimization techniques, Amazon Redshift delivers lightning-fast query performance. Organizations can analyze vast amounts of data in near real time.
 
 - Cost-effectiveness
 
-    Amazon Redshift eliminates the need for upfront hardware investments and ongoing maintenance costs. This makes it a cost-effective solution for data warehousing.
+  Amazon Redshift eliminates the need for upfront hardware investments and ongoing maintenance costs. This makes it a cost-effective solution for data warehousing.
 
 - Integration
 
-    Amazon Redshift seamlessly integrates with other AWS services, such as Amazon S3, AWS Glue, and AWS Lambda. This provides efficient data ingestion, transformation, and analysis pipelines.
+  Amazon Redshift seamlessly integrates with other AWS services, such as Amazon S3, AWS Glue, and AWS Lambda. This provides efficient data ingestion, transformation, and analysis pipelines.
 
 - Security
 
-    Amazon Redshift provides robust security features, including data encryption at rest and in transit, access control, and auditing capabilities to ensure that sensitive data is protected.
+  Amazon Redshift provides robust security features, including data encryption at rest and in transit, access control, and auditing capabilities to ensure that sensitive data is protected.
 
 ### Using data migration tools
 
 Many businesses find that their on-premises data warehouses become unwieldy and expensive to maintain as they scale. Amazon Redshift is a cloud-based data warehouse that can easily and cost-effectively scale to petabytes of data and tens of thousands of queries per second.
 
-If you decide to migrate from an existing data warehouse to Amazon Redshift, the migration strategy you choose depends on the following factors: 
+If you decide to migrate from an existing data warehouse to Amazon Redshift, the migration strategy you choose depends on the following factors:
 
 - The size of the database and its tables and objects
-- Network bandwidth between the source server and AWS 
-- Whether the migration and switchover to AWS will be done in one step or a sequence of steps over time 
-- The data change rate in the source system 
-- Transformations during migration 
+- Network bandwidth between the source server and AWS
+- Whether the migration and switchover to AWS will be done in one step or a sequence of steps over time
+- The data change rate in the source system
+- Transformations during migration
 - The tool that you plan to use for migration and ETL
 
 #### AWS DMS
 
 You can use AWS Database Migration Service (AWS DMS) to migrate data to Amazon Redshift. AWS DMS migrates data to and from most commercial and open-source databases, such as Oracle, PostgreSQL, and Microsoft SQL Server.  
-When using AWS DMS to migrate your data, the source database remains fully operational during the migration. Thus, it minimizes downtime to applications that rely on the database. 
+When using AWS DMS to migrate your data, the source database remains fully operational during the migration. Thus, it minimizes downtime to applications that rely on the database.
 
 You can use AWS DMS to migrate data to Amazon Redshift by using Amazon Redshift as a target endpoint for AWS DMS. The Amazon Redshift target endpoint provides full automation for the following processes:
 
@@ -261,24 +260,24 @@ You can use AWS DMS to migrate data to Amazon Redshift by using Amazon Redshift 
 Zero-ETL is a no-code, cloud-native data integration platform that can seamlessly integrate with AWS DMS to provide a comprehensive data processing solution. This can help you streamline your data migration and transformation processes, reduce the risk of manual errors, and gain greater visibility and control over your data processing workflows.
 
 - Automated AWS DMS task creation
-  
-    Zero-ETL can automatically create and configure AWS DMS tasks based on your data integration requirements. This eliminates the need for manual setup.
+
+  Zero-ETL can automatically create and configure AWS DMS tasks based on your data integration requirements. This eliminates the need for manual setup.
 
 - Data transformation and enrichment
 
-    With Zero-ETL's visual, no-code interface, you can define complex data transformation and enrichment rules, which can be applied during the data migration process.
+  With Zero-ETL's visual, no-code interface, you can define complex data transformation and enrichment rules, which can be applied during the data migration process.
 
 - Orchestration and scheduling
 
-    Zero-ETL can orchestrate the entire data processing workflow, including the AWS DMS migration task, and schedule it to run at regular intervals or in response to specific events.
+  Zero-ETL can orchestrate the entire data processing workflow, including the AWS DMS migration task, and schedule it to run at regular intervals or in response to specific events.
 
-- Hybrid and multi-cloud support 
+- Hybrid and multi-cloud support
 
-    Zero-ETL can connect to a wide range of data sources, both on-premises and in the cloud. This streamlines the integration of AWS DMS into your existing data processing system.
+  Zero-ETL can connect to a wide range of data sources, both on-premises and in the cloud. This streamlines the integration of AWS DMS into your existing data processing system.
 
 - Monitoring and alerting
 
-    Zero-ETL provides comprehensive monitoring and alerting capabilities to track the status of your DMS tasks and receive notifications in case of any issues.
+  Zero-ETL provides comprehensive monitoring and alerting capabilities to track the status of your DMS tasks and receive notifications in case of any issues.
 
 #### Amazon EMR
 
@@ -288,7 +287,7 @@ Amazon EMR supports a wide range of data formats and can handle complex data pro
 
 #### AWS Glue
 
-AWS Glue is a serverless data integration service. Analytics users can use AWS Glue to discover, prepare, move, and integrate data from multiple sources. 
+AWS Glue is a serverless data integration service. Analytics users can use AWS Glue to discover, prepare, move, and integrate data from multiple sources.
 
 An AWS Glue connection is an AWS Glue Data Catalog object that stores login credentials, URI strings, virtual private cloud (VPC) information, and more for a particular data store.
 
@@ -297,9 +296,9 @@ An AWS Glue connection is an AWS Glue Data Catalog object that stores login cred
 AWS Glue crawlers, jobs, and development endpoints use connections to access certain types of data stores. You can use connections for both sources and targets, and you can reuse the same connection across multiple crawlers or ETL jobs. AWS Glue provides built-in connectors that you can use to connect to Amazon Redshift from AWS Glue jobs and crawlers. You can do the following with a Redshift connector:
 
 - Read data directly from Redshift tables inside AWS Glue jobs written in Python, Scala, or Java to migrate or transform data from Amazon Redshift to other data stores.
-- Configure Amazon Redshift as both a source and target in ETL jobs created visually using AWS Glue Studio. You can add Redshift nodes to extract and load data. 
+- Configure Amazon Redshift as both a source and target in ETL jobs created visually using AWS Glue Studio. You can add Redshift nodes to extract and load data.
 - Crawl Redshift databases and tables using AWS Glue crawlers. Crawlers discover and catalog metadata that can then be used for further processing.
-- Specify the Redshift database, schema, and table details when creating a Redshift connection in AWS Glue. 
+- Specify the Redshift database, schema, and table details when creating a Redshift connection in AWS Glue.
 - Provide an AWS Identity and Access Management (IAM) role with necessary permissions to access Amazon Redshift on behalf of AWS Glue jobs and crawlers.
 - Use features of AWS Glue like scheduling, monitoring and integration with other AWS services when working with Amazon Redshift.
 
@@ -310,63 +309,61 @@ Amazon Kinesis has a suite of applications that you can use to collect, process,
 
 - Kinesis Data Streams
 
-    Amazon Redshift supports streaming ingestion from Amazon Kinesis Data Streams directly into Amazon Redshift materialized views.  
-    This provides a low-latency way to ingest real-time streaming data from Kinesis into Amazon Redshift for analysis. The streaming data bypasses the need to stage in Amazon S3.  
-    Lambda functions can also be used to retrieve data records from Kinesis and load them into Amazon Redshift. Lambda provides a serverless way to ingest data on a schedule or based on Kinesis events.  
-    Some key points to note about getting data from Kinesis into Amazon Redshift are batching records for efficiency and using appropriate partition keys for distribution.
+  Amazon Redshift supports streaming ingestion from Amazon Kinesis Data Streams directly into Amazon Redshift materialized views.  
+   This provides a low-latency way to ingest real-time streaming data from Kinesis into Amazon Redshift for analysis. The streaming data bypasses the need to stage in Amazon S3.  
+   Lambda functions can also be used to retrieve data records from Kinesis and load them into Amazon Redshift. Lambda provides a serverless way to ingest data on a schedule or based on Kinesis events.  
+   Some key points to note about getting data from Kinesis into Amazon Redshift are batching records for efficiency and using appropriate partition keys for distribution.
 
 - Amazon Data Firehose
 
-    Amazon Data Firehose integrates with Amazon S3 and Amazon Redshift to load massive volumes of streaming data directly into them. Firehose provides an interface to capture and deliver streaming data continuously to Amazon Redshift without requiring you to write applications or manage infrastructure.   
-    It seamlessly scales to match the throughput of your streaming data without requiring your intervention. Firehose manages the batching, compression, logging, and encryption of streaming data for delivery to data destinations in as little as 60 seconds.  
-    Firehose issues synchronous COPY commands to load data into the Redshift cluster. It includes a path to a manifest file that specifies the files to load. After a load completes and Amazon Redshift returns an acknowledgement to Firehose, another COPY command starts to load the next set of data.
+  Amazon Data Firehose integrates with Amazon S3 and Amazon Redshift to load massive volumes of streaming data directly into them. Firehose provides an interface to capture and deliver streaming data continuously to Amazon Redshift without requiring you to write applications or manage infrastructure.  
+   It seamlessly scales to match the throughput of your streaming data without requiring your intervention. Firehose manages the batching, compression, logging, and encryption of streaming data for delivery to data destinations in as little as 60 seconds.  
+   Firehose issues synchronous COPY commands to load data into the Redshift cluster. It includes a path to a manifest file that specifies the files to load. After a load completes and Amazon Redshift returns an acknowledgement to Firehose, another COPY command starts to load the next set of data.
 
 ![Firehose-BI](/img/firehose-bi.png)
 
 - Amazon MSK
 
-    Amazon MSK is a fully managed service that you can use to build and run applications that use Apache Kafka to process streaming data.  
-    Setting up Amazon MSK service can happen in a few steps:
+  Amazon MSK is a fully managed service that you can use to build and run applications that use Apache Kafka to process streaming data.  
+   Setting up Amazon MSK service can happen in a few steps:
 
-    1. Write a Lambda function that reads data from Amazon MSK topics and loads it into Amazon Redshift using the COPY command. Lambda provides a serverless way to ingest data on a schedule or based on Kafka events. 
-    2. Use an EMR cluster to read data from Amazon MSK topics using tools like Spark Streaming. The EMR cluster can then load the processed data into Redshift for analysis. This allows joining streaming and batch data sources.
-    3. Set up a Firehose delivery stream to deliver Amazon MSK data to Amazon S3. Then configure a Lambda trigger on new Amazon S3 objects to load data into Amazon Redshift. Firehose handles the real-time data ingestion from Amazon MSK and delivery to Amazon S3.
+  1. Write a Lambda function that reads data from Amazon MSK topics and loads it into Amazon Redshift using the COPY command. Lambda provides a serverless way to ingest data on a schedule or based on Kafka events.
+  2. Use an EMR cluster to read data from Amazon MSK topics using tools like Spark Streaming. The EMR cluster can then load the processed data into Redshift for analysis. This allows joining streaming and batch data sources.
+  3. Set up a Firehose delivery stream to deliver Amazon MSK data to Amazon S3. Then configure a Lambda trigger on new Amazon S3 objects to load data into Amazon Redshift. Firehose handles the real-time data ingestion from Amazon MSK and delivery to Amazon S3.
 
-For near real-time analytics use cases, where you want to query data in low latency scenarios, you can use the Amazon Redshift streaming ingestion feature. With Redshift streaming ingestion, you can connect to Kinesis Data Streams or Amazon MSK directly. You won’t have the latency and complexity associated with staging the data in Amazon S3 and loading it into the cluster. 
+For near real-time analytics use cases, where you want to query data in low latency scenarios, you can use the Amazon Redshift streaming ingestion feature. With Redshift streaming ingestion, you can connect to Kinesis Data Streams or Amazon MSK directly. You won’t have the latency and complexity associated with staging the data in Amazon S3 and loading it into the cluster.
 
 #### Materialized view
 
-Amazon Redshift streaming ingestion works by acting as a stream consumer. A materialized view is the landing area for data that is consumed from the stream. When the materialized view is refreshed, Amazon Redshift compute nodes allocate each data shard to a compute slice. Each slice consumes data from the allocated shards until the materialized view attains parity with the stream. 
+Amazon Redshift streaming ingestion works by acting as a stream consumer. A materialized view is the landing area for data that is consumed from the stream. When the materialized view is refreshed, Amazon Redshift compute nodes allocate each data shard to a compute slice. Each slice consumes data from the allocated shards until the materialized view attains parity with the stream.
 
-The materialized views can also include SQL transformations as part of your ELT pipeline. You can manually refresh defined materialized views to query the most recent stream data. As a result, you can perform downstream processing and transformations of streaming data by using SQL at no additional cost. You can use your existing business intelligence (BI) and analytics tools for real-time analytics. 
+The materialized views can also include SQL transformations as part of your ELT pipeline. You can manually refresh defined materialized views to query the most recent stream data. As a result, you can perform downstream processing and transformations of streaming data by using SQL at no additional cost. You can use your existing business intelligence (BI) and analytics tools for real-time analytics.
 
 **Amazon Redshift streaming ingestion** To learn more, see [Streaming Ingestion](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-streaming-ingestion.html).
 
 ### Ingesting batch data in Amazon Redshift
 
-When ingesting data from batch sources into Amazon Redshift, it's essential to consider factors such as data volume, data format, transformation requirements, and the frequency of data ingestion. Based on these factors, you can choose the most suitable option or combine multiple options to create an efficient and scalable data ingestion pipeline. 
+When ingesting data from batch sources into Amazon Redshift, it's essential to consider factors such as data volume, data format, transformation requirements, and the frequency of data ingestion. Based on these factors, you can choose the most suitable option or combine multiple options to create an efficient and scalable data ingestion pipeline.
 
 - Amazon S3
 
-    You can load data directly from Amazon S3 into Amazon Redshift using the COPY command. This command supports various file formats, such as CSV, JSON, Avro, and Parquet. You can also use AWS Glue or Amazon EMR to process and transform data stored in Amazon S3 before loading it into Amazon Redshift.
+  You can load data directly from Amazon S3 into Amazon Redshift using the COPY command. This command supports various file formats, such as CSV, JSON, Avro, and Parquet. You can also use AWS Glue or Amazon EMR to process and transform data stored in Amazon S3 before loading it into Amazon Redshift.
 
 - AWS Glue
 
-    AWS Glue is a fully managed ETL service that can be used to prepare and load data from various sources, including Amazon S3, into Amazon Redshift.
+  AWS Glue is a fully managed ETL service that can be used to prepare and load data from various sources, including Amazon S3, into Amazon Redshift.
 
 - AWS EMR
 
-    Amazon EMR is a big data platform that can be used to process and transform large datasets using Apache Spark, Hadoop, or other frameworks. It can be used to preprocess and transform data before loading it into Amazon Redshift.
-
+  Amazon EMR is a big data platform that can be used to process and transform large datasets using Apache Spark, Hadoop, or other frameworks. It can be used to preprocess and transform data before loading it into Amazon Redshift.
 
 - AWS DMS.
 
-    With AWS DMS, you can migrate data from on-premises databases or other cloud data stores into Amazon Redshift. AWS DMS supports continuous data replication, which ensures that your Redshift cluster remains up-to-date with the latest changes in the source database.
-
+  With AWS DMS, you can migrate data from on-premises databases or other cloud data stores into Amazon Redshift. AWS DMS supports continuous data replication, which ensures that your Redshift cluster remains up-to-date with the latest changes in the source database.
 
 - AWS Lambda
 
-    You can use Lambda functions to process and transform data stored in Amazon S3 or other sources, and then load it into Amazon Redshift. Lambda functions can be initiated by events, such as new data arriving in Amazon S3 or a scheduled event. This makes it a flexible and scalable option for data ingestion.
+  You can use Lambda functions to process and transform data stored in Amazon S3 or other sources, and then load it into Amazon Redshift. Lambda functions can be initiated by events, such as new data arriving in Amazon S3 or a scheduled event. This makes it a flexible and scalable option for data ingestion.
 
 #### Common use cases
 
@@ -375,38 +372,39 @@ Different use cases involve different data volume, data format, transformation r
 
 - Amazon S3
 
-    ![S3](/img/uc-s3.png)
+  ![S3](/img/uc-s3.png)
 
-    Amazon S3 is the recommended choice for the following:
+  Amazon S3 is the recommended choice for the following:
 
-    - Loading large datasets from CSV, JSON, or Parquet files stored in Amazon S3 into Amazon Redshift for analytics or reporting purposes
-    - Ingesting log files or clickstream data from various applications or services into Amazon Redshift for analysis
+  - Loading large datasets from CSV, JSON, or Parquet files stored in Amazon S3 into Amazon Redshift for analytics or reporting purposes
+  - Ingesting log files or clickstream data from various applications or services into Amazon Redshift for analysis
 
 - AWS Glue
 
-    ![Glue](/img/uc-glue.png)
+  ![Glue](/img/uc-glue.png)
 
-    Think of AWS Glue for performing complex data transformations, such as joining data from multiple sources, applying business rules, or cleaning and enriching data before loading into Amazon Redshift.
+  Think of AWS Glue for performing complex data transformations, such as joining data from multiple sources, applying business rules, or cleaning and enriching data before loading into Amazon Redshift.
 
 - Amazon EMR
 
-    ![EMR](/img/uc-emr.png)
+  ![EMR](/img/uc-emr.png)
 
-    Rely on Amazon EMR when processing and transforming large datasets in Amazon S3 using Apache Spark or Hadoop before loading into Amazon Redshift.
+  Rely on Amazon EMR when processing and transforming large datasets in Amazon S3 using Apache Spark or Hadoop before loading into Amazon Redshift.
 
 - AWS DMS
 
-    ![DMS](/img/uc-dms.png)
+  ![DMS](/img/uc-dms.png)
 
-    Use AWS DMS for migrating data from on-premises databases or other cloud databases into Amazon Redshift for data consolidation or analytics purposes.
+  Use AWS DMS for migrating data from on-premises databases or other cloud databases into Amazon Redshift for data consolidation or analytics purposes.
 
 - AWS Lambda
 
-    ![Lambda](/img/uc-lambda.png)
+  ![Lambda](/img/uc-lambda.png)
 
-    Lambda is great solution for the following:
-    - Invoking data ingestion into Amazon Redshift based on events, such as new data arriving in Amazon S3 or a scheduled event
-    - Automating the ingestion of data from various sources, such as APIs, IoT devices, or streaming sources, into Amazon Redshift
+  Lambda is great solution for the following:
+
+  - Invoking data ingestion into Amazon Redshift based on events, such as new data arriving in Amazon S3 or a scheduled event
+  - Automating the ingestion of data from various sources, such as APIs, IoT devices, or streaming sources, into Amazon Redshift
 
 ### Moving data between Amazon S3 and Amazon Redshift
 
@@ -420,17 +418,17 @@ The **COPY** command uses Amazon Redshift to read and load data in parallel from
 
 Data is loaded into the target table, one line per row. The fields in the data file are matched to table columns in order, left to right. Fields in the data files can be fixed width or character delimited. The default delimiter is a pipe (|). By default, all the table columns are loaded, but you can optionally define a comma-separated list of columns.
 
- Here is the basic structure of the **COPY** command.
+Here is the basic structure of the **COPY** command.
 
- ```sql
+```sql
 copy <table_name> from 's3://<bucket_name>/<object_prefix>' authorization;
- ```
+```
 
 #### Unload data from Amazon S3
 
 ![load](/img/unload.png)
 
-Amazon Redshift splits the results of a select statement across a set of files, one or more files per node slice, to simplify parallel reloading of the data. Alternatively, you can specify that **UNLOAD** should write the results serially to one or more files by adding the PARALLEL OFF option. 
+Amazon Redshift splits the results of a select statement across a set of files, one or more files per node slice, to simplify parallel reloading of the data. Alternatively, you can specify that **UNLOAD** should write the results serially to one or more files by adding the PARALLEL OFF option.
 
 The **UNLOAD** command is designed to use parallel processing. We recommend leaving PARALLEL enabled for most cases, especially if the files will be used to load tables using a COPY command.
 
@@ -447,14 +445,14 @@ After you complete an **UNLOAD** operation, confirm that the data was unloaded c
 
 ![APIs](/img/consuming-apis.png)
 
-For certain use cases, you might want Amazon Redshift to load data with an API endpoint, without having to manage persistent connections. With Amazon Redshift Data API, you can interact with Amazon Redshift without having to configure Java Database Connectivity (JDBC) or Open Database Connectivity (ODBC). You can use the Amazon Redshift Data API to connect to Amazon Redshift with other services, such as Amazon EventBridge and Amazon SageMaker notebooks.   
-The Data API doesn't require a persistent connection to the cluster. Instead, it provides a secure HTTP endpoint, which you can use to run SQL statements without managing connections. Calls to the Data API are asynchronous. The Data API uses either credentials stored in AWS Secrets Manager or temporary database credentials. You are not required to pass passwords in the API calls with either method.   
+For certain use cases, you might want Amazon Redshift to load data with an API endpoint, without having to manage persistent connections. With Amazon Redshift Data API, you can interact with Amazon Redshift without having to configure Java Database Connectivity (JDBC) or Open Database Connectivity (ODBC). You can use the Amazon Redshift Data API to connect to Amazon Redshift with other services, such as Amazon EventBridge and Amazon SageMaker notebooks.  
+The Data API doesn't require a persistent connection to the cluster. Instead, it provides a secure HTTP endpoint, which you can use to run SQL statements without managing connections. Calls to the Data API are asynchronous. The Data API uses either credentials stored in AWS Secrets Manager or temporary database credentials. You are not required to pass passwords in the API calls with either method.  
 To use the Data API, a user must be authorized. You can authorize a user to access the Data API by adding the IAM AmazonRedshiftDataFullAccess managed policy. This policy provides full access to Amazon Redshift Data API operations.  
-The Amazon Redshift Data API allows applications to securely access data in Amazon Redshift clusters and run SQL statements without needing to manage database connections. It supports running queries, data definition language (DDL) commands like CREATE/DROP, and data manipulation language (DML) commands like INSERT/UPDATE/DELETE.   
+The Amazon Redshift Data API allows applications to securely access data in Amazon Redshift clusters and run SQL statements without needing to manage database connections. It supports running queries, data definition language (DDL) commands like CREATE/DROP, and data manipulation language (DML) commands like INSERT/UPDATE/DELETE.  
 You can use the Data API for the following:
 
 - List databases, schemas, and tables and get table metadata in a cluster
-- Run SQL SELECT, DML, DDL, COPY, and UNLOAD commands 
+- Run SQL SELECT, DML, DDL, COPY, and UNLOAD commands
 - Run statements with parameters
 - Run a batch of multiple statements in a single transaction
 - Cancel running queries
@@ -519,23 +517,23 @@ To learn more about a potential ETL workflow using the **AWS Step Functions**:
 
 1. Initial event
 
-    A new file arriving in an S3 bucket or on a scheduled basis.
+   A new file arriving in an S3 bucket or on a scheduled basis.
 
 2. Extract
 
-    The Step Functions workflow invokes the ExtractData step. In this step, an AWS Glue job named, ExtractJob, is performed. The ExtractJob extracts data from various source systems, such as S3 buckets, relational databases, or NoSQL databases. The extracted data is stored in an intermediate location, like an S3 bucket or a Data Catalog.
+   The Step Functions workflow invokes the ExtractData step. In this step, an AWS Glue job named, ExtractJob, is performed. The ExtractJob extracts data from various source systems, such as S3 buckets, relational databases, or NoSQL databases. The extracted data is stored in an intermediate location, like an S3 bucket or a Data Catalog.
 
 3. Transform
 
-    The Step Functions workflow proceeds to the TransformData step. In this step, another AWS Glue job named, TransformJob is performed. The TransformJob retrieves the extracted data from the intermediate location. Various transformations are applied to the data, such as data cleaning, validation, enrichment, and normalization. The transformed data is stored in another intermediate location, like an S3 bucket or a Data Catalog.
+   The Step Functions workflow proceeds to the TransformData step. In this step, another AWS Glue job named, TransformJob is performed. The TransformJob retrieves the extracted data from the intermediate location. Various transformations are applied to the data, such as data cleaning, validation, enrichment, and normalization. The transformed data is stored in another intermediate location, like an S3 bucket or a Data Catalog.
 
 4. Load
 
-    The Step Functions workflow moves to the LoadData step. In this step, an AWS Glue job named, LoadJob, is performed. The LoadJob retrieves the transformed data from the intermediate location. The transformed data is loaded into the target system, which in this case is an Amazon Redshift data warehouse. The loading process might involve creating or updating tables, partitioning data, and optimizing the data for querying and analysis.
+   The Step Functions workflow moves to the LoadData step. In this step, an AWS Glue job named, LoadJob, is performed. The LoadJob retrieves the transformed data from the intermediate location. The transformed data is loaded into the target system, which in this case is an Amazon Redshift data warehouse. The loading process might involve creating or updating tables, partitioning data, and optimizing the data for querying and analysis.
 
 5. Completion
 
-    After the data is successfully loaded into Amazon Redshift, the Step Functions workflow completes.
+   After the data is successfully loaded into Amazon Redshift, the Step Functions workflow completes.
 
 ### Extract, Load, Transform (ELT) workload
 
@@ -578,23 +576,23 @@ Transformations might include the following:
 
 1. Initial event
 
-    A Lambda function is initiated by an event, such as a file upload to Amazon S3, API call, or scheduled event.
+   A Lambda function is initiated by an event, such as a file upload to Amazon S3, API call, or scheduled event.
 
 2. Extract
 
-    The Lambda function extracts data from the source and stores it in Amazon S3.
+   The Lambda function extracts data from the source and stores it in Amazon S3.
 
 3. Metadata
 
-    A Glue crawler discovers the data in Amazon S3 and creates metadata tables in the AWS Glue Data Catalog.
+   A Glue crawler discovers the data in Amazon S3 and creates metadata tables in the AWS Glue Data Catalog.
 
 4. Load
 
-    Use the **COPY** command in Amazon Redshift to load the extracted data from Amazon S3 or other data sources directly into Redshift tables. The **COPY** command supports parallel and compressed file loading, which can significantly improve the loading performance.
+   Use the **COPY** command in Amazon Redshift to load the extracted data from Amazon S3 or other data sources directly into Redshift tables. The **COPY** command supports parallel and compressed file loading, which can significantly improve the loading performance.
 
 5. Transform
 
-    SQL queries perform various transformations, such as data cleansing, deduplication, joining tables, and creating aggregates. The powerful parallel processing capabilities and advanced SQL features like window functions, materialized views, and stored procedures to perform complex transformations efficiently.
+   SQL queries perform various transformations, such as data cleansing, deduplication, joining tables, and creating aggregates. The powerful parallel processing capabilities and advanced SQL features like window functions, materialized views, and stored procedures to perform complex transformations efficiently.
 
 After looking into the workflow, let’s look at the tools involved in transforming the data.
 
@@ -630,19 +628,19 @@ For Python UDFs, you can use the standard Python functionality and custom Python
 
 1. Call of UDF function
 
-    The Amazon Redshift query calls a Python UDF.
+   The Amazon Redshift query calls a Python UDF.
 
 2. Conversion to Python data type
 
-    The UDF converts the input arguments to Python data types and passes them to the Python program to run.
+   The UDF converts the input arguments to Python data types and passes them to the Python program to run.
 
 3. Single value returned
 
-    The Python code returns a single value to the UDF. The data type of the return value must correspond to the RETURNS data type that the function definition has specified.
+   The Python code returns a single value to the UDF. The data type of the return value must correspond to the RETURNS data type that the function definition has specified.
 
 4. Conversion and return to caller
 
-    The UDF converts the Python return value to the specified Amazon Redshift data type and then returns that value to the query.
+   The UDF converts the Python return value to the specified Amazon Redshift data type and then returns that value to the query.
 
 You can create Lambda UDFs that use custom functions defined in Lambda as part of SQL queries. Analysts can use Lambda UDFs to write complex UDFs and integrate with AWS services and third-party components. They can help overcome some of the limitations of current Python and SQL UDFs. For example, they can help access network and storage resources and write more full-fledged SQL statements. Users can create Lambda UDFs in languages that Lambda supports, such as Java, Go, PowerShell, Node.js, C#, Python, Ruby, or use a custom runtime.
 
@@ -650,23 +648,23 @@ You can create Lambda UDFs that use custom functions defined in Lambda as part o
 
 1. Query sent to Amazon Redshift
 
-    A query is issued to Amazon Redshift.
+   A query is issued to Amazon Redshift.
 
 2. Batch creation
 
-    Amazon Redshift batches the data.
+   Amazon Redshift batches the data.
 
 3. Data goes to function
 
-    Amazon Redshift passes the data to the Lambda functions concurrently.
+   Amazon Redshift passes the data to the Lambda functions concurrently.
 
 4. Result returns to Redshift
 
-    The Lambda function is processed and passes the result back to Amazon Redshift.
+   The Lambda function is processed and passes the result back to Amazon Redshift.
 
 5. Result returns to user
 
-    The result is presented to the user.
+   The result is presented to the user.
 
 ### Amazon Redshift stored procedures
 
@@ -686,76 +684,72 @@ Materialized views in Amazon Redshift are pre-computed views that store the resu
 
 - Procedural logic
 
-    With stored procedures, you can implement complex procedural logic within your data warehouse. This includes control flow statements (IF, CASE, and LOOP), variable declarations, and error handling mechanisms. This can simplify and centralize complex data manipulation tasks.
+  With stored procedures, you can implement complex procedural logic within your data warehouse. This includes control flow statements (IF, CASE, and LOOP), variable declarations, and error handling mechanisms. This can simplify and centralize complex data manipulation tasks.
 
 - Performance
 
-    Stored procedures can improve performance by reducing network roundtrips between the client application and the Redshift cluster. Instead of sending multiple SQL statements, you can run the entire procedure on the Redshift cluster to minimize network overhead.
+  Stored procedures can improve performance by reducing network roundtrips between the client application and the Redshift cluster. Instead of sending multiple SQL statements, you can run the entire procedure on the Redshift cluster to minimize network overhead.
 
 - Security
 
-    Stored procedures can be granted permissions separately from the underlying database objects they access. Therefore, you can control access to sensitive data or operations at a more granular level.
+  Stored procedures can be granted permissions separately from the underlying database objects they access. Therefore, you can control access to sensitive data or operations at a more granular level.
 
 - Reusability
 
-    By encapsulating logic in stored procedures, you can promote code reuse across different applications or processes that interact with your data warehouse.
+  By encapsulating logic in stored procedures, you can promote code reuse across different applications or processes that interact with your data warehouse.
 
 - Maintenance
 
-    Stored procedures centralize the logic for performing specific tasks to maintain and update the code as requirements change.
+  Stored procedures centralize the logic for performing specific tasks to maintain and update the code as requirements change.
 
 - Transaction management
 
-    Stored procedures can be used to ensure data consistency by wrapping multiple SQL statements within a single transaction.
+  Stored procedures can be used to ensure data consistency by wrapping multiple SQL statements within a single transaction.
 
 - Temporary tables
 
-    Amazon Redshift supports the creation of temporary tables within stored procedures, which can be useful for intermediate data processing or staging purposes.
+  Amazon Redshift supports the creation of temporary tables within stored procedures, which can be useful for intermediate data processing or staging purposes.
 
 - Debugging and monitoring
-  
-    Amazon Redshift provides tools and utilities for debugging and monitoring stored procedures, such as logging and profiling.
+
+  Amazon Redshift provides tools and utilities for debugging and monitoring stored procedures, such as logging and profiling.
 
 - Limitations
 
-    Although stored procedures offer many benefits, they also have some limitations in Amazon Redshift. For example, they cannot be called recursively, and there are restrictions on certain SQL statements that can be used within procedures.
+  Although stored procedures offer many benefits, they also have some limitations in Amazon Redshift. For example, they cannot be called recursively, and there are restrictions on certain SQL statements that can be used within procedures.
 
 You can use Amazon Redshift stored procedures to implement complex data transformations, handle data quality checks, manage ETL processes, or implement custom business logic within your data warehouse. However, it's important to carefully design and test your stored procedures to ensure optimal performance, security, and maintainability.
 
 #### An example
 
-The following is an example of a stored procedure. Performing SQL queries to transform data is a common approach in data engineering and analytics. In this process, data is first extracted from various sources and loaded into a staging area or data lake, often in its raw or semi-structured format. The transformation step then occurs within the target database or data warehouse, using the power of SQL queries to manipulate and reshape the data as needed. 
+The following is an example of a stored procedure. Performing SQL queries to transform data is a common approach in data engineering and analytics. In this process, data is first extracted from various sources and loaded into a staging area or data lake, often in its raw or semi-structured format. The transformation step then occurs within the target database or data warehouse, using the power of SQL queries to manipulate and reshape the data as needed.
 
 - Extract
 
-    Retrieve the raw data from various sources such as databases, flat files, APIs, or streaming data sources. This step typically involves extracting the data and storing it in a staging area or data lake without performing any transformations.
-
+  Retrieve the raw data from various sources such as databases, flat files, APIs, or streaming data sources. This step typically involves extracting the data and storing it in a staging area or data lake without performing any transformations.
 
 - Load
 
-    Load the extracted data into the target database or data warehouse. This step might involve creating temporary or staging tables to hold the raw data before transformation.
-
+  Load the extracted data into the target database or data warehouse. This step might involve creating temporary or staging tables to hold the raw data before transformation.
 
 - Transform
 
-    Use SQL queries to transform the loaded data into the desired format. This step involves a series of operations such as filtering, joining, aggregating, pivoting, and cleaning data. Some common SQL operations used for transformation include the following:  
-    Filtering: Use 'WHERE' clauses or 'JOIN' conditions to filter out unnecessary data.  
-    Joining: Combine data from multiple tables using 'JOIN' operations, such as 'INNER JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'FULL OUTER JOIN'.  
-    Aggregating: Use 'GROUP BY' and aggregate functions like 'SUM', 'AVG', 'COUNT', 'MAX', and 'MIN' to summarize data.  
-    Pivoting: Reshape data from rows to columns or vice versa using 'PIVOT' or 'UNPIVOT' clauses (syntax might vary across database systems).  
-    Cleaning: Use string manipulation functions, for example 'TRIM', 'REPLACE', 'SUBSTRING', and data type conversions to clean and format data.  
-    Derived Columns: Create new columns or calculate values using expressions, functions, or case statements.
-
+  Use SQL queries to transform the loaded data into the desired format. This step involves a series of operations such as filtering, joining, aggregating, pivoting, and cleaning data. Some common SQL operations used for transformation include the following:  
+   Filtering: Use 'WHERE' clauses or 'JOIN' conditions to filter out unnecessary data.  
+   Joining: Combine data from multiple tables using 'JOIN' operations, such as 'INNER JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'FULL OUTER JOIN'.  
+   Aggregating: Use 'GROUP BY' and aggregate functions like 'SUM', 'AVG', 'COUNT', 'MAX', and 'MIN' to summarize data.  
+   Pivoting: Reshape data from rows to columns or vice versa using 'PIVOT' or 'UNPIVOT' clauses (syntax might vary across database systems).  
+   Cleaning: Use string manipulation functions, for example 'TRIM', 'REPLACE', 'SUBSTRING', and data type conversions to clean and format data.  
+   Derived Columns: Create new columns or calculate values using expressions, functions, or case statements.
 
 - Window Functions
 
-    Use window functions like 'ROW_NUMBER', 'RANK', 'LEAD', and 'LAG' for advanced data manipulation and analysis.
-
+  Use window functions like 'ROW_NUMBER', 'RANK', 'LEAD', and 'LAG' for advanced data manipulation and analysis.
 
 - Load Transformed Data
 
-    After the data is transformed, create the final target tables or views and load the transformed data into them. This step might involve creating indexes, constraints, or partitions as needed.  
-    After the transformed data is loaded, you are able to make data-driven decisions at a faster pace.
+  After the data is transformed, create the final target tables or views and load the transformed data into them. This step might involve creating indexes, constraints, or partitions as needed.  
+   After the transformed data is loaded, you are able to make data-driven decisions at a faster pace.
 
 ### Deep dive into transformation tools
 
@@ -770,29 +764,29 @@ With AWS Glue, you can discover and connect to more than 70 diverse data sources
 AWS Glue capabilities include data discovery, modern ETL, cleansing, transforming, and centralized cataloging. It's also serverless, which means there's no infrastructure to manage. With flexible support for all workloads like ETL, ELT, and streaming in one service, AWS Glue supports users across various workloads and types of users.  
 AWS Glue integrates with AWS analytics services and Amazon S3 data lakes. It scales for any data size, and supports all data types and schema variances.
 
-**AWS Lambda** can be used in conjunction with Amazon Redshift to perform various tasks related to data processing, loading, and transformations.  
+**AWS Lambda** can be used in conjunction with Amazon Redshift to perform various tasks related to data processing, loading, and transformations.
 
 The following is a general overview of how you can use Lambda with Amazon Redshift.
 
 - Data loading
 
-    You can load data from various sources, such as Amazon S3, DynamoDB, or Kinesis, into Amazon Redshift. Lambda functions can be invoked by events from these sources. It can process the data and then use the Amazon Redshift Data API or the AWS SDK for Python (Boto3) to load the data into Redshift tables.
+  You can load data from various sources, such as Amazon S3, DynamoDB, or Kinesis, into Amazon Redshift. Lambda functions can be invoked by events from these sources. It can process the data and then use the Amazon Redshift Data API or the AWS SDK for Python (Boto3) to load the data into Redshift tables.
 
 - Data transformations
 
-    Perform data transformations before loading data into Amazon Redshift. You can write Lambda functions to clean, filter, or aggregate data before inserting it into Redshift tables.
+  Perform data transformations before loading data into Amazon Redshift. You can write Lambda functions to clean, filter, or aggregate data before inserting it into Redshift tables.
 
 - Scheduled tasks
 
-    Use Lambda in combination with Amazon CloudWatch Events to schedule tasks related to Amazon Redshift, such as running queries, generating reports, or performing maintenance operations on a regular basis.
+  Use Lambda in combination with Amazon CloudWatch Events to schedule tasks related to Amazon Redshift, such as running queries, generating reports, or performing maintenance operations on a regular basis.
 
 - Event-driven processing
 
-    Lambda can be invoked by events from other AWS services, such as Amazon S3 or DynamoDB, to perform data processing tasks on data stored in Amazon Redshift. For example, you can invoke a Lambda function whenever a new file is uploaded to an S3 bucket, and the function can then load the data from the file into a Redshift table.
+  Lambda can be invoked by events from other AWS services, such as Amazon S3 or DynamoDB, to perform data processing tasks on data stored in Amazon Redshift. For example, you can invoke a Lambda function whenever a new file is uploaded to an S3 bucket, and the function can then load the data from the file into a Redshift table.
 
 - Amazon Redshift automation
 
-    Lambda can be used to automate various tasks related to Amazon Redshift, such as resizing clusters, creating snapshots, or running vacuum and analyze operations.
+  Lambda can be used to automate various tasks related to Amazon Redshift, such as resizing clusters, creating snapshots, or running vacuum and analyze operations.
 
 To use Lambda with Amazon Redshift, you will need to create a Lambda function and configure the necessary permissions and policies. You can use the right Lambda role to grant the necessary permissions to run your Lambda function and access Amazon Redshift and other AWS services.
 
@@ -816,37 +810,38 @@ After your Redshift Spectrum tables have been defined, you can query and join th
 
 - Data lake integration
 
-    Redshift Spectrum integrates seamlessly with the AWS data lake stored in Amazon S3. It can query structured and semi-structured data formats like CSV, Parquet, JSON, and more, directly from Amazon S3 without the need for data movement or transformation.
+  Redshift Spectrum integrates seamlessly with the AWS data lake stored in Amazon S3. It can query structured and semi-structured data formats like CSV, Parquet, JSON, and more, directly from Amazon S3 without the need for data movement or transformation.
 
 - Query optimization
 
-    Redshift Spectrum employs various optimization techniques, such as partition pruning and predicate pushdown, to minimize the amount of data scanned and improve query performance.
+  Redshift Spectrum employs various optimization techniques, such as partition pruning and predicate pushdown, to minimize the amount of data scanned and improve query performance.
 
 - Scalability
 
-    Because Redshift Spectrum queries data directly from Amazon S3, it can scale to analyze vast amounts of data without the need to provision or scale the Redshift cluster itself.
+  Because Redshift Spectrum queries data directly from Amazon S3, it can scale to analyze vast amounts of data without the need to provision or scale the Redshift cluster itself.
 
 - Cost-effective
 
-    With Redshift Spectrum, you only pay for the data scanned during queries, not for storing or processing the entire data set. This makes it a cost-effective solution for analyzing large datasets.
+  With Redshift Spectrum, you only pay for the data scanned during queries, not for storing or processing the entire data set. This makes it a cost-effective solution for analyzing large datasets.
 
 - SQL interface
 
-    Redshift Spectrum supports standard SQL syntax and integrates with existing SQL-based applications and BI tools.
+  Redshift Spectrum supports standard SQL syntax and integrates with existing SQL-based applications and BI tools.
+
 - Security
 
-    Redshift Spectrum uses AWS Identity and Access Management (IAM) policies and Amazon S3 bucket policies to control access to data in Amazon S3 for data security and compliance.
+  Redshift Spectrum uses AWS Identity and Access Management (IAM) policies and Amazon S3 bucket policies to control access to data in Amazon S3 for data security and compliance.
 
 ### Using federated queries
 
 By using federated queries in Amazon Redshift, you can query and analyze data across operational databases, data warehouses, and data lakes. With the federated query feature, you can integrate queries from Amazon Redshift on live data in external databases with queries across your Amazon Redshift and Amazon S3 environments. Federated queries can work with external databases in Amazon RDS for PostgreSQL, Amazon Aurora PostgreSQL-Compatible Edition, Amazon RDS for MySQL, and Amazon Aurora MySQL-Compatible Edition.
 
- You can use federated queries to do the following:
+You can use federated queries to do the following:
 
 - Query operational databases directly.
 - Apply transformations quickly.
 - Load data into the target tables without the need for complex ETL pipelines.
-  
+
 To reduce data movement over the network and improve performance, Amazon Redshift distributes part of the computation for federated queries directly into the remote operational databases. Amazon Redshift also uses its parallel processing capacity to support running these queries, as needed.
 
 When running federated queries, Amazon Redshift first makes a client connection to the RDS instance or Aurora DB instance from the leader node to retrieve table metadata. From a compute node, Amazon Redshift issues subqueries with a predicate pushed down and retrieves the result rows. Amazon Redshift then distributes the result rows among the compute nodes for further processing.
@@ -933,7 +928,7 @@ When someone creates a materialized view, Amazon Redshift runs the user-specifie
 
 Analysts can then use these materialized views in queries to speed them up. Amazon Redshift can automatically rewrite these queries to use materialized views, even when the query doesn't explicitly reference a materialized view. Automatic rewrite of queries is powerful in enhancing performance when users can't change the queries to use materialized views.
 
-To update the data in the materialized view, users can use the REFRESH MATERIALIZED VIEW statement to manually refresh materialized views. Amazon Redshift provides a few ways to keep materialized views up to date for automatic rewriting. Analysts can configure materialized views to refresh materialized views when base tables of materialized views are updated. 
+To update the data in the materialized view, users can use the REFRESH MATERIALIZED VIEW statement to manually refresh materialized views. Amazon Redshift provides a few ways to keep materialized views up to date for automatic rewriting. Analysts can configure materialized views to refresh materialized views when base tables of materialized views are updated.
 
 This autorefresh operation runs when cluster resources are available to minimize disruptions to other workloads. Users can schedule a materialized view refresh job by using Amazon Redshift scheduler API and console integration.
 
@@ -945,27 +940,27 @@ The following is a brief overview of how Redshift ML is used within Amazon Redsh
 
 - Data preparation
 
-    With SQL commands, you can extract, transform, and prepare the data stored in Redshift for machine learning model training.
+  With SQL commands, you can extract, transform, and prepare the data stored in Redshift for machine learning model training.
 
 - Model creation
 
-    Using SQL statements, you can create machine learning models by specifying the algorithm type (such as linear regression, logistic regression, or XGBoost), target variable, and input features.
+  Using SQL statements, you can create machine learning models by specifying the algorithm type (such as linear regression, logistic regression, or XGBoost), target variable, and input features.
 
 - Model training
 
-    Redshift ML automatically distributes the model training process across multiple nodes in the Redshift cluster, parallelizing the computations for improved performance.
+  Redshift ML automatically distributes the model training process across multiple nodes in the Redshift cluster, parallelizing the computations for improved performance.
 
 - Model evaluation
 
-    You can evaluate the performance of your trained models using built-in metrics like accuracy, precision, recall, and F1-score.
+  You can evaluate the performance of your trained models using built-in metrics like accuracy, precision, recall, and F1-score.
 
 - Model deployment
 
-    When satisfied with the model's performance, you can deploy the trained model within the Redshift cluster using SQL commands.
+  When satisfied with the model's performance, you can deploy the trained model within the Redshift cluster using SQL commands.
 
 - Prediction and scoring
 
-    The deployed model can be used to generate predictions or scores on new data directly within Amazon Redshift, without the need to move data out of the data warehouse.
+  The deployed model can be used to generate predictions or scores on new data directly within Amazon Redshift, without the need to move data out of the data warehouse.
 
 By integrating machine learning capabilities into Amazon Redshift, Redshift ML simplifies the process of building and deploying machine learning models for data analysts and data scientists. It eliminates the need for separate data movement and specialized machine learning environments.
 
@@ -978,14 +973,14 @@ The following are different types of datashares:
 
 - Standard datashares
 
-    With standard datashares, you can share data across provisioned clusters, serverless workgroups, Availability Zones, AWS accounts, and AWS Regions. You can share between cluster types and between provisioned clusters and Amazon Redshift Serverless.  
-    Now that you have reviewed Standard Datashares, move on to the next tab to learn about AWS Data Exchange Datashares.
+  With standard datashares, you can share data across provisioned clusters, serverless workgroups, Availability Zones, AWS accounts, and AWS Regions. You can share between cluster types and between provisioned clusters and Amazon Redshift Serverless.  
+   Now that you have reviewed Standard Datashares, move on to the next tab to learn about AWS Data Exchange Datashares.
 
 - AWS data exchange datashares
 
-    An AWS Data Exchange datashare is a unit of licensing for sharing your data through AWS Data Exchange. AWS manages all billing and payments associated with subscriptions to AWS Data Exchange and the use of Amazon Redshift data sharing.  
-    Approved data providers can add AWS Data Exchange datashares to AWS Data Exchange products. When customers subscribe to a product with AWS Data Exchange datashares, they get access to the datashares in the product.  
-    Now that you have reviewed AWS Data Exchange Datashares, move on to the next tab to learn about AWS Lake Formation-managed Datashares.
+  An AWS Data Exchange datashare is a unit of licensing for sharing your data through AWS Data Exchange. AWS manages all billing and payments associated with subscriptions to AWS Data Exchange and the use of Amazon Redshift data sharing.  
+   Approved data providers can add AWS Data Exchange datashares to AWS Data Exchange products. When customers subscribe to a product with AWS Data Exchange datashares, they get access to the datashares in the product.  
+   Now that you have reviewed AWS Data Exchange Datashares, move on to the next tab to learn about AWS Lake Formation-managed Datashares.
 
 #### Datashare producers
 

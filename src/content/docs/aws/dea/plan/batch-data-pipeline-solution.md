@@ -29,7 +29,7 @@ Batch data processing is widely used in various industries and scenarios, includ
 
   This process involves processing financial transactions and generating reports on a daily, weekly, or monthly basis. Use Amazon EMR for financial reporting and use Apache Spark as the distributed processing engine.
 
-With a batch data pipeline solution, you can process financial transactions, customer data, and market data feeds for generating reports and performing analytics. 
+With a batch data pipeline solution, you can process financial transactions, customer data, and market data feeds for generating reports and performing analytics.
 
 ### Solution benefits
 
@@ -37,11 +37,11 @@ Running batch data pipelines on AWS offers the following advantages.
 
 - Scalability
 
-  With AWS services like Amazon EMR and AWS Glue, you can scale compute resources up or down based on workload demands. This ensures efficient resource utilization and cost optimization. 
+  With AWS services like Amazon EMR and AWS Glue, you can scale compute resources up or down based on workload demands. This ensures efficient resource utilization and cost optimization.
 
 - Managed services
 
-  With AWS managed services like AWS Glue and Amazon EMR Serverless, you can reduce the operational overhead of managing and maintaining the underlying infrastructure and focus on your data processing logic. 
+  With AWS managed services like AWS Glue and Amazon EMR Serverless, you can reduce the operational overhead of managing and maintaining the underlying infrastructure and focus on your data processing logic.
 
 - Integration with other AWS services
 
@@ -49,11 +49,11 @@ Running batch data pipelines on AWS offers the following advantages.
 
 - Cost optimization
 
-  AWS offers pay-as-you-go pricing model so you can optimize costs by only paying for the resources you consume. 
+  AWS offers pay-as-you-go pricing model so you can optimize costs by only paying for the resources you consume.
 
 - Security and compliance
 
-  AWS provides robust security features and compliance certifications to ensure the protection of your data and adherence to industry standards. 
+  AWS provides robust security features and compliance certifications to ensure the protection of your data and adherence to industry standards.
 
 Serve processed data to various analytics tools and custom reporting applications for further analysis and decision-making. The choice of the data serving option depends on the specific requirements of your use case, such as the type of analysis needed, the target audience, and the desired level of interactivity.
 
@@ -69,10 +69,10 @@ To learn more about Amazon EMR, refer to the [Amazon EMR documentation](https://
 
 ### AWS services for batch data processing
 
-|   |   |   |
-|---|---|---|
-| ![S3](/img/s3.png) | ![Glue](/img/glue.png) | ![EMR](/img/emr.png) |
-| **Amazon S3** | **AWS Glue** | **Amazon EMR** |
+|                                                                                                                              |                                                                                                      |                                                                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![S3](/img/s3.png)                                                                                                           | ![Glue](/img/glue.png)                                                                               | ![EMR](/img/emr.png)                                                                                                                               |
+| **Amazon S3**                                                                                                                | **AWS Glue**                                                                                         | **Amazon EMR**                                                                                                                                     |
 | A highly scalable and durable object storage service that serves as the central data lake for storing raw and processed data | A fully managed ETL service that streamlines the process of preparing and loading data for analytics | A cloud-based big data platform that you can use to run open source frameworks like Apache Spark, Hive, and Presto for distributed data processing |
 
 - **Amazon S3**
@@ -95,29 +95,27 @@ To learn more about Amazon EMR, refer to the [Amazon EMR documentation](https://
   Amazon EMR Serverless is a new deployment option for Amazon EMR that you can use to run analytics workloads without managing and provisioning clusters. With EMR Serverless, you can run applications and process data directly against data sources without configuring and managing the underlying compute resources.  
   EMR Serverless automatically provisions and manages the compute resources required to run your analytics workloads, scaling capacity up or down based on workload demand. This serverless architecture streamlines analytics workload deployment and management so you can focus on writing and running your applications without worrying about infrastructure provisioning and cluster management tasks.
 
-The batch data pipeline solution uses Amazon S3 for storing financial data, AWS Glue for data integration and transformation tasks, and Amazon EMR for processing large volumes of data using Apache Spark. The choice of services depends on factors such as the complexity of your data processing requirements, the volume of data, and the level of control and customization needed. 
+The batch data pipeline solution uses Amazon S3 for storing financial data, AWS Glue for data integration and transformation tasks, and Amazon EMR for processing large volumes of data using Apache Spark. The choice of services depends on factors such as the complexity of your data processing requirements, the volume of data, and the level of control and customization needed.
 
 ### Configuring Amazon EMR
 
-
-
 1. Choose release version
 
-  ![Version](/img/emr-choose-version.png)
+![Version](/img/emr-choose-version.png)
 
-  You first need to choose the release version of Amazon EMR that includes a specific set of software frameworks and applications. You can choose from a variety of releases. Each option is optimized for a different type of workload.
+You first need to choose the release version of Amazon EMR that includes a specific set of software frameworks and applications. You can choose from a variety of releases. Each option is optimized for a different type of workload.
 
 2. Choose bundle
 
-  ![Bundle](/img/emr-choose-bundle.png)
+![Bundle](/img/emr-choose-bundle.png)
 
-  The next configuration choice is the application bundle. This is where you choose to add options such as Spark, Hadoop, Hive, Presto, or others.
+The next configuration choice is the application bundle. This is where you choose to add options such as Spark, Hadoop, Hive, Presto, or others.
 
 3. Configure cluster
 
-  ![Cluster](/img/emr-configure-cluster.png)
+![Cluster](/img/emr-configure-cluster.png)
 
-  After you have chosen a release and the application bundle, you need to configure your cluster. This includes setting the number of nodes, the type of nodes, and the storage options. You can also configure other options, such as security and networking.
+After you have chosen a release and the application bundle, you need to configure your cluster. This includes setting the number of nodes, the type of nodes, and the storage options. You can also configure other options, such as security and networking.
 
 **Summary**
 
@@ -132,21 +130,21 @@ Consider the following opportunities to manage costs for your Amazon EMR cluster
 - Using cluster lifecycles
 
   Optimize cluster billing and options for cluster termination.
-  
+
 - Choosing compute
 
-  Optimize how Amazon Elastic Compute Cloud (Amazon EC2) instance choices, Amazon EC2 
+  Optimize how Amazon Elastic Compute Cloud (Amazon EC2) instance choices, Amazon EC2
   pricing options, and Amazon EMR features affect cluster costs.
 
 - Scaling clusters
 
-  Optimize how automated and managed scaling features can minimize overprovisioning 
+  Optimize how automated and managed scaling features can minimize overprovisioning
   and underprovisioning.
 
 - Designing storage
 
   Optimize options for distributed storage and best practices for storage.
-  
+
 ### Distributed file systems (HDFS and EMRFS)
 
 **Hadoop Distributed File System (HDFS)**  
@@ -161,7 +159,7 @@ EMRFS is an implementation of HDFS used for reading and writing regular files fr
 
 ![EMRFS](/img/emr-emrfs.png)
 
-**EMRFS** makes Amazon S3 look like the local file system, or HDFS, and it provides features like data encryption and persistent data storage. EMRFS adds strong consistency to Amazon S3, which helps extend Hadoop to allow users to directly access data stored in Amazon S3 as if it were a file system like HDFS. 
+**EMRFS** makes Amazon S3 look like the local file system, or HDFS, and it provides features like data encryption and persistent data storage. EMRFS adds strong consistency to Amazon S3, which helps extend Hadoop to allow users to directly access data stored in Amazon S3 as if it were a file system like HDFS.
 
 ### Data Partitioning
 
@@ -179,18 +177,18 @@ Combining partitioning and bucketing can further improve query performance becau
 
 ### Choosing the appropriate batch processing technology
 
-|   |   |   |
-|---|---|---|
+|                      |                        |                                            |
+| -------------------- | ---------------------- | ------------------------------------------ |
 | ![EMR](/img/emr.png) | ![Glue](/img/glue.png) | ![EMR Serverless](/img/emr-serverless.png) |
-| **Amazon EMR** | **AWS Glue** | **Amazon EMR Serverless** |
+| **Amazon EMR**       | **AWS Glue**           | **Amazon EMR Serverless**                  |
 
-**Amazon EMR** and **AWS Glue** are AWS services for batch processing. Amazon EMR is better for data that already exists in the desired format. AWS Glue is better for unprocessed data and ETL. 
+**Amazon EMR** and **AWS Glue** are AWS services for batch processing. Amazon EMR is better for data that already exists in the desired format. AWS Glue is better for unprocessed data and ETL.
 
 Amazon EMR is more flexible and can be used for small-scale and large-scale data operations. AWS Glue is used when required and better for small batch jobs. Amazon EMR can be provisioned on Amazon EC2 servers, in containers with Amazon Elastic Kubernetes Service (Amazon EKS) and Serverless. Amazon EMR Serverless is a serverless deployment of Amazon EMR that offers on-demand scaling, scalability, and cost optimization.
 
 AWS Glue is a serverless data integration service that helps users discover, prepare, move, and integrate data from multiple sources. It's best suited when organizations are resource-constrained and need to build data processing workloads at scale. AWS Glue can also streamline ETL processes to enhance data preparation and movement.
 
-The choice between **EMR Serverless** and **AWS Glue** depends on specific data processing needs. For example, you can use Amazon EMR for data loading and processing, and then use batch to run code on the resources you declare. 
+The choice between **EMR Serverless** and **AWS Glue** depends on specific data processing needs. For example, you can use Amazon EMR for data loading and processing, and then use batch to run code on the resources you declare.
 
 ### Amazon EMR or AWS Glue decision tree
 
@@ -248,7 +246,6 @@ The choice of ingestion pattern depends on factors such as data volume, data fre
 
 Investigate the following considerations for the data ingestion phase of the batch data pipeline:
 
-
 #### Data ingestion value
 
 Effective data ingestion is crucial for several reasons:
@@ -281,7 +278,7 @@ Data ingestion involves efficiently retrieving data from various sources, such a
 
 ### Ingesting data
 
-Batch data can originate from various sources such as databases, file-based sources, cloud storage, and streaming sources. To ingest this data into a data pipeline solution, services like AWS Glue Crawlers, AWS Glue DataBrew, Amazon Athena, and Apache Spark can be employed. 
+Batch data can originate from various sources such as databases, file-based sources, cloud storage, and streaming sources. To ingest this data into a data pipeline solution, services like AWS Glue Crawlers, AWS Glue DataBrew, Amazon Athena, and Apache Spark can be employed.
 
 When configuring batch ingestion, considerations include data format, partitioning strategies, data sampling, and compression to optimize performance, storage utilization, and costs.
 
@@ -305,9 +302,9 @@ When configuring batch ingestion, you may need to consider various options and s
 
 ### Starting data ingestion workflows
 
-|   |   |   |
-|---|---|---|
-| Amazon EventBridge | Amazon MWAA | Time-based schedules |
+|                                                                                                                                       |                                                                                                              |                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| Amazon EventBridge                                                                                                                    | Amazon MWAA                                                                                                  | Time-based schedules                                                                                            |
 | Use EventBridge to create scheduled rules that initiate AWS Lambda functions or other AWS services to initiate the ingestion process. | Use Amazon Managed Workflows for Apache Airflow (MWAA) to orchestrate and schedule data ingestion workflows. | Configure time-based schedules for AWS Glue jobs and crawlers to run at specific intervals or cron expressions. |
 
 #### Event-driven ingestion
@@ -322,7 +319,6 @@ AWS provides the following services and features for event-driven ingestion:
 - **EventBridge**
 
   Use EventBridge to capture and respond to events from various AWS services, including Amazon S3, DynamoDB, and Kinesis.
-
 
 #### Scheduled ingestion
 

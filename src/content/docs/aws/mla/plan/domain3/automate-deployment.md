@@ -4,6 +4,7 @@ description: Skill Builder
 sidebar:
   order: 3
 ---
+
 :::note
 **Domain 3: Deployment and Orchestration of ML Workflows**
 :::
@@ -13,7 +14,7 @@ sidebar:
 ### Introduction to MLOps
 
 MLOps applies DevOps principles like automation, monitoring, and collaboration to ML systems. However, MLOps requires tailored processes and procedures to manage the ML model lifecycle from development through deployment.  
-A key aspect of MLOps is applying continuous integration (CI) and continuous deployment (CD). 
+A key aspect of MLOps is applying continuous integration (CI) and continuous deployment (CD).
 
 ![Ci/CD](/img/ci-cd.png)
 
@@ -25,15 +26,15 @@ A key aspect of MLOps is applying continuous integration (CI) and continuous dep
 
 1. Data engineers
 
-    Data engineers are responsible for data sourcing, data cleaning, and data processing. They transform data into a consumable format for ML and data scientist analysis.
+   Data engineers are responsible for data sourcing, data cleaning, and data processing. They transform data into a consumable format for ML and data scientist analysis.
 
 2. Data scientists
 
-    Data scientists are responsible for model development including model training, evaluation, and monitoring to drive insights from data.
+   Data scientists are responsible for model development including model training, evaluation, and monitoring to drive insights from data.
 
 3. ML engineers
 
-    ML Engineers are responsible for model deployment, production integration, and monitoring. They standardize ML systems development (Dev) and ML systems deployment (Ops) for continuous delivery of high-performing production ML models.
+   ML Engineers are responsible for model deployment, production integration, and monitoring. They standardize ML systems development (Dev) and ML systems deployment (Ops) for continuous delivery of high-performing production ML models.
 
 ---
 
@@ -45,11 +46,11 @@ Data and ML code are separate components that are both critical for developing a
 
 1. Data component
 
-    Data engineers build and maintain the core infrastructure needed to feed accurate, consistent data to downstream data scientists and machine learning systems. Their foundational data work enables advanced analytics and models.
+   Data engineers build and maintain the core infrastructure needed to feed accurate, consistent data to downstream data scientists and machine learning systems. Their foundational data work enables advanced analytics and models.
 
 2. Model building and deployment code
 
-    Data scientists own the model build portion of the ML lifecycle. The ML engineer or MLOps engineer creates and manages model deployment code that is part of a model deployment workflow.
+   Data scientists own the model build portion of the ML lifecycle. The ML engineer or MLOps engineer creates and manages model deployment code that is part of a model deployment workflow.
 
 #### Nonfunctional requirements in ML
 
@@ -66,24 +67,23 @@ Data and ML code are separate components that are both critical for developing a
 - **Scalability**: Ensures the scaling of resources, such as compute, storage, memory, to handle increased demand and data volumes.
 
 - **Auditability**: Provides comprehensive logs, versioning, and dependency tracking of all ML artifacts for transparency and compliance.
-  
 - **Explainability**: Incorporates techniques that promote decision transparency and model interpretability.
 
 #### Comparing the ML workflow with DevOps
 
 Machine learning projects have unique complexities compared to traditional software development.
 
-| Feature | DevOps | MLOps |
-|---------|--------|-------|
-| Code versioning  | ✔️  | ✔️  |
-| Compute environment  | ✔️  | ✔️  |
-| CI/CD  | ✔️  | ✔️  |
-| Monitoring in production  | ✔️  | ✔️  |
-| Data provenance  |   | ✔️  |
-| Datasets  |   | ✔️  |
-| Models  |   | ✔️  |
-| Model building with workflows  |   | ✔️  |
-| Model deployment with workflows  |   | ✔️  |
+| Feature                         | DevOps | MLOps |
+| ------------------------------- | ------ | ----- |
+| Code versioning                 | ✔️     | ✔️    |
+| Compute environment             | ✔️     | ✔️    |
+| CI/CD                           | ✔️     | ✔️    |
+| Monitoring in production        | ✔️     | ✔️    |
+| Data provenance                 |        | ✔️    |
+| Datasets                        |        | ✔️    |
+| Models                          |        | ✔️    |
+| Model building with workflows   |        | ✔️    |
+| Model deployment with workflows |        | ✔️    |
 
 ### Automating Testing in CI/CD Pipelines
 
@@ -93,19 +93,19 @@ Automated testing is an essential part of maintaining quality in machine learnin
 
 1. Unit tests
 
-    Validate smaller components like individual functions or methods.
+   Validate smaller components like individual functions or methods.
 
 2. Integration tests
 
-    Can check that pipeline stages, including data ingestion, training, and deployment, work together correctly. Other types of integration tests depend on your system or architecture.
+   Can check that pipeline stages, including data ingestion, training, and deployment, work together correctly. Other types of integration tests depend on your system or architecture.
 
 3. Regression tests
 
-    In practice, regression testing is re-running the same tests to make sure something that used to work was not broken by a change. Regression tests are not only for models.
+   In practice, regression testing is re-running the same tests to make sure something that used to work was not broken by a change. Regression tests are not only for models.
 
 #### SageMaker Projects
 
-For more information about creating a real project using SageMaker Projects, refer to the following templates: 
+For more information about creating a real project using SageMaker Projects, refer to the following templates:
 
 - To use the [MLOps template for model building, training, and deployment](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-templates-sm.html#sagemaker-projects-templates-code-commit), refer to [SageMaker MLOps Project Walkthrough](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-walkthrough.html).
 - To use the [MLOps template for model building, training, and deployment with third-party Git repositories using CodePipeline](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-templates-sm.html#sagemaker-projects-templates-git-code-pipeline), refer to [SageMaker MLOps Project Walkthrough Using Third-party Git Repos](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-walkthrough-3rdgit.html).
@@ -117,23 +117,23 @@ Version control systems like Git are integral to MLOps pipelines because they fa
 
 - Collaboration
 
-    Working on code concurrently means that multiple team members can edit the same codebase simultaneously. They can then merge their changes together while resolving any conflicts that arise during the integration process. This concurrent development model streamlines workflow by facilitating rapid, parallel contributions to shared code.
+  Working on code concurrently means that multiple team members can edit the same codebase simultaneously. They can then merge their changes together while resolving any conflicts that arise during the integration process. This concurrent development model streamlines workflow by facilitating rapid, parallel contributions to shared code.
 
 - Change tracking
 
-    Version control systems track all changes made to code, recording who made each change, when, and the reason why. This detailed change log helps developers debug code by seeing how it has evolved. It also facilitates auditing and understanding a project's history.
+  Version control systems track all changes made to code, recording who made each change, when, and the reason why. This detailed change log helps developers debug code by seeing how it has evolved. It also facilitates auditing and understanding a project's history.
 
 - Branching and merging
 
-    Developers use branches to isolate code changes from the main codebase. By creating branches, developers can add features, experiment, and fix bugs without affecting the stable main code. After changes in a branch are tested and reviewed, the branch can be merged back into the main codebase to integrate the changes.
+  Developers use branches to isolate code changes from the main codebase. By creating branches, developers can add features, experiment, and fix bugs without affecting the stable main code. After changes in a branch are tested and reviewed, the branch can be merged back into the main codebase to integrate the changes.
 
 - Reproducibility
 
-    Version control systems track changes to models, data, and configurations, facilitating reproducibility of machine learning experiments and results. This reproducibility helps data scientists to validate and verify their models more easily. Tracking all changes over time provides a record of model iterations that supports rigor and transparency. With change control, you can also revert changes, which is important when tests fail or when you want to recreate a historical version.
+  Version control systems track changes to models, data, and configurations, facilitating reproducibility of machine learning experiments and results. This reproducibility helps data scientists to validate and verify their models more easily. Tracking all changes over time provides a record of model iterations that supports rigor and transparency. With change control, you can also revert changes, which is important when tests fail or when you want to recreate a historical version.
 
 - Deployment to CI/CD pipelines
 
-    Developers can use version control systems to integrate code changes into a shared code repository. When code is committed to the repository, continuous integration and continuous delivery (CI/CD) pipelines can automatically kick off processes like testing, building, and deploying the code. Using version control with CI/CD pipelines streamlines the software development and delivery processes.
+  Developers can use version control systems to integrate code changes into a shared code repository. When code is committed to the repository, continuous integration and continuous delivery (CI/CD) pipelines can automatically kick off processes like testing, building, and deploying the code. Using version control with CI/CD pipelines streamlines the software development and delivery processes.
 
 For more information about Git, refer to [What is Git?](https://aws.amazon.com/devops/source-control/git/)
 
@@ -151,27 +151,27 @@ Continuous deployment flow structures refer to sets of processes, tools, and pra
 
 - Model training and versioning
 
-    Automated processes for training and versioning ML models, ensuring that changes and updates to the model can be tracked and managed effectively
+  Automated processes for training and versioning ML models, ensuring that changes and updates to the model can be tracked and managed effectively
 
 - Model packaging and containerization
 
-    Packaging the trained ML model, along with its dependencies, into a standardized container format (for example, Docker) for convenient and consistent deployment
+  Packaging the trained ML model, along with its dependencies, into a standardized container format (for example, Docker) for convenient and consistent deployment
 
 - Continuous integration (CI)
 
-    Automated processes for building, testing, and validating the ML model and its associated components, ensuring that new changes do not introduce regressions or errors
+  Automated processes for building, testing, and validating the ML model and its associated components, ensuring that new changes do not introduce regressions or errors
 
 - Deployment automation
 
-    Automated processes for deploying the packaged ML model to the target production environment, such as cloud-based infrastructure or on-premises servers 
+  Automated processes for deploying the packaged ML model to the target production environment, such as cloud-based infrastructure or on-premises servers
 
 - Monitoring and observability
 
-    Mechanisms for continuously monitoring the performance, reliability, and health of the deployed ML model, providing insights and invoking necessary actions, such as model retraining or rollback
+  Mechanisms for continuously monitoring the performance, reliability, and health of the deployed ML model, providing insights and invoking necessary actions, such as model retraining or rollback
 
 - Rollback and rollforward strategies
 
-    In the event of issues or performance degradation you might rollback or rollforward. Use established rollback processes for quickly reverting to a previous, stable version of the ML model. Use established rollforward processes for deploying a new, updated version of the ML model.
+  In the event of issues or performance degradation you might rollback or rollforward. Use established rollback processes for quickly reverting to a previous, stable version of the ML model. Use established rollforward processes for deploying a new, updated version of the ML model.
 
 #### Gitflow
 
@@ -179,23 +179,23 @@ Continuous deployment flow structures refer to sets of processes, tools, and pra
 
 1. Main
 
-    This is the primary branch that represents the official, production-ready state of the codebase. It is the branch that contains the latest stable, released version of the software. 
+   This is the primary branch that represents the official, production-ready state of the codebase. It is the branch that contains the latest stable, released version of the software.
 
 2. Hotfix
 
-    These branches are used to quickly address and fix critical issues in the production environment. They are branched off from the main branch and are merged back into both the main and develop branches.
+   These branches are used to quickly address and fix critical issues in the production environment. They are branched off from the main branch and are merged back into both the main and develop branches.
 
 3. Release
 
-    These branches are used to prepare a new production release. They are branched off from the develop branch and can include final touches, such as bug fixes, before being merged into the main branch.
+   These branches are used to prepare a new production release. They are branched off from the develop branch and can include final touches, such as bug fixes, before being merged into the main branch.
 
 4. Develop
 
-    This branch is used for active development and integration of new features. It serves as the central hub where all the completed features are merged.
+   This branch is used for active development and integration of new features. It serves as the central hub where all the completed features are merged.
 
 5. Feature
 
-    These are short-lived branches that are created for the development of new features. They are typically branched off from the develop branch and are merged back into it after the feature is complete.
+   These are short-lived branches that are created for the development of new features. They are typically branched off from the develop branch and are merged back into it after the feature is complete.
 
 #### Gitflow workflow
 
@@ -241,7 +241,6 @@ Merge the release branch back into the develop branch to incorporate the changes
 
 If a critical issue is found in the production environment, first create a hotfix branch from the main branch. Then fix the issue and merge it back into both the main and develop branches.
 
-
 ## AWS Software Release Process
 
 ### Continuous Delivery Services
@@ -252,15 +251,15 @@ CodePipeline supports integration with various AWS services, including CodeCommi
 
 - Manual approvals
 
-    You can configure manual approval gates in your pipeline so that you can control the release process. These manual approvals can be configured to require approval from specific users or groups.
+  You can configure manual approval gates in your pipeline so that you can control the release process. These manual approvals can be configured to require approval from specific users or groups.
 
 - Monitoring and notifications
 
-    CodePipeline provides visibility into the status of your pipelines, with detailed logs and notifications. There are several ways you can monitor your pipeline to ensure its performance, reliability, and availability, and to find ways to improve it. You can monitor the pipeline directly from the CodePipeline console, the AWS Command Line Interface (AWS CLI), use Amazon EventBridge, or AWS CloudTrail.
+  CodePipeline provides visibility into the status of your pipelines, with detailed logs and notifications. There are several ways you can monitor your pipeline to ensure its performance, reliability, and availability, and to find ways to improve it. You can monitor the pipeline directly from the CodePipeline console, the AWS Command Line Interface (AWS CLI), use Amazon EventBridge, or AWS CloudTrail.
 
 - Security
 
-    CodePipeline supports resource-level permissions, making it possible for you to specify which user can perform what action on the pipeline. Some users might have read-only access to the pipeline, whereas others might have access to a particular stage or action in a stage.
+  CodePipeline supports resource-level permissions, making it possible for you to specify which user can perform what action on the pipeline. Some users might have read-only access to the pipeline, whereas others might have access to a particular stage or action in a stage.
 
 #### CodeBuild
 
@@ -268,11 +267,11 @@ CodeBuild is a fully managed continuous integration service that compiles source
 
 CodeBuild provides detailed logging, auto-scaling capacity, and high availability for builds. It also integrates with other AWS services like CodePipeline and Amazon Elastic Container Registry (Amazon ECR) for end-to-end CI/CD workflows. Build artifacts can be stored in Amazon Simple Storage Service (Amazon S3) buckets or other destinations. Also builds can be monitored through the CodeBuild console, Amazon CloudWatch, and other methods. You get fine-grained access controls for build projects using AWS Identity and Access Management (IAM) policies.
 
-#### CodeDeploy 
+#### CodeDeploy
 
-CodeDeploy is a deployment service that provides automated deployments, flexible deployment strategies, rollback capabilities, and integration with other AWS services to help manage the application lifecycle across environments. 
+CodeDeploy is a deployment service that provides automated deployments, flexible deployment strategies, rollback capabilities, and integration with other AWS services to help manage the application lifecycle across environments.
 
-CodeDeploy facilitates automated application deployments to multiple environments, supporting deployment strategies like blue/green, in-place, and canary deployments. It provides rollback capabilities, detailed monitoring and logging, and integration with services like Amazon EC2, Lambda, and Amazon ECS to manage deployments across AWS environments. 
+CodeDeploy facilitates automated application deployments to multiple environments, supporting deployment strategies like blue/green, in-place, and canary deployments. It provides rollback capabilities, detailed monitoring and logging, and integration with services like Amazon EC2, Lambda, and Amazon ECS to manage deployments across AWS environments.
 
 With CodeDeploy, you can implement secure, compliant, and reliable application deployments while reducing the risks associated with manual processes.
 
@@ -284,43 +283,39 @@ N/A
 
 #### Running SageMaker Pipelime
 
-
-
 - Pipeline definition
 
-    To run a SageMaker Pipeline, you first must define the pipeline. This involves creating a pipeline script or a JSON file that describes the sequence of steps and their dependencies. Each step in the pipeline is represented by a SageMaker Pipeline component that manages these tasks: 
+  To run a SageMaker Pipeline, you first must define the pipeline. This involves creating a pipeline script or a JSON file that describes the sequence of steps and their dependencies. Each step in the pipeline is represented by a SageMaker Pipeline component that manages these tasks:
 
-    - Manages data processing and feature engineering
-    - Trains the ML model
-    - Evaluates the performance of the trained model
-    - Registers the trained model in the SageMaker model registry
-    - Deploys the trained model as a SageMaker endpoint for real-time inference
+  - Manages data processing and feature engineering
+  - Trains the ML model
+  - Evaluates the performance of the trained model
+  - Registers the trained model in the SageMaker model registry
+  - Deploys the trained model as a SageMaker endpoint for real-time inference
 
 - Pipeline run
 
-    After the pipeline is defined, you can run it using the SageMaker Python SDK or the AWS CLI. The SDK provides a Pipeline class for creating, running, and monitoring the running pipeline.
+  After the pipeline is defined, you can run it using the SageMaker Python SDK or the AWS CLI. The SDK provides a Pipeline class for creating, running, and monitoring the running pipeline.
 
 - Step run
 
-    When you run the pipeline, SageMaker orchestrates the running of each step in the pipeline. The running of the pipeline follows the defined dependencies, ensuring that the required data and artifacts are available for each step. 
+  When you run the pipeline, SageMaker orchestrates the running of each step in the pipeline. The running of the pipeline follows the defined dependencies, ensuring that the required data and artifacts are available for each step.
 
 - Monitoring and debugging
 
-    During the running of the pipeline, you can monitor the progress and status of the pipeline and its individual steps. SageMaker provides visualization tools and logs to help you track the pipeline's running and identify any issues or errors.
+  During the running of the pipeline, you can monitor the progress and status of the pipeline and its individual steps. SageMaker provides visualization tools and logs to help you track the pipeline's running and identify any issues or errors.
 
 - Reusability and versioning
 
-    SageMaker Pipelines support versioning, so you can track changes to your pipeline definition and maintain a history of runs. This helps you to reproduce and iterate on your ML workflows.
+  SageMaker Pipelines support versioning, so you can track changes to your pipeline definition and maintain a history of runs. This helps you to reproduce and iterate on your ML workflows.
 
 - Integration with other AWS services
 
-    SageMaker Pipelines can be integrated with other AWS services. For example, AWS Glue for data preparation, Lambda for custom processing steps, and Amazon S3 for data storage and model artifacts.
+  SageMaker Pipelines can be integrated with other AWS services. For example, AWS Glue for data preparation, Lambda for custom processing steps, and Amazon S3 for data storage and model artifacts.
 
 For more information about SageMaker Pipelines, refer to [Amazon SageMaker Model Building Pipelines](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html).  
 For a tutorial about the implementation of these concepts, refer to [Create and Manage SageMaker Pipelines](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-build.html).  
-For a tutorial about creating and automating end-to-end ML workflows using SageMaker Pipelines, refer to [Automate Machine Learning Workflows](https://aws.amazon.com/tutorials/machine-learning-tutorial-mlops-automate-ml-workflows/).  
-
-
+For a tutorial about creating and automating end-to-end ML workflows using SageMaker Pipelines, refer to [Automate Machine Learning Workflows](https://aws.amazon.com/tutorials/machine-learning-tutorial-mlops-automate-ml-workflows/).
 
 ## Automating Orchestration
 

@@ -36,8 +36,7 @@ The [plan](https://explore.skillbuilder.aws/learn/course/internal/view/elearning
 
 3. [Refine Models](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/19678/aws-ml-engineer-associate-23-refine-models) (2 hours)
 
-3. [Analyze Model Performance](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/19653/aws-ml-engineer-associate-24-analyze-model-performance
-) (45 minutes)
+4. [Analyze Model Performance](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/19653/aws-ml-engineer-associate-24-analyze-model-performance) (45 minutes)
 
 ### Domain 3: Deployment and Orchestration of ML Workflows
 
@@ -46,7 +45,7 @@ The [plan](https://explore.skillbuilder.aws/learn/course/internal/view/elearning
 2. [Create and Script Infrastructure](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/20360/aws-ml-engineer-associate-32-create-and-script-infrastructure) (1 hour 30 minutes)
 
 3. [Automate Deployment](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/20361/aws-ml-engineer-associate-33-automate-deployment) (1 hour 15 minutes)
-  
+
 ### Domain 4: ML Solution Monitoring, Maintenance, and Security
 
 1. [Monitor Model Performance and Data Quality](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/20446/aws-ml-engineer-associate-41-monitor-model-performance-and-data-quality) (2 hours 30 minutes)
@@ -61,7 +60,7 @@ The [plan](https://explore.skillbuilder.aws/learn/course/internal/view/elearning
 
 2.  [Planning a Machine Learning Project](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/6351/planning-a-machine-learning-project) (30 minutes)
 
-3. [Amazon Bedrock Getting Started](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/17508/amazon-bedrock-getting-started) (1 hour)
+3.  [Amazon Bedrock Getting Started](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/17508/amazon-bedrock-getting-started) (1 hour)
 
 ## Experiential and game-based learning
 

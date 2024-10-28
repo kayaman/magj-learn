@@ -2,7 +2,7 @@
 title: Elastic Block Store (EBS)
 description: Udemy
 sidebar:
-    order: 2
+  order: 2
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 4

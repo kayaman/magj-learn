@@ -7,7 +7,7 @@ description: SageMaker
 
 The bias versus variance trade-off refers to the challenge of balancing the error due to the model's complexity (variance) and the error due to incorrect assumptions in the model (bias), where high bias can cause underfitting and high variance can cause overfitting
 
-Having low model bias and low model variance leads to good generalization performance and avoids extreme predictions. This balance means that the model has learned the true underlying patterns in the data.   
+Having low model bias and low model variance leads to good generalization performance and avoids extreme predictions. This balance means that the model has learned the true underlying patterns in the data.
 
 ![bias-variance-trade-off](/img/bias-variance-trade-off.png)
 
@@ -17,23 +17,24 @@ This graph illustrates the bias-variance trade-off. Bias is represented by the s
 
 Managed Spot Training uses Amazon EC2 Spot instance to run training jobs instead of on-demand instances. You can specify which training jobs use spot instances and a stopping condition that specifies how long SageMaker waits for a job to run using Amazon EC2 Spot instances. Spot instances can be interrupted, causing jobs to take longer to start or finish. You can configure your managed spot training job to use checkpoints. SageMaker copies checkpoint data from a local path to Amazon S3. When the job is restarted, SageMaker copies the data from Amazon S3 back into the local path. The training job can then resume from the last checkpoint instead of restarting.  
 https://aws.amazon.com/blogs/aws/managed-spot-training-save-up-to-90-on-your-amazon-sagemaker-training-jobs/  
-https://aws.amazon.com/blogs/aws/managed-spot-training-save-up-to-90-on-your-amazon-sagemaker-training-jobs/  
+https://aws.amazon.com/blogs/aws/managed-spot-training-save-up-to-90-on-your-amazon-sagemaker-training-jobs/
 
 ## Tuning
 
 Your model is underfitting the training data when the model performs poorly on the training data. This is because the model is unable to capture the relationship between the input examples (often called X) and the target values (often called Y). Your model is overfitting your training data when you see that the model performs well on the training data but does not perform well on the evaluation data. This is because the model is memorizing the data it has seen and is unable to generalize to unseen examples.  
-https://docs.aws.amazon.com/machine-learning/latest/dg/  model-fit-underfitting-vs-overfitting.html
-https://aws.amazon.com/what-is/overfitting/  
+https://docs.aws.amazon.com/machine-learning/latest/dg/ model-fit-underfitting-vs-overfitting.html
+https://aws.amazon.com/what-is/overfitting/
 
 ---
 
-https://aws.amazon.com/what-is/hyperparameter-tuning/  
+https://aws.amazon.com/what-is/hyperparameter-tuning/
 
 ## Instance Types
 
 ![Instance Types](/img/instance_types.png)
 
 - General Purpose
+
   - These instances are suitable for a variety of ML tasks, including training and inference.
   - Examples include the ml.m5 and ml.c5 instance families.
   - They offer a balance of compute power, memory, and networking capabilities, which makes them suitable for most ML workloads.
@@ -42,8 +43,8 @@ https://aws.amazon.com/what-is/hyperparameter-tuning/
   - These instances are designed for compute-intensive workloads, such as training deep learning models or performing large-scale data processing.
   - Examples include the ml.p3 and ml.c5n instance families, which are powered by high-performance GPUs and CPUs, respectively.
   - They are well-suited for training complex neural networks, computer vision tasks, natural language processing, and other compute-intensive ML workloads.
-  
 - Memory Optimized
+
   - These instances are optimized for workloads that require a large amount of memory, such as processing large datasets or running memory-intensive algorithms.
   - Examples include the ml.r5 and ml.r5n instance families.
   - They are particularly useful for tasks like large-scale data processing, in-memory databases, and certain types of deep learning models with large memory requirements.
@@ -52,112 +53,95 @@ https://aws.amazon.com/what-is/hyperparameter-tuning/
   - These instances are designed specifically for accelerating compute-intensive workloads using hardware accelerators like GPUs or Tensor Cores.
   - Examples include the ml.g4dn and ml.inf1 instance families, which are powered by NVIDIA GPUs and AWS Inferentia chips, respectively.
   - They are ideal for tasks like training and deploying deep learning models and performing real-time inference at scale.
-  
 - Inference
   - These instances are optimized for low-latency, high-throughput inference workloads, which are common in production deployments of ML models.
   - Examples include the ml.inf1 and ml.c6i instance families.
   - They are designed to provide cost-effective and efficient inference capabilities, which makes them suitable for deploying ML models in real-time applications.
 
-
 When selecting a SageMaker instance type, you should consider several factors, such as the following.
 
+- Workload requirements  
+   Evaluate the computational demands of your ML task. This includes the complexity of the model, the size of the dataset, and the desired training or inference performance.
 
-* Workload requirements  
-    Evaluate the computational demands of your ML task. This includes the complexity of the model, the size of the dataset, and the desired training or inference performance. 
+- Performance  
+   Different instance types offer varying levels of performance in terms of CPU, GPU, memory, and networking capabilities. Choose an instance type that aligns with your performance requirements.
 
+- Cost  
+   SageMaker instances are billed on an hourly basis, and different instance types have varying costs. Consider your budget constraints and choose an instance type that provides the best performance-to-cost ratio for your needs.
 
-* Performance  
-    Different instance types offer varying levels of performance in terms of CPU, GPU, memory, and networking capabilities. Choose an instance type that aligns with your performance requirements.
+- Availability  
+   Some instance types might have limited availability in certain AWS Regions. Ensure that the instance type you need is available in your preferred Region.
 
+- Scalability  
+   If you anticipate your workload requirements will change over time, consider instance types that offer scalability options. Instances should be able to scale up or down resources or use automatic scaling features.
 
-* Cost  
-    SageMaker instances are billed on an hourly basis, and different instance types have varying costs. Consider your budget constraints and choose an instance type that provides the best performance-to-cost ratio for your needs.
-
-
-* Availability  
-    Some instance types might have limited availability in certain AWS Regions. Ensure that the instance type you need is available in your preferred Region.
-
-
-* Scalability  
-    If you anticipate your workload requirements will change over time, consider instance types that offer scalability options. Instances should be able to scale up or down resources or use automatic scaling features.
-
-
-* Integration with other AWS services  
-    Consider whether your ML workflow involves other AWS services and choose an instance type that integrates well with those services. By carefully evaluating these factors, you can select the most suitable SageMaker instance type for your specific ML workload. These factors help to ensure optimal performance, cost-effectiveness, and scalability.
+- Integration with other AWS services  
+   Consider whether your ML workflow involves other AWS services and choose an instance type that integrates well with those services. By carefully evaluating these factors, you can select the most suitable SageMaker instance type for your specific ML workload. These factors help to ensure optimal performance, cost-effectiveness, and scalability.
 
 ## Model Selection
 
 When selecting a model in SageMaker, consider the following factors.
 
+- Problem type  
+   The first step is to identify the type of problem you're trying to solve, such as classification, regression, clustering, or recommendation systems. Some algorithms are better suited for specific problem types.
 
-* Problem type  
-    The first step is to identify the type of problem you're trying to solve, such as classification, regression, clustering, or recommendation systems. Some algorithms are better suited for specific problem types.
+- Data characteristics  
+   Analyze your data to understand its size, dimensionality, noise levels, and potential biases. This information can guide you in choosing an appropriate model architecture and algorithm.
 
+- Performance requirements  
+   Consider the desired performance metrics for your model, such as accuracy, precision, recall, or F1-score. Some algorithms might prioritize one metric over others, so choose accordingly.
 
-* Data characteristics  
-    Analyze your data to understand its size, dimensionality, noise levels, and potential biases. This information can guide you in choosing an appropriate model architecture and algorithm.
+- Training time and computational resources  
+   Models have varying computational requirements during training. Consider the available resources (CPU, GPU, and memory) and the time constraints for your project.
 
+- Interpretability  
+   If interpretability is important for your use case, you might want to choose simpler models like linear or tree-based algorithms over complex deep learning models. The latter can be more challenging to interpret.
 
-* Performance requirements  
-    Consider the desired performance metrics for your model, such as accuracy, precision, recall, or F1-score. Some algorithms might prioritize one metric over others, so choose accordingly. 
+- Model complexity  
+   Simple models might not capture complex patterns in the data, whereas overly complex models can lead to overfitting. Strike a balance between model complexity and generalization performance.
 
+- Scalability  
+   If your dataset or application is expected to grow significantly, choose a model that can scale well with increasing data volume and complexity.
 
-* Training time and computational resources  
-    Models have varying computational requirements during training. Consider the available resources (CPU, GPU, and memory) and the time constraints for your project.
-
-
-* Interpretability  
-    If interpretability is important for your use case, you might want to choose simpler models like linear or tree-based algorithms over complex deep learning models. The latter can be more challenging to interpret.
-
-
-* Model complexity  
-    Simple models might not capture complex patterns in the data, whereas overly complex models can lead to overfitting. Strike a balance between model complexity and generalization performance.
-
-
-* Scalability  
-    If your dataset or application is expected to grow significantly, choose a model that can scale well with increasing data volume and complexity.
-
-
-* Domain knowledge  
-    Use your domain expertise or consult with subject matter experts to inform your model selection process. Take into consideration that certain algorithms might be more suitable for specific domains.
+- Domain knowledge  
+   Use your domain expertise or consult with subject matter experts to inform your model selection process. Take into consideration that certain algorithms might be more suitable for specific domains.
 
 ## Model Types
 
-* Generalized linear models  
-    These models include linear regression, logistic regression, and linear support vector machines. They are fast to train and interpret but have low flexibility.
+- Generalized linear models  
+   These models include linear regression, logistic regression, and linear support vector machines. They are fast to train and interpret but have low flexibility.
 
-* Tree-based models  
-    These models include boosted trees, random forests, and decision trees. They provide higher accuracy than linear models with slightly longer training times. They are more flexible and interpretable than neural networks.Tree-based models
+- Tree-based models  
+   These models include boosted trees, random forests, and decision trees. They provide higher accuracy than linear models with slightly longer training times. They are more flexible and interpretable than neural networks.Tree-based models
 
-* Neural-networks  
-    These include multilayer perceptrons and convolutional neural networks. They require large datasets but can model complex nonlinear relationships. They are slow to train and difficult to interpret.
+- Neural-networks  
+   These include multilayer perceptrons and convolutional neural networks. They require large datasets but can model complex nonlinear relationships. They are slow to train and difficult to interpret.
 
-* Clustering  
-    This option includes algorithms like k-means and DBSCAN for segmenting data into groups with high intra-group and low inter-group similarity. It is useful for exploratory data analysis.
+- Clustering  
+   This option includes algorithms like k-means and DBSCAN for segmenting data into groups with high intra-group and low inter-group similarity. It is useful for exploratory data analysis.
 
-* Matrix factorization  
-    This option includes techniques like principal components analysis for recommender systems, dimensionality reduction, and feature learning.
+- Matrix factorization  
+   This option includes techniques like principal components analysis for recommender systems, dimensionality reduction, and feature learning.
 
-* Forecasting  
-    This option includes time series models like autoregressive integrated moving average (ARIMA) for forecasting future values based on past data.
+- Forecasting  
+   This option includes time series models like autoregressive integrated moving average (ARIMA) for forecasting future values based on past data.
 
-* Computer vision  
-    This option includes pre-built models for object detection and semantic segmentation in images and videos using neural networks.
+- Computer vision  
+   This option includes pre-built models for object detection and semantic segmentation in images and videos using neural networks.
 
 ## Built-in Algorithms
 
 ![Built-in](/img/built_in_types.png)
-  
+
 For more information, visit [Use Amazon SageMaker Built-in Algorithms or Pre-trained Models](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 
-* Supervised Learning
-  
-  * Linear Learner Algorithm  
+- Supervised Learning
+
+  - Linear Learner Algorithm  
     Learns a linear function for regression or a linear threshold function for classification.  
     To learn more, see: [Linear Learner Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/linear-learner.html).
 
-
-  * XGBoost Algorithm  
+  - XGBoost Algorithm  
     Implements a gradient-boosted trees algorithm that combines an ensemble of estimates from a set of simpler and weaker models.  
     To learn more, see: [XGBoost Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost.html).
 
@@ -168,116 +152,112 @@ For more information, visit [Use Amazon SageMaker Built-in Algorithms or Pre-tra
 
 https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost.html  
 https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html  
-https://aws.amazon.com/blogs/gametech/fraud-detection-for-games-using-machine-learning/  
+https://aws.amazon.com/blogs/gametech/fraud-detection-for-games-using-machine-learning/
 
+- K-Nearest Neighbors (k-NN) Algorithm  
+  Uses a non-parametric method that uses the k nearest labeled points to assign a label to a new data point for classification— can also be used to predict a target value from the average of the k nearest points for regression.  
+  To learn more, see: [K-Nearest Neighbors (k-NN) Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/k-nearest-neighbors.html).
 
-  * K-Nearest Neighbors (k-NN) Algorithm  
-    Uses a non-parametric method that uses the k nearest labeled points to assign a label to a new data point for classification— can also be used to predict a target value from the average of the k nearest points for regression.  
-    To learn more, see: [K-Nearest Neighbors (k-NN) Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/k-nearest-neighbors.html).
+- Factorization Machines Algorithm  
+  An extension of a linear model that is designed to economically capture interactions between features within high-dimensional sparse datasets.  
+  To learn more, see: [Factorization Machines Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/fact-machines.html).
 
+- Unsupervised Learning
 
-  * Factorization Machines Algorithm  
-    An extension of a linear model that is designed to economically capture interactions between features within high-dimensional sparse datasets.  
-    To learn more, see: [Factorization Machines Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/fact-machines.html).
-
-* Unsupervised Learning
-
-  * K-Means Algorithm  
+  - K-Means Algorithm  
     This algorithm finds discrete groupings within data. It first looks to see if all the data points in a cluster are as similar to each other as possible. It then looks to see if data points from different clusters are as different as possible.  
     Uses: Clustering  
     To learn more, see [K-Means Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/k-means.html).
 
-  * Latent Dirichlet Allocation (LDA) Algorithm  
+  - Latent Dirichlet Allocation (LDA) Algorithm  
     This algorithm determines an algorithm suitable for determining topics in a set of documents. It is an unsupervised algorithm, which means that it doesn't use example data with answers during training.  
     Uses: Clustering and Topic Modeling  
     To learn more, see [Latent Dirichlet Allocation (LDA) Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/lda.html).
 
-  * Object2Vec Algorithm  
+  - Object2Vec Algorithm  
     This algorithm uses a new highly customizable, multi-purpose algorithm for feature engineering. It can learn low-dimensional dense embeddings of high-dimensional objects to produce features that improve training efficiencies for downstream models. This is a supervised algorithm because it requires labeled data for training. There are many scenarios in which the relationship labels can be obtained purely from natural clusterings in data without any explicit human annotation.  
     Uses: Embeddings  
-    To learn more, see [Object2Vec Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/object2vec.html).  
+    To learn more, see [Object2Vec Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/object2vec.html).
 
-  * Random Cut Forest (RCF) Algorithm  
+  - Random Cut Forest (RCF) Algorithm  
     This algorithm detects anomalous data points within a dataset that diverge from otherwise well-structured or patterned data.  
     Uses: Anomaly Detection  
     To learn more, see [Random Cut Forest (RCF) Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/randomcutforest.html).
 
-  * IP Insights  
+  - IP Insights  
     This algorithm learns the usage patterns for IPv4 addresses. It is designed to capture associations between IPv4 addresses and various entities, such as user IDs or account numbers.  
     Uses: Anomaly Detection  
     To learn more, see [IP Insights](https://docs.aws.amazon.com/sagemaker/latest/dg/ip-insights.html).
 
-  * Principal Component Analysis (PCA) Algorithm  
+  - Principal Component Analysis (PCA) Algorithm  
     This algorithm reduces the dimensionality, or number of features, within a dataset by projecting data points onto the first few principal components. The objective is to retain as much information or variation as possible. For mathematicians, principal components are eigenvectors of the data's covariance matrix.  
     Uses: Dimensionality Reduction  
     To learn more, see [Principal Component Analysis (PCA) Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/pca.html).
 
-* Text or Speech data
+- Text or Speech data
 
-  * BlazingText Algorithm  
+  - BlazingText Algorithm  
     This highly optimized implementation of the Word2vec and text classification algorithms scales to large datasets. It is useful for many downstream natural language processing (NLP) tasks.  
     Uses: Text classification, Word2Vec  
     To learn more, see [BlazingText Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/blazingtext.html).
 
-  * Sequence-to-Sequence Algorithm  
+  - Sequence-to-Sequence Algorithm  
     This supervised algorithm is commonly used for neural machine translation.  
     Uses: Machine Translation for text or speech  
     To learn more, see [Sequence-to-Sequence Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/seq-2-seq.html).
 
-  * Neural Topic Model (NTM) Algorithm  
+  - Neural Topic Model (NTM) Algorithm  
     This is another unsupervised technique for determining topics in a set of documents. It uses a neural network approach.  
     Uses: Topic modeling  
     To learn more, see: [Neural Topic Model (NTM) Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/ntm.html).
 
-* Images, videos or time-series
+- Images, videos or time-series
 
-  * ResNet  
+  - ResNet  
     This is a deep learning network developed to be highly accurate for image classification.  
     Uses: Image classification  
     To learn more, see [ResNet](https://arxiv.org/abs/1512.03385).
 
-  * Single Shot multibox Detector (SSD)  
+  - Single Shot multibox Detector (SSD)  
     This uses a convolutional neural network (CNN) pretrained for classification tasks as the base network. When using this for object detection, SageMaker supports various CNNs such as VGG-16 and ResNet-50.  
     Uses: Object detection  
     To learn more, see: [Single Shot multibox Detector (SSD)](https://arxiv.org/pdf/1512.02325.pdf).  
     For more information about supported CNNs, see [VGG-16](https://arxiv.org/pdf/1409.1556.pdf) and [ResNet-50](https://arxiv.org/pdf/1603.05027.pdf).
 
-  * Semantic Segmentation Algorithm  
+  - Semantic Segmentation Algorithm  
     The SageMaker semantic segmentation algorithm provides a fine-grained, pixel-level approach to developing computer vision applications. It tags every pixel in an image with a class label from a predefined set of classes. Tagging is fundamental for understanding scenes. This is critical to an increasing number of computer vision applications, such as self-driving vehicles, medical imaging diagnostics, and robot sensing. The SageMaker semantic segmentation algorithm is built using the MXNet Gluon Framework and the Gluon CV Toolkit. It provides you with a choice of three built-in algorithms to train a deep neural network. You can use the Fully-Convolutional Network (FCN) Algorithm, Pyramid Scene Parsing (PSP) Algorithm, or DeepLabV3.  
     Uses: Semantic Segmentation  
     To learn more, see: [Semantic Segmentation Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/semantic-segmentation.html).  
     For more information on the framework of this algorithm, see [MXNet Gluon Framework and the Gluon CV Toolkit](https://github.com/dmlc/gluon-cv).  
     For more information on built-in algorithms, see [Fully-Convolutional Network (FCN) Algorithm](https://arxiv.org/abs/1605.06211), [Pyramid Scene Parsing (PSP) Algorithm](https://arxiv.org/abs/1612.01105), or [DeepLabV3](https://arxiv.org/abs/1706.05587).
 
-  * DeepAR Forecasting Algorithm  
+  - DeepAR Forecasting Algorithm  
     This supervised learning algorithm is for forecasting scalar (one-dimensional) time series using recurrent neural networks (RNN).  
     Uses: Time-series  
     To learn more, see: [DeepAR Forecasting Algorithm](https://docs.aws.amazon.com/sagemaker/latest/dg/deepar.html)
 
-* Reinforcement Learning
+- Reinforcement Learning
 
-    For more information, see [Use Reinforcement Learning with Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/reinforcement-learning.html).
-
+  For more information, see [Use Reinforcement Learning with Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/reinforcement-learning.html).
 
 ## Autopilot (AutoML)
 
 Autopilot is a part of SageMaker Canvas. SageMaker Autopilot performs the following key tasks that you can use on autopilot or with various degrees of human guidance.
 
+- Data analysis and processing  
+   SageMaker Autopilot identifies your specific problem type, handles missing values, normalizes your data, selects features, and prepares the data for model training.
 
-* Data analysis and processing  
-    SageMaker Autopilot identifies your specific problem type, handles missing values, normalizes your data, selects features, and prepares the data for model training.
+- Model selection  
+   SageMaker Autopilot explores a variety of algorithms. SageMaker Autopilot uses a cross-validation resampling technique to generate metrics that evaluate the predictive quality of the algorithms based on predefined objective metrics.
 
-* Model selection  
-    SageMaker Autopilot explores a variety of algorithms. SageMaker Autopilot uses a cross-validation resampling technique to generate metrics that evaluate the predictive quality of the algorithms based on predefined objective metrics.
+- Hyperparameter optimization  
+   SageMaker Autopilot automates the search for optimal hyperparameter configurations.
 
-* Hyperparameter optimization  
-    SageMaker Autopilot automates the search for optimal hyperparameter configurations.
+- Model training and evaluation  
+   SageMaker Autopilot automates the process of training and evaluating various model candidates. It splits the data into training and validation sets, and then it trains the selected model candidates using the training data. Then it evaluates their performance on the unseen data of the validation set. Lastly, it ranks the optimized model candidates based on their performance and identifies the best performing model.
 
-* Model training and evaluation  
-    SageMaker Autopilot automates the process of training and evaluating various model candidates. It splits the data into training and validation sets, and then it trains the selected model candidates using the training data. Then it evaluates their performance on the unseen data of the validation set. Lastly, it ranks the optimized model candidates based on their performance and identifies the best performing model.
-
-* Model deployment  
-    After SageMaker Autopilot has identified the best performing model, it provides the option to deploy the model. It accomplishes this by automatically generating the model artifacts and the endpoint that expose an API. External applications can send data to the endpoint and receive the corresponding predictions or inferences.
+- Model deployment  
+   After SageMaker Autopilot has identified the best performing model, it provides the option to deploy the model. It accomplishes this by automatically generating the model artifacts and the endpoint that expose an API. External applications can send data to the endpoint and receive the corresponding predictions or inferences.
 
 ![AutoML](/img/automl_process.png)
 
@@ -307,8 +287,8 @@ Learn more about [SageMaker in VPC only mode](https://docs.aws.amazon.com/sagema
 ---
 
 You can use VPC interface endpoints to privately connect your VPC to supported AWS services and VPC endpoint services by using AWS PrivateLink. You can use a VPC interface endpoint to secure ML model training data. For example, you can use a VPC interface endpoint to ensure that all API calls to SageMaker are made within the VPC.  
-Learn more about [how to connect to SageMaker within your VPC](https://docs.aws.amazon.com/sagemaker/latest/dg/interface-vpc-endpoint.html).  
-  
+Learn more about [how to connect to SageMaker within your VPC](https://docs.aws.amazon.com/sagemaker/latest/dg/interface-vpc-endpoint.html).
+
 Gateway VPC endpoints provide secure connections to Amazon S3 directly from your VPC. When you have a gateway VPC endpoint, you do not need an internet gateway or NAT device. The company stores S3 data in a different Region. Therefore, you cannot use gateway endpoints. Gateway endpoints support connections only within the same Region.  
 Learn more about [gateway endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/gateway-endpoints.html).
 
@@ -329,7 +309,7 @@ Learn more about [IAM policies for SageMaker](https://docs.aws.amazon.com/sagema
 
 You can use a SageMaker asynchronous endpoint to host an ML model. With a SageMaker asynchronous endpoint, you can receive responses for each request in near real time for up to 60 minutes of processing time. There is no idle cost to operate an asynchronous endpoint. Therefore, this solution is the most cost-effective. Additionally, you can configure a SageMaker asynchronous inference endpoint with a connection to your VPC.  
 https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html#deploy-model-options  
-https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference.html  
+https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference.html
 
 ---
 
@@ -368,12 +348,12 @@ Learn more about [how to automatically scale SageMaker models](https://docs.aws.
 
 Specify a cooldown period in the target tracking scaling policy. You can decrease scaling activities by configuring cooldown periods. This method protects against over-scaling when capacity increases or decreases. The next scaling activity cannot happen until the cooldown period has ended. Therefore, by specifying a cooldown period, you can handle intermittent spikes in traffic.  
 Learn more about [cooldown periods in endpoint auto scaling](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-prerequisites.html#endpoint-auto-scaling-target-cooldown).  
-Learn more about [SageMaker scaling policies](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-prerequisites.html#endpoint-auto-scaling-policy).  
+Learn more about [SageMaker scaling policies](https://docs.aws.amazon.com/sagemaker/latest/dg/endpoint-auto-scaling-prerequisites.html#endpoint-auto-scaling-policy).
 
 ---
 
 https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-blue-green.html  
-https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-rolling.html  
+https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails-rolling.html
 
 ---
 
@@ -382,7 +362,7 @@ https://aws.amazon.com/blogs/machine-learning/a-b-testing-ml-models-in-productio
 ---
 
 https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-deployment.html  
-https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html  
+https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html
 
 ---
 
@@ -393,13 +373,12 @@ https://aws.amazon.com/blogs/containers/deploy-generative-ai-models-on-amazon-ek
 
 You can use the SageMaker SDK to bring existing ML models that are written in R into SageMaker by using the "bring your own container" option. This solution requires the least operational overhead because you only need to compose a Dockerfile for each existing model.  
 Learn more about [how to bring your own containers in SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-byoc-containers.html).  
-Learn more about [how to use R in SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/r-guide.html).  
+Learn more about [how to use R in SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/r-guide.html).
 
 ---
 
 Extend the prebuilt SageMaker scikit-learn framework container to include custom dependencies. The scikit-learn framework container is a prebuilt image that SageMaker provides. The scikit-learn framework container installs the scikit-learn Python modules for ML workloads. The container does not include custom libraries. Therefore, you can extend the Docker image to add additional dependencies. You can use the included scikit-learn container libraries, the proprietary library, and settings without the need to create a new image from nothing. Therefore, this solution requires the least operational overhead.  
 Learn more about [how to extend a prebuilt SageMaker container](https://docs.aws.amazon.com/sagemaker/latest/dg/prebuilt-containers-extend.html).
-
 
 ## Input Modes
 
@@ -422,21 +401,21 @@ https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html
 
 ## Experiments
 
-SageMaker Experiments is a feature of SageMaker Studio that you can use to automatically create ML experiments by using different combinations of data, algorithms, and parameters. You would not use SageMaker Experiments to collect new data for model re-training.   
-Learn more about [SageMaker Experiments](https://docs.aws.amazon.com/sagemaker/latest/dg/experiments.html).  
+SageMaker Experiments is a feature of SageMaker Studio that you can use to automatically create ML experiments by using different combinations of data, algorithms, and parameters. You would not use SageMaker Experiments to collect new data for model re-training.  
+Learn more about [SageMaker Experiments](https://docs.aws.amazon.com/sagemaker/latest/dg/experiments.html).
 
 ---
 
 Use SageMaker built-in algorithms to train the model. Use SageMaker Experiments to track model runs and results. SageMaker built-in algorithms do not require code for model training and experimentation. You can use built-in algorithms for fast experimentation with minimal effort. You need to change only the hyperparameters, data source, and compute resources. Additionally, some built-in algorithms support parallelization across CPUs and GPUs. You can use SageMaker Experiments to analyze model experiments and compare performances across runs.  
 Learn more about [SageMaker built-in algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).  
-Learn more about [SageMaker Experiments](https://docs.aws.amazon.com/sagemaker/latest/dg/experiments.html).  
+Learn more about [SageMaker Experiments](https://docs.aws.amazon.com/sagemaker/latest/dg/experiments.html).
 
 ## Model Monitor
 
 You can use SageMaker Model Monitor to effectively gauge model quality. Data Capture is a feature of SageMaker endpoints. You can use Data Capture to record data that you can then use for training, debugging, and monitoring. Then, you could use the new data that is captured by Data Capture to re-train the model. Data Capture runs asynchronously without impacting production traffic.  
 https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html  
 https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-faqs.html  
-https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-capture.html  
+https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-capture.html
 
 ---
 
@@ -459,7 +438,7 @@ SageMaker Pipelines is a workflow orchestration service within SageMaker. SageMa
 
 After you create the inference pipeline, EventBridge can automate the execution of the pipeline. You would need to create a role to allow EventBridge to start the execution of the pipeline that was created in the previous step. You can use a scheduled run to execute the inference pipeline at the beginning of every week. You do not have a specific pattern that you need to match to invoke the execution. Therefore, you do not need to create a custom event pattern.  
 https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipeline-batch.html  
-https://docs.aws.amazon.com/sagemaker/latest/dg/pipeline-eventbridge.html  
+https://docs.aws.amazon.com/sagemaker/latest/dg/pipeline-eventbridge.html
 
 ---
 
@@ -469,7 +448,7 @@ Learn more about [the @step decorator](https://docs.aws.amazon.com/sagemaker/lat
 ---
 
 Amazon SageMaker Pipelines is a purpose-built workflow orchestration service to automate machine learning (ML) development. SageMaker Pipelines is specifically designed to orchestrate end-to-end ML workflows, integrating data processing, model training, hyperparameter tuning, and deployment in a seamless manner. It provides built-in versioning, lineage tracking, and support for continuous integration and delivery (CI/CD), making it the best choice for this use case.  
-AWS Step Functions is a powerful service for orchestrating workflows, and it can integrate with SageMaker and Lambda. However, using Step Functions for the entire ML workflow adds complexity since it requires coordinating multiple services, whereas SageMaker Pipelines provides a more seamless, integrated solution for ML-specific workflows.  
+AWS Step Functions is a powerful service for orchestrating workflows, and it can integrate with SageMaker and Lambda. However, using Step Functions for the entire ML workflow adds complexity since it requires coordinating multiple services, whereas SageMaker Pipelines provides a more seamless, integrated solution for ML-specific workflows.
 
 ## Jobs
 
@@ -485,8 +464,7 @@ Learn more about [SageMaker batch transform jobs](https://docs.aws.amazon.com/sa
 ---
 
 Learn more about [SageMaker Processing jobs](https://docs.aws.amazon.com/sagemaker/latest/dg/processing-job.html).  
-Learn more about the [SageMaker Processing job role](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html#sagemaker-roles-createprocessingjob-perms).  
-
+Learn more about the [SageMaker Processing job role](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html#sagemaker-roles-createprocessingjob-perms).
 
 ## TensorBoard
 
@@ -500,7 +478,6 @@ You can use SageMaker Ground Truth to efficiently label and annotate datasets. D
 Learn more about [SageMaker Ground Truth](https://docs.aws.amazon.com/sagemaker/latest/dg/sms.html).  
 Learn more about [SageMaker Ground Truth image labeling job inputs](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-create-labeling-job-console.html).
 
-
 ## Data Wrangler
 
 SageMaker Data Wrangler split transform:
@@ -512,12 +489,12 @@ SageMaker Data Wrangler split transform:
 - Stratified split splits the data among train, test, and validation (optional) such that each split is similar with respect to a specified column's categories. This method ensures that all splits have the same proportion of each category as the input dataset. Stratified split is often used for classification problems to maintain a similar percentage of samples of each target class across splits.
 
 - Split by key ensures that data with the same keys do not occur in more than one split. This method is often used with id columns, so that the same id does not appear in both training and test splits.
-  
+
 Learn more about [SageMaker Data Wrangler split transforms](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-transform.html#data-wrangler-transform-split-data).  
 Learn more about [data leakage](https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html).
-  
----  
-  
+
+---
+
 Define the data pre-processing as a SageMaker processing job. Schedule to run monthly.
 SageMaker Data Wrangler is a no-code service that is used to load and process data for use in SageMaker. SageMaker Data Wrangler jobs can be scheduled to run periodically as SageMaker processing jobs.  
 Learn more about [how to schedule SageMaker Data Wrangler flows](https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-data-flow.html).  
@@ -545,7 +522,7 @@ Learn more about [how to fill missing values by using SageMaker Data Wrangler](h
 
 ---
 
-https://aws.amazon.com/blogs/machine-learning/exploratory-data-analysis-feature-engineering-and-operationalizing-your-data-flow-into-your-ml-pipeline-with-amazon-sagemaker-data-wrangler/  
+https://aws.amazon.com/blogs/machine-learning/exploratory-data-analysis-feature-engineering-and-operationalizing-your-data-flow-into-your-ml-pipeline-with-amazon-sagemaker-data-wrangler/
 
 ## Model Cards
 
@@ -589,10 +566,10 @@ Learn more about [DPL](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-d
 
 ## Feature Store
 
-You can use Feature Store in the following modes: 
+You can use Feature Store in the following modes:
 
-- Online – In online mode, features are read with low latency (milliseconds) reads and used for high throughput predictions. This mode requires a feature group to be stored in an online store. 
-- Offline – In offline mode, large streams of data are fed to an offline store, which can be used for training and batch inference. This mode requires a feature group to be stored in an offline store. The offline store uses your S3 bucket for storage and can also fetch data using Athena queries. 
+- Online – In online mode, features are read with low latency (milliseconds) reads and used for high throughput predictions. This mode requires a feature group to be stored in an online store.
+- Offline – In offline mode, large streams of data are fed to an offline store, which can be used for training and batch inference. This mode requires a feature group to be stored in an offline store. The offline store uses your S3 bucket for storage and can also fetch data using Athena queries.
 - Online and Offline – This includes both online and offline modes.
 
 You can ingest data into feature groups in Feature Store in two ways: streaming or in batches. When you ingest data through streaming, a collection of records are pushed to Feature Store by calling a synchronous PutRecord API call. This API enables you to maintain the latest feature values in Feature Store and to push new feature values as soon an update is detected.
@@ -614,11 +591,11 @@ Learn more about [SageMaker Feature Store managed policies](https://docs.aws.ama
 ## Drift
 
 - Data Drift:
-  
+
   Data drift refers to changes in the statistical properties of the input data over time compared to the data the model was trained on. These changes can occur due to shifts in the real-world environment or evolving user behavior, causing the model's input data distribution to differ from the original training set. Data drift can degrade model performance, as the model was optimized for a different data distribution. Monitoring and detecting data drift is critical for ensuring that the model remains accurate and reliable, often prompting retraining or updating of the model to reflect current data patterns.
 
 - Model Drift:
-  
+
   Model drift occurs when a machine learning model's predictive performance degrades over time, typically due to shifts in data patterns (such as data drift) or the emergence of new patterns that were not captured in the original training process. As a result, the model becomes less effective at making accurate predictions or decisions. Model drift can be identified through regular monitoring of model performance metrics, such as accuracy or error rates. To address model drift, retraining the model with updated data or fine-tuning the model's parameters is often required to restore its performance.
 
 ---
@@ -626,12 +603,12 @@ Learn more about [SageMaker Feature Store managed policies](https://docs.aws.ama
 Bias drift, data quality drift, and feature attribution drift can affect the performance and interpretability of an ML model after deployment. Data quality drift occurs when the distribution of real-life data differs significantly from the distribution of the data that is used to train the model. Bias drift is the disparate treatment of different groups. You should use continued monitoring of the model to help identify bias drift. Feature attribution drift occurs when model interpretability is affected because the relative importance of features starts to change.  
 Learn more about [how to monitor bias drift for models in production](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-bias-drift.html).  
 Learn more about [how to monitor feature attribution drift for models in production](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-monitor-feature-attribution-drift.html).  
-Learn more about [how to monitor data quality drift for models in production](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html). 
+Learn more about [how to monitor data quality drift for models in production](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-quality.html).
 
 ---
 
-Summary of Best Approach:  
-  
+Summary of Best Approach:
+
 1. Amazon SageMaker Model Monitor to detect data and model drift in real time.
 2. Amazon SageMaker Pipelines for automating the retraining and redeployment of models when drift is detected.
 3. Amazon SageMaker Feature Store to track and version data, ensuring that data drift is manageable.
@@ -640,7 +617,7 @@ Summary of Best Approach:
 
 ## Pruning and Quantization
 
-Pruning and quantization are both effective methods for reducing model size. Pruning removes parts of the model that contribute little to overall performance, such as unnecessary neurons or layers, which reduces the model’s complexity. Quantization further reduces the model size by decreasing the precision of weights (e.g., from 32-bit floating-point to 8-bit integers), significantly lowering memory requirements without drastically impacting accuracy.  
+Pruning and quantization are both effective methods for reducing model size. Pruning removes parts of the model that contribute little to overall performance, such as unnecessary neurons or layers, which reduces the model’s complexity. Quantization further reduces the model size by decreasing the precision of weights (e.g., from 32-bit floating-point to 8-bit integers), significantly lowering memory requirements without drastically impacting accuracy.
 
 [Model Pruning](https://aws.amazon.com/blogs/machine-learning/pruning-machine-learning-models-with-amazon-sagemaker-debugger-and-amazon-sagemaker-experiments/)  
 [Quantization](https://aws.amazon.com/blogs/machine-learning/leveraging-low-precision-and-quantization-for-deep-learning-using-the-amazon-ec2-c5-instance-and-bigdl/)
@@ -653,7 +630,7 @@ Pruning and quantization are both effective methods for reducing model size. Pru
 
 #### SageMaker Clarify Processing Job
 
-[Use SageMaker Clarify to explain and detect bias](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-configure-processing-jobs.html)  
+[Use SageMaker Clarify to explain and detect bias](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-configure-processing-jobs.html)
 
 #### Detect pre-training bias
 
@@ -668,36 +645,36 @@ Pruning and quantization are both effective methods for reducing model size. Pru
 
 - Difference in Proportions of Labels (DPL)
   The difference in proportions of labels (DPL) compares the proportion of observed outcomes with positive labels for facet d with the proportion of observed outcomes with positive labels of facet a in a training dataset. For example, you could use it to compare the proportion of middle-aged individuals (facet a) and other age groups (facet d) approved for financial loans. Machine learning models try to mimic the training data decisions as closely as possible. So a machine learning model trained on a dataset with a high DPL is likely to reflect the same imbalance in its future predictions.  
-  https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-data-bias-metric-true-label-imbalance.html  
+  https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-data-bias-metric-true-label-imbalance.html
 
-More on [Measure Pre-training Bias](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-data-bias.html)  
+More on [Measure Pre-training Bias](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-data-bias.html)
 
 #### Detect post-training data and model bias
 
-[Measure Post-training Data and Model Bias](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)  
+[Measure Post-training Data and Model Bias](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)
 
-| metric | description |
-|--------|-------------|
-| [Difference in Positive Proportions in Predicted Labels (DPPL)](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-post-training-bias-metric-dppl.html)	| Measures the difference in the proportion of positive predictions between the favored facet a and the disfavored facet d. |
-| [Disparate Impact (DI)](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-post-training-bias-metric-di.html) |	Measures the ratio of proportions of the predicted labels for the favored facet a and the disfavored facet d. |
-| [Conditional Demographic Disparity in Predicted Labels (CDDPL)](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-post-training-bias-metric-cddpl.html) |	Measures the disparity of predicted labels between the facets as a whole, but also by subgroups. |
-  
-Learn more [here](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)  
+| metric                                                                                                                                                        | description                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| [Difference in Positive Proportions in Predicted Labels (DPPL)](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-post-training-bias-metric-dppl.html)  | Measures the difference in the proportion of positive predictions between the favored facet a and the disfavored facet d. |
+| [Disparate Impact (DI)](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-post-training-bias-metric-di.html)                                            | Measures the ratio of proportions of the predicted labels for the favored facet a and the disfavored facet d.             |
+| [Conditional Demographic Disparity in Predicted Labels (CDDPL)](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-post-training-bias-metric-cddpl.html) | Measures the disparity of predicted labels between the facets as a whole, but also by subgroups.                          |
+
+Learn more [here](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html)
 
 ### Model Explainability
 
 [Feature Attributions that Use Shapley Values](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-shapley-values.html)  
-[A Unified Approach to Interpreting Model Predictions](https://papers.nips.cc/paper/2017/file/8a20a8621978632d76c43dfd28b67767-Paper.pdf)  
+[A Unified Approach to Interpreting Model Predictions](https://papers.nips.cc/paper/2017/file/8a20a8621978632d76c43dfd28b67767-Paper.pdf)
 
 ### Use Explainability with Autopilot
 
 Autopilot uses tools provided by Amazon SageMaker Clarify to help provide insights into how machine learning (ML) models make predictions. These tools can help ML engineers, product managers, and other internal stakeholders understand model characteristics. To trust and interpret decisions made on model predictions, both consumers and regulators rely on transparency in machine learning in order.  
-https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-explainability.html  
+https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-explainability.html
 
 ## Other
 
 [Boosting](https://aws.amazon.com/what-is/boosting/)
-  
+
 [Ensembles](https://aws.amazon.com/blogs/machine-learning/efficiently-train-tune-and-deploy-custom-ensembles-using-amazon-sagemaker/)
 
 [Access Training Data](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html)

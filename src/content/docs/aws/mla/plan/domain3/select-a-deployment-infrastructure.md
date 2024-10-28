@@ -1,9 +1,10 @@
 ---
-title: Select a Deployment Infrastructure 
+title: Select a Deployment Infrastructure
 description: Skill Builder
 sidebar:
   order: 1
 ---
+
 :::note
 **Domain 3: Deployment and Orchestration of ML Workflows**
 :::
@@ -32,14 +33,14 @@ sidebar:
 
 1. **SageMaker Pipelines**: SageMaker provides a model building pipeline through the SageMaker Pipelines SDK. With SageMaker Pipelines, you can create, automate, and manage end-to-end ML workflows at scale.
 
-2. **AWS Step Functions**: AWS Step Functions provides a serverless way to orchestrate pipelines, including ML-based pipelines. 
+2. **AWS Step Functions**: AWS Step Functions provides a serverless way to orchestrate pipelines, including ML-based pipelines.
 
 For more information, see [Manage SageMaker with Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/connect-sagemaker.html).
 
-3. **Amazon MWAA**: Amazon MWAA orchestrates your workflows by using Directed Acyclic Graphs (DAGs) written in Python. SageMaker APIs are used to export configurations for creating and managing Apache Airflow workflows. 
+3. **Amazon MWAA**: Amazon MWAA orchestrates your workflows by using Directed Acyclic Graphs (DAGs) written in Python. SageMaker APIs are used to export configurations for creating and managing Apache Airflow workflows.
 
-4. **Third-party tools**: You can also use third-party tools, such as MLflow and Kubernetes to orchestrate your workflows.  
-   
+4. **Third-party tools**: You can also use third-party tools, such as MLflow and Kubernetes to orchestrate your workflows.
+
 For more information about using MLflow, navigate to [Managing Your Machine Learning Lifecycle with MLflow and Amazon SageMaker](https://aws.amazon.com/blogs/machine-learning/managing-your-machine-learning-lifecycle-with-mlflow-and-amazon-sagemaker).  
 For more information about using Kubernetes for workflow orchestration, navigate to [Kubernetes Orchestration](https://docs.aws.amazon.com/sagemaker/latest/dg/kubernetes-workflows.html).
 
@@ -66,66 +67,66 @@ For more information about SageMaker Pipeline step types, navigate to the follow
 
 - Performance
 
-    You want to ensure that the model predictions do not degrade over time. Performance involves optimizing your model architecture and hyperparameters to ensure efficient computation and inference. 
+  You want to ensure that the model predictions do not degrade over time. Performance involves optimizing your model architecture and hyperparameters to ensure efficient computation and inference.
 
 - Availability
 
-    You want to design your system with redundancy and failover mechanisms to ensure continuous service availability. Availability involves implementing load balancing and horizontal scaling to distribute the workload across multiple instances.
+  You want to design your system with redundancy and failover mechanisms to ensure continuous service availability. Availability involves implementing load balancing and horizontal scaling to distribute the workload across multiple instances.
 
 - Scalability
 
-    You want to design your system with a modular and distributed architecture to accommodate increasing workloads. Scalability involves using auto-scaling capabilities. It also involves implementing asynchronous and event-driven processing to decouple components and improve scalability. 
+  You want to design your system with a modular and distributed architecture to accommodate increasing workloads. Scalability involves using auto-scaling capabilities. It also involves implementing asynchronous and event-driven processing to decouple components and improve scalability.
 
 - Resiliency
 
-    You want to incorporate data redundancy and backup mechanisms to protect against data loss. Resiliency involves designing your system to gracefully handle partial failures and degrade functionality instead of complete outages. It also involves ensuring your system can automatically recover from failures without manual intervention.
+  You want to incorporate data redundancy and backup mechanisms to protect against data loss. Resiliency involves designing your system to gracefully handle partial failures and degrade functionality instead of complete outages. It also involves ensuring your system can automatically recover from failures without manual intervention.
 
 - Fault tolerance
 
-    You want to implement robust error handling and logging mechanisms to quickly identify and diagnose issues. Fault tolerance involves implementing self-healing capabilities, such as automatic scaling, restarts, or failovers, to recover from failures. Fault tolerance also ensures your system can automatically recover from failures without manual intervention.
+  You want to implement robust error handling and logging mechanisms to quickly identify and diagnose issues. Fault tolerance involves implementing self-healing capabilities, such as automatic scaling, restarts, or failovers, to recover from failures. Fault tolerance also ensures your system can automatically recover from failures without manual intervention.
 
 #### Deployment targets
 
 - Amazon SageMaker endpoints
 
-    SageMaker is a fully managed service that you can use to build, train, and deploy ML models at scale. 
+  SageMaker is a fully managed service that you can use to build, train, and deploy ML models at scale.
 
 - Amazon EKS
 
-    Amazon EKS is a powerful container orchestration platform that you can use to deploy and manage ML models as containerized applications.
+  Amazon EKS is a powerful container orchestration platform that you can use to deploy and manage ML models as containerized applications.
 
 - Amazon ECS
 
-    ECS is a fully managed container orchestration service that makes it easy to deploy and manage Docker containers.
+  ECS is a fully managed container orchestration service that makes it easy to deploy and manage Docker containers.
 
 - AWS Lambda
 
-    AWS Lambda is a serverless computing service that helps you to run your ML model code without provisioning or managing servers. 
+  AWS Lambda is a serverless computing service that helps you to run your ML model code without provisioning or managing servers.
 
-For more information about deployment best practices, navigate to: [Best practices for deploying models on SageMaker Hosting Services](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-best-practices.html). 
+For more information about deployment best practices, navigate to: [Best practices for deploying models on SageMaker Hosting Services](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-best-practices.html).
 
 ### Choosing a Model Inference Strategy
 
 **Amazon SageMaker inference options**
 
 - Real-time: This inference option is for low latency, high throughput requests.
-Real-time inference is ideal for inference workloads where you have real-time, interactive, low latency requirements. You can deploy your model to SageMaker hosting services and get an endpoint that can be used for inference. These endpoints are fully managed and support auto scaling. 
+  Real-time inference is ideal for inference workloads where you have real-time, interactive, low latency requirements. You can deploy your model to SageMaker hosting services and get an endpoint that can be used for inference. These endpoints are fully managed and support auto scaling.
 
-- Serverless: This inference option handles intermittent traffic without managing infrastructure. 
-With serverless inference, you can deploy and scale ML models without configuring or managing the underlying infrastructure. You don’t need to define an instance type to host your model. Instead, you specify the amount of memory and number of concurrent requests that you want your model to serve. SageMaker automatically provisions the required resources. You can integrate serverless Inference with your MLOps pipelines to streamline your ML workflow. 
+- Serverless: This inference option handles intermittent traffic without managing infrastructure.
+  With serverless inference, you can deploy and scale ML models without configuring or managing the underlying infrastructure. You don’t need to define an instance type to host your model. Instead, you specify the amount of memory and number of concurrent requests that you want your model to serve. SageMaker automatically provisions the required resources. You can integrate serverless Inference with your MLOps pipelines to streamline your ML workflow.
 
   - On-demand Amazon SageMaker Serverless Inference
   - Provisioned Concurrency with Serverless Inference
 
 - Asynchronous: This inference option queues requests and handles large payloads.
-Asynchronous inference queues incoming requests and processes them asynchronously.
-This option is ideal for requests with the following:
+  Asynchronous inference queues incoming requests and processes them asynchronously.
+  This option is ideal for requests with the following:
 
   - Large payload sizes (up to 1 GB)
-  - Long processing times (up to 1 hour) 
-  
+  - Long processing times (up to 1 hour)
+
 - Batch transform: This inference option processes large offline datasets.
-Batch transform provides offline inference for large datasets. Batch transform is helpful for preprocessing datasets or gaining inference from large datasets. It is also useful when running inference if a persistent endpoint is not required, or associating input records with inference to support interpretation of the results.
+  Batch transform provides offline inference for large datasets. Batch transform is helpful for preprocessing datasets or gaining inference from large datasets. It is also useful when running inference if a persistent endpoint is not required, or associating input records with inference to support interpretation of the results.
 
 **Choosing an inference option for your use case**
 
@@ -147,15 +148,15 @@ Batch transform provides offline inference for large datasets. Batch transform i
 
 - Dedicated endpoints
 
-    Dedicated endpoints will be best performant, though they will be the most expensive.
+  Dedicated endpoints will be best performant, though they will be the most expensive.
 
 - Multi-model endpoint
 
-    SageMaker multi-model endpoints provide a scalable and cost-effective solution to deploying large numbers of models. They use the same fleet of resources and a shared serving container to host all of your models. This method reduces hosting costs by improving endpoint utilization compared with using single-model endpoints. It also reduces deployment overhead because SageMaker manages loading models in memory and scaling them based on the traffic patterns to your endpoint.
+  SageMaker multi-model endpoints provide a scalable and cost-effective solution to deploying large numbers of models. They use the same fleet of resources and a shared serving container to host all of your models. This method reduces hosting costs by improving endpoint utilization compared with using single-model endpoints. It also reduces deployment overhead because SageMaker manages loading models in memory and scaling them based on the traffic patterns to your endpoint.
 
 - Multi-container endpoint
 
-    SageMaker multi-container endpoints give you the ability to deploy multiple containers, which use different models or frameworks, on a single SageMaker endpoint. The containers can be run in a sequence as an inference pipeline. Or each container can be accessed individually by using direct invocation to improve endpoint utilization and optimize costs.
+  SageMaker multi-container endpoints give you the ability to deploy multiple containers, which use different models or frameworks, on a single SageMaker endpoint. The containers can be run in a sequence as an inference pipeline. Or each container can be accessed individually by using direct invocation to improve endpoint utilization and optimize costs.
 
 ---
 
@@ -171,7 +172,7 @@ Batch transform provides offline inference for large datasets. Batch transform i
 
 **Use cases for multi-container endpoint**
 
-- Data preprocessing: Run a data pre-processing container alongside your primary model container. The preprocessing container can handle tasks like data normalization, feature engineering, or other transformations before passing the data to the model. 
+- Data preprocessing: Run a data pre-processing container alongside your primary model container. The preprocessing container can handle tasks like data normalization, feature engineering, or other transformations before passing the data to the model.
 
 - Post-processing and interpretation: Run a post-processing container that takes the model's predictions and performs additional tasks like generating explanations, formatting the output, or combining results from multiple models.
 
@@ -213,21 +214,21 @@ Batch transform provides offline inference for large datasets. Batch transform i
 
 **Choosing the right compute resources**
 
-| Instance family |	Workload type |
-|-----------------|------------------|
-|t family |	Short jobs or notebooks |
-|m family | Standard CPU to memory ratio |
-|r family | Memory-optimized |
-|c family | Compute-optimized |
-|p family | Accelerated computing, training, and inference |
-|g family | Accelerated inference, smaller training jobs |
-| Amazon Elastic Inference | Cost-effective inference accelerators |
+| Instance family          | Workload type                                  |
+| ------------------------ | ---------------------------------------------- |
+| t family                 | Short jobs or notebooks                        |
+| m family                 | Standard CPU to memory ratio                   |
+| r family                 | Memory-optimized                               |
+| c family                 | Compute-optimized                              |
+| p family                 | Accelerated computing, training, and inference |
+| g family                 | Accelerated inference, smaller training jobs   |
+| Amazon Elastic Inference | Cost-effective inference accelerators          |
 
 **Choosing CPU, GPU, or Trainium instances**
 
 - CPU
 
-    CPU instances are effective choices for traditional ML models. They apply to prototyping deep learning (DL) models, training smaller DL models, fine-tuning smaller datasets, or use cases that involve trade-off of time for cost. CPU instances are effective for the following reasons:
+  CPU instances are effective choices for traditional ML models. They apply to prototyping deep learning (DL) models, training smaller DL models, fine-tuning smaller datasets, or use cases that involve trade-off of time for cost. CPU instances are effective for the following reasons:
 
   - Used for smaller datasets: CPU instances are ideal for smaller datasets, less complex models, or when the training process is not computationally intensive.
 
@@ -240,22 +241,22 @@ Batch transform provides offline inference for large datasets. Batch transform i
     - Small to medium-sized models
 
 - GPU
-  
-    GPU instances are effective choices for training ML frameworks such as TensorFlow, PyTorch, Apache MXNet, and XGBoost. They are also effective for training DL models with neural networks. Select from a range of GPU instances that balance performance and cost considerations. GPU instances are effective for the following reasons:
+
+  GPU instances are effective choices for training ML frameworks such as TensorFlow, PyTorch, Apache MXNet, and XGBoost. They are also effective for training DL models with neural networks. Select from a range of GPU instances that balance performance and cost considerations. GPU instances are effective for the following reasons:
 
   - Frequently used for training: GPU instances are often used for most ML training tasks due to their ability to accelerate computations through parallel processing.
 
   - Faster training times: Using GPU instances results in faster training times and the ability to handle larger datasets for more complex models.
 
     Use cases include the following:
-  
+
   - Sequence modeling
   - Object detection, video analysis
   - Large-scale models or generative adversarial networks (GANs)
 
 - Trainium
 
-    You can also use AWS Trainium instances for inference. Navigate through the three labeled markers to learn more about when to use Trainium instances. Trainium instances are effective for the following reasons:
+  You can also use AWS Trainium instances for inference. Navigate through the three labeled markers to learn more about when to use Trainium instances. Trainium instances are effective for the following reasons:
 
   - Cost effective: Trainium instances can be more cost-effective than GPU instances for certain use cases, particularly dealing with large-scale ML training or inference tasks.
 
@@ -264,9 +265,7 @@ Batch transform provides offline inference for large datasets. Batch transform i
     Use cases include the following:
 
   - Computer vision and speech recognition
-  
   - Recommendation models
-  
   - Simulations
 
 ---
@@ -295,23 +294,23 @@ Batch transform provides offline inference for large datasets. Batch transform i
 
 1. Model complexity
 
-    More complex models, such as deep neural networks or ensemble methods, tend to have higher computational requirements during training and inference. Allocate sufficient CPU, GPU, and memory resources to handle demanding workloads.
+   More complex models, such as deep neural networks or ensemble methods, tend to have higher computational requirements during training and inference. Allocate sufficient CPU, GPU, and memory resources to handle demanding workloads.
 
 2. Dataset size
 
-    Large datasets can place significant demands on memory and storage resources. Distribute data processing tasks across multiple nodes or use parallel process techniques to improve performance.
+   Large datasets can place significant demands on memory and storage resources. Distribute data processing tasks across multiple nodes or use parallel process techniques to improve performance.
 
 3. Real-time inference
 
-    Provision resources specifically for low-latency inference, such as dedicated GPU instances.
+   Provision resources specifically for low-latency inference, such as dedicated GPU instances.
 
 4. Scalability and elasticity
 
-    Use auto scaling capabilities or load-balancing techniques to dynamically adjust your compute resources based on workload demands.
+   Use auto scaling capabilities or load-balancing techniques to dynamically adjust your compute resources based on workload demands.
 
 5. Cost optimization
 
-    Balance performance requirements with cost considerations. Use Spot Instances or auto scaling options to optimize costs without compromising performance.
+   Balance performance requirements with cost considerations. Use Spot Instances or auto scaling options to optimize costs without compromising performance.
 
 ### Optimizing Deployment with Edge Computing
 
@@ -339,7 +338,7 @@ For more information about Greengrass, navigate to [AWS IoT Greengrass](https://
 
 - Model portability: SageMaker Neo can convert compiled models between frameworks, such as TensorFlow and PyTorch. Compiled models can also be run across different platforms and hardware, helping you to deploy models to diverse target environments.
 
-- Compress model size: SageMaker Neo quantizes and prunes models to significantly reduce their size, lowering storage costs and improving load times. This works well for compressing large, complex models for production. 
+- Compress model size: SageMaker Neo quantizes and prunes models to significantly reduce their size, lowering storage costs and improving load times. This works well for compressing large, complex models for production.
 
 For more information about SageMaker Neo, navigate to [Amazon SageMaker Neo](https://aws.amazon.com/sagemaker/neo/).
 
