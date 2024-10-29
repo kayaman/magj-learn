@@ -149,3 +149,16 @@ Popular graduated projects (as of October 2024):
 - [Vitess](https://www.cncf.io/projects/vitess/) database
 
 Check [cncf.io/projects](https://www.cncf.io/projects/) for the up-to-date list and the current incubating projects. And, also, the [sandbox projects](https://www.cncf.io/sandbox-projects/).
+
+## CNCF and Kubernetes
+
+For Kubernetes, the Cloud Native Computing Foundation:
+
+- Provides a neutral home for the Kubernetes trademark and enforces proper usage.
+- Provides license scanning of core and vendor code.
+- Offers legal guidance on patent and copyright issues.
+- Creates and maintains open source learning [curriculum](https://github.com/cncf/curriculumchafalta ), [training](https://www.cncf.io/training/courses/), and [certification](https://www.cncf.io/training/certification/) for Kubernetes and cloud native associates (KCNA), Kubernetes administrators (CKA), Kubernetes application developers (CKAD), Kubernetes security specialists (CKS) and more.
+- Manages a software conformance [working group](https://lists.cncf.io/g/cncf-k8s-conformance).
+- Actively markets Kubernetes.
+- Supports ad hoc activities.
+- Sponsors conferences and meetup events.
