@@ -120,4 +120,32 @@ CNCF hosts a multitude of projects, with more to be added in the future. CNCF pr
 Popular graduated projects (as of October 2024):
 
 - [Kubernetes](https://kubernetes.io/) container orchestrator
-- 
+- [Argo](https://www.cncf.io/projects/argo/) workflow engine for Kubernetes
+- [cert-manager](https://www.cncf.io/projects/cert-manager/) Security & Compliance
+- [cilium](https://www.cncf.io/projects/cilium/) cloud native network
+- [cloudevents](https://www.cncf.io/projects/cloudevents/) streaming & messaging
+- [containerd](https://www.cncf.io/projects/containerd/) container runtime
+- [CoreDNS](https://www.cncf.io/projects/coredns/) DNS server
+- [CRI-O](https://www.cncf.io/projects/cri-o/) container runtime
+- [Envoy](https://www.cncf.io/projects/envoy/) cloud native proxy
+- [etcd](https://www.cncf.io/projects/etcd/) distributed key-value store
+- [Falco](https://www.cncf.io/projects/falco/) security & compliance
+- [Fluentd](https://www.cncf.io/projects/fluentd/) for unified logging
+- [Flux](https://www.cncf.io/projects/flux/) continuous delivery for Kubernetes
+- [Harbor](https://www.cncf.io/projects/harbor/) registry
+- [Helm](https://www.cncf.io/projects/helm/) package management for Kubernetes
+- [Istio](https://www.cncf.io/projects/istio/) service mesh
+- [Jaeger](https://www.cncf.io/projects/jaeger/) observability
+- [Keda](https://www.cncf.io/projects/keda/) scheduling & orchestration
+- [KubeEdge](https://www.cncf.io/projects/kubeedge/) automation & configuration
+- [Linkerd](https://www.cncf.io/projects/linkerd/) service mesh for Kubernetes
+- [Open Policy Agent](https://www.cncf.io/projects/open-policy-agent-opa/) policy engine
+- [Prometheus](https://www.cncf.io/projects/prometheus/) monitoring system and time series DB
+- [Rook](https://www.cncf.io/projects/rook/) cloud native storage orchestrator for Kubernetes
+- [Spiffe](https://www.cncf.io/projects/spiffe/) key management
+- [Spire](https://www.cncf.io/projects/spire/) key management
+- [TUF](https://www.cncf.io/projects/the-update-framework-tuf/) security & compliance
+- [TiKV](https://www.cncf.io/projects/tikv/) database
+- [Vitess](https://www.cncf.io/projects/vitess/) database
+
+Check [cncf.io/projects](https://www.cncf.io/projects/) for the up-to-date list and the current incubating projects.
