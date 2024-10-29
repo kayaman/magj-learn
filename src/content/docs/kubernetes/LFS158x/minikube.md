@@ -1,8 +1,8 @@
 ---
-title: ConfigMaps & Secrets
+title: Minikube
 description: LinuxFoundation
 sidebar:
-  order: 14
+  order: 7
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 4

@@ -1,8 +1,8 @@
 ---
-title: ConfigMaps & Secrets
+title: Advanced Topics
 description: LinuxFoundation
 sidebar:
-  order: 14
+  order: 16
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 4

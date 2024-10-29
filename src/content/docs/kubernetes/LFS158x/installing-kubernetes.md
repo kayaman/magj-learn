@@ -1,8 +1,8 @@
 ---
-title: ConfigMaps & Secrets
+title: Installing Kubernetes
 description: LinuxFoundation
 sidebar:
-  order: 14
+  order: 6
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 4

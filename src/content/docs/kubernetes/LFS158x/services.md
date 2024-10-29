@@ -1,8 +1,8 @@
 ---
-title: ConfigMaps & Secrets
+title: Services
 description: LinuxFoundation
 sidebar:
-  order: 14
+  order: 11
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 4
