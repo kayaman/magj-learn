@@ -217,7 +217,7 @@ In this scenario, the [Secret](https://kubernetes.io/docs/concepts/configuration
 
 It is important to keep in mind that by default, the Secret data is stored as plain text inside **etcd**, therefore administrators must limit access to the API server and **etcd**. However, Secret data can be encrypted at rest while it is stored in **etcd**, but this feature needs to be enabled at the API server level by the Kubernetes cluster administrator. 
 
-### 
+### Create a Secret from Literal Values
 
 To create a Secret, we can use the imperative `kubectl create secret` command:
 
@@ -370,3 +370,41 @@ password.txt:  13 bytes
 ```
 
 ### Use Secrets Inside Pods: As Environment Variables
+
+Secrets are consumed by Containers in Pods as mounted data volumes, or as environment variables, and are referenced in their entirety (using the `envFrom` heading) or specific key-values (using the `env` heading).
+
+Below we reference only the `password` key of the `my-password` Secret and assign its value to the `WORDPRESS_DB_PASSWORD` environment variable:
+
+```yaml
+spec:
+  containers:
+  - image: wordpress:4.7.3-apache
+    name: wordpress
+    env:
+    - name: WORDPRESS_DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: my-password
+          key: password
+```
+
+### Use Secrets Inside Pods: As Volumes
+
+We can also mount a Secret as a Volume inside a Pod. The `secret` Volume plugin converts the Secret object into a mountable resource. The following example creates a file for each `my-password` Secret key (where the files are named after the names of the keys), the files containing the values of the respective Secret keys:
+
+```yaml
+spec:
+  containers:
+  - image: wordpress:4.7.3-apache
+    name: wordpress
+    volumeMounts:
+    - name: secret-volume
+      mountPath: "/etc/secret-data"
+      readOnly: true
+  volumes:
+  - name: secret-volume
+    secret:
+      secretName: my-password
+```
+
+For more details, you can explore the documentation on managing [Secrets](https://kubernetes.io/docs/tasks/configmap-secret/).
