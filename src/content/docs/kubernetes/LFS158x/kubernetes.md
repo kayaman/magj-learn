@@ -107,4 +107,17 @@ For a successful open source project, the community is as important as having gr
 
 In less than a decade since its debut Kubernetes has become the platform of choice for many enterprises of various sizes to run their workloads. It is a solution for workload management in banking, education, finance and investments, gaming, information technology, media and streaming, online retail, ridesharing, telecommunications, nuclear research, and many other industries. There are numerous user [case studies](https://kubernetes.io/case-studies/) and success stories on the Kubernetes website.
 
-## 
+## Cloud Native Computing Foundation (CNCF)
+
+The [Cloud Native Computing Foundation](https://www.cncf.io/) (CNCF) is one of the largest sub-projects hosted by the [Linux Foundation](https://www.linuxfoundation.org/). CNCF aims to accelerate the adoption of containers, microservices, and cloud-native applications.
+
+![CNCF](/img/edx/cncf.png)
+
+CNCF hosts a multitude of projects, with more to be added in the future. CNCF provides resources to each of the projects, but, at the same time, each project continues to operate independently under its pre-existing governance structure and with its existing maintainers. Projects within CNCF are categorized based on their maturity levels: Sandbox, Incubating, and Graduated. At the time of this writing, over a dozen projects had reached Graduated status with many more Incubating and in the Sandbox.
+
+CNCF hosts a multitude of projects, with more to be added in the future. CNCF provides resources to each of the projects, but, at the same time, each project continues to operate independently under its pre-existing governance structure and with its existing maintainers. Projects within CNCF are categorized based on their maturity levels: Sandbox, Incubating, and Graduated. At the time of this writing, over a dozen projects had reached Graduated status with many more Incubating and in the Sandbox.
+
+Popular graduated projects (as of October 2024):
+
+- [Kubernetes](https://kubernetes.io/) container orchestrator
+- 
