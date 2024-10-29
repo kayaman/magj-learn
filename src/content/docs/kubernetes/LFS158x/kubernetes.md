@@ -148,4 +148,4 @@ Popular graduated projects (as of October 2024):
 - [TiKV](https://www.cncf.io/projects/tikv/) database
 - [Vitess](https://www.cncf.io/projects/vitess/) database
 
-Check [cncf.io/projects](https://www.cncf.io/projects/) for the up-to-date list and the current incubating projects.
+Check [cncf.io/projects](https://www.cncf.io/projects/) for the up-to-date list and the current incubating projects. And, also, the [sandbox projects](https://www.cncf.io/sandbox-projects/).
