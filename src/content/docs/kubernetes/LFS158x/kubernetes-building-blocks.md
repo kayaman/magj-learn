@@ -23,7 +23,7 @@ Examples of Kubernetes object types are Nodes, Namespaces, Pods, ReplicaSets, De
 
 When creating an object, the object's configuration data section from below the spec field has to be submitted to the Kubernetes API Server. The API request to create an object must have the spec section, describing the desired state, as well as other details. Although the API Server accepts object definitions in a JSON format, most often we provide such definition manifests in a YAML format which is converted by `kubectl` in a JSON payload and sent to the API Server.
 
-### Nodes
+## Nodes
 
 Nodes are virtual identities assigned by Kubernetes to the systems part of the cluster - whether Virtual Machines, bare-metal, Containers, etc. These identities are unique to each system, and are used by the cluster for resources accounting and monitoring purposes, which helps with workload management throughout the cluster.
 
@@ -39,7 +39,7 @@ Worker nodes run the kubelet and kube-proxy node agents, the container runtime, 
 
 Collectively, the control plane node(s) and the worker node(s) represent the Kubernetes cluster. A cluster's nodes are systems distributed either on the same private network, across different networks, even across different cloud networks.
 
-### Namespaces
+## Namespaces
 
 If multiple users and teams use the same Kubernetes cluster we can partition the cluster into virtual sub-clusters using Namespaces. The names of the resources/objects created inside a Namespace are unique, but not across Namespaces in the cluster.
 
@@ -67,7 +67,7 @@ Namespaces are one of the most desired features of Kubernetes, securing its lead
 
 [Resource quotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/) help users limit the overall resources consumed within Namespaces, while [LimitRanges](https://kubernetes.io/docs/concepts/policy/limit-range/) help limit the resources consumed by individual Containers and their enclosing objects in a Namespace. We will briefly cover quota management in a later chapter.
 
-### Pods
+## Pods
 
 A [Pod](https://kubernetes.io/docs/concepts/workloads/pods/) is the smallest Kubernetes workload object. It is the unit of deployment in Kubernetes, which represents a single instance of the application. A Pod is a logical collection of one or more containers, enclosing and isolating them to ensure that they:
 
@@ -144,7 +144,7 @@ kubectl describe pod nginx-pod
 kubectl delete pod nginx-pod
 ```
 
-## Demo: How to Run Applications with Pods
+### Demo: How to Run Applications with Pods
 
 <video src="https://edx-video.net/61a5fb9c-6ebc-4d4e-9a16-22481e975246-mp4_720p.mp4" width="480" height="320" controls></video>
 
@@ -231,3 +231,125 @@ kubectl get rs frontend -o json
 kubectl describe rs frontend
 kubectl delete rs frontend
 ```
+
+Let's continue with the same ReplicaSet example and assume that one of the Pods is forced to unexpectedly terminate (due to insufficient resources, timeout, its hosting node has crashed, etc.), causing the current state to no longer match the desired state. 
+
+![ReplicaSet](/img/edx/replicaset2.png)
+
+The ReplicaSet detects that the current state is no longer matching the desired state and triggers a request for an additional Pod to be created, thus ensuring that the current state matches the desired state. 
+
+![ReplicaSet](/img/edx/replicaset3.png)
+
+ReplicaSets can be used independently as Pod controllers but they only offer a limited set of features. A set of complementary features are provided by Deployments, the recommended controllers for the orchestration of Pods. Deployments manage the creation, deletion, and updates of Pods. A Deployment automatically creates a ReplicaSet, which then creates a Pod. There is no need to manage ReplicaSets and Pods separately, the Deployment will manage them on our behalf.
+
+## Deployments
+
+[Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) objects provide declarative updates to Pods and ReplicaSets. The DeploymentController is part of the control plane node's controller manager, and as a controller it also ensures that the current state always matches the desired state of our running containerized application. It allows for seamless application updates and rollbacks, known as the default **RollingUpdate** strategy, through rollouts and rollbacks, and it directly manages its ReplicaSets for application scaling. It also supports a disruptive, less popular update strategy, known as **Recreate**.
+
+Below is an example of a Deployment object's definition manifest in YAML format. This represents the declarative method to define an object, and can serve as a template for a much more complex Deployment definition manifest if desired:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-deployment
+  template:
+    metadata:
+      labels:
+        app: nginx-deployment
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.20.2
+        ports:
+        - containerPort: 80
+```
+
+The `apiVersion` field is the first required field, and it specifies the API endpoint on the API server which we want to connect to; it must match an existing version for the object type defined. The second required field is `kind`, specifying the object type - in our case it is `Deployment`, but it can be Pod, ReplicaSet, Namespace, Service, etc. The third required field `metadata`, holds the object's basic information, such as name, annotations, labels, namespaces, etc. Our example shows two `spec` fields (`spec` and `spec.template.spec`). The fourth required field `spec` marks the beginning of the block defining the desired state of the Deployment object. In our example, we are requesting that 3 replicas, that is 3 instances of the Pod, are running at any given time. The Pods are created using the Pod Template defined in `spec.template`. A nested object, such as the Pod being part of a Deployment, retains its `metadata` and `spec` and loses its own `apiVersion` and `kind` - both being replaced by `template`. In `spec.template.spec`, we define the desired state of the Pod. Our Pod creates a single container running the `nginx:1.20.2` image from [Docker Hub](https://hub.docker.com/_/nginx).
+
+The above definition manifest, if stored by a `def-deploy.yaml` file, is loaded into the cluster to run a set of three identical Pod replicas and their associated container image, together with their managing ReplicaSet. While `create` is exemplified below, advanced Kubernetes practitioners may opt to use `apply` instead:
+
+```sh
+kubectl create -f def-deploy.yaml
+```
+
+Imperatively, we can simply run the Deployment defined above without the definition manifest as such. The following is a multi-line command that should be selected in its entirety for copy/paste:
+
+```sh
+kubectl create deployment nginx-deployment --image=nginx:1.20.2 --port=80 --replicas=3
+```
+
+However, when in need of a starter definition manifest, knowing how to generate one can be a life-saver. The imperative command with additional key flags such as `dry-run` and the `yaml output`, can generate the definition template instead of running the Deployment, while the template is then stored in the `nginx-deploy.yaml` file. The following is a multi-line command that should be selected in its entirety for copy/paste:
+
+```sh
+kubectl create deployment nginx-deployment \
+--image=nginx:1.20.2 --port=80 --replicas=3 \
+--dry-run=client -o yaml > nginx-deploy.yaml
+```
+
+We can generates a Deployment definition manifest in JSON:
+
+```sh
+kubectl create deployment nginx-deployment \
+--image=nginx:1.20.2 --port=80 --replicas=3 \
+--dry-run=client -o json > nginx-deploy.json
+````
+
+Both the YAML and JSON definition files can serve as templates or can be loaded into the cluster respectively as such:
+
+```sh
+kubectl create -f nginx-deploy.yaml
+kubectl create -f nginx-deploy.json
+```
+
+Once the Deployment object is created, the Kubernetes system attaches the status field to the object and populates it with all necessary status fields.
+
+In the following example, a new `Deployment` creates `ReplicaSet A` which then creates 3 `Pods`, with each Pod Template configured to run one `nginx:1.20.2` container image. In this case, the `ReplicaSet A` is associated with `nginx:1.20.2` representing a state of the `Deployment`. This particular state is recorded as `Revision 1`.
+
+![ReplicaSet](/img/edx/replicaset4.png)
+
+In time, we need to push updates to the application managed by the Deployment object. Let's change the Pods' Template and update the container image from `nginx:1.20.2` to `nginx:1.21.5`. The `Deployment` triggers a new `ReplicaSet B` for the new container image versioned `1.21.5` and this association represents a new recorded state of the `Deployment`, `Revision 2`. The seamless transition between the two ReplicaSets, from `ReplicaSet A` with three Pods versioned `1.20.2` to the new `ReplicaSet B` with three new Pods versioned `1.21.5`, or from `Revision 1` to `Revision 2`, is a Deployment rolling update.
+
+A **rolling update** is triggered when we update specific properties of the Pod Template for a deployment. While planned changes such as updating the container image, container port, volumes, and mounts would trigger a new Revision, other operations that are dynamic in nature, like scaling or labeling the deployment, do not trigger a rolling update, thus do not change the Revision number.
+
+Once the rolling update has completed, the `Deployment` will show both `ReplicaSets` `A` and `B`, where `A` is scaled to 0 (zero) Pods, and `B` is scaled to 3 Pods. This is how the Deployment records its prior state configuration settings, as `Revisions`.
+
+![ReplicaSet](/img/edx/replicaset5.png)
+
+Once `ReplicaSet B` and its 3 `Pods` versioned `1.21.5` are ready, the `Deployment` starts actively managing them. However, the Deployment keeps its prior configuration states saved as Revisions which play a key factor in the `rollback` capability of the Deployment - returning to a prior known configuration state. In our example, if the performance of the new `nginx:1.21.5` is not satisfactory, the Deployment can be rolled back to a prior Revision, in this case from `Revision 2` back to `Revision 1` running `nginx:1.20.2` once again.
+
+![ReplicaSet](/img/edx/replicaset6.png)
+
+Before advancing to more complex topics, become familiar with Deployment operations with additional commands such as:
+
+```sh
+kubectl apply -f nginx-deploy.yaml --record
+kubectl get deployments
+kubectl get deploy -o wide
+kubectl scale deploy nginx-deployment --replicas=4
+kubectl get deploy nginx-deployment -o yaml
+kubectl get deploy nginx-deployment -o json
+kubectl describe deploy nginx-deployment
+kubectl rollout status deploy nginx-deployment
+kubectl rollout history deploy nginx-deployment
+kubectl rollout history deploy nginx-deployment --revision=1
+kubectl set image deploy nginx-deployment nginx=nginx:1.21.5 --record
+kubectl rollout history deploy nginx-deployment --revision=2
+kubectl rollout undo deploy nginx-deployment --to-revision=1
+kubectl get all -l app=nginx -o wide
+kubectl delete deploy nginx-deployment
+kubectl get deploy,rs,po -l app=nginx
+```
+
+### Demo: Deployment Rolling Update and Rollback
+
+<video src="https://edx-video.net/LinuxFoundationXLFS158x-V000800_DTH.mp4" width="480" height="320" controls></video>
+
+## DaemonSets
