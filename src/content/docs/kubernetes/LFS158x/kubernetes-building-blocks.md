@@ -41,7 +41,31 @@ Collectively, the control plane node(s) and the worker node(s) represent the Kub
 
 ### Namespaces
 
+If multiple users and teams use the same Kubernetes cluster we can partition the cluster into virtual sub-clusters using Namespaces. The names of the resources/objects created inside a Namespace are unique, but not across Namespaces in the cluster.
 
+To list all the Namespaces, we can run the following command:
+
+```sh
+kubectl get namespaces
+```
+
+```sh frame="none"
+NAME              STATUS       AGE
+default           Active       11h
+kube-node-lease   Active       11h
+kube-public       Active       11h
+kube-system       Active       11h
+```
+
+Generally, Kubernetes creates four Namespaces out of the box: **kube-system**, **kube-public**, **kube-node-lease**, and **default**. The **kube-system** Namespace contains the objects created by the Kubernetes system, mostly the control plane agents. The **default** Namespace contains the objects and resources created by administrators and developers, and objects are assigned to it by default unless another Namespace name is provided by the user. **kube-public** is a special Namespace, which is unsecured and readable by anyone, used for special purposes such as exposing public (non-sensitive) information about the cluster. The newest Namespace is **kube-node-lease** which holds node lease objects used for node heartbeat data. Good practice, however, is to create additional Namespaces, as desired, to virtualize the cluster and isolate users, developer teams, applications, or tiers:
+
+```sh
+kubectl create namespace new-namespace-name 
+```
+
+Namespaces are one of the most desired features of Kubernetes, securing its lead against competitors, as it provides a solution to the multi-tenancy requirement of today's enterprise development teams. 
+
+[Resource quotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/) help users limit the overall resources consumed within Namespaces, while [LimitRanges](https://kubernetes.io/docs/concepts/policy/limit-range/) help limit the resources consumed by individual Containers and their enclosing objects in a Namespace. We will briefly cover quota management in a later chapter.
 
 ### Pods
 
@@ -119,3 +143,31 @@ kubectl get pod nginx-pod -o json
 kubectl describe pod nginx-pod
 kubectl delete pod nginx-pod
 ```
+
+## Demo: How to Run Applications with Pods
+
+<video src="https://edx-video.net/61a5fb9c-6ebc-4d4e-9a16-22481e975246-mp4_720p.mp4" width="480" height="320" controls></video>
+
+## Labels
+
+[Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) are **key-value pairs** attached to Kubernetes objects such as Pods, ReplicaSets, Nodes, Namespaces, and Persistent Volumes. Labels are used to organize and select a subset of objects, based on the requirements in place. Many objects can have the same Label(s). Labels do not provide uniqueness to objects. Controllers use Labels to logically group together decoupled objects, rather than using objects' names or IDs.
+
+![labels](/img/edx/labels.png)
+
+In the image above, we have used two Label keys: `app` and `env`. Based on our requirements, we have given different values to our four Pods. The Label `env=dev` logically selects and groups the top two Pods, while the Label `app=frontend` logically selects and groups the left two Pods. We can select one of the four Pods - bottom left, by selecting two Labels: `app=frontend AND env=qa`.
+
+## Label Selectors
+
+Controllers, or operators, and Services, use [label selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors) to select a subset of objects. Kubernetes supports two types of Selectors:
+
+- **Equality-Based Selectors**
+
+  Equality-Based Selectors allow filtering of objects based on Label keys and values. Matching is achieved using the `=`, `==` (equals, used interchangeably), or `!=` (not equals) operators. For example, with `env==dev` or `env=dev` we are selecting the objects where the `env` Label key is set to value `dev`.
+
+- **Set-Based Selectors**
+
+  Set-Based Selectors allow filtering of objects based on a set of values. We can use in, notin operators for Label values, and `exist/does not exist` operators for Label keys. For example, with `env in (dev,qa)` we are selecting objects where the `env` Label is set to either `dev` or `qa`; with `!app` we select objects with no Label key `app`.
+
+  ![selectors](/img/edx/selectors.png)
+
+  ## 

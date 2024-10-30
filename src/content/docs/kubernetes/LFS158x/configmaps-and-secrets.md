@@ -148,7 +148,7 @@ This exercise guide was prepared for the video demonstration available in this c
 
 The webserver index file:
 
-```html frame="none"
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -207,7 +207,7 @@ status: {}
 
 ### Demo: Using ConfigMaps as Volumes
 
-<video src="https://edx-video.net/395ec262-ccac-47ba-af98-fcc60f7b2f6d-mp4_720p.mp4" width="320" height="240" controls></video>
+<video src="https://edx-video.net/395ec262-ccac-47ba-af98-fcc60f7b2f6d-mp4_720p.mp4" width="480" height="320" controls></video>
 
 ## Secrets
 
@@ -337,7 +337,7 @@ $ kubectl create secret generic my-file-password \
   --from-file=password.txt
 ```
 
-```sh
+```sh frame="none"
 secret/my-file-password created
 ```
 
