@@ -148,7 +148,7 @@ This exercise guide was prepared for the video demonstration available in this c
 
 The webserver index file:
 
-```html
+```html frame="none"
 <!DOCTYPE html>
 <html>
 <head>
@@ -234,7 +234,7 @@ After successfully creating a secret we can analyze it with the `get` and `descr
 kubectl get secret my-password
 ```
 
-```sh
+```sh frame="none"
 NAME          TYPE     DATA   AGE
 my-password   Opaque   1      8m
 ```
@@ -243,7 +243,7 @@ my-password   Opaque   1      8m
 kubectl describe secret my-password
 ```
 
-```sh
+```sh frame="none"
 Name:          my-password
 Namespace:     default
 Labels:        <none>
@@ -266,7 +266,7 @@ With `data` maps, each value of a sensitive information field must be encoded us
 echo mysqlpassword | base64
 ````
 
-```sh
+```sh frame="none"
 bXlzcWxwYXNzd29yZAo=
 ```
 
@@ -288,7 +288,7 @@ Please note that base64 encoding does not mean encryption, and anyone can easily
 echo "bXlzcWxwYXNzd29yZAo=" | base64 --decode
 ```
 
-```sh
+```sh frame="none"
 mysqlpassword
 ```
 
@@ -322,7 +322,7 @@ First, we encode the sensitive data and then we write the encoded data to a text
 $ echo mysqlpassword | base64
 ```
 
-```sh
+```sh frame="none"
 bXlzcWxwYXNzd29yZAo=
 ```
 
@@ -356,7 +356,7 @@ my-file-password   Opaque   1      8m
 kubectl describe secret my-file-password
 ```
 
-```sh
+```sh frame="none"
 Name:          my-file-password
 Namespace:     default
 Labels:        <none>
