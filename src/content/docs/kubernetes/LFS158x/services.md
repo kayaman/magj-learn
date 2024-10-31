@@ -162,3 +162,115 @@ spec:
 
 ## Service Discovery
 
+As Services are the primary mode of communication between containerized applications managed by Kubernetes, it is helpful to be able to discover them at runtime. Kubernetes supports two methods for discovering Services:
+
+### Environment Variables
+
+As soon as the Pod starts on any worker node, the `kubelet` daemon running on that node adds a set of environment variables in the Pod for all active Services. For example, if we have an active Service called `redis-master`, which exposes port `6379`, and its `ClusterIP` is `172.17.0.6`, then, on a newly created Pod, we can see the following environment variables:
+
+```dotenv
+REDIS_MASTER_SERVICE_HOST=172.17.0.6
+REDIS_MASTER_SERVICE_PORT=6379
+REDIS_MASTER_PORT=tcp://172.17.0.6:6379
+REDIS_MASTER_PORT_6379_TCP=tcp://172.17.0.6:6379
+REDIS_MASTER_PORT_6379_TCP_PROTO=tcp
+REDIS_MASTER_PORT_6379_TCP_PORT=6379
+REDIS_MASTER_PORT_6379_TCP_ADDR=172.17.0.6
+```
+
+With this solution, we need to be careful while ordering our Services, as the Pods will not have the environment variables set for Services which are created after the Pods are created.
+
+### DNS
+
+Kubernetes has an add-on for [DNS](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/), which creates a DNS record for each Service and its format is `my-svc.my-namespace.svc.cluster.local`. Services within the same Namespace find other Services just by their names. If we add a Service `redis-master` in `my-ns` Namespace, all Pods in the same `my-ns` Namespace lookup the Service just by its name, `redis-master`. Pods from other Namespaces, such as `test-ns`, lookup the same Service by adding the respective Namespace as a suffix, such as `redis-master.my-ns` or providing the FQDN of the service as `redis-master.my-ns.svc.cluster.local`.
+
+This is the most common and highly recommended solution. For example, in the previous section's image, we have seen that an internal DNS is configured, which maps our Services `frontend-svc` and `db-svc` to `172.17.0.4` and `172.17.0.5` IP addresses respectively.
+
+If we had a client application accessing the frontend application, the client would only need to "know" the frontend application's Service name and port, which are frontend-svc and port 80 respectively. From a client application Pod we could possibly run the following command, allowing for the cluster internal name resolution and the kube-proxy to guide the client's request to a frontend Pod:
+
+```sh
+kubectl exec client-app-pod-name -c client-container-name -- /bin/sh -c curl -s frontend-svc:80
+```
+
+## ServiceType
+
+While defining a Service, we can also choose its access scope. We can decide whether the Service:
+
+- Is only accessible within the cluster.
+- Is accessible from within the cluster and the external world.
+- Maps to an entity which resides either inside or outside the cluster.
+
+Access scope is decided by `ServiceType` property, defined when creating the Service.
+
+### ClusterIP and NodePort
+
+`ClusterIP` is the default [ServiceType](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types). A Service receives a Virtual IP address, known as its ClusterIP. This Virtual IP address is used for communicating with the Service and is accessible only from within the cluster. The `frontend-svc` Service definition manifest now includes an explicit `type` for ClusterIP. If omitted, the default ClusterIP service type is set up:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-svc
+spec:
+  selector:
+    app: frontend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
+  type: ClusterIP
+```
+
+With the [NodePort](https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport) *ServiceType*, in addition to a ClusterIP, a high-port, dynamically picked from the default range 30000-32767, is mapped to the respective Service, from all the worker nodes. For example, if the mapped NodePort is `32233` for the service `frontend-svc`, then, if we connect to any worker node on port `32233`, the node would redirect all the traffic to the assigned ClusterIP - `172.17.0.4`. If we prefer a specific high-port number instead, then we can assign that high-port number to the NodePort from the default range when creating the Service.
+
+![NodePort](/img/edx/nodeport.png)
+
+The NodePort ServiceType is useful when we want to make our Services accessible from the external world. The end-user connects to any worker node on the specified high-port, which proxies the request internally to the ClusterIP of the Service, then the request is forwarded to the applications running inside the cluster. Let's not forget that the Service is load balancing such requests, and only forwards the request to one of the Pods running the desired application. To manage access to multiple application Services from the external world, administrators can configure a reverse proxy - an ingress, and define rules that target specific Services within the cluster.
+
+The NodePort type has to be explicitly declared in the Service definition manifest or with the imperative methods explored in an earlier lesson - the `expose` and `create service` commands. Declaring the `nodePort` value `32233` is optional, ensuring there is no conflict. We are reusing the earlier definition and commands updated for the NodePort `type` and declaring the `nodePort` value where supported:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-svc
+spec:
+  selector:
+    app: frontend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
+    nodePort: 32233
+  type: NodePort
+```
+
+```sh
+kubectl expose deploy frontend --name=frontend-svc --port=80 --target-port=5000 --type=NodePort
+```
+
+```sh
+kubectl create service nodeport frontend-svc --tcp=80:5000 --node-port=32233
+```
+
+#### Demo
+
+<video src="https://edx-video.net/e68c0cd1-753c-4dec-8a72-de3273736b29-mp4_720p.mp4" width="480" height="320" controls></video>
+
+### LoadBalancer
+
+With the [LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) *ServiceType*:
+
+- NodePort and ClusterIP are automatically created, and the external load balancer will route to them.
+- The Service is exposed at a static port on each worker node.
+- The Service is exposed externally using the underlying cloud provider's load balancer feature.
+
+![LoadBalancer](/img/edx/loadbalancer.png)
+
+The `LoadBalancer` *ServiceType* will only work if the underlying infrastructure supports the automatic creation of Load Balancers and have the respective support in Kubernetes, as is the case with the Google Cloud Platform and AWS. If no such feature is configured, the LoadBalancer IP address field is not populated, it remains in Pending state, but the Service will still work as a typical NodePort type Service.
+
+### ExternalIP
+
+A Service can be mapped to an [ExternalIP](https://kubernetes.io/docs/concepts/services-networking/service/#external-ips) address if it can route to one or more of the worker nodes. Traffic that is ingressed into the cluster with the ExternalIP (as destination IP) on the Service port, gets routed to one of the Service endpoints. This type of service requires an external cloud provider such as Google Cloud Platform or AWS and a Load Balancer configured on the cloud provider's infrastructure.
+
+![ExternalIP](/img/edx/externalip.png)

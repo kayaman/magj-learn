@@ -295,7 +295,7 @@ export default defineConfig({
 					collapsed: true,
 					badge: {
 						text: 'hot',
-						variant: 'tip',
+						variant: 'danger',
 					},
 					items: [
 								{ 
