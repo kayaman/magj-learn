@@ -103,3 +103,51 @@ Let's take a look at the most popular installation tools available:
 ![kops Logo](/img/edx/kops.jpg)
 
 In addition, for a manual installation approach, the [Kubernetes The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) GitHub project by Kelsey Hightower is an extremely helpful installation guide and resource. The project aims to teach all the detailed steps involved in the bootstrapping of a Kubernetes cluster, steps that are otherwise automated by various tools mentioned in this chapter and obscured from the end user.
+
+## Production Clusters from Certified Solutions Providers
+
+The growing popularity of Kubernetes accelerated its adoption by many cloud services providers together with hosted platforms of [certified Kubernetes](https://kubernetes.io/partners/) distributions. There are well over 200 managed certified Kubernetes services providers today, as many more organizations became Kubernetes partners, joining the list of initial providers of hosted Kubernetes solutions:
+
+### Hosted Solutions
+
+Hosted Solutions providers fully manage the provided software stack, while the user pays hosting and management charges. Popular vendors providing hosted solutions for Kubernetes are (listed in alphabetical order):
+
+- [Alibaba Cloud Container Service for Kubernetes](https://www.alibabacloud.com/product/kubernetes) (ACK)
+- [Amazon Elastic Kubernetes Service](https://aws.amazon.com/eks/) (EKS)
+- [Azure Kubernetes Service](https://azure.microsoft.com/en-us/services/kubernetes-service/) (AKS)
+- [DigitalOcean Kubernetes](https://www.digitalocean.com/products/kubernetes/) (DOKS)
+- [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/) (GKE)
+- [IBM Cloud Kubernetes Service](https://www.ibm.com/cloud/kubernetes-service/)
+- [Oracle Container Engine for Kubernetes](https://www.oracle.com/cloud-native/container-engine-kubernetes/) (OKE)
+- [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift)
+- [VMware Tanzu Kubernetes Grid](https://tanzu.vmware.com/kubernetes-grid)
+
+### Partners
+
+Additional Partners providing managed Kubernetes services and platforms (listed in alphabetical order):
+
+- Aqua Security
+- Canonical
+- D2IQ
+- Dell Technologies Consulting
+- Deloitte
+- Fujitsu
+- GitLab
+- HPE
+- Kubermatic
+- Kublr
+- Mirantis
+- Platform9
+- SAP
+- SUSE
+- Sysdig
+- Weaveworks
+
+### Turnkey Cloud Solutions
+
+[Turnkey Cloud Solutions](https://kubernetes.io/docs/setup/production-environment/turnkey-solutions/) install production ready Kubernetes clusters on cloud infrastructure:
+
+- Linode Kubernetes Engine
+- Nirmata Managed Kubernetes
+- Nutanix Karbon
+- Vultr Kubernetes Engine
