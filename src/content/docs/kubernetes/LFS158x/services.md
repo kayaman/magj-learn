@@ -274,3 +274,63 @@ The `LoadBalancer` *ServiceType* will only work if the underlying infrastructure
 A Service can be mapped to an [ExternalIP](https://kubernetes.io/docs/concepts/services-networking/service/#external-ips) address if it can route to one or more of the worker nodes. Traffic that is ingressed into the cluster with the ExternalIP (as destination IP) on the Service port, gets routed to one of the Service endpoints. This type of service requires an external cloud provider such as Google Cloud Platform or AWS and a Load Balancer configured on the cloud provider's infrastructure.
 
 ![ExternalIP](/img/edx/externalip.png)
+
+Please note that ExternalIPs are not managed by Kubernetes. The cluster administrator has to configure the routing which maps the ExternalIP address to one of the nodes.
+
+### ExternalName
+
+[ExternalName](https://kubernetes.io/docs/concepts/services-networking/service/#externalname) is a special ServiceType that has no Selectors and does not define any endpoints. When accessed within the cluster, it returns a `CNAME` record of an externally configured Service.
+
+The primary use case of this *ServiceType* is to make externally configured Services like `my-database.example.com` available to applications inside the cluster. If the externally defined Service resides within the same Namespace, using just the name `my-database` would make it available to other applications and Services within that same Namespace.
+
+## Multi-Port Services
+
+A Service resource can expose multiple ports at the same time if required. Its configuration is flexible enough to allow for multiple groupings of ports to be defined in the manifest. This is a helpful feature when exposing Pods with one container listening on more than one port, or when exposing Pods with multiple containers listening on one or more ports.
+
+A multi-port Service manifest is provided below:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: myapp
+  type: NodePort
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 80
+    nodePort: 31080
+  - name: https
+    protocol: TCP
+    port: 8443
+    targetPort: 443
+    nodePort: 31443
+```
+
+The `my-service` Service resource exposes Pods labeled `app==myapp` with possibly one container listening on ports `80` and `443`, as described by the two `targetPort` fields. The Service will be visible inside the cluster on its `ClusterIP` and ports `8080` and `8443` as described by the two port fields, and it will also be accessible to incoming requests from outside the cluster on the two `nodePort` fields `31080` and `31443`. When manifests describe multiple ports, they need to be named as well, for clarity, as described by the two `spec.port.name` fields with values `http` and `https` respectively. This Service is configured to capture traffic on ports 8080 and 8443 from within the cluster, or on ports 31080 and 31443 from outside the cluster, and forward that traffic to the ports 80 and 443 respectively of the Pods running the container.
+
+## Port Forwarding
+
+Another application exposure mechanism in Kubernetes is port forwarding. In Kubernetes the port forwarding feature allows users to easily forward a local port to an application port. Thanks to its flexibility, the application port can be a Pod container port, a Service port, and even a Deployment container port (from its Pod template). This allows users to test and debug their application running in a remote cluster by targeting a port on their local workstation (either `http://localhost:port` or `http://127.0.0.1:port`), a solution for remote cloud clusters or virtualized on premises clusters.
+
+Port forwarding can be utilized as an alternative to the NodePort Service type because it does not require knowledge of the public IP address of the Kubernetes Node. As long as there are no firewalls blocking access to the desired local workstation port, such as 8080 in the examples below, the port forwarding method can quickly allow access to the application running in the cluster.
+
+Based on the earlier explored `frontend` Deployment and `frontend-svc` Service, port forwarding can be easily achieved via one of the following methods:
+
+```sh
+kubectl port-forward deploy/frontend 8080:5000 
+```
+
+```sh
+kubectl port-forward frontend-77cbdf6f79-qsdts 8080:5000 
+```
+
+```sh
+kubectl port-forward svc/frontend-svc 8080:80
+```
+
+All three commands forward port 8080 of the local workstation to the container port 5000 of the Deployment and Pod respectively, and to the Service port 80. While the Pod resource type is implicit, therefore optional and can be omitted, the Deployment and Service resource types are required to be explicitly supplied in the presented syntax.
