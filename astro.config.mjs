@@ -293,10 +293,6 @@ export default defineConfig({
 				{
 					label: 'Kubernetes',
 					collapsed: true,
-					badge: {
-						text: 'hot',
-						variant: 'danger',
-					},
 					items: [
 								{ 
 									label: 'About', 
