@@ -39,10 +39,6 @@ export default defineConfig({
 					label: 'AWS',
 					items: [
 						{ 
-							label: 'About', 
-							link: 'aws/about',
-						},
-						{ 
 							label: 'ML Engineer',
 							collapsed: true,
 							items: [
