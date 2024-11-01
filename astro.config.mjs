@@ -45,10 +45,6 @@ export default defineConfig({
 						{ 
 							label: 'ML Engineer',
 							collapsed: true,
-							badge: {
-								text: 'done',
-								variant: 'success',
-							},
 							items: [
 								{ 
 									label: 'Overview', 
