@@ -290,10 +290,6 @@ export default defineConfig({
 					label: 'Kubernetes',
 					collapsed: true,
 					items: [
-								{ 
-									label: 'About', 
-									link: 'kubernetes/about',
-								},
 								{
 									label: 'Basics',
 									collapsed: true,
