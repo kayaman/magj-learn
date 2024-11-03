@@ -3,9 +3,7 @@ title: Amazon Timestream
 description: Udemy
 sidebar:
    order: 7
-tableOfContents:
-  minHeadingLevel: 2
-  maxHeadingLevel: 4
+tableOfContents: false
 ---
 
 - Fully managed, fast, scalable, serverless time series database

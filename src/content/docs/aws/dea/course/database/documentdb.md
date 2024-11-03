@@ -3,9 +3,7 @@ title: Amazon DocumentDB
 description: Udemy
 sidebar:
    order: 3
-tableOfContents:
-  minHeadingLevel: 2
-  maxHeadingLevel: 4
+tableOfContents: false
 ---
 
 - Aurora is an "AWS-implementation" of PostgreSQL / MySQL …

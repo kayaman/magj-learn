@@ -3,9 +3,7 @@ title: Amazon MemoryDB
 description: Udemy
 sidebar:
    order: 4
-tableOfContents:
-  minHeadingLevel: 2
-  maxHeadingLevel: 4
+tableOfContents: false
 ---
 
 - Redis-compatible, durable, in-memory database service

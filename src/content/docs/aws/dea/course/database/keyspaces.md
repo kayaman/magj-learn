@@ -3,9 +3,7 @@ title: Amazon Keyspaces
 description: Udemy
 sidebar:
    order: 5
-tableOfContents:
-  minHeadingLevel: 2
-  maxHeadingLevel: 4
+tableOfContents: false
 ---
 
 - Apache Cassandra is an open-source NoSQL distributed database
