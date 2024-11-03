@@ -61,3 +61,22 @@ tableOfContents:
 - Failed drives / nodes automatically replaced
 - ~~However, limited to a single availability zone (AZ)~~
 - Multi-AZ for RA3 clusters now available
+
+## Distribution Styles
+
+- AUTO: Redshift figures it out based on the size of data
+- EVEN: Rows distributed across slices in round-robin
+- KEY: Rows distributed based on one column
+- ALL: Entire table is copied to every node
+
+### EVEN Distribution
+
+![even](/img/rs-evennt.png)
+
+### KEY Distribution
+
+![key](/img/rs-key.png)
+
+### ALL Distribution
+
+![all](/img/rs-all.png)
