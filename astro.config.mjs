@@ -17,6 +17,16 @@ export default defineConfig({
 		sitemap({}),
 		starlight({
 			favicon: '/favicon.png',
+			head: [
+				{
+					tag: 'script',
+					attrs: {
+						src: 'https://plausible.io/js/script.js',
+						'data-domain': 'learn.magj.dev',
+						defer: true,
+					}
+				}
+			],
 			logo: {
 				light: './src/assets/logo-light.svg',
 				dark: './src/assets/logo-dark.svg',
