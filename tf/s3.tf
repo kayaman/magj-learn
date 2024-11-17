@@ -1,12 +1,11 @@
 resource "aws_s3_bucket" "this" {
   bucket = var.s3_name
-  acl = "public-read"
 }
 
-# resource "aws_s3_bucket_acl" "this" {
-#   bucket = aws_s3_bucket.this.id
-#   acl    = "private"
-# }
+resource "aws_s3_bucket_acl" "this" {
+  bucket = aws_s3_bucket.this.id
+  acl    = "public-read"
+}
 
 resource "aws_s3_bucket_website_configuration" "this" {
   bucket = aws_s3_bucket.this.bucket
