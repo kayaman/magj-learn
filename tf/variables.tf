@@ -5,5 +5,5 @@ variable "region" {
 
 variable "s3_name" {
   type = string
-  default = "learn-magj-dev"
+  default = "learn-magj-dev2"
 }
