@@ -1,6 +1,7 @@
 resource "aws_s3_bucket" "this" {
   bucket = var.s3_name
-  AllowPublic = true
+  block_public_acls = false
+  block_public_policy = false
 }
 
 resource "aws_s3_bucket_acl" "this" {
