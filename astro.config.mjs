@@ -49,6 +49,50 @@ export default defineConfig({
 					label: 'AWS',
 					items: [
 						{ 
+							label: 'Developer',
+							collapsed: true,
+							items: [
+								{
+									label: 'Overview',
+									link: 'aws/dva/overview',
+								},
+								{ 
+									label: 'Resources', 
+									collapsed: true,
+									autogenerate: { 
+										directory: 'aws/dva/resources',
+									},
+								},
+								{ 
+									label: 'Recommended', 
+									collapsed: true,
+									autogenerate: { 
+										directory: 'aws/dva/recommended',
+									},
+								},
+							]
+						},
+						{ 
+							label: 'Solutions Architect',
+							collapsed: false,
+							items: [
+								{
+									label: 'Overview',
+									link: 'aws/sa/overview',
+								},
+								{
+									label: 'Domains',
+									autogenerate: {
+										directory: 'aws/sa/domains',
+									},
+								},
+								{ 
+									label: 'Resources', 
+									link: 'aws/sa/resources',
+								},
+							]
+						},
+						{ 
 							label: 'ML Engineer',
 							collapsed: true,
 							items: [
@@ -102,11 +146,7 @@ export default defineConfig({
 						},
 						{ 
 							label: 'Data Engineer', 
-							collapsed: false,
-							badge: {
-								text: 'current',
-								variant: 'tip'
-							},
+							collapsed: true,
 							items: [
 								{
 									label: 'Overview',
@@ -183,30 +223,6 @@ export default defineConfig({
 									},
 								},
 							] 
-						},
-						{ 
-							label: 'Developer',
-							collapsed: true,
-							items: [
-								{
-									label: 'Overview',
-									link: 'aws/dva/overview',
-								},
-								{ 
-									label: 'Resources', 
-									collapsed: true,
-									autogenerate: { 
-										directory: 'aws/dva/resources',
-									},
-								},
-								{ 
-									label: 'Recommended', 
-									collapsed: true,
-									autogenerate: { 
-										directory: 'aws/dva/recommended',
-									},
-								},
-							]
 						},
 					]
 				},
