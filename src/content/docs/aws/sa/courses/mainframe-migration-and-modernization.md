@@ -89,7 +89,7 @@ It is fully supported by the migration tools for quick and reliable migration. I
 
 The second phase is an optimization of some services into microservices. But in this phase, only some services—not all services—are optimized into microservices. We only extract microservices when and where it makes sense.
 
-![Microservices]](/img/aws/mm-microservices.png)
+![Microservices](/img/aws/mm-microservices.png)
 
 A microservice is an independent deployable service owning its own data for information hiding and for avoiding coupling. Hence, there is one database per microservice.
 
