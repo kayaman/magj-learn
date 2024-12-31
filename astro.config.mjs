@@ -64,7 +64,7 @@ export default defineConfig({
 									},
 								},
 								{ 
-									label: 'Recommended', 
+									label: 'Recommended',
 									collapsed: true,
 									autogenerate: { 
 										directory: 'aws/dva/recommended',
@@ -86,6 +86,13 @@ export default defineConfig({
 										directory: 'aws/sa/domains',
 									},
 								},
+								{ 
+									label: 'Courses', 
+									collapsed: true,
+									autogenerate: {
+										directory: 'aws/sa/courses',
+									},
+								},								
 								{ 
 									label: 'Resources', 
 									link: 'aws/sa/resources',
