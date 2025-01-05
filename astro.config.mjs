@@ -1,4 +1,3 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightThemeRapide from 'starlight-theme-rapide'
@@ -9,7 +8,6 @@ import remarkGfm from 'remark-gfm';
 import externalAnchorPlugin from './src/plugins/externalAnchorPlugin.mjs';	
 import starlightLinksValidator from 'starlight-links-validator';
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://learn.magj.dev',
   integrations: [
