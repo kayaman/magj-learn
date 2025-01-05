@@ -1,50 +1,48 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightThemeRapide from 'starlight-theme-rapide'
 import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax';
 import remarkToc from 'remark-toc';
 import remarkGfm from 'remark-gfm';
 import externalAnchorPlugin from './src/plugins/externalAnchorPlugin.mjs';	
-import starlightThemeRapide from 'starlight-theme-rapide'
-import { astroExpressiveCode } from '@astrojs/starlight/expressive-code';
 import starlightLinksValidator from 'starlight-links-validator';
-import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-	site: 'https://learn.magj.dev',
-	integrations: [
-		sitemap({}),
-		starlight({
-			favicon: '/favicon.png',
-			head: [
-				{
-					tag: 'script',
-					attrs: {
-						src: 'https://plausible.io/js/script.outbound-links.js',
-						'data-domain': 'learn.magj.dev',
-						defer: true,
-					}
-				}
-			],
-			logo: {
-				light: './src/assets/logo-light.svg',
-				dark: './src/assets/logo-dark.svg',
+  site: 'https://learn.magj.dev',
+  integrations: [
+    starlight({
+      favicon: '/favicon.png',
+      components: {
+        SocialIcons: './src/components/CustomSocialIcons.astro',
 			},
-			title: 'Marco\'s Learning',
-			plugins: [
-				starlightThemeRapide(), 
-				starlightLinksValidator(),
-			],
-			customCss: [
+      customCss: [
 				'./src/styles/globals.css',
 				'@fontsource/open-sans/400.css',
 				'@fontsource/open-sans/600.css',
 			],
-			components: {
-				SocialIcons: './src/components/CustomSocialIcons.astro',
+      editLink: {
+        baseUrl: 'https://github.com/kayaman/magj-learn/edit/main/',
 			},
-			sidebar: [
+      expressiveCode: {
+				themes: [
+					'github-dark-dimmed', 
+					'github-light',
+				],
+				frames: {
+          showCopyToClipboardButton: true,
+				},
+				shiki: true,
+      },
+      logo: {
+        light: './src/assets/logo-light.svg',
+				dark: './src/assets/logo-dark.svg',
+			},
+      plugins: [
+				starlightThemeRapide(),
+        starlightLinksValidator(),
+      ],
+      sidebar: [
 				{
 					label: 'AWS',
 					items: [
@@ -72,9 +70,9 @@ export default defineConfig({
 								},
 							]
 						},
-						{ 
+            { 
 							label: 'Solutions Architect',
-							collapsed: false,
+							collapsed: true,
 							items: [
 								{
 									label: 'Overview',
@@ -231,9 +229,9 @@ export default defineConfig({
 								},
 							] 
 						},
-					]
-				},
-				{
+          ],
+        },
+        {
 					label: 'Microsoft',
 					collapsed: true,
 					items: [
@@ -341,38 +339,17 @@ export default defineConfig({
 									},
 								},
 							]
-				}
-			],
-			editLink: {
-				baseUrl: 'https://github.com/kayaman/magj-learn/edit/main/',
-			},
-			social: {
-				linkedin: 'https://www.linkedin.com/in/marcoantoniogonzalezjunior/',
+				},
+      ],
+      social: {
+        linkedin: 'https://www.linkedin.com/in/marcoantoniogonzalezjunior/',
 				github: 'https://github.com/kayaman',
 			},
-			expressiveCode: {
-				themes: [
-					'github-dark-dimmed', 
-					'github-light',
-				],
-				frames: {
-					showCopyToClipboardButton: true,
-				},
-				shiki: true,
-				tabWidth: 4,
-				defaultProps: {
-					wrap: false,
-					overridesByLang: {
-						'json': { 
-							preserveIndent: true,
-						},
-					},
-				},
-			},
-		}),
-	],
-	markdown: {
-		remarkPlugins: [
+      title: 'Marco\'s Learning',
+    }),
+  ],
+  markdown: {
+    remarkPlugins: [
 			remarkMath, 
 			[
 				remarkToc, {
@@ -385,5 +362,5 @@ export default defineConfig({
 		rehypePlugins: [
 			rehypeMathjax
 		],
-	}
+  }
 });
