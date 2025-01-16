@@ -380,15 +380,15 @@ Based on the findings of the analysis and the defined goals, we define a migrati
 
   Mainframe documentation and test case availability are also considered.
 
--Workload type
+- Workload type
 
   Mainframe workload type includes comparing stabilized to maintenance mode to slow-moving or strategic.
 
--Pattern and tool support
+- Pattern and tool support
 
   Pattern and tool support for source tech stack is also considered.
 
--Organizational constraints
+- Organizational constraints
 
   Organizational constraints includes mainframe developer skills, subject matter experts (SMEs), and if the mainframe is managed by a managed service provider (MSP).
 
@@ -396,18 +396,30 @@ Based on the findings of the analysis and the defined goals, we define a migrati
 
   Time constraints include contract renewals and migration deadlines.
 
--Business objectives and prioritization
+- Business objectives and prioritization
 
   Business objectives and prioritization include cost reduction, agility gains, and risk mitigation.
 
--IT strategy
+- IT strategy
 
   IT strategy includes cloud, managed services in AWS, elasticity, portability, and use of serverless.
 
--Target IT stack preferences
+- Target IT stack preferences
 
   Target IT stack preferences include languages, frameworks, data store types, and CI/CD.
 
+All these dimensions will point toward a migration pattern. For example, if you have mainframe developers available, would like to retain COBOL, and use a CI/CD pipeline in AWS, replatforming to a mainframe-compatible runtime might be the best pattern.
+
+#### Tool selection
+
+Once migration pattern is defined, we evaluate the available vendor toolsets for the job.
+
+The tool needs to provide:
+
+- Support for the customer mainframe technical stack 
+- Functional equivalence, which is tested during a complex POC
+
+After these are checked, customers define their evaluation criteria.
 
 ## Mobilize phase
 
