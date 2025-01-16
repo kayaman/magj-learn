@@ -80,6 +80,7 @@ export default defineConfig({
 								},
 								{
 									label: 'Domains',
+									collapsed: true,
 									autogenerate: {
 										directory: 'aws/sa/domains',
 									},
