@@ -341,6 +341,19 @@ export default defineConfig({
 								},
 							]
 				},
+				{
+					label: 'Random',
+					collapsed: true,
+					items: [
+								{
+									label: 'Twelve Factor App',
+									collapsed: true,
+									autogenerate: { 
+										directory: 'twelve_factor',
+									},
+								},
+							]
+				},
       ],
       social: {
         linkedin: 'https://www.linkedin.com/in/marcoantoniogonzalezjunior/',
