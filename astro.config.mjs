@@ -36,10 +36,10 @@ export default defineConfig({
       },
       logo: {
         light: './src/assets/logo-light.svg',
-				dark: './src/assets/logo-dark.svg',
-			},
-      plugins: [
-				starlightThemeRapide(),
+		dark: './src/assets/logo-dark.svg', 
+	  },				
+	  plugins: [
+	    starlightThemeRapide(),
         starlightLinksValidator(),
       ],
       sidebar: [
@@ -53,6 +53,14 @@ export default defineConfig({
 								{
 									label: 'Overview',
 									link: 'aws/dva/overview',
+								},
+								{
+									label: 'Last minute notes',
+									link: 'aws/dva/notes',
+								},
+								{
+									label: 'Caching Strategies',
+									link: 'aws/dva/caching-strategies',
 								},
 								{ 
 									label: 'Resources', 
