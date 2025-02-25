@@ -4,6 +4,8 @@ sidebar:
   order: 1
 ---
 
+[image](/img/12factor/1_codebase.jpg)
+
 **One codebase tracked in version control, many deploys.**
 
 ### Description
