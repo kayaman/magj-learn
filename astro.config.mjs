@@ -45,6 +45,7 @@ export default defineConfig({
       sidebar: [
 				{
 					label: 'AWS',
+					collapsed: true,
 					items: [
 						{ 
 							label: 'Developer',
@@ -350,17 +351,11 @@ export default defineConfig({
 							]
 				},
 				{
-					label: 'Random',
+					label: 'Twelve Factor App',
 					collapsed: true,
-					items: [
-								{
-									label: 'Twelve Factor App',
-									collapsed: true,
-									autogenerate: { 
-										directory: 'twelve_factor',
-									},
-								},
-							]
+					autogenerate: { 
+						directory: 'twelve_factor',
+					},
 				},
       ],
       social: {
