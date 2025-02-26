@@ -1,7 +1,7 @@
 ---
 title: Config
 sidebar:
-  order: 1
+  order: 3
 ---
 
 ![Config](/img/12factor/3_config.webp)
