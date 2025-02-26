@@ -41,14 +41,6 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 SECRET_KEY = os.getenv("SECRET_KEY")
 ```
 
-#### Good example: Configuration is pulled from environment variables
-
-```python
-import os
-DATABASE_URL = os.getenv("DATABASE_URL")
-SECRET_KEY = os.getenv("SECRET_KEY")
-```
-
 ### Best Practices for Managing Configuration
 
 - Use a `.env` file in development to load environment variables.
