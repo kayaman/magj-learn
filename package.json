@@ -10,9 +10,9 @@
     "format": "prettier --write \"./src\""
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.30.3",
+    "@astrojs/starlight": "^0.32.2",
     "@fontsource/open-sans": "^5.1.1",
-    "astro": "^5.1.2",
+    "astro": "^5.4.2",
     "rehype-mathjax": "^6.0.0",
     "remark-gfm": "^4.0.0",
     "remark-math": "^6.0.0",
