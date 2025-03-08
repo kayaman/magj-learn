@@ -357,6 +357,13 @@ export default defineConfig({
 						directory: 'twelve_factor',
 					},
 				},
+				{
+					label: 'Random',
+					collapsed: true,
+					autogenerate: {
+						directory: 'random',
+					},
+				},
       ],
       social: {
         linkedin: 'https://www.linkedin.com/in/marcoantoniogonzalezjunior/',
