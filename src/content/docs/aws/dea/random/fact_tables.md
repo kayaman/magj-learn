@@ -99,10 +99,31 @@ Each type serves **a different analytical need**, allowing businesses to track t
 - Optimized for **read-heavy** workloads and **fast queries**.
 - Example: A `sales_fact` table linked to `customer_dim`, `product_dim`, `date_dim`.
 
+```less
+          Dimension
+              |
+Dimension — Fact Table — Dimension
+              |
+          Dimension
+```
+
 ### 3. **Snowflake Schema**
 
 - A **normalized** version of the star schema where dimension tables are split into multiple related tables.
 - Reduces **data redundancy** but increases **query complexity**.
+
+```vbnet
+          Dimension
+              |
+          Sub-Dimension
+              |
+Dimension — Fact Table — Dimension
+              |
+          Sub-Dimension
+              |
+          Dimension
+
+```
 
 ### 4. **Fact Table Types**
 
