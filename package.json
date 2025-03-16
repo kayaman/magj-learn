@@ -29,6 +29,7 @@
     "@astrojs/starlight": "^0.32.2",
     "@fontsource/open-sans": "^5.1.1",
     "astro": "^5.5.2",
+    "astro-d2": "^0.7.0",
     "rehype-mathjax": "^6.0.0",
     "remark-gfm": "^4.0.0",
     "remark-math": "^6.0.0",
