@@ -1,10 +1,8 @@
 
 ---
-title: 'What is an API Gateway?'
-description: 'What is an API Gateway?'
+title: API Gateway vs Reverse Proxy
+description: API Gateway, Reverse Proxy and API Gateway and Reverse Proxy
 ---
-
-# 
 
 ## What is an API Gateway?
 An **API Gateway** is a server that acts as an entry point for client requests, managing and routing them to backend services. It serves as a centralized interface that provides functionalities such as authentication, request transformation, rate limiting, analytics, and security enforcement.
