@@ -1,3 +1,8 @@
+---
+title: Why TypeScript?
+description: TBD
+---
+
 ## Key Characteristics for Evaluating Programming Languages
 
 ### 1. Performance

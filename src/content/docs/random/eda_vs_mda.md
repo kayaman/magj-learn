@@ -1,6 +1,6 @@
 ---
 title: EDA vs MDA
-description: API Gateway, Reverse Proxy and API Gateway and Reverse Proxy
+description: TBD
 ---
 
 ## Event-Driven Architecture vs. Message-Driven Architecture
