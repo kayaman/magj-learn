@@ -1,3 +1,8 @@
+---
+title: Message-Driven Architecture
+description: How to Handle Responses in a Message-Driven Architecture
+---
+
 ## How to Handle Responses in a Message-Driven Architecture
 
 ### Introduction
