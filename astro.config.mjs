@@ -361,9 +361,9 @@ export default defineConfig({
         {
           label: 'Random',
           collapsed: true,
-          badge:  { 
-            text: 'WIP', 
-            variant: 'caution' 
+          badge: {
+            text: 'WIP',
+            variant: 'caution',
           },
           autogenerate: {
             directory: 'random',
@@ -383,6 +383,10 @@ export default defineConfig({
     }),
   ],
   markdown: {
+    syntaxHighlight: {
+      type: 'shiki',
+      excludeLangs: ['mermaid', 'math'],
+    },
     remarkPlugins: [
       remarkMath,
       [
@@ -394,6 +398,6 @@ export default defineConfig({
       remarkGfm,
       externalAnchorPlugin,
     ],
-    rehypePlugins: [rehypeMathjax],
+    rehypePlugins: [rehypeMathjax, rehypeMermaid],
   },
 });
