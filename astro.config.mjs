@@ -7,6 +7,7 @@ import remarkToc from 'remark-toc';
 import remarkGfm from 'remark-gfm';
 import externalAnchorPlugin from './src/plugins/externalAnchorPlugin.mjs';
 import starlightLinksValidator from 'starlight-links-validator';
+import rehypeMermaid from 'rehype-mermaid';
 
 export default defineConfig({
   site: 'https://learn.magj.dev',
