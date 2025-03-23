@@ -361,8 +361,18 @@ export default defineConfig({
         {
           label: 'Random',
           collapsed: true,
+          badge:  { 
+            text: 'WIP', 
+            variant: 'caution' 
+          },
           autogenerate: {
             directory: 'random',
+          },
+          {
+          label: 'Case Study',
+          collapsed: true,
+          autogenerate: {
+            directory: 'case_study',
           },
         },
       ],

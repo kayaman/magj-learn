@@ -1,6 +1,11 @@
 ---
-title: Message-Driven Architecture
+title: Responses in MDA
 description: How to Handle Responses in a Message-Driven Architecture
+sidebar:
+  order: 2
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 5
 ---
 
 ## How to Handle Responses in a Message-Driven Architecture

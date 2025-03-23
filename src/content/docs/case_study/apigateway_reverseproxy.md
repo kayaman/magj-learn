@@ -1,6 +1,11 @@
 ---
 title: API Gateway vs Reverse Proxy
 description: API Gateway, Reverse Proxy and API Gateway and Reverse Proxy
+sidebar:
+  order: 5
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 5
 ---
 
 ## What is an API Gateway?

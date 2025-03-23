@@ -1,6 +1,11 @@
 ---
 title: EDA vs MDA
 description: TBD
+sidebar:
+  order: 1
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 5
 ---
 
 ## Event-Driven Architecture vs. Message-Driven Architecture

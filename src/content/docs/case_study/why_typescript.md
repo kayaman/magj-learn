@@ -1,6 +1,11 @@
 ---
 title: Why TypeScript?
 description: TBD
+sidebar:
+  order: 4
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 5
 ---
 
 ## Key Characteristics for Evaluating Programming Languages
