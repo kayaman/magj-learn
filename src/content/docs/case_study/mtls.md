@@ -829,3 +829,5 @@ For production use, consider:
 - Implementing automated certificate rotation
 - Setting up monitoring for certificate expiry
 - Using service meshes like Istio that can manage mTLS for you
+
+---
