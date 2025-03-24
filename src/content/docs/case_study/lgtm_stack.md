@@ -1,5 +1,5 @@
 ---
-title:  Grafana LGTM+ Stack
+title: Grafana LGTM+ Stack
 description: TBD
 sidebar:
   order: 6
@@ -13,6 +13,7 @@ tableOfContents:
 ### Executive Summary
 
 This document provides a comprehensive comparison of modern observability solutions for a distributed microservices architecture deployed in Kubernetes. The architecture consists of containerized microservices split between client and server environments in different physical locations, with the following requirements:
+
 - Collection of logs, metrics, and traces from all microservices
 - No data persistence on the client side
 - Visualization and persistence exclusively on the server side
@@ -32,20 +33,20 @@ We'll focus on the Grafana LGTM stack (Loki, Grafana, Tempo, Mimir) and compare 
 
 ### Observability Platform Comparison
 
-| Feature | Grafana LGTM | Elastic Stack | Prometheus + Jaeger | Datadog | New Relic |
-|---------|--------------|---------------|---------------------|---------|-----------|
-| **Logs** | Loki (lightweight, index-free) | Elasticsearch (resource-intensive indexing) | No native solution (requires ELK or Loki) | Proprietary logs pipeline | Proprietary logs pipeline |
-| **Metrics** | Mimir (horizontally scalable) | Elasticsearch/Metricbeat | Prometheus (less scalable than Mimir) | Proprietary metrics pipeline | Proprietary metrics pipeline |
-| **Traces** | Tempo (correlation with logs/metrics) | APM | Jaeger (less integrated with metrics/logs) | Proprietary tracing | Proprietary tracing |
-| **Visualization** | Grafana (unified dashboards) | Kibana (less flexible than Grafana) | Grafana (would still be required) | Proprietary dashboards | Proprietary dashboards |
-| **Kubernetes Integration** | Native | Good | Native | Good | Good |
-| **Multi-Tenant Support** | Strong | Limited | Limited | Good | Good |
-| **Resource Efficiency** | High (especially Loki) | Low (Elasticsearch is resource-intensive) | Medium | N/A (SaaS) | N/A (SaaS) |
-| **Open Source** | Yes | Yes | Yes | No | No |
-| **Self-hosted Option** | Yes | Yes | Yes | No | No |
-| **Unified Query Language** | LogQL/PromQL-compatible | Kibana Query Language | Multiple languages | Proprietary | Proprietary |
-| **Exemplars Support** | Yes | Limited | Limited | Limited | Limited |
-| **Cost** | Open source (deployment costs only) | Open source (deployment costs only) | Open source (deployment costs only) | Subscription-based | Subscription-based |
+| Feature                    | Grafana LGTM                          | Elastic Stack                               | Prometheus + Jaeger                        | Datadog                      | New Relic                    |
+| -------------------------- | ------------------------------------- | ------------------------------------------- | ------------------------------------------ | ---------------------------- | ---------------------------- |
+| **Logs**                   | Loki (lightweight, index-free)        | Elasticsearch (resource-intensive indexing) | No native solution (requires ELK or Loki)  | Proprietary logs pipeline    | Proprietary logs pipeline    |
+| **Metrics**                | Mimir (horizontally scalable)         | Elasticsearch/Metricbeat                    | Prometheus (less scalable than Mimir)      | Proprietary metrics pipeline | Proprietary metrics pipeline |
+| **Traces**                 | Tempo (correlation with logs/metrics) | APM                                         | Jaeger (less integrated with metrics/logs) | Proprietary tracing          | Proprietary tracing          |
+| **Visualization**          | Grafana (unified dashboards)          | Kibana (less flexible than Grafana)         | Grafana (would still be required)          | Proprietary dashboards       | Proprietary dashboards       |
+| **Kubernetes Integration** | Native                                | Good                                        | Native                                     | Good                         | Good                         |
+| **Multi-Tenant Support**   | Strong                                | Limited                                     | Limited                                    | Good                         | Good                         |
+| **Resource Efficiency**    | High (especially Loki)                | Low (Elasticsearch is resource-intensive)   | Medium                                     | N/A (SaaS)                   | N/A (SaaS)                   |
+| **Open Source**            | Yes                                   | Yes                                         | Yes                                        | No                           | No                           |
+| **Self-hosted Option**     | Yes                                   | Yes                                         | Yes                                        | No                           | No                           |
+| **Unified Query Language** | LogQL/PromQL-compatible               | Kibana Query Language                       | Multiple languages                         | Proprietary                  | Proprietary                  |
+| **Exemplars Support**      | Yes                                   | Limited                                     | Limited                                    | Limited                      | Limited                      |
+| **Cost**                   | Open source (deployment costs only)   | Open source (deployment costs only)         | Open source (deployment costs only)        | Subscription-based           | Subscription-based           |
 
 ### Grafana LGTM Stack Features
 
@@ -103,7 +104,7 @@ graph TD
         C1 -->|Generate telemetry| A1
         A1 -->|Collect & forward| B1
     end
-    
+
     subgraph "Server Environment"
         S1[Server Microservices]
         A2[Collection Agents]
@@ -119,11 +120,11 @@ graph TD
         M --> G
         T --> G
     end
-    
+
     B1 -->|Forward logs| L
     B1 -->|Forward metrics| M
     B1 -->|Forward traces| T
-    
+
     subgraph "Storage Layer"
         ObjStorage[(Object Storage)]
         Database[(Time Series DB)]
@@ -161,14 +162,14 @@ graph TD
         MS1 -->|Logs| P
         MS2 -->|Logs| P
         MSN -->|Logs| P
-        
+
         MS1 -->|Metrics & Traces| OTA
         MS2 -->|Metrics & Traces| OTA
         MSN -->|Metrics & Traces| OTA
-        
+
         P -->|Forward logs| GC
         OTA -->|Forward metrics & traces| GC
-        
+
         GC -->|Buffer when offline| GB
     end
 
@@ -180,6 +181,7 @@ graph TD
 #### Client Components:
 
 1. **Collection Agents:**
+
    - **Promtail**: Deployed as a DaemonSet, collects logs from all pods using the Kubernetes log API
    - **OpenTelemetry Agent**: Collects metrics and traces from instrumented applications
    - **Grafana Agent**: Acts as a central collector and forwarder for all telemetry data
@@ -196,7 +198,7 @@ The server side handles all persistence, processing, and visualization of observ
 ```mermaid
 graph TD
     Client[Client Environment]
-    
+
     subgraph "Server Kubernetes Cluster"
         subgraph "Ingestion Layer"
             GA[Grafana Agent]
@@ -204,42 +206,42 @@ graph TD
             DM[Distributor - Mimir]
             DT[Distributor - Tempo]
         end
-        
+
         subgraph "Processing Layer"
             IL[Ingester - Loki]
             IM[Ingester - Mimir]
             IT[Ingester - Tempo]
             Q[Query Frontend]
         end
-        
+
         subgraph "Storage Layer"
             S3[(Object Storage)]
             TSDB[(Time Series DB)]
         end
-        
+
         subgraph "Visualization Layer"
             G[Grafana]
             AM[Alert Manager]
         end
-        
+
         Client -->|All telemetry| GA
-        
+
         GA -->|Logs| DL
         GA -->|Metrics| DM
         GA -->|Traces| DT
-        
+
         DL --> IL
         DM --> IM
         DT --> IT
-        
+
         IL --> S3
         IM --> TSDB
         IT --> S3
-        
+
         IL --> Q
         IM --> Q
         IT --> Q
-        
+
         Q --> G
         G --> AM
     end
@@ -248,15 +250,18 @@ graph TD
 #### Server Components:
 
 1. **Ingestion Layer:**
+
    - **Grafana Agent**: Receives and processes incoming telemetry data
    - **Distributors**: Handle write path for each data type (logs, metrics, traces)
    - Implements rate limiting, authentication, and validation
 
 2. **Processing Layer:**
+
    - **Ingesters**: Process and store data temporarily before committing to long-term storage
    - **Query Frontend**: Handles read path, optimizing queries and caching results
 
 3. **Storage Layer:**
+
    - **Object Storage** (S3, GCS, Azure Blob): For logs (Loki) and traces (Tempo)
    - **Time Series Database**: For metrics (Mimir)
 
@@ -268,21 +273,21 @@ graph TD
 
 #### Resource Requirements
 
-| Component | CPU | Memory | Storage | Notes |
-|-----------|-----|--------|---------|-------|
-| **Client Side** | | | | |
-| Promtail | 100m | 128Mi | Temporary buffer | Per node |
-| OpenTelemetry Agent | 200m | 256Mi | Temporary buffer | Per node |
-| Grafana Agent | 200m | 512Mi | 10-50Gi | For buffering |
-| **Server Side** | | | | |
-| Loki Distributor | 1 core | 1Gi | N/A | Per instance |
-| Loki Ingester | 2 cores | 4Gi | 100Gi | Per instance |
-| Mimir Distributor | 1 core | 1Gi | N/A | Per instance |
-| Mimir Ingester | 4 cores | 8Gi | 100Gi | Per instance |
-| Tempo Distributor | 1 core | 1Gi | N/A | Per instance |
-| Tempo Ingester | 2 cores | 4Gi | 50Gi | Per instance |
-| Grafana | 1 core | 2Gi | 20Gi | Per instance |
-| Object Storage | N/A | N/A | Scales with retention | Typically S3-compatible |
+| Component           | CPU     | Memory | Storage               | Notes                   |
+| ------------------- | ------- | ------ | --------------------- | ----------------------- |
+| **Client Side**     |         |        |                       |                         |
+| Promtail            | 100m    | 128Mi  | Temporary buffer      | Per node                |
+| OpenTelemetry Agent | 200m    | 256Mi  | Temporary buffer      | Per node                |
+| Grafana Agent       | 200m    | 512Mi  | 10-50Gi               | For buffering           |
+| **Server Side**     |         |        |                       |                         |
+| Loki Distributor    | 1 core  | 1Gi    | N/A                   | Per instance            |
+| Loki Ingester       | 2 cores | 4Gi    | 100Gi                 | Per instance            |
+| Mimir Distributor   | 1 core  | 1Gi    | N/A                   | Per instance            |
+| Mimir Ingester      | 4 cores | 8Gi    | 100Gi                 | Per instance            |
+| Tempo Distributor   | 1 core  | 1Gi    | N/A                   | Per instance            |
+| Tempo Ingester      | 2 cores | 4Gi    | 50Gi                  | Per instance            |
+| Grafana             | 1 core  | 2Gi    | 20Gi                  | Per instance            |
+| Object Storage      | N/A     | N/A    | Scales with retention | Typically S3-compatible |
 
 #### Network Considerations
 
@@ -295,28 +300,28 @@ graph TD
 
 #### Performance Comparison
 
-| Metric | Grafana LGTM | Elastic Stack | Prometheus + Jaeger |
-|--------|--------------|---------------|---------------------|
-| **Log Ingestion Rate** | 1M events/sec/node | 100K events/sec/node | N/A (no native solution) |
-| **Log Query Performance** | Sub-second for label queries | Sub-second for indexed fields | N/A (no native solution) |
-| **Log Storage Efficiency** | 10-20x more efficient than Elasticsearch | Baseline | N/A (no native solution) |
-| **Metrics Ingestion Rate** | 1M samples/sec/node | 500K samples/sec/node | 700K samples/sec/node |
-| **Metrics Query Performance** | ~100ms for 1M series | ~200ms for 1M series | ~150ms for 1M series |
-| **Trace Ingestion Rate** | 50K spans/sec/node | 30K spans/sec/node | 40K spans/sec/node |
-| **Client Resource Usage** | Low (Grafana Agent) | Medium (Beats agents) | Medium (Prometheus + OpenTelemetry) |
-| **Server Resource Usage** | Medium | High | Medium-High |
+| Metric                        | Grafana LGTM                             | Elastic Stack                 | Prometheus + Jaeger                 |
+| ----------------------------- | ---------------------------------------- | ----------------------------- | ----------------------------------- |
+| **Log Ingestion Rate**        | 1M events/sec/node                       | 100K events/sec/node          | N/A (no native solution)            |
+| **Log Query Performance**     | Sub-second for label queries             | Sub-second for indexed fields | N/A (no native solution)            |
+| **Log Storage Efficiency**    | 10-20x more efficient than Elasticsearch | Baseline                      | N/A (no native solution)            |
+| **Metrics Ingestion Rate**    | 1M samples/sec/node                      | 500K samples/sec/node         | 700K samples/sec/node               |
+| **Metrics Query Performance** | ~100ms for 1M series                     | ~200ms for 1M series          | ~150ms for 1M series                |
+| **Trace Ingestion Rate**      | 50K spans/sec/node                       | 30K spans/sec/node            | 40K spans/sec/node                  |
+| **Client Resource Usage**     | Low (Grafana Agent)                      | Medium (Beats agents)         | Medium (Prometheus + OpenTelemetry) |
+| **Server Resource Usage**     | Medium                                   | High                          | Medium-High                         |
 
 #### Cost Efficiency
 
 Assuming a medium-sized deployment (50 nodes, 500 microservices, 1TB logs/day, 1M active metrics, 100K traces/minute):
 
-| Solution | Storage Costs/month | Compute Costs/month | Total Monthly Cost | Notes |
-|----------|---------------------|---------------------|---------------------|-------|
-| Grafana LGTM | $1,500 | $3,000 | $4,500 | Most efficient log storage |
-| Elastic Stack | $8,000 | $5,000 | $13,000 | Higher storage and compute due to indexing |
-| Prometheus + Jaeger + ELK | $6,000 | $4,000 | $10,000 | Multiple systems increase complexity and cost |
-| Datadog | N/A | N/A | $25,000 | Based on host + ingestion pricing |
-| New Relic | N/A | N/A | $20,000 | Based on host + ingestion pricing |
+| Solution                  | Storage Costs/month | Compute Costs/month | Total Monthly Cost | Notes                                         |
+| ------------------------- | ------------------- | ------------------- | ------------------ | --------------------------------------------- |
+| Grafana LGTM              | $1,500              | $3,000              | $4,500             | Most efficient log storage                    |
+| Elastic Stack             | $8,000              | $5,000              | $13,000            | Higher storage and compute due to indexing    |
+| Prometheus + Jaeger + ELK | $6,000              | $4,000              | $10,000            | Multiple systems increase complexity and cost |
+| Datadog                   | N/A                 | N/A                 | $25,000            | Based on host + ingestion pricing             |
+| New Relic                 | N/A                 | N/A                 | $20,000            | Based on host + ingestion pricing             |
 
 ### Recommendations
 
@@ -333,11 +338,13 @@ Based on the requirements and benchmarks, the Grafana LGTM stack is the optimal 
 #### Implementation Plan
 
 1. **Client Side**:
+
    - Deploy Grafana Agent as DaemonSet with buffer configuration
    - Instrument applications with OpenTelemetry for metrics and traces
    - Configure log collection via Promtail or direct Grafana Agent
 
 2. **Server Side**:
+
    - Deploy Loki, Mimir, and Tempo using their respective Helm charts
    - Configure object storage for logs and traces
    - Set up Grafana dashboards for unified visibility
@@ -360,7 +367,7 @@ graph TD
         C1 -->|Generate telemetry| A1
         A1 -->|Collect & forward| B1
     end
-    
+
     subgraph "Server Environment"
         S1[Server Microservices]
         A2[Collection Agents]
@@ -376,11 +383,11 @@ graph TD
         M --> G
         T --> G
     end
-    
+
     B1 -->|Forward logs| L
     B1 -->|Forward metrics| M
     B1 -->|Forward traces| T
-    
+
     subgraph "Storage Layer"
         ObjStorage[(Object Storage)]
         Database[(Time Series DB)]
@@ -388,4 +395,6 @@ graph TD
         M --> Database
         T --> ObjStorage
     end
-    ```
+```
+
+---
