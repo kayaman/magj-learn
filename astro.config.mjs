@@ -386,7 +386,7 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: {
       type: 'shiki',
-      excludeLangs: ['mermaid', 'math'],
+      excludeLangs: ['mermaid', 'math', 'd2', 'vbnet'],
     },
     remarkPlugins: [
       remarkMath,
