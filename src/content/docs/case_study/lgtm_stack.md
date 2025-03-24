@@ -1,5 +1,5 @@
 ---
-title: Grafana LGTM+ Stack
+title: Grafana LGTM Stack
 description: TBD
 sidebar:
   order: 6
