@@ -468,6 +468,33 @@ CMD ["node", "dist/index.js"]
 
 Now let's create the client service that will communicate with the API service:
 
+```json title='package.json'
+{
+  "name": "client-service",
+  "version": "1.0.0",
+  "description": "Client service that connects to API using mTLS",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev src/index.ts"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "express": "^4.18.2",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.2.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.1.3"
+  }
+}
+```
+
 ### Step 5: Kubernetes Deployment
 
 Now let's create the Kubernetes manifests to deploy our services:
