@@ -3,23 +3,23 @@ title: mTLS
 description: mTLS
 ---
 
-# Understanding TLS and Mutual TLS (mTLS)
+## Understanding TLS and Mutual TLS (mTLS)
 
 I'll walk you through TLS, mutual TLS, and then help you build a practical microservices project to implement mTLS on Kubernetes using TypeScript.
 
-## Transport Layer Security (TLS)
+### Transport Layer Security (TLS)
 
-### What is TLS?
+#### What is TLS?
 
 TLS (Transport Layer Security) is a cryptographic protocol designed to provide secure communication over a computer network. It's the successor to SSL (Secure Sockets Layer) and is widely used to secure communications on the internet.
 
-### Key Concepts of TLS
+#### Key Concepts of TLS
 
 1. **Encryption**: TLS encrypts data exchanged between parties to prevent eavesdropping
 2. **Authentication**: TLS authenticates at least one party (typically the server) in the communication
 3. **Integrity**: TLS ensures data hasn't been tampered with during transmission
 
-### How TLS Works
+#### How TLS Works
 
 ```mermaid
 sequenceDiagram
@@ -48,13 +48,13 @@ In a standard TLS handshake:
 4. The client and server establish session keys
 5. Secure communication begins
 
-### Standard TLS Security Model
+#### Standard TLS Security Model
 
 In standard TLS, only the server is authenticated. The client knows it's talking to the correct server, but the server doesn't verify the client's identity. This is suitable for many public-facing services like websites, where the server doesn't need to know who the client is.
 
-## Mutual TLS (mTLS)
+### Mutual TLS (mTLS)
 
-### What is mTLS?
+#### What is mTLS?
 
 Mutual TLS extends standard TLS by requiring both the client and server to authenticate each other with certificates. This creates a two-way trust relationship.
 
@@ -81,7 +81,7 @@ sequenceDiagram
     Note over Client,Server: Mutual authentication complete
 ```
 
-### What Problem Does mTLS Solve?
+#### What Problem Does mTLS Solve?
 
 mTLS solves several security challenges:
 
@@ -90,7 +90,7 @@ mTLS solves several security challenges:
 3. **Man-in-the-Middle Attacks**: Makes MITM attacks more difficult by requiring both parties to possess valid certificates
 4. **API and Service Security**: Provides strong authentication for APIs and service-to-service communication
 
-### Use Cases for mTLS
+#### Use Cases for mTLS
 
 1. **Microservices Security**: Securing communication between microservices within a system
 2. **Zero Trust Networks**: Implementing a zero-trust security model where nothing is trusted by default
@@ -98,23 +98,23 @@ mTLS solves several security challenges:
 4. **IoT Device Authentication**: Ensuring IoT devices are legitimate before allowing communication
 5. **Financial Services**: Securing sensitive financial transactions between institutions
 
-### Pros and Cons of mTLS
+#### Pros and Cons of mTLS
 
-#### Pros
+###### Pros
 
 1. **Strong Authentication**: Both parties are authenticated with cryptographic certificates
 2. **Reduced Attack Surface**: Unauthorized access attempts are blocked at the TLS layer
 3. **Scalable Security**: Can be implemented consistently across all services
 4. **Complementary Security**: Works alongside other security measures like JWT tokens
 
-#### Cons
+###### Cons
 
 1. **Certificate Management Complexity**: Managing, distributing, and rotating certificates can be challenging
 2. **Performance Overhead**: The additional certificate verification adds some processing overhead
 3. **Implementation Complexity**: More complex to set up and maintain than standard TLS
 4. **Debugging Challenges**: Certificate issues can be difficult to troubleshoot
 
-### Main Components of mTLS
+#### Main Components of mTLS
 
 ```mermaid
 flowchart TB
@@ -152,7 +152,7 @@ flowchart TB
     style Server_Components fill:#f9f0ff,stroke:#333
 ```
 
-#### Key components include:
+###### Key components include:
 
 1. **Certificate Authority (CA)**
 
@@ -174,7 +174,7 @@ flowchart TB
    - Store private keys and their associated certificates
    - Used to present identity during handshake
 
-### Certificate Management in mTLS
+#### Certificate Management in mTLS
 
 Certificate management is one of the most challenging aspects of mTLS:
 
@@ -183,11 +183,11 @@ Certificate management is one of the most challenging aspects of mTLS:
 3. **Certificate Rotation**: Regularly replacing certificates before expiration
 4. **Certificate Revocation**: Invalidating compromised certificates
 
-## Building a Practical mTLS Project
+### Building a Practical mTLS Project
 
 Now let's build a practical project to demonstrate mTLS with TypeScript microservices on Kubernetes.
 
-### Project Overview
+#### Project Overview
 
 We'll create a simple system with:
 
@@ -227,7 +227,7 @@ flowchart TB
     style services fill:#e6f7ff,stroke:#333
 ```
 
-### Step 1: Set Up Project Structure
+#### Step 1: Set Up Project Structure
 
 Let's start by setting up our project structure:
 
@@ -255,7 +255,7 @@ mtls-demo/
 └── README.md
 ```
 
-### Step 2: Certificate Generation
+#### Step 2: Certificate Generation
 
 First, let's create a script to generate our CA and service certificates:
 
@@ -332,7 +332,7 @@ generate_service_cert "client-service" "client-service.default.svc.cluster.local
 echo "All certificates generated successfully"
 ```
 
-### Step 3: Creating the API Service
+#### Step 3: Creating the API Service
 
 Now let's build the API service in TypeScript:
 
@@ -464,7 +464,7 @@ EXPOSE 4000
 CMD ["node", "dist/index.js"]
 ```
 
-### Step 4: Creating the Client Service
+#### Step 4: Creating the Client Service
 
 Now let's create the client service that will communicate with the API service:
 
@@ -495,11 +495,11 @@ Now let's create the client service that will communicate with the API service:
 }
 ```
 
-### Step 5: Kubernetes Deployment
+#### Step 5: Kubernetes Deployment
 
 Now let's create the Kubernetes manifests to deploy our services:
 
-#### Kubernetes Certificate Secrets
+###### Kubernetes Certificate Secrets
 
 ```yaml
 # k8s/secrets.yaml
@@ -534,7 +534,7 @@ data:
   client-service.key: '${CLIENT_SERVICE_KEY}'
 ```
 
-#### API Service Kubernetes Deployment
+###### API Service Kubernetes Deployment
 
 ```yaml
 # k8s/api-deployment.yaml
@@ -605,7 +605,7 @@ spec:
   type: ClusterIP
 ```
 
-#### Client Service Kubernetes Deployment
+###### Client Service Kubernetes Deployment
 
 ```yaml
 # k8s/client-deployment.yaml
@@ -746,23 +746,23 @@ spec:
   type: LoadBalancer
 ```
 
-### Step 6: Setting Up the Project
+#### Step 6: Setting Up the Project
 
 Now let's create a script to build and deploy our services:
 
-### Step 7: TypeScript Configuration
+#### Step 7: TypeScript Configuration
 
 Let's add the TypeScript configuration file for our services:
 
-### Step 8: Project README
+#### Step 8: Project README
 
 Finally, let's create a README file with project information and instructions:
 
-## How mTLS Works in Our Project
+### How mTLS Works in Our Project
 
 Let's walk through how mTLS is implemented in our project:
 
-## Key Components in Our Implementation
+### Key Components in Our Implementation
 
 1. **Certificate Authority (CA)**
 
@@ -784,17 +784,17 @@ Let's walk through how mTLS is implemented in our project:
    - Mounted as files to service containers
    - Services communicate using Kubernetes DNS names
 
-## Advanced mTLS Considerations
+### Advanced mTLS Considerations
 
-### 1. Certificate Rotation
+#### 1. Certificate Rotation
 
 In a production system, you'd need to handle certificate rotation:
 
-### 2. Using cert-manager in Kubernetes
+#### 2. Using cert-manager in Kubernetes
 
 For production, you'd likely use cert-manager to automate certificate management:
 
-### 3. Certificate Revocation
+#### 3. Certificate Revocation
 
 In a production system, you'll also need certificate revocation. This can be implemented with:
 
@@ -808,7 +808,7 @@ In a production system, you'll also need certificate revocation. This can be imp
    - Services check certificate status in real-time
    - Requires an OCSP responder service
 
-## Conclusion
+### Conclusion
 
 We've built a complete mTLS implementation using TypeScript microservices on Kubernetes, covering:
 
