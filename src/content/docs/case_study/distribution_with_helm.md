@@ -2380,7 +2380,7 @@ This repository contains a reference implementation for distributing containeriz
    docker-compose up -d
    ```
 
-3. Access the API service at http://localhost:3000
+3. Access the API service at localhost:3000
 
 ### Building Container Images
 
@@ -2427,7 +2427,7 @@ docker push ghcr.io/username/worker-service:latest
 
 ### Configuration Options
 
-See the [values.yaml](helm-charts/umbrella-chart/values.yaml) file for all configuration options.
+See the values.yaml `helm-charts/umbrella-chart/values.yaml` file for all configuration options.
 
 ## License
 
