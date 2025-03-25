@@ -369,6 +369,8 @@ export default defineConfig({
           autogenerate: {
             directory: 'random',
           },
+        },
+        {
           label: 'Case Study',
           collapsed: true,
           autogenerate: {

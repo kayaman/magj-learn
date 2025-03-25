@@ -677,90 +677,144 @@ spec:
   type: LoadBalancer
 ```
 
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: client-service
-  labels:
-    app: client-service
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: client-service
-  template:
-    metadata:
-      labels:
-        app: client-service
-    spec:
-      containers:
-        - name: client-service
-          image: mtls-demo/client-service:latest
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 4000
-          env:
-            - name: API_SERVICE_URL
-              value: 'https://api-service:3000'
-          volumeMounts:
-            - name: client-certs
-              mountPath: /certs/client-service.crt
-              subPath: client-service.crt
-            - name: client-certs
-              mountPath: /certs/client-service.key
-              subPath: client-service.key
-            - name: ca-cert
-              mountPath: /certs/ca.crt
-              subPath: ca.crt
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: 4000
-            initialDelaySeconds: 5
-            periodSeconds: 10
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 4000
-            initialDelaySeconds: 15
-            periodSeconds: 20
-      volumes:
-        - name: client-certs
-          secret:
-            secretName: client-service-certs
-        - name: ca-cert
-          secret:
-            secretName: ca-cert
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: client-service
-spec:
-  selector:
-    app: client-service
-  ports:
-    - port: 80
-      targetPort: 4000
-  type: LoadBalancer
-```
-
 #### Step 6: Setting Up the Project
 
 Now let's create a script to build and deploy our services:
+
+```sh title='setup.sh'
+#!/bin/bash
+set -e
+
+# Make script executable with: chmod +x setup.sh
+
+echo "=== mTLS Demo Project Setup ==="
+
+# Step 1: Generate certificates
+echo "Generating certificates..."
+./certs/generate-certs.sh
+
+# Step 2: Build Docker images
+echo "Building Docker images..."
+
+# Build API service
+echo "Building API service..."
+cd services/api-service
+docker build -t mtls-demo/api-service:latest .
+cd ../..
+
+# Build Client service
+echo "Building Client service..."
+cd services/client-service
+docker build -t mtls-demo/client-service:latest .
+cd ../..
+
+# Step 3: Create Kubernetes secrets with certificates
+echo "Creating Kubernetes secrets..."
+
+# Base64 encode certificates for Kubernetes secrets
+CA_CERT=$(cat certs/ca/ca.crt | base64 | tr -d '\n')
+API_SERVICE_CERT=$(cat certs/api-service/api-service.crt | base64 | tr -d '\n')
+API_SERVICE_KEY=$(cat certs/api-service/api-service.key | base64 | tr -d '\n')
+CLIENT_SERVICE_CERT=$(cat certs/client-service/client-service.crt | base64 | tr -d '\n')
+CLIENT_SERVICE_KEY=$(cat certs/client-service/client-service.key | base64 | tr -d '\n')
+
+# Create temp file with actual secrets
+cat k8s/secrets.yaml | \
+  sed "s/\${CA_CERT}/$CA_CERT/g" | \
+  sed "s/\${API_SERVICE_CERT}/$API_SERVICE_CERT/g" | \
+  sed "s/\${API_SERVICE_KEY}/$API_SERVICE_KEY/g" | \
+  sed "s/\${CLIENT_SERVICE_CERT}/$CLIENT_SERVICE_CERT/g" | \
+  sed "s/\${CLIENT_SERVICE_KEY}/$CLIENT_SERVICE_KEY/g" \
+  > k8s/secrets_filled.yaml
+
+# Apply secrets to Kubernetes
+kubectl apply -f k8s/secrets_filled.yaml
+rm k8s/secrets_filled.yaml  # Remove file with sensitive data
+
+# Step 4: Deploy services to Kubernetes
+echo "Deploying services to Kubernetes..."
+kubectl apply -f k8s/api-deployment.yaml
+kubectl apply -f k8s/client-deployment.yaml
+
+echo "Waiting for services to be ready..."
+kubectl wait --for=condition=ready pod -l app=api-service --timeout=60s
+kubectl wait --for=condition=ready pod -l app=client-service --timeout=60s
+
+# Step 5: Get access URL
+echo "Getting service URL..."
+if [ "$(uname)" == "Darwin" ]; then
+  # MacOS
+  open http://localhost:80
+else
+  # Linux
+  echo "Access the client service at http://localhost:80"
+fi
+
+echo "=== Setup complete! ==="
+echo "You can now access the client service in your browser."
+```
 
 #### Step 7: TypeScript Configuration
 
 Let's add the TypeScript configuration file for our services:
 
+```json title='tsconfig.json'
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
+```
+
 #### Step 8: Project README
 
-Finally, let's create a README file with project information and instructions:
+Finally, let's create a README file with project information and instructions.
 
 ### How mTLS Works in Our Project
 
 Let's walk through how mTLS is implemented in our project:
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client as Client Service
+    participant API as API Service
+
+    User->>Client: HTTP Request
+
+    Note over Client,API: mTLS Handshake
+    Client->>API: ClientHello
+    API->>Client: ServerHello
+    API->>Client: Server Certificate
+    API->>Client: Certificate Request
+    Client->>API: Client Certificate
+    Client->>Client: Verify Server Certificate
+    API->>API: Verify Client Certificate
+
+    Note over Client,API: Secure Communication
+    Client->>API: HTTPS Request with Client Certificate
+
+    Note over API: verifyCertificate Middleware<br>Checks that certificate is valid<br>and from our trusted CA
+
+    alt Valid Certificate
+        API->>Client: HTTPS Response with Data
+        Client->>User: Show Data in UI
+    else Invalid Certificate
+        API->>Client: 403 Forbidden
+        Client->>User: Show Error
+    end
+```
 
 ### Key Components in Our Implementation
 
@@ -790,9 +844,113 @@ Let's walk through how mTLS is implemented in our project:
 
 In a production system, you'd need to handle certificate rotation:
 
+```mermaid
+flowchart TD
+    A[Monitor Certificate Expiry] --> B{Certificate Nearing Expiry?}
+    B -->|No| A
+    B -->|Yes| C[Generate New Certificate]
+    C --> D[Distribute New Certificate]
+    D --> E[Update Kubernetes Secrets]
+    E --> F[Reload Services Gracefully]
+    F --> G[Verify New Certificate Works]
+    G --> H{Successful?}
+    H -->|Yes| I[Revoke Old Certificate]
+    H -->|No| J[Rollback to Old Certificate]
+    J --> C
+    I --> A
+```
+
 #### 2. Using cert-manager in Kubernetes
 
 For production, you'd likely use cert-manager to automate certificate management:
+
+```mermaid
+# Install cert-manager
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml
+
+# Create a self-signed Issuer (for development)
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: selfsigned-issuer
+  namespace: default
+spec:
+  selfSigned: {}
+---
+# Create a CA Issuer
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mtls-ca
+  namespace: default
+spec:
+  isCA: true
+  commonName: mtls-demo-ca
+  secretName: mtls-ca-secret
+  privateKey:
+    algorithm: RSA
+    size: 2048
+  issuerRef:
+    name: selfsigned-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+# Create a CA Issuer using the self-signed CA
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: mtls-ca-issuer
+  namespace: default
+spec:
+  ca:
+    secretName: mtls-ca-secret
+---
+# Generate API Service Certificate
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: api-service-cert
+  namespace: default
+spec:
+  secretName: api-service-certs
+  duration: 2160h # 90 days
+  renewBefore: 360h # 15 days
+  subject:
+    organizations:
+      - mtls-demo
+  commonName: api-service
+  dnsNames:
+  - api-service
+  - api-service.default
+  - api-service.default.svc.cluster.local
+  issuerRef:
+    name: mtls-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+---
+# Generate Client Service Certificate
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: client-service-cert
+  namespace: default
+spec:
+  secretName: client-service-certs
+  duration: 2160h # 90 days
+  renewBefore: 360h # 15 days
+  subject:
+    organizations:
+      - mtls-demo
+  commonName: client-service
+  dnsNames:
+  - client-service
+  - client-service.default
+  - client-service.default.svc.cluster.local
+  issuerRef:
+    name: mtls-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+```
 
 #### 3. Certificate Revocation
 
@@ -807,6 +965,24 @@ In a production system, you'll also need certificate revocation. This can be imp
 2. **Online Certificate Status Protocol (OCSP)**
    - Services check certificate status in real-time
    - Requires an OCSP responder service
+
+```mermaid
+flowchart TD
+    A[Security Event/Compromise] --> B[Decision to Revoke Certificate]
+    B --> C{Revocation Method?}
+
+    C -->|CRL| D[Add to Certificate Revocation List]
+    D --> E[Publish Updated CRL]
+    E --> F[Services Download New CRL]
+
+    C -->|OCSP| G[Update OCSP Responder Database]
+    G --> H[Services Check OCSP in Real-time]
+
+    F --> I[Certificate Now Invalid for All Services]
+    H --> I
+
+    I --> J[Generate New Certificate if Needed]
+```
 
 ### Conclusion
 
