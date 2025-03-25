@@ -864,11 +864,13 @@ flowchart TD
 
 For production, you'd likely use cert-manager to automate certificate management:
 
-```mermaid
-# Install cert-manager
+##### Install cert-manager
+
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml
 
-# Create a self-signed Issuer (for development)
+##### Create a self-signed Issuer (for development)
+
+```yaml
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
@@ -920,9 +922,9 @@ spec:
       - mtls-demo
   commonName: api-service
   dnsNames:
-  - api-service
-  - api-service.default
-  - api-service.default.svc.cluster.local
+    - api-service
+    - api-service.default
+    - api-service.default.svc.cluster.local
   issuerRef:
     name: mtls-ca-issuer
     kind: Issuer
@@ -943,9 +945,9 @@ spec:
       - mtls-demo
   commonName: client-service
   dnsNames:
-  - client-service
-  - client-service.default
-  - client-service.default.svc.cluster.local
+    - client-service
+    - client-service.default
+    - client-service.default.svc.cluster.local
   issuerRef:
     name: mtls-ca-issuer
     kind: Issuer
