@@ -44,9 +44,9 @@ jobs:
         run: npm install --global vercel@latest
 
       - name: Prepare for Vercel deployment
-        run: /
-          mkdir -p ./.vercel/output
-          cp -r dist/* ./.vercel/output/
+        run: |
+          mkdir -p ./.vercel/output;
+          cp -r ./dist/* ./.vercel/output/
 
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy dist --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
