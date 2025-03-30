@@ -43,11 +43,18 @@ jobs:
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
+      - name: Vercel build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
       - name: Prepare for Vercel deployment
         run: |
-          mkdir -p .vercel/output
+          # mkdir -p .vercel/output
+          echo "dist contents:"
           ls -la ./dist
+          echo "vercel output contents before copy:"
+          ls -la .vercel/output
           cp -r ./dist/* .vercel/output/
+          echo "vercel output contents after copy:"
           ls -la .vercel/output
 
       - name: Deploy Project Artifacts to Vercel
