@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/build.yaml'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: Build the Astro application
+    steps:
+      - name: Astro Release Action
+        id: astro_release
+        uses: kayaman/astro-release-action@v0.1
