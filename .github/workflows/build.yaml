@@ -1,4 +1,9 @@
-name: Build Astro Site
+name: Build and Deploy Astro Site
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
 on:
   push:
@@ -28,21 +33,31 @@ jobs:
           docker rm $CONTAINER_ID
 
       - name: List dist contents
-        run: ls -la dist
+        run: pwd && ls -la dist
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           path: dist
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
 
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy dist --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: actions/deploy-pages@v2
+
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+
+  #   steps:
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v2
