@@ -16,4 +16,4 @@ jobs:
     steps:
       - name: Astro Release Action
         id: astro_release
-        uses: kayaman/astro-release-action@v0.1
+        uses: kayaman/astro-release-action@v0.2
