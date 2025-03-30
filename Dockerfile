@@ -10,5 +10,6 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
+RUN npx playwright install --with-deps
 COPY . .
 RUN npm run build && touch dist/.nojekyll
