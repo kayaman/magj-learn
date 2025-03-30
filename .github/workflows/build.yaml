@@ -1,19 +1,40 @@
+name: Build Astro Site
+
 on:
   push:
-    branches:
-      - main
-    paths:
-      - '.github/workflows/build.yaml'
-  pull_request:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 jobs:
-  hello_world_job:
+  build:
     runs-on: ubuntu-latest
-    name: Build the Astro application
+
     steps:
-      - name: Astro Release Action
-        id: astro_release
-        uses: kayaman/astro-release-action@v0.6
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: docker build -t astro-builder .
+
+      - name: Run build container
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}/dist:/app/dist \
+            astro-builder
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
