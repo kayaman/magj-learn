@@ -45,8 +45,10 @@ jobs:
 
       - name: Prepare for Vercel deployment
         run: |
-          mkdir -p ./.vercel/output;
-          cp -r ./dist/* ./.vercel/output/
+          mkdir -p .vercel/output
+          ls -la ./dist
+          cp -r ./dist/* .vercel/output/
+          ls -la .vercel/output
 
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy dist --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
