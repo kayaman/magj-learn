@@ -1,0 +1,51 @@
+name: Docker Build Astro Site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+      S3_REGION: ${{ secrets.AWS_REGION }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./builder/
+          push: false
+          load: true
+          tags: astro-builder:latest
+
+      - name: Run container and extract build output
+        run: |
+          mkdir -p dist
+          docker run --rm -v ${{ github.workspace }}/dist:/app/dist astro-builder:latest
+
+      # - name: Upload build artifacts
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: astro-dist
+      #     path: dist/
+      #     retention-days: 7
+
+      - name: Upload build artifacts
+        uses: reggionick/s3-deploy@v4
+        with:
+          folder: dist
+          bucket: ${{ env.S3_BUCKET }}
+          bucket-region: ${{ env.S3_REGION }}
