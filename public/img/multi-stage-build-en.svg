@@ -1,0 +1,53 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold">Multi-stage Build for Distroless Containers</text>
+  
+  <!-- Stage 1: Build -->
+  <rect x="50" y="70" width="280" height="280" rx="10" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+  <text x="190" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Stage 1: Build</text>
+  <text x="190" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-style="italic">FROM node:20 AS build</text>
+  
+  <!-- Content of build stage -->
+  <rect x="70" y="140" width="240" height="40" rx="5" fill="#d9edf7" stroke="#31708f" stroke-width="1"/>
+  <text x="190" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">Source code</text>
+  
+  <rect x="70" y="190" width="240" height="40" rx="5" fill="#d9edf7" stroke="#31708f" stroke-width="1"/>
+  <text x="190" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">Dependencies (package.json)</text>
+  
+  <rect x="70" y="240" width="240" height="40" rx="5" fill="#f2dede" stroke="#843534" stroke-width="1"/>
+  <text x="190" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">npm install</text>
+  
+  <rect x="70" y="290" width="240" height="40" rx="5" fill="#dff0d8" stroke="#3c763d" stroke-width="1"/>
+  <text x="190" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">Compiled artifacts</text>
+  
+  <!-- Stage 2: Distroless -->
+  <rect x="470" y="70" width="280" height="280" rx="10" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+  <text x="610" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Stage 2: Distroless</text>
+  <text x="610" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-style="italic">FROM gcr.io/distroless/nodejs20</text>
+  
+  <!-- Content of distroless stage -->
+  <rect x="490" y="160" width="240" height="40" rx="5" fill="#dff0d8" stroke="#3c763d" stroke-width="1"/>
+  <text x="610" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">Copied artifacts</text>
+  
+  <rect x="490" y="210" width="240" height="40" rx="5" fill="#d9edf7" stroke="#31708f" stroke-width="1"/>
+  <text x="610" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">Node.js Runtime</text>
+  
+  <rect x="490" y="260" width="240" height="40" rx="5" fill="#fcf8e3" stroke="#8a6d3b" stroke-width="1"/>
+  <text x="610" y="285" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">CMD ["app.js"]</text>
+  
+  <!-- Flow between stages -->
+  <path d="M330,220 C390,220 390,180 450,180" fill="none" stroke="#333" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="380" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold">COPY --from=build</text>
+  <text x="380" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">/app /app</text>
+  
+  <!-- Final result -->
+  <rect x="550" y="360" width="120" height="30" rx="15" fill="#5cb85c" stroke="#4cae4c" stroke-width="1"/>
+  <text x="610" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">Final Image</text>
+  
+  <!-- Marker definitions -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+  </defs>
+</svg>

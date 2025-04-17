@@ -1,13 +1,13 @@
-import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import starlightThemeRapide from 'starlight-theme-rapide';
-import remarkMath from 'remark-math';
+import { defineConfig } from 'astro/config';
 import rehypeMathjax from 'rehype-mathjax';
-import remarkToc from 'remark-toc';
-import remarkGfm from 'remark-gfm';
-import externalAnchorPlugin from './src/plugins/externalAnchorPlugin.mjs';
-import starlightLinksValidator from 'starlight-links-validator';
 import rehypeMermaid from 'rehype-mermaid';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import remarkToc from 'remark-toc';
+import starlightLinksValidator from 'starlight-links-validator';
+import starlightThemeRapide from 'starlight-theme-rapide';
+import externalAnchorPlugin from './src/plugins/externalAnchorPlugin.mjs';
 
 export default defineConfig({
   site: 'https://learn.magj.dev',
@@ -244,46 +244,15 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Microsoft',
+          label: 'Random',
           collapsed: true,
-          items: [
-            {
-              label: 'Overview',
-              link: 'ms/learning',
-            },
-            {
-              label: 'AI Engineer',
-              collapsed: true,
-              items: [
-                {
-                  label: 'Overview',
-                  link: 'ms/ai-engineer/overview',
-                },
-              ],
-            },
-          ],
-        },
-        {
-          label: 'Snowflake',
-          collapsed: true,
-          items: [
-            {
-              label: 'Overview',
-              link: 'snowflake/overview',
-            },
-            {
-              label: 'Badges',
-              collapsed: true,
-              items: [
-                {
-                  label: '1: Data Warehousing',
-                  autogenerate: {
-                    directory: 'snowflake/badges/1-data-warehousing-workshop',
-                  },
-                },
-              ],
-            },
-          ],
+          badge: {
+            text: 'WIP',
+            variant: 'caution',
+          },
+          autogenerate: {
+            directory: 'random',
+          },
         },
         {
           label: 'Neo4j',
@@ -353,29 +322,46 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Twelve Factor App',
+          label: 'Unfinished',
           collapsed: true,
-          autogenerate: {
-            directory: 'twelve_factor',
-          },
-        },
-        {
-          label: 'Random',
-          collapsed: true,
-          badge: {
-            text: 'WIP',
-            variant: 'caution',
-          },
-          autogenerate: {
-            directory: 'random',
-          },
-        },
-        {
-          label: 'Case Study',
-          collapsed: true,
-          autogenerate: {
-            directory: 'case_study',
-          },
+          items: [
+            {
+              label: 'Twelve Factor App',
+              collapsed: true,
+              autogenerate: {
+                directory: 'unfinished/twelve_factor',
+              },
+            },
+            {
+              label: 'Snowflake',
+              collapsed: true,
+              items: [
+                {
+                  label: 'Overview',
+                  link: 'snowflake/overview',
+                },
+                {
+                  label: 'Badges',
+                  collapsed: true,
+                  items: [
+                    {
+                      label: '1: Data Warehousing',
+                      autogenerate: {
+                        directory: 'snowflake/badges/1-data-warehousing-workshop',
+                      },
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              label: 'Microsoft',
+              collapsed: true,
+              autogenerate: {
+                directory: 'unfinished/ms',
+              },
+            },
+          ],
         },
       ],
       social: {
@@ -388,7 +374,7 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: {
       type: 'shiki',
-      excludeLangs: ['mermaid', 'math', 'd2', 'vbnet'],
+      excludeLangs: ['mermaid', 'math'],
     },
     remarkPlugins: [
       remarkMath,
