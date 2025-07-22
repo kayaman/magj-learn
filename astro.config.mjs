@@ -255,6 +255,17 @@ export default defineConfig({
           },
         },
         {
+          label: 'pt-BR',
+          collapsed: true,
+          badge: {
+            text: 'WIP',
+            variant: 'caution',
+          },
+          autogenerate: {
+            directory: 'pt-br',
+          },
+        },
+        {
           label: 'Neo4j',
           collapsed: true,
           items: [
