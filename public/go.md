@@ -39,3 +39,12 @@ A eliminação de network hops através do Client Status Service dedicado, combi
 Esta arquitetura está completamente alinhada com os pilares eficiência de performance, confiabilidade, excelência operacional, confiabilidade, segurança e sustentabilidade do AWS Well-Architected Framework, implementando as melhores práticas em microserviços, cache distribuído, padrões de criptografia, e otimização baseada padrões específicos de carga.
 
 Esta modernização arquitetural é um avanço significativo para transformar a verificação de status do cliente de gargalo operacional em diferencial estratégico, eliminando as dependências dos C6 Services e estabelecendo o Credit Recovery como proprietário de uma capacidade crítica e independente, capaz de entregar tempos de resposta sub-50ms que posicionam a instituição na vanguarda da performance de digital banking.
+
+## Remoção de lógica de negócios em arquivos JavaScript no Apigee
+
+Atualmente temos o cenário de um anti-pattern crítico na utilização do Apigee. Incorporar regras de negócio em um API Gateway constitui uma prática desencorajada pela indústria, pois transforma o gateway de um simples proxy em uma camada de aplicação que compromete performance e manutenibilidade. Código JavaScript inserido no Apigee pode adicionar entre 200-500ms de latência adicional por requisição, além de dificultar debugging e deployment independente.
+
+A remoção das regras de negócio do Apigee - além de eliminar o risco de single-point-of-failure - reduz o acoplamento arquitetural, permitindo que cada aplicação gerencie sua própria lógica de negócio de forma independente. Esta refatoração alinha-se com o princípio de separação de responsabilidades e traz assertividade para testes unitários específicos por aplicação, melhorando a qualidade do código.
+
+Remover 100% dos arquivos JavaScript contendo regras de negócio do Apigee e migrar essa lógica para as respectivas aplicações proprietárias. reduzindo latência média do gateway em 30% e eliminando dependências de código customizado na camada de proxy.
+
