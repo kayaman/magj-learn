@@ -244,6 +244,35 @@ export default defineConfig({
           ],
         },
         {
+          label: 'Generative AI',
+          collapsed: true,
+          items: [
+            {
+              label: 'Courses',
+              items: [
+                {
+                  label: 'LLMOps Specialization',
+
+                  items: [
+                    {
+                      label: 'Home',
+                      link: 'generative-ai/llmops_specialization',
+                    },
+                    {
+                      label: 'Introduction',
+                      link: 'generative-ai/llmops_specialization/module1',
+                    },
+                    {
+                      label: 'Module 2',
+                      link: 'generative-ai/llmops_specialization/module2',
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
           label: 'Random',
           collapsed: true,
           badge: {
