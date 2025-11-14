@@ -30,7 +30,12 @@ export default defineConfig({
         frames: {
           showCopyToClipboardButton: true,
         },
-        shiki: true,
+        shiki: {
+          langAlias: {
+            redis: 'bash',
+            vbnet: 'vb',
+          },
+        },
       },
       logo: {
         light: './src/assets/logo-light.svg',
@@ -247,6 +252,13 @@ export default defineConfig({
           label: 'Generative AI',
           collapsed: true,
           items: [
+            {
+              label: 'MLOps',
+              collapsed: true,
+              autogenerate: {
+                directory: 'generative-ai/mlops',
+              },
+            },
             {
               label: 'Courses',
               items: [

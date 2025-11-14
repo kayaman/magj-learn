@@ -23,7 +23,7 @@ sidebar:
 12. Exemplos de Respostas JSON
 13. Padrões RFC e Referências
 
----
+***
 
 ### Categorias de Códigos de Status HTTP {#categorias}
 
@@ -35,7 +35,7 @@ Os códigos de status HTTP são divididos em cinco categorias baseadas no primei
 - **4xx (Erro do Cliente)**: Aponta para erros cometidos pelo cliente
 - **5xx (Erro do Servidor)**: O servidor assume a responsabilidade por estes códigos de erro
 
----
+***
 
 ### Códigos de Status Informativos 1xx {#1xx}
 
@@ -63,7 +63,7 @@ Os códigos de status HTTP são divididos em cinco categorias baseadas no primei
 - **Quando Usar**: Para permitir pré-carregamento de recursos
 - **Exemplo**: Enviando cabeçalhos Link para pré-carregamento de recursos
 
----
+***
 
 ### Códigos de Status de Sucesso 2xx {#2xx}
 
@@ -131,7 +131,7 @@ Content-Type: application/json
 - **Quando Usar**: Requisições de range para arquivos grandes
 - **Cabeçalhos Obrigatórios**: Cabeçalho Content-Range
 
----
+***
 
 ### Códigos de Status de Redirecionamento 3xx {#3xx}
 
@@ -172,7 +172,7 @@ Content-Type: application/json
 - **Quando Usar**: Quando o método não deve mudar (ao contrário do 301)
 - **Melhor Prática**: Use em vez de 301 para métodos não-GET
 
----
+***
 
 ### Códigos de Status de Erro do Cliente 4xx {#4xx}
 
@@ -393,7 +393,7 @@ Retry-After: 3600
 }
 ```
 
----
+***
 
 ### Códigos de Status de Erro do Servidor 5xx {#5xx}
 
@@ -452,7 +452,7 @@ Retry-After: 1800
 - **Quando Usar**: Servidor upstream demorou muito para responder
 - **Melhor Prática**: Configure valores de timeout apropriados
 
----
+***
 
 ### Árvores de Decisão para Escolha de Códigos de Status {#arvores-decisao}
 
@@ -532,7 +532,7 @@ Erro Ocorreu
     └─► Erro inesperado → 500 Internal Server Error
 ```
 
----
+***
 
 ### Erros Comuns e Antipadrões {#erros-comuns}
 
@@ -619,7 +619,7 @@ Allow: GET, POST
 }
 ```
 
----
+***
 
 ### Padrões de Tratamento de Erros {#tratamento-erros}
 
@@ -714,7 +714,7 @@ Baseado na RFC 7807 (Problem Details for HTTP APIs):
 }
 ```
 
----
+***
 
 ### Códigos de Status de Autenticação/Autorização {#codigos-auth}
 
@@ -777,7 +777,7 @@ HTTP/1.1 403 Forbidden
 - **400**: Formato de requisição inválido
 - **429**: Limite de taxa excedido
 
----
+***
 
 ### Melhores Práticas da Indústria {#melhores-praticas}
 
@@ -826,7 +826,7 @@ X-RateLimit-Reset: 1640995200
 }
 ```
 
----
+***
 
 ### Exemplos de Respostas JSON {#exemplos-json}
 
@@ -961,7 +961,7 @@ Content-Type: application/json
 }
 ```
 
----
+***
 
 ### Padrões RFC e Referências {#padroes-rfc}
 
@@ -1007,7 +1007,7 @@ Content-Type: application/json
 3. **Cache**: Considere comportamento de cache ao escolher códigos de status
 4. **Segurança**: Use códigos apropriados para evitar vazamento de informações
 
----
+***
 
 ### Conclusão
 
@@ -1022,7 +1022,7 @@ Este guia abrangente fornece uma referência completa para implementar códigos 
 
 Ao seguir essas melhores práticas e diretrizes, você pode criar APIs robustas e amigáveis que se comunicam efetivamente com clientes e proporcionam excelente experiência ao desenvolvedor.
 
----
+***
 
 ## Anti-Padrões de Códigos de Status HTTP para Arquitetura RESTful: Guia Completo para Equipes de Desenvolvimento Brasileiras
 
@@ -2054,7 +2054,7 @@ groups:
 4. **Monitoramento contínuo**: Estabelecer KPIs baseados em códigos de status
 5. **Melhoria contínua**: Revisão regular e refinamento de práticas
 
----
+***
 
 ## HTTP 204 vs 200: Guia Completo para Coleções Vazias em APIs RESTful
 
@@ -2202,7 +2202,7 @@ A evidência esmagadoramente suporta **HTTP 200 OK com arrays vazios para coleç
 
 O insight chave é que **coleções são recursos com representações, mesmo quando vazias**. Uma coleção vazia não é "nenhum conteúdo" - é conteúdo que por acaso está vazio, tornando 200 OK a escolha semanticamente correta e praticamente superior.
 
----
+***
 
 **Sobre este Documento**
 

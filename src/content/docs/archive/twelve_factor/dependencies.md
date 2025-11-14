@@ -10,7 +10,7 @@ sidebar:
 
 A Twelve-Factor App **explicitly declares all dependencies** and does not rely on system-wide packages. This ensures that the application can be reliably deployed across different environments without unexpected behavior due to missing or mismatched dependencies.
 
----
+***
 
 ## **Key Principles**
 ### 1. **No Implicit Dependencies**  
@@ -38,7 +38,7 @@ A Twelve-Factor App **explicitly declares all dependencies** and does not rely o
 - Isolating dependencies helps prevent version conflicts and security vulnerabilities.
 - Regularly update dependencies while ensuring compatibility.
 
----
+***
 
 ## **Example: Python (FastAPI) with Poetry**
 
