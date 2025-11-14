@@ -352,11 +352,11 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Archive',
+          label: 'Random',
           collapsed: true,
           items: [
             {
-              label: 'Random',
+              label: 'Archive',
               autogenerate: {
                 directory: 'archive/random',
               },
@@ -393,6 +393,12 @@ export default defineConfig({
               label: 'Twelve Factor App',
               autogenerate: {
                 directory: 'archive/twelve_factor',
+              },
+            },
+            {
+              label: 'CI/CD',
+              autogenerate: {
+                directory: 'archive/cicd',
               },
             },
           ],
