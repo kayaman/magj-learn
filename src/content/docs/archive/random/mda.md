@@ -79,13 +79,17 @@ The **Request-Reply** pattern provides a direct response mechanism where the cli
 
 #### **Example**
 
-```plantuml
-@startuml
-Client -> Queue : Send request
-Queue -> Worker : Process message
-Worker -> ResponseQueue : Send response
-ResponseQueue -> Client : Receive response
-@enduml
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Queue
+    participant Worker
+    participant ResponseQueue
+
+    Client->>Queue: Send request
+    Queue->>Worker: Process message
+    Worker->>ResponseQueue: Send response
+    ResponseQueue->>Client: Receive response
 ```
 
 ---

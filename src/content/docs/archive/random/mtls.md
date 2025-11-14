@@ -1008,4 +1008,4 @@ For production use, consider:
 - Setting up monitoring for certificate expiry
 - Using service meshes like Istio that can manage mTLS for you
 
----
+***

@@ -97,7 +97,7 @@ When selecting a programming language for a **containerized microservice** that 
 
 TypeScript, a **strongly typed superset of JavaScript**, emerges as an excellent choice for such an architecture due to its **type safety, asynchronous capabilities, scalability, and compatibility with modern DevOps practices**. This article will explore the key benefits of TypeScript and compare it to alternative languages.
 
----
+***
 
 ### 1. Type Safety for Maintainability and Reliability
 
@@ -130,7 +130,7 @@ const invalidOrder = { id: 456, userId: 'user42', totalAmount: '250.5', status: 
 processOrder(invalidOrder); // ❌ TypeScript will catch this error at compile time
 ```
 
----
+***
 
 ### 2. Asynchronous and Event-Driven Capabilities
 
@@ -160,7 +160,7 @@ async function consumeMessages() {
 consumeMessages().catch(console.error);
 ```
 
----
+***
 
 ### 3. Scalability and Performance in High-Traffic Systems
 
@@ -189,7 +189,7 @@ app.listen(3000, () => {
 
 This API can be **containerized, deployed, and scaled** using Kubernetes and load balancers.
 
----
+***
 
 ### 4. Containerization and DevOps Integration
 
@@ -209,7 +209,7 @@ CMD ["node", "dist/index.js"]
 
 With this setup, a **TypeScript-based microservice is container-ready** and can be orchestrated using Kubernetes.
 
----
+***
 
 ### 5. Comparison with Other Languages
 
@@ -229,13 +229,13 @@ With this setup, a **TypeScript-based microservice is container-ready** and can 
 - **More flexible than Java**: Lightweight, less boilerplate, and quicker startup.
 - **Competitive with Go**: Easier learning curve while still providing async performance.
 
----
+***
 
 ### 6. Strong Community and Ecosystem
 
 TypeScript is backed by a **large developer community, corporate adoption (Microsoft, Netflix, Slack), and extensive libraries (NPM ecosystem)**. It integrates seamlessly with cloud services like **AWS Lambda, Google Cloud Functions, and Azure Functions**.
 
----
+***
 
 ### Conclusion
 

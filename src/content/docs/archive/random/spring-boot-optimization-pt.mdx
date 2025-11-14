@@ -46,7 +46,7 @@ Uma aplicação **Backend-for-Frontend (BFF)** atua como um *gateway* de API ada
 * **Transformações da Lógica de Negócio:** Mantenha a lógica de negócio dentro do BFF focada na agregação e transformação de dados específicos para as necessidades do *frontend*. Evite lógica de domínio complexa e reutilizável aqui; ela deve residir em microsserviços dedicados.  
 * **Segurança:** Implemente autenticação e autorização. Para um BFF, isso pode envolver a integração com um provedor de identidade (ex: AWS Cognito, Okta) e a propagação do contexto do usuário para serviços *downstream*.
 
----
+***
 
 ### **2\. Implantação no Kubernetes (AWS EKS)**
 
@@ -67,7 +67,7 @@ O AWS Elastic Kubernetes Service (EKS) oferece um plano de controle Kubernetes g
   * **Limits:** Recursos máximos que o pod pode consumir.  
   * Definir valores apropriados evita a escassez de recursos e garante um desempenho estável. Limites muito baixos podem levar a OOMKills (Out Of Memory Kills).
 
----
+***
 
 ### **3\. Camada de Banco de Dados**
 
@@ -87,7 +87,7 @@ Para aplicações Spring Boot no Kubernetes e AWS, aproveite os serviços de ban
 * **Sharding/Particionamento:** Para conjuntos de dados extremamente grandes ou alta vazão, considere **sharding** seu banco de dados (distribuindo dados entre múltiplas instâncias) se seu modelo de dados permitir.  
 * **Lazy Loading:** No Spring Data JPA, esteja atento aos problemas de consulta N+1. Use estratégias de *fetch* apropriadas (carregamento *eager/lazy*) e projeções DTO para buscar apenas os dados necessários.
 
----
+***
 
 ### **4\. Camada de Cache**
 
@@ -104,7 +104,7 @@ O *cache* é essencial para melhorar a performance e reduzir a carga do banco de
   * **Write-Back (Write-Behind):** Os dados são escritos no *cache* e, em seguida, de forma assíncrona, no banco de dados. Oferece melhor performance, mas introduz potencial perda de dados em caso de falha do *cache*.  
 * **Invalidação de Cache:** Implemente estratégias eficazes de invalidação de *cache* (ex: expiração baseada em tempo, invalidação orientada a eventos) para garantir a consistência dos dados.
 
----
+***
 
 ### **5\. Jobs em Segundo Plano, Filas e DLQs**
 
@@ -123,7 +123,7 @@ Para processamento assíncrono e desacoplamento de componentes:
   * **DLQ Kafka:** Com o Spring for Apache Kafka, você pode configurar um tópico DLQ. Se o processamento de uma mensagem falhar e as retries forem esgotadas, a mensagem é enviada para o tópico DLQ.  
   * **Monitoramento e Alerta:** Monitore suas DLQs para mensagens. Implemente mecanismos (ex: funções AWS Lambda, processos *worker* dedicados) para inspecionar e reprocessar mensagens das DLQs, ou movê-las para um sistema diferente para intervenção manual.
 
----
+***
 
 ### **6\. Observabilidade**
 
@@ -145,7 +145,7 @@ Para entender o comportamento da sua aplicação e diagnosticar problemas em pro
   * **AWS X-Ray:** Integre com o AWS X-Ray para um serviço de *tracing* distribuído totalmente gerenciado. O Spring Cloud AWS fornece integração para isso.  
 * **Alertas:** Configure alertas no CloudWatch, Prometheus Alertmanager ou Grafana com base em métricas críticas (ex: altas taxas de erro, aumento da latência, baixa memória disponível, mensagens em DLQs).
 
----
+***
 
 ### **7\. Otimização de Performance**
 

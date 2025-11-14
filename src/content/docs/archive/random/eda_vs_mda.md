@@ -16,7 +16,7 @@ In distributed systems, **Event-Driven Architecture (EDA)** and **Message-Driven
 
 This document provides a comprehensive comparison of **Event-Driven Architecture** and **Message-Driven Architecture**, including their definitions, use cases, pros and cons, and a guide to choosing the right one.
 
----
+***
 
 ### 1️⃣ Event-Driven Architecture (EDA)
 
@@ -56,7 +56,7 @@ graph TD;
     D -->|Sends Email| E[Customer];
 ```
 
----
+***
 
 ### 2️⃣ Message-Driven Architecture (MDA)
 
@@ -87,17 +87,21 @@ graph TD;
 
 #### **Example**
 
-```plantuml
-@startuml
-Client -> Queue : Send "Process Payment" message
-Queue -> Worker : Worker pulls message
-Worker -> DB : Process transaction
-Worker -> Queue : Send "Payment Completed" message
-Queue -> Client : Deliver response
-@enduml
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Queue
+    participant Worker
+    participant DB
+
+    Client->>Queue: Send "Process Payment" message
+    Queue->>Worker: Worker pulls message
+    Worker->>DB: Process transaction
+    Worker->>Queue: Send "Payment Completed" message
+    Queue->>Client: Deliver response
 ```
 
----
+***
 
 ### 3️⃣ Key Differences
 
@@ -110,7 +114,7 @@ Queue -> Client : Deliver response
 | **Scalability**       | High                            | Medium (depends on queue scaling)               |
 | **Complexity**        | High (tracing event flows)      | Moderate (requires queue management)            |
 
----
+***
 
 ### 4️⃣ Choosing the Right Architecture
 
@@ -123,7 +127,7 @@ Queue -> Client : Deliver response
 | **Synchronous processing required**              | ❌ No                           | ✅ Yes                            |
 | **Resilient to service failures**                | ✅ Yes                          | ✅ Yes                            |
 
----
+***
 
 ### 5️⃣ Conclusion
 
