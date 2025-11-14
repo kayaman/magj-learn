@@ -1,5 +1,5 @@
 ---
-title: HTTP Codes vs RESTful APIs
+title: HTTP Codes vs RESTful APIs pt-BR
 description: Análise
 sidebar:
   order: 1
@@ -40,21 +40,25 @@ Os códigos de status HTTP são divididos em cinco categorias baseadas no primei
 ### Códigos de Status Informativos 1xx {#1xx}
 
 #### 100 Continue
+
 - **Caso de Uso**: O cliente deve continuar com a requisição
 - **Quando Usar**: Para requisições grandes onde você deseja validar cabeçalhos antes de enviar o corpo
 - **Exemplo**: Upload de arquivos onde você verifica autorização primeiro
 
 #### 101 Switching Protocols
+
 - **Caso de Uso**: O servidor está mudando protocolos (ex: HTTP para WebSocket)
 - **Quando Usar**: Cenários de upgrade de protocolo
 - **Exemplo**: Handshake do WebSocket
 
 #### 102 Processing (WebDAV)
+
 - **Caso de Uso**: O servidor recebeu e está processando a requisição
 - **Quando Usar**: Operações de longa duração para prevenir timeout do cliente
 - **Exemplo**: Operações de processamento de arquivos grandes
 
 #### 103 Early Hints
+
 - **Caso de Uso**: Retorna alguns cabeçalhos de resposta antes da resposta final
 - **Quando Usar**: Para permitir pré-carregamento de recursos
 - **Exemplo**: Enviando cabeçalhos Link para pré-carregamento de recursos
@@ -64,12 +68,14 @@ Os códigos de status HTTP são divididos em cinco categorias baseadas no primei
 ### Códigos de Status de Sucesso 2xx {#2xx}
 
 #### 200 OK
+
 - **Caso de Uso**: A requisição foi bem-sucedida
-- **Quando Usar**: 
+- **Quando Usar**:
   - GET: Recurso recuperado com sucesso
   - PUT: Recurso atualizado com sucesso
   - POST: Ação completada com sucesso (mas nenhum recurso criado)
 - **Exemplo JSON**:
+
 ```json
 {
   "id": 123,
@@ -79,10 +85,12 @@ Os códigos de status HTTP são divididos em cinco categorias baseadas no primei
 ```
 
 #### 201 Created
+
 - **Caso de Uso**: Recurso criado com sucesso
 - **Quando Usar**: Requisições POST que criam novos recursos
 - **Cabeçalhos Obrigatórios**: Cabeçalho Location com URI do novo recurso
 - **Exemplo JSON**:
+
 ```json
 HTTP/1.1 201 Created
 Location: /api/usuarios/123
@@ -97,10 +105,12 @@ Content-Type: application/json
 ```
 
 #### 202 Accepted
+
 - **Caso de Uso**: Requisição aceita mas ainda não processada
 - **Quando Usar**: Operações assíncronas, processamento em lote
 - **Melhor Prática**: Incluir endpoint de monitoramento de status
 - **Exemplo JSON**:
+
 ```json
 {
   "mensagem": "Requisição aceita para processamento",
@@ -110,11 +120,13 @@ Content-Type: application/json
 ```
 
 #### 204 No Content
+
 - **Caso de Uso**: Requisição bem-sucedida mas sem conteúdo para retornar
 - **Quando Usar**: Operações DELETE, PUT ou PATCH sem corpo de resposta
 - **Importante**: NÃO deve incluir corpo de mensagem
 
 #### 206 Partial Content
+
 - **Caso de Uso**: Entrega de recurso parcial
 - **Quando Usar**: Requisições de range para arquivos grandes
 - **Cabeçalhos Obrigatórios**: Cabeçalho Content-Range
@@ -124,32 +136,38 @@ Content-Type: application/json
 ### Códigos de Status de Redirecionamento 3xx {#3xx}
 
 #### 301 Moved Permanently
+
 - **Caso de Uso**: Recurso movido permanentemente para nova URI
 - **Quando Usar**: Versionamento de API, mudanças permanentes de URL
 - **Cabeçalhos Obrigatórios**: Cabeçalho Location com nova URI
 - **Melhor Prática**: Raramente usado em APIs devido a estratégias de versionamento
 
 #### 302 Found
+
 - **Caso de Uso**: Recurso temporariamente movido
 - **Quando Usar**: Redirecionamentos temporários
 - **Observação**: O método pode mudar para GET em alguns clientes
 
 #### 303 See Other
+
 - **Caso de Uso**: Resposta disponível em URI diferente via GET
 - **Quando Usar**: Após POST para redirecionar para representação do recurso
 - **Melhor Prática**: Preferido sobre 302 para padrão POST-redirect-GET
 
 #### 304 Not Modified
+
 - **Caso de Uso**: Recurso não alterado desde a última requisição
 - **Quando Usar**: Requisições condicionais com If-Modified-Since ou If-None-Match
 - **Obrigatório**: Cabeçalhos ETag ou Last-Modified
 
 #### 307 Temporary Redirect
+
 - **Caso de Uso**: Redirecionamento temporário preservando método HTTP
 - **Quando Usar**: Quando o método não deve mudar (ao contrário do 302)
 - **Melhor Prática**: Use em vez de 302 para métodos não-GET
 
 #### 308 Permanent Redirect
+
 - **Caso de Uso**: Redirecionamento permanente preservando método HTTP
 - **Quando Usar**: Quando o método não deve mudar (ao contrário do 301)
 - **Melhor Prática**: Use em vez de 301 para métodos não-GET
@@ -159,9 +177,11 @@ Content-Type: application/json
 ### Códigos de Status de Erro do Cliente 4xx {#4xx}
 
 #### 400 Bad Request
+
 - **Caso de Uso**: Erro genérico do cliente
 - **Quando Usar**: Sintaxe de requisição malformada, parâmetros inválidos
 - **Exemplo JSON**:
+
 ```json
 {
   "erro": {
@@ -178,11 +198,13 @@ Content-Type: application/json
 ```
 
 #### 401 Unauthorized
+
 - **Caso de Uso**: Autenticação necessária ou falhou
 - **Quando Usar**: Credenciais de autenticação ausentes ou inválidas
 - **Cabeçalhos Obrigatórios**: Cabeçalho WWW-Authenticate
 - **Observação**: Semanticamente significa "não autenticado"
 - **Exemplo JSON**:
+
 ```json
 {
   "erro": {
@@ -194,10 +216,12 @@ Content-Type: application/json
 ```
 
 #### 403 Forbidden
+
 - **Caso de Uso**: Acesso negado (autenticado mas não autorizado)
 - **Quando Usar**: Usuário não tem permissão para o recurso
 - **Diferença do 401**: Identidade do cliente é conhecida mas o acesso é negado
 - **Exemplo JSON**:
+
 ```json
 {
   "erro": {
@@ -209,12 +233,14 @@ Content-Type: application/json
 ```
 
 #### 404 Not Found
+
 - **Caso de Uso**: Recurso não encontrado
-- **Quando Usar**: 
+- **Quando Usar**:
   - Recurso não existe
   - Endpoint não existe
   - Ocultar existência do recurso de usuários não autorizados
 - **Exemplo JSON**:
+
 ```json
 {
   "erro": {
@@ -226,10 +252,12 @@ Content-Type: application/json
 ```
 
 #### 405 Method Not Allowed
+
 - **Caso de Uso**: Método HTTP não suportado para o recurso
 - **Quando Usar**: Usando POST em recurso somente leitura, DELETE em recurso imutável
 - **Cabeçalhos Obrigatórios**: Cabeçalho Allow listando métodos suportados
 - **Exemplo JSON**:
+
 ```json
 HTTP/1.1 405 Method Not Allowed
 Allow: GET, POST
@@ -244,9 +272,11 @@ Allow: GET, POST
 ```
 
 #### 406 Not Acceptable
+
 - **Caso de Uso**: Servidor não pode produzir tipo de conteúdo solicitado
 - **Quando Usar**: Cabeçalho Accept especifica tipo de mídia não suportado
 - **Exemplo JSON**:
+
 ```json
 {
   "erro": {
@@ -258,17 +288,20 @@ Allow: GET, POST
 ```
 
 #### 408 Request Timeout
+
 - **Caso de Uso**: Servidor expirou esperando pela requisição
 - **Quando Usar**: Cliente demorou muito para enviar requisição completa
 - **Melhor Prática**: Inclua cabeçalho Retry-After se apropriado
 
 #### 409 Conflict
+
 - **Caso de Uso**: Requisição conflita com estado atual do recurso
-- **Quando Usar**: 
+- **Quando Usar**:
   - Falhas de bloqueio otimista
   - Conflitos de estado do recurso
   - Criação de recurso duplicado
 - **Exemplo JSON**:
+
 ```json
 {
   "erro": {
@@ -280,24 +313,29 @@ Allow: GET, POST
 ```
 
 #### 410 Gone
+
 - **Caso de Uso**: Recurso permanentemente removido
 - **Quando Usar**: Recurso intencionalmente removido e não retornará
 - **Diferença do 404**: Indica explicitamente remoção permanente
 
 #### 412 Precondition Failed
+
 - **Caso de Uso**: Pré-condições nos cabeçalhos de requisição não atendidas
 - **Quando Usar**: Condições If-Match, If-None-Match, If-Modified-Since falham
 - **Uso Comum**: Controle de concorrência otimista
 
 #### 413 Content Too Large
+
 - **Caso de Uso**: Entidade de requisição maior que limites do servidor
 - **Quando Usar**: Uploads de arquivos excedendo limites de tamanho
 - **Melhor Prática**: Inclua cabeçalho Retry-After se temporário
 
 #### 415 Unsupported Media Type
+
 - **Caso de Uso**: Formato de entidade de requisição não suportado
 - **Quando Usar**: Cabeçalho Content-Type especifica formato não suportado
 - **Exemplo JSON**:
+
 ```json
 {
   "erro": {
@@ -309,9 +347,11 @@ Allow: GET, POST
 ```
 
 #### 422 Unprocessable Entity
+
 - **Caso de Uso**: Requisição bem formada mas semanticamente inválida
 - **Quando Usar**: Erros de validação, violações de regras de negócio
 - **Exemplo JSON**:
+
 ```json
 {
   "erro": {
@@ -332,10 +372,12 @@ Allow: GET, POST
 ```
 
 #### 429 Too Many Requests
+
 - **Caso de Uso**: Limite de taxa excedido
 - **Quando Usar**: Cliente excedeu limites de taxa de requisições
 - **Cabeçalhos Obrigatórios**: Cabeçalho Retry-After
 - **Exemplo JSON**:
+
 ```json
 HTTP/1.1 429 Too Many Requests
 Retry-After: 3600
@@ -356,10 +398,12 @@ Retry-After: 3600
 ### Códigos de Status de Erro do Servidor 5xx {#5xx}
 
 #### 500 Internal Server Error
+
 - **Caso de Uso**: Erro genérico do servidor
 - **Quando Usar**: Condições inesperadas do servidor
 - **Melhor Prática**: Registre detalhes internamente, retorne mensagem genérica ao cliente
 - **Exemplo JSON**:
+
 ```json
 {
   "erro": {
@@ -371,20 +415,24 @@ Retry-After: 3600
 ```
 
 #### 501 Not Implemented
+
 - **Caso de Uso**: Servidor não suporta funcionalidade solicitada
 - **Quando Usar**: Funcionalidade ainda não implementada
 - **Melhor Prática**: Indique possível disponibilidade futura
 
 #### 502 Bad Gateway
+
 - **Caso de Uso**: Servidor atuando como gateway recebeu resposta inválida
 - **Quando Usar**: Erros de servidor upstream em microserviços
 - **Melhor Prática**: Distinga de 500 para depuração
 
 #### 503 Service Unavailable
+
 - **Caso de Uso**: Servidor temporariamente indisponível
 - **Quando Usar**: Manutenção, sobrecarga, interrupções temporárias
 - **Cabeçalhos Obrigatórios**: Cabeçalho Retry-After quando possível
 - **Exemplo JSON**:
+
 ```json
 HTTP/1.1 503 Service Unavailable
 Retry-After: 1800
@@ -399,6 +447,7 @@ Retry-After: 1800
 ```
 
 #### 504 Gateway Timeout
+
 - **Caso de Uso**: Timeout do gateway esperando resposta upstream
 - **Quando Usar**: Servidor upstream demorou muito para responder
 - **Melhor Prática**: Configure valores de timeout apropriados
@@ -488,7 +537,9 @@ Erro Ocorreu
 ### Erros Comuns e Antipadrões {#erros-comuns}
 
 #### 1. Usar 200 OK para Tudo
+
 ❌ **Errado**:
+
 ```json
 HTTP/1.1 200 OK
 {
@@ -498,6 +549,7 @@ HTTP/1.1 200 OK
 ```
 
 ✅ **Correto**:
+
 ```json
 HTTP/1.1 404 Not Found
 {
@@ -509,37 +561,47 @@ HTTP/1.1 404 Not Found
 ```
 
 #### 2. Retornar 404 para Problemas de Autorização
+
 ❌ **Errado**: Usar 404 para ocultar recursos de usuários não autorizados em todos os casos
 ✅ **Correto**: Use 401 para problemas de autenticação, 403 para problemas de autorização
 
 #### 3. Não Distinguir Entre 401 e 403
+
 ❌ **Errado**: Usar 401 para todos os cenários de acesso negado
-✅ **Correto**: 
+✅ **Correto**:
+
 - 401: Autenticação necessária/falhou
 - 403: Autenticado mas não autorizado
 
 #### 4. Usar 500 para Erros de Validação
+
 ❌ **Errado**: Retornar 500 para falhas de validação de lógica de negócio
 ✅ **Correto**: Use 400 para erros de formato, 422 para erros de validação
 
 #### 5. Não Incluir Cabeçalhos Obrigatórios
-❌ **Errado**: 
+
+❌ **Errado**:
+
 ```http
 HTTP/1.1 405 Method Not Allowed
 ```
 
 ✅ **Correto**:
+
 ```http
 HTTP/1.1 405 Method Not Allowed
 Allow: GET, POST
 ```
 
 #### 6. Formato de Resposta de Erro Inconsistente
+
 ❌ **Errado**: Formatos de erro diferentes entre endpoints
 ✅ **Correto**: Estrutura de resposta de erro padronizada
 
 #### 7. Expor Detalhes Internos de Implementação
+
 ❌ **Errado**:
+
 ```json
 {
   "erro": "Falha na conexão com banco de dados: Timeout na conexão na linha 47"
@@ -547,6 +609,7 @@ Allow: GET, POST
 ```
 
 ✅ **Correto**:
+
 ```json
 {
   "erro": {
@@ -664,6 +727,7 @@ Baseado na RFC 7807 (Problem Details for HTTP APIs):
 #### Cenários Comuns de Autenticação
 
 ###### Autenticação Ausente
+
 ```json
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Bearer realm="api"
@@ -678,6 +742,7 @@ WWW-Authenticate: Bearer realm="api"
 ```
 
 ###### Token Inválido
+
 ```json
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Bearer error="invalid_token"
@@ -692,6 +757,7 @@ WWW-Authenticate: Bearer error="invalid_token"
 ```
 
 ###### Permissões Insuficientes
+
 ```json
 HTTP/1.1 403 Forbidden
 
@@ -767,6 +833,7 @@ X-RateLimit-Reset: 1640995200
 #### Respostas de Sucesso
 
 ###### Sucesso de Requisição GET
+
 ```json
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -780,6 +847,7 @@ Content-Type: application/json
 ```
 
 ###### Sucesso de Requisição POST (Criado)
+
 ```json
 HTTP/1.1 201 Created
 Location: /api/usuarios/123
@@ -794,6 +862,7 @@ Content-Type: application/json
 ```
 
 ###### Sucesso de Requisição PUT (Atualizado)
+
 ```json
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -807,6 +876,7 @@ Content-Type: application/json
 ```
 
 ###### Sucesso de Requisição DELETE
+
 ```json
 HTTP/1.1 204 No Content
 ```
@@ -814,6 +884,7 @@ HTTP/1.1 204 No Content
 #### Respostas de Erro
 
 ###### Erro de Validação (422)
+
 ```json
 HTTP/1.1 422 Unprocessable Entity
 Content-Type: application/json
@@ -839,6 +910,7 @@ Content-Type: application/json
 ```
 
 ###### Erro de Autenticação (401)
+
 ```json
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Bearer realm="api"
@@ -854,6 +926,7 @@ Content-Type: application/json
 ```
 
 ###### Erro de Limite de Taxa (429)
+
 ```json
 HTTP/1.1 429 Too Many Requests
 Retry-After: 3600
@@ -872,6 +945,7 @@ Content-Type: application/json
 ```
 
 ###### Erro do Servidor (500)
+
 ```json
 HTTP/1.1 500 Internal Server Error
 Content-Type: application/json
@@ -907,6 +981,7 @@ Content-Type: application/json
 #### Especificações Principais
 
 1. **Classes de Códigos de Status** (RFC 9110 Seção 15):
+
    - 1xx: Informativo
    - 2xx: Sucesso
    - 3xx: Redirecionamento
@@ -914,6 +989,7 @@ Content-Type: application/json
    - 5xx: Erro do Servidor
 
 2. **Comportamento de Cache** (RFC 7234):
+
    - 200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501: Cacheáveis por padrão
    - 302, 307: Cacheáveis com cabeçalhos de cache explícitos
    - 4xx, 5xx: Geralmente não cacheáveis
@@ -980,6 +1056,7 @@ Este guia técnico abrangente examina os anti-padrões mais críticos relacionad
 **Problema**: Usar HTTP 200 OK para todas as respostas, independentemente do resultado real, incorporando informações de erro no corpo da resposta.
 
 **Por que está errado**:
+
 - Viola semânticas HTTP e princípios REST
 - Força clientes a analisar o corpo da resposta para determinar sucesso/falha
 - Quebra mecanismos de cache HTTP
@@ -987,6 +1064,7 @@ Este guia técnico abrangente examina os anti-padrões mais críticos relacionad
 - Cria mecanismos proprietários de sinalização de erro que reduzem interoperabilidade
 
 **Exemplo de má prática**:
+
 ```kotlin
 // INCORRETO - Sempre retorna 200 OK
 @GetMapping("/usuarios/{id}")
@@ -1009,6 +1087,7 @@ fun buscarUsuario(@PathVariable id: Long): ResponseEntity<Map<String, Any>> {
 ```
 
 **Abordagem correta**:
+
 ```kotlin
 // CORRETO - Usa códigos de status apropriados
 @GetMapping("/usuarios/{id}")
@@ -1033,10 +1112,11 @@ fun buscarUsuario(@PathVariable id: Long): ResponseEntity<Any> {
 **Problema**: Usar HTTP 500 Internal Server Error para todas as condições de erro, incluindo erros do lado do cliente.
 
 **Uso correto por categoria**:
+
 ```kotlin
 @ControllerAdvice
 class GlobalExceptionHandler {
-    
+
     @ExceptionHandler(IllegalArgumentException::class)
     fun handleBadRequest(ex: IllegalArgumentException): ResponseEntity<ErrorResponse> {
         // 400: Erro de sintaxe da requisição
@@ -1044,13 +1124,13 @@ class GlobalExceptionHandler {
             ErrorResponse("REQUISICAO_MALFORMADA", ex.message)
         )
     }
-    
+
     @ExceptionHandler(UsuarioNaoEncontradoException::class)
     fun handleNotFound(ex: UsuarioNaoEncontradoException): ResponseEntity<ErrorResponse> {
         // 404: Recurso não encontrado
         return ResponseEntity.notFound().build()
     }
-    
+
     @ExceptionHandler(AccessDeniedException::class)
     fun handleForbidden(ex: AccessDeniedException): ResponseEntity<ErrorResponse> {
         // 403: Acesso negado
@@ -1071,6 +1151,7 @@ data class ErrorResponse(
 #### 2.3 Anti-Padrões de Tunelamento
 
 **Tunelamento GET**: Usar GET para operações com efeitos colaterais
+
 ```kotlin
 // INCORRETO - GET com efeitos colaterais
 @GetMapping("/usuarios/{id}/deletar")
@@ -1094,14 +1175,14 @@ fun deletarUsuario(@PathVariable id: Long): ResponseEntity<Void> {
 @RestController
 @RequestMapping("/api/v1/pedidos")
 class PedidoController(private val pedidoService: PedidoService) {
-    
+
     // 200 OK - Requisição bem-sucedida com corpo de resposta
     @GetMapping("/{id}")
     fun buscarPedido(@PathVariable id: Long): ResponseEntity<Pedido> {
         val pedido = pedidoService.buscarPorId(id)
         return ResponseEntity.ok(pedido)
     }
-    
+
     // 201 Created - Recurso criado com sucesso (deve incluir header Location)
     @PostMapping
     fun criarPedido(@Valid @RequestBody novoPedido: NovoPedidoRequest): ResponseEntity<Pedido> {
@@ -1109,7 +1190,7 @@ class PedidoController(private val pedidoService: PedidoService) {
         val uri = URI.create("/api/v1/pedidos/${pedido.id}")
         return ResponseEntity.created(uri).body(pedido)
     }
-    
+
     // 202 Accepted - Requisição aceita para processamento assíncrono
     @PostMapping("/{id}/processar")
     fun processarPedido(@PathVariable id: Long): ResponseEntity<Map<String, Any>> {
@@ -1120,7 +1201,7 @@ class PedidoController(private val pedidoService: PedidoService) {
             "urlAcompanhamento" to "/api/v1/processamentos/$idProcessamento"
         ))
     }
-    
+
     // 204 No Content - Operação bem-sucedida sem corpo de resposta
     @DeleteMapping("/{id}")
     fun deletarPedido(@PathVariable id: Long): ResponseEntity<Void> {
@@ -1135,7 +1216,7 @@ class PedidoController(private val pedidoService: PedidoService) {
 ```kotlin
 @RestController
 class AutenticacaoController(private val authService: AuthService) {
-    
+
     @PostMapping("/login")
     fun login(@Valid @RequestBody credenciais: CredenciaisLogin): ResponseEntity<Any> {
         return try {
@@ -1151,7 +1232,7 @@ class AutenticacaoController(private val authService: AuthService) {
                 ))
         }
     }
-    
+
     // 409 Conflict - Conflito com estado atual do recurso
     @PostMapping("/usuarios")
     fun criarUsuario(@Valid @RequestBody novoUsuario: NovoUsuarioRequest): ResponseEntity<Any> {
@@ -1166,12 +1247,12 @@ class AutenticacaoController(private val authService: AuthService) {
             ))
         }
     }
-    
+
     // 429 Too Many Requests - Limite de taxa excedido
     @GetMapping("/api-publica/cotacao")
     fun obterCotacao(): ResponseEntity<Any> {
         val limite = rateLimitService.verificarLimite(getClientIP())
-        
+
         return if (limite.permitido) {
             val cotacao = cotacaoService.obterCotacaoAtual()
             ResponseEntity.ok(cotacao)
@@ -1198,10 +1279,10 @@ class AutenticacaoController(private val authService: AuthService) {
 @ExceptionHandler(SQLException::class)
 fun handleSqlException(ex: SQLException): ResponseEntity<Any> {
     val idRequisicao = gerarIdUnicoRequisicao()
-    
+
     // Log completo para investigação interna
     logger.error("Erro de banco de dados [ID: $idRequisicao]", ex)
-    
+
     // Resposta genérica para o cliente
     return ResponseEntity.internalServerError().body(mapOf(
         "erro" to "ERRO_INTERNO",
@@ -1217,7 +1298,7 @@ fun handleSqlException(ex: SQLException): ResponseEntity<Any> {
 ```kotlin
 @Component
 class SecurityMonitoringService {
-    
+
     @EventListener
     fun monitorarPadroesAtaque(event: HttpResponseEvent) {
         when (event.statusCode) {
@@ -1227,10 +1308,10 @@ class SecurityMonitoringService {
             429 -> detectarPossibilidadeDoS(event)
         }
     }
-    
+
     private fun detectarTentativasBruteForce(event: HttpResponseEvent) {
         val tentativas = contarTentativas401PorIP(event.clientIP, Duration.ofMinutes(5))
-        
+
         if (tentativas > LIMITE_TENTATIVAS_LOGIN) {
             alertService.enviarAlerta(
                 TipoAlerta.BRUTE_FORCE_DETECTADO,
@@ -1241,7 +1322,7 @@ class SecurityMonitoringService {
                     "endpoint" to event.endpoint
                 )
             )
-            
+
             // Implementar bloqueio temporário de IP
             firewallService.bloquearTemporariamente(event.clientIP, Duration.ofHours(1))
         }
@@ -1256,18 +1337,18 @@ class SecurityMonitoringService {
 ```kotlin
 @RestController
 class ProdutoController {
-    
+
     @GetMapping("/produtos/{id}")
     fun obterProduto(
         @PathVariable id: Long,
         @RequestHeader(value = "If-None-Match", required = false) ifNoneMatch: String?,
         @RequestHeader(value = "If-Modified-Since", required = false) ifModifiedSince: String?
     ): ResponseEntity<Any> {
-        
+
         val produto = produtoService.buscarPorId(id)
         val etag = calcularETag(produto)
         val ultimaModificacao = produto.ultimaModificacao
-        
+
         // Verificar se o cliente já tem a versão mais recente
         if (clienteTemVersaoAtualizada(etag, ifNoneMatch, ultimaModificacao, ifModifiedSince)) {
             // 304 Not Modified - Economiza largura de banda
@@ -1277,7 +1358,7 @@ class ProdutoController {
                 .cacheControl(CacheControl.maxAge(1, TimeUnit.HOURS).cachePublic())
                 .build()
         }
-        
+
         // 200 OK com dados atualizados e headers de cache
         return ResponseEntity.ok()
             .eTag(etag)
@@ -1299,14 +1380,14 @@ class DadosPessoaisController(
     private val dadosService: DadosPessoaisService,
     private val auditService: AuditLGPDService
 ) {
-    
+
     @GetMapping("/usuario/{id}")
     @PreAuthorize("hasRole('USER') and #id == authentication.name or hasRole('ADMIN')")
     fun obterDadosPessoais(
         @PathVariable id: Long,
         authentication: Authentication
     ): ResponseEntity<Any> {
-        
+
         // Auditar acesso aos dados pessoais (obrigação LGPD)
         auditService.registrarAcessoDados(
             usuarioSolicitante = authentication.name,
@@ -1315,15 +1396,15 @@ class DadosPessoaisController(
             finalidade = "FORNECIMENTO_SERVICO",
             baseJuridica = "CONSENTIMENTO"
         )
-        
+
         return try {
             val dados = dadosService.obterDadosAnonimizados(id)
-            
+
             ResponseEntity.ok()
                 .header("X-LGPD-Compliant", "true")
                 .header("X-Data-Processing-Purpose", "FORNECIMENTO_SERVICO")
                 .body(dados)
-                
+
         } catch (e: AcessoNegadoException) {
             ResponseEntity.status(HttpStatus.FORBIDDEN).body(mapOf(
                 "erro" to "ACESSO_NEGADO_LGPD",
@@ -1332,29 +1413,29 @@ class DadosPessoaisController(
             ))
         }
     }
-    
+
     @DeleteMapping("/usuario/{id}")
     @PreAuthorize("#id == authentication.name or hasRole('ADMIN')")
     fun exercerDireitoEsquecimento(
         @PathVariable id: Long,
         authentication: Authentication
     ): ResponseEntity<Any> {
-        
+
         auditService.registrarExercicioDireito(
             usuario = id,
             direito = "DIREITO_ESQUECIMENTO",
             solicitadoPor = authentication.name
         )
-        
+
         return try {
             dadosService.anonimizarDados(id)
-            
+
             // 204 No Content - Dados anonimizados com sucesso
             ResponseEntity.noContent()
                 .header("X-LGPD-Action", "ANONIMIZACAO_EXECUTADA")
                 .header("X-Retention-Policy", "DADOS_ANONIMIZADOS_CONFORME_LGPD")
                 .build()
-                
+
         } catch (e: ProcessoAnonimizacaoException) {
             ResponseEntity.status(HttpStatus.ACCEPTED).body(mapOf(
                 "status" to "PROCESSAMENTO_INICIADO",
@@ -1376,7 +1457,7 @@ class OpenBankingController(
     private val openBankingService: OpenBankingService,
     private val bacenComplianceService: BacenComplianceService
 ) {
-    
+
     @GetMapping("/accounts/{accountId}")
     fun obterContaBancaria(
         @PathVariable accountId: String,
@@ -1384,24 +1465,24 @@ class OpenBankingController(
         @RequestHeader("x-fapi-auth-date") fapiAuthDate: String,
         @RequestHeader("x-fapi-customer-ip-address") customerIpAddress: String
     ): ResponseEntity<Any> {
-        
+
         return try {
             // Validar conformidade BACEN
             bacenComplianceService.validarCabecalhosFAPI(authorizationHeader, fapiAuthDate, customerIpAddress)
-            
+
             val conta = openBankingService.obterDadosConta(accountId)
-            
+
             ResponseEntity.ok()
                 .header("x-fapi-interaction-id", UUID.randomUUID().toString())
                 .header("x-response-time", Instant.now().toString())
                 .body(conta)
-                
+
         } catch (e: ContaNaoEncontradaException) {
             // 404 para conta não encontrada - conforme especificação BACEN
             ResponseEntity.notFound()
                 .header("x-fapi-interaction-id", UUID.randomUUID().toString())
                 .build()
-                
+
         } catch (e: ConsentimentoInvalidoException) {
             // 403 para consentimento inválido - padrão Open Banking Brasil
             ResponseEntity.status(HttpStatus.FORBIDDEN).body(mapOf(
@@ -1411,7 +1492,7 @@ class OpenBankingController(
                     "detail" to "O consentimento fornecido não é válido para esta operação"
                 ))
             ))
-            
+
         } catch (e: RateLimitExceededException) {
             // 429 com headers específicos do BACEN
             ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS)
@@ -1440,7 +1521,7 @@ class OpenBankingController(
 annotation class GovernancaAPI(
     val nivel: NivelGovernanca = NivelGovernanca.PADRAO,
     val codigosStatusObrigatorios: Array<HttpStatus> = [
-        HttpStatus.OK, HttpStatus.BAD_REQUEST, 
+        HttpStatus.OK, HttpStatus.BAD_REQUEST,
         HttpStatus.UNAUTHORIZED, HttpStatus.FORBIDDEN,
         HttpStatus.NOT_FOUND, HttpStatus.INTERNAL_SERVER_ERROR
     ],
@@ -1460,19 +1541,19 @@ enum class NivelGovernanca {
 
 ```kotlin
 object CodeReviewValidator {
-    
+
     data class ValidacaoResultado(
         val conforme: Boolean,
         val violacoes: List<ViolacaoGovernanca>
     )
-    
+
     data class ViolacaoGovernanca(
         val tipo: TipoViolacao,
         val descricao: String,
         val gravidade: Gravidade,
         val sugestaoCorrecao: String
     )
-    
+
     enum class TipoViolacao {
         CODIGO_STATUS_INADEQUADO,
         ESTRUTURA_RESPOSTA_INCORRETA,
@@ -1480,16 +1561,16 @@ object CodeReviewValidator {
         TRATAMENTO_ERRO_INADEQUADO,
         VIOLACAO_SEGURANCA
     }
-    
+
     fun validarConformidadeAPI(controller: Class<*>): ValidacaoResultado {
         val violacoes = mutableListOf<ViolacaoGovernanca>()
-        
+
         controller.declaredMethods.forEach { metodo ->
             validarMetodoHTTP(metodo, violacoes)
             validarTratamentoExcecoes(metodo, violacoes)
             validarDocumentacao(metodo, violacoes)
         }
-        
+
         return ValidacaoResultado(
             conforme = violacoes.none { it.gravidade == Gravidade.CRITICA },
             violacoes = violacoes
@@ -1505,17 +1586,17 @@ object CodeReviewValidator {
 ```kotlin
 @Component
 class MetricasAPIService {
-    
+
     private val meterRegistry: MeterRegistry = Metrics.globalRegistry
-    
+
     private val contadorStatusCode = Counter.builder("api.requests.total")
         .description("Total de requisições por código de status")
         .register(meterRegistry)
-    
+
     private val tempoResposta = Timer.builder("api.response.time")
         .description("Tempo de resposta das APIs")
         .register(meterRegistry)
-    
+
     @EventListener
     fun registrarMetricaResposta(event: HttpResponseEvent) {
         contadorStatusCode.increment(
@@ -1525,7 +1606,7 @@ class MetricasAPIService {
                 Tag.of("method", event.method)
             )
         )
-        
+
         tempoResposta.record(
             event.tempoResposta,
             Tags.of(
@@ -1544,56 +1625,56 @@ class MetricasAPIService {
 ```kotlin
 @SpringBootTest
 class ContratoStatusCodesTest {
-    
+
     @Test
     fun `deve retornar 200 para busca de usuario existente`() {
         val usuarioId = 123L
         mockUsuarioExistente(usuarioId)
-        
+
         val resposta = restTemplate.getForEntity("/usuarios/$usuarioId", Usuario::class.java)
-        
+
         assertThat(resposta.statusCode).isEqualTo(HttpStatus.OK)
         assertThat(resposta.body?.id).isEqualTo(usuarioId)
     }
-    
+
     @Test
     fun `deve retornar 404 para usuario inexistente`() {
         val usuarioIdInexistente = 999L
-        
+
         val resposta = restTemplate.exchange(
             "/usuarios/$usuarioIdInexistente",
             HttpMethod.GET,
             null,
             String::class.java
         )
-        
+
         assertThat(resposta.statusCode).isEqualTo(HttpStatus.NOT_FOUND)
     }
-    
+
     @Test
     fun `deve retornar 201 com Location header ao criar usuario`() {
         val novoUsuario = NovoUsuarioRequest("João Silva", "joao@empresa.com.br")
-        
+
         val resposta = restTemplate.postForEntity("/usuarios", novoUsuario, Usuario::class.java)
-        
+
         assertThat(resposta.statusCode).isEqualTo(HttpStatus.CREATED)
         assertThat(resposta.headers.location).isNotNull()
         assertThat(resposta.headers.location?.path).matches("/usuarios/\\d+")
     }
-    
+
     @Test
     fun `deve retornar 409 ao tentar criar usuario com email duplicado`() {
         val emailExistente = "existente@empresa.com.br"
         mockUsuarioComEmailExistente(emailExistente)
         val novoUsuario = NovoUsuarioRequest("Outro Usuário", emailExistente)
-        
+
         val resposta = restTemplate.exchange(
             "/usuarios",
             HttpMethod.POST,
             HttpEntity(novoUsuario),
             String::class.java
         )
-        
+
         assertThat(resposta.statusCode).isEqualTo(HttpStatus.CONFLICT)
     }
 }
@@ -1604,7 +1685,7 @@ class ContratoStatusCodesTest {
 ```kotlin
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class SegurancaStatusCodesTest {
-    
+
     @Test
     fun `deve retornar 401 para requisicoes sem autenticacao`() {
         val resposta = restTemplate.exchange(
@@ -1613,41 +1694,41 @@ class SegurancaStatusCodesTest {
             null,
             String::class.java
         )
-        
+
         assertThat(resposta.statusCode).isEqualTo(HttpStatus.UNAUTHORIZED)
         assertThat(resposta.headers["WWW-Authenticate"]).isNotNull()
     }
-    
+
     @Test
     fun `deve retornar 403 para usuario autenticado sem permissoes`() {
         val tokenUsuarioComum = gerarTokenUsuario(perfil = "USER")
         val headers = HttpHeaders().apply {
             setBearerAuth(tokenUsuarioComum)
         }
-        
+
         val resposta = restTemplate.exchange(
             "/admin/usuarios",
             HttpMethod.GET,
             HttpEntity<Any>(headers),
             String::class.java
         )
-        
+
         assertThat(resposta.statusCode).isEqualTo(HttpStatus.FORBIDDEN)
     }
-    
+
     @Test
     fun `nao deve vazar informacoes sensiveis em erros 500`() {
         mockServicoParaFalhar()
-        
+
         val resposta = restTemplate.exchange(
             "/usuarios/1",
             HttpMethod.GET,
             null,
             String::class.java
         )
-        
+
         assertThat(resposta.statusCode).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR)
-        
+
         val erro = objectMapper.readValue(resposta.body, ErrorResponse::class.java)
         assertThat(erro.mensagem).doesNotContain("SQLException")
         assertThat(erro.mensagem).doesNotContain("password")
@@ -1661,12 +1742,14 @@ class SegurancaStatusCodesTest {
 #### 10.1 Checklist de Design de API
 
 **Design de Recursos**
+
 - [ ] Recursos usam substantivos, não verbos
 - [ ] Nomenclatura plural consistente para coleções
 - [ ] Uso adequado dos métodos HTTP (GET, POST, PUT, PATCH, DELETE)
 - [ ] Códigos de status HTTP apropriados (200, 201, 400, 401, 404, 500)
 
 **Estrutura de Requisição/Resposta**
+
 - [ ] Headers de Content-Type definidos corretamente
 - [ ] Validação de entrada implementada
 - [ ] Respostas de erro seguem formato padrão
@@ -1675,12 +1758,14 @@ class SegurancaStatusCodesTest {
 #### 10.2 Checklist de Segurança
 
 **Autenticação e Autorização**
+
 - [ ] Tokens JWT validados adequadamente
 - [ ] Implementação OAuth 2.0 segue padrões
 - [ ] Chaves de API protegidas e rotacionadas regularmente
 - [ ] Controle de acesso baseado em funções (RBAC) implementado
 
 **Proteção de Dados**
+
 - [ ] Dados sensíveis não expostos em URLs
 - [ ] HTTPS obrigatório para todos os endpoints
 - [ ] Sanitização de entrada previne ataques de injeção
@@ -1689,6 +1774,7 @@ class SegurancaStatusCodesTest {
 #### 10.3 Checklist de Performance
 
 **Otimização**
+
 - [ ] Consultas de banco otimizadas (índices, planos de consulta)
 - [ ] Estratégia de cache implementada
 - [ ] Compressão de resposta habilitada (gzip)
@@ -1697,6 +1783,7 @@ class SegurancaStatusCodesTest {
 #### 10.4 Checklist de Qualidade de Código
 
 **Padrões de Implementação**
+
 - [ ] Tratamento adequado de erros e logging
 - [ ] Testes unitários cobrem caminhos críticos
 - [ ] Testes de integração validam contratos de API
@@ -1734,19 +1821,19 @@ data class RespostaErro(
 @RestController
 @RequestMapping("/api/v1")
 class EmpresaController {
-    
+
     @GetMapping("/empresas/{cnpj}")
     fun buscarPorCnpj(@PathVariable cnpj: String): ResponseEntity<Empresa>
-    
+
     @GetMapping("/ceps/{cep}")
     fun buscarEnderecoPorCep(@PathVariable cep: String): ResponseEntity<Endereco>
-    
+
     @GetMapping("/estados")
     fun listarEstadosBrasileiros(): ResponseEntity<List<Estado>>
-    
+
     @GetMapping("/municipios/{uf}")
     fun listarMunicipiosPorUF(@PathVariable uf: String): ResponseEntity<List<Municipio>>
-    
+
     @PostMapping("/pagamentos/pix")
     fun processarPagamentoPix(@RequestBody pagamento: PagamentoPix): ResponseEntity<RespostaPagamento>
 }
@@ -1758,7 +1845,7 @@ class EmpresaController {
 // Integração com APIs brasileiras (Correios, Receita Federal, etc.)
 @Service
 class IntegracaoReceitalFederalService {
-    
+
     fun consultarCnpj(cnpj: String): ResponseEntity<Any> {
         return try {
             val empresa = receitaFederalClient.consultarCnpj(cnpj)
@@ -1785,7 +1872,7 @@ class IntegracaoReceitalFederalService {
 Operação foi executada com sucesso?
 ├── SIM
 │   ├── Recurso foi criado? → 201 Created
-│   ├── Operação sem retorno? → 204 No Content  
+│   ├── Operação sem retorno? → 204 No Content
 │   ├── Processamento assíncrono? → 202 Accepted
 │   └── Operação padrão → 200 OK
 └── NÃO
@@ -1838,29 +1925,29 @@ Exceção capturada
 server {
     listen 443 ssl http2;
     server_name api.empresa.com.br;
-    
+
     # Configurações SSL/TLS
     ssl_certificate /path/to/certificate.crt;
     ssl_certificate_key /path/to/private.key;
     ssl_protocols TLSv1.2 TLSv1.3;
-    
+
     # Headers de segurança
     add_header X-Content-Type-Options nosniff;
     add_header X-Frame-Options SAMEORIGIN;
     add_header X-XSS-Protection "1; mode=block";
-    
+
     # Rate limiting específico por status code
     location /api/ {
         # Rate limiting mais rigoroso para endpoints que retornam 401/403
         limit_req_zone $binary_remote_addr zone=auth:10m rate=10r/m;
         limit_req zone=auth burst=5 nodelay;
-        
+
         # Configuração para diferentes status codes
         location ~* "401|403" {
             access_log /var/log/nginx/security_events.log;
             limit_req zone=auth burst=2 nodelay;
         }
-        
+
         proxy_pass http://backend-api;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -1878,7 +1965,7 @@ global:
   evaluation_interval: 15s
 
 rule_files:
-  - "api_rules.yml"
+  - 'api_rules.yml'
 
 scrape_configs:
   - job_name: 'api-brasileira'
@@ -1891,23 +1978,23 @@ scrape_configs:
 groups:
   - name: api.status_codes
     rules:
-    - alert: HighErrorRate
-      expr: (rate(http_requests_total{status=~"5.."}[5m]) / rate(http_requests_total[5m])) > 0.01
-      for: 2m
-      labels:
-        severity: critical
-      annotations:
-        summary: "Taxa de erro 5xx alta na API"
-        description: "Taxa de erro 5xx é {{ $value }} por mais de 2 minutos"
-    
-    - alert: HighClientErrorRate  
-      expr: (rate(http_requests_total{status=~"4.."}[5m]) / rate(http_requests_total[5m])) > 0.05
-      for: 5m
-      labels:
-        severity: warning
-      annotations:
-        summary: "Taxa de erro 4xx alta na API"
-        description: "Taxa de erro 4xx é {{ $value }} - possível problema na documentação ou validação"
+      - alert: HighErrorRate
+        expr: (rate(http_requests_total{status=~"5.."}[5m]) / rate(http_requests_total[5m])) > 0.01
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'Taxa de erro 5xx alta na API'
+          description: 'Taxa de erro 5xx é {{ $value }} por mais de 2 minutos'
+
+      - alert: HighClientErrorRate
+        expr: (rate(http_requests_total{status=~"4.."}[5m]) / rate(http_requests_total[5m])) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: 'Taxa de erro 4xx alta na API'
+          description: 'Taxa de erro 4xx é {{ $value }} - possível problema na documentação ou validação'
 ```
 
 ### 14. Conclusões e Recomendações
@@ -1923,18 +2010,21 @@ groups:
 #### 14.2 Melhores Práticas para Implementação
 
 **Para Arquitetos de Solução:**
+
 1. Estabelecer padrões de códigos de status em nível empresarial
 2. Implementar validação automatizada de conformidade em pipelines CI/CD
 3. Projetar monitoramento e alertas baseados em padrões de status codes
 4. Criar frameworks reutilizáveis de tratamento de erro
 
 **Para Líderes Técnicos:**
+
 1. Usar matrizes de decisão de códigos de status para implementação consistente
 2. Implementar suítes abrangentes de teste de tratamento de erro
 3. Projetar estratégias de degradação baseadas em códigos de status
 4. Aplicar códigos de status adequados em todos os endpoints da API
 
 **Para Equipes de Desenvolvimento:**
+
 1. Seguir guias de estilo específicos para APIs RESTful brasileiras
 2. Implementar logging e auditoria conforme LGPD
 3. Usar terminologia técnica brasileira consistente
@@ -1984,7 +2074,7 @@ Para coleções vazias, **um array vazio `[]` constitui conteúdo válido** em t
 
 **Análise de grandes provedores de API revela consenso notável**. GitHub, Microsoft Graph API, Stripe, AWS, Twitter e Slack todos implementam HTTP 200 com arrays vazios para coleções vazias. A API Graph da Microsoft retorna consistentemente respostas estruturadas como `{"@odata.context": "...", "value": []}` com status 200, enquanto o Stripe mantém sua estrutura padrão de objeto lista com arrays `data` vazios.
 
-A abordagem do GitHub é particularmente instrutiva - sua documentação afirma explicitamente: *"Alguns endpoints respondem com 204 No Content em vez de array vazio quando não há dados. Nesse caso, retorne um array vazio."* Seu SDK Octokit normaliza automaticamente qualquer resposta 204 para arrays vazios, demonstrando o reconhecimento da indústria de que **consistência supera pureza teórica**.
+A abordagem do GitHub é particularmente instrutiva - sua documentação afirma explicitamente: _"Alguns endpoints respondem com 204 No Content em vez de array vazio quando não há dados. Nesse caso, retorne um array vazio."_ Seu SDK Octokit normaliza automaticamente qualquer resposta 204 para arrays vazios, demonstrando o reconhecimento da indústria de que **consistência supera pureza teórica**.
 
 O padrão entre todos os grandes provedores enfatiza **simplicidade do cliente e estruturas de resposta previsíveis**. A resposta vazia do Stripe mantém a mesma forma de objeto que respostas populadas, o Twitter preserva metadados de paginação, e a Microsoft inclui informações de contexto OData mesmo para resultados vazios.
 
@@ -2011,8 +2101,8 @@ def obter_usuarios():
 ```javascript
 // Express - Manipulação uniforme de resposta
 app.get('/api/usuarios', async (req, res) => {
-    const usuarios = await obterUsuariosDoBanco();
-    res.status(200).json(usuarios); // Mesmo caminho de código para vazio ou populado
+  const usuarios = await obterUsuariosDoBanco();
+  res.status(200).json(usuarios); // Mesmo caminho de código para vazio ou populado
 });
 ```
 
@@ -2021,9 +2111,9 @@ app.get('/api/usuarios', async (req, res) => {
 ```javascript
 // Manipulação complexa necessária para 204
 if (response.status === 204) {
-    return []; // Deve criar manualmente array vazio
+  return []; // Deve criar manualmente array vazio
 } else if (response.ok) {
-    return await response.json(); // Análise normal
+  return await response.json(); // Análise normal
 }
 
 // Manipulação simples com 200
@@ -2062,7 +2152,7 @@ responses:
           type: array
           items:
             $ref: '#/components/schemas/Usuario'
-        example: []  # Exemplo explícito de array vazio
+        example: [] # Exemplo explícito de array vazio
 ```
 
 **Estratégias de teste beneficiam-se de estruturas de resposta consistentes**. Suítes de teste podem validar schemas de resposta uniformemente sem lógica de ramificação para respostas vazias versus populadas. Testes de integração tornam-se mais simples quando as mesmas asserções funcionam independentemente da contagem de resultados.
@@ -2076,6 +2166,7 @@ responses:
 ### Recomendações claras baseadas em evidência
 
 **Para APIs públicas e a maioria dos casos de uso: Use HTTP 200 com arrays vazios**. Esta abordagem fornece:
+
 - Consistência semântica com especificações HTTP
 - Alinhamento com padrões da indústria
 - Implementação simplificada do cliente
@@ -2084,12 +2175,14 @@ responses:
 - Compatibilidade de framework
 
 **Reserve HTTP 204 para operações de escrita sem valores de retorno**:
+
 ```http
 DELETE /api/usuarios/123 → 204 No Content
 PUT /api/usuarios/123 → 204 No Content (se nenhum corpo de resposta necessário)
 ```
 
 **Padrão de implementação para coleções**:
+
 ```json
 {
   "dados": [],
@@ -2117,4 +2210,4 @@ Este guia serve como documentação viva que deve ser atualizada regularmente co
 
 Este guia técnico foi desenvolvido especificamente para equipes de desenvolvimento brasileiras, considerando aspectos culturais, regulamentares e técnicos do mercado nacional. Combina melhores práticas internacionais com adaptações para o contexto brasileiro, fornecendo orientação prática e acionável para implementação de APIs RESTful robustas e conformes.
 
-*Fontes: Mozilla MDN, RFC 9110, APIs do Google Cloud, Diretrizes da API REST da Microsoft, REST API Tutorial e várias melhores práticas da indústria.*
+_Fontes: Mozilla MDN, RFC 9110, APIs do Google Cloud, Diretrizes da API REST da Microsoft, REST API Tutorial e várias melhores práticas da indústria._
