@@ -273,26 +273,31 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Random',
+          label: 'Kubernetes',
           collapsed: true,
-          badge: {
-            text: 'WIP',
-            variant: 'caution',
-          },
-          autogenerate: {
-            directory: 'random',
-          },
-        },
-        {
-          label: 'pt-BR',
-          collapsed: true,
-          badge: {
-            text: 'WIP',
-            variant: 'caution',
-          },
-          autogenerate: {
-            directory: 'pt-br',
-          },
+          items: [
+            {
+              label: 'Basics',
+              collapsed: true,
+              autogenerate: {
+                directory: 'kubernetes/basics',
+              },
+            },
+            {
+              label: 'Minikube',
+              collapsed: true,
+              autogenerate: {
+                directory: 'kubernetes/minikube',
+              },
+            },
+            {
+              label: 'LFS158x',
+              collapsed: true,
+              autogenerate: {
+                directory: 'kubernetes/LFS158x',
+              },
+            },
+          ],
         },
         {
           label: 'Neo4j',
@@ -335,41 +340,19 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Kubernetes',
+          label: 'Archive',
           collapsed: true,
           items: [
             {
-              label: 'Basics',
-              collapsed: true,
+              label: 'Random',
               autogenerate: {
-                directory: 'kubernetes/basics',
+                directory: 'archive/random',
               },
             },
             {
-              label: 'Minikube',
-              collapsed: true,
+              label: 'Microsoft',
               autogenerate: {
-                directory: 'kubernetes/minikube',
-              },
-            },
-            {
-              label: 'LFS158x',
-              collapsed: true,
-              autogenerate: {
-                directory: 'kubernetes/LFS158x',
-              },
-            },
-          ],
-        },
-        {
-          label: 'Unfinished',
-          collapsed: true,
-          items: [
-            {
-              label: 'Twelve Factor App',
-              collapsed: true,
-              autogenerate: {
-                directory: 'unfinished/twelve_factor',
+                directory: 'archive/ms',
               },
             },
             {
@@ -378,7 +361,7 @@ export default defineConfig({
               items: [
                 {
                   label: 'Overview',
-                  link: 'snowflake/overview',
+                  link: 'archive/snowflake/overview',
                 },
                 {
                   label: 'Badges',
@@ -387,7 +370,7 @@ export default defineConfig({
                     {
                       label: '1: Data Warehousing',
                       autogenerate: {
-                        directory: 'snowflake/badges/1-data-warehousing-workshop',
+                        directory: 'archive/snowflake/badges/1-data-warehousing-workshop',
                       },
                     },
                   ],
@@ -395,10 +378,9 @@ export default defineConfig({
               ],
             },
             {
-              label: 'Microsoft',
-              collapsed: true,
+              label: 'Twelve Factor App',
               autogenerate: {
-                directory: 'unfinished/ms',
+                directory: 'archive/twelve_factor',
               },
             },
           ],

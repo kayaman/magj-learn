@@ -146,12 +146,13 @@ In a **choreographed event-driven system**, services listen to events and react 
 
 #### **Example**
 
-```d2
-Client -> EventBus: Publish Request Event
-EventBus -> Service1: Process Event
-EventBus -> Service2: Process Event
-Service1 -> EventBus: Publish Success Event
-Service2 -> EventBus: Publish Success Event
+```mermaid
+graph LR
+    Client -->|Publish Request Event| EventBus
+    EventBus -->|Process Event| Service1
+    EventBus -->|Process Event| Service2
+    Service1 -->|Publish Success Event| EventBus
+    Service2 -->|Publish Success Event| EventBus
 ```
 
 ---
