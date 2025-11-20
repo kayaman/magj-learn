@@ -352,7 +352,29 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Random',
+          label: 'References',
+          collapsed: true,
+          items: [
+            {
+              label: 'Python',
+              items: [
+                {
+                  label: 'Tools',
+                  collapsed: true,
+                  autogenerate: {
+                    directory: 'references/python/tools',
+                  },
+                },
+                {
+                  label: 'Snippets',
+                  link: 'references/python/snippets',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          label: 'Archive',
           collapsed: true,
           items: [
             {

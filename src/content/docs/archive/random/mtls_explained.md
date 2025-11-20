@@ -1,11 +1,12 @@
 ---
-title: mTLS
+title: mTLS Explained
 description: mTLS
 ---
 
 ## Comprehensive Guide to Mutual TLS (mTLS)
 
 ### Table of Contents
+
 - [Introduction](#introduction)
 - [What is TLS?](#what-is-tls)
 - [What is Mutual TLS (mTLS)?](#what-is-mutual-tls-mtls)
@@ -59,6 +60,7 @@ Mutual TLS works through the exchange and validation of X.509 digital certificat
 #### Digital Certificates
 
 X.509 certificates contain:
+
 - Public key of the certificate owner
 - Identity information (Common Name, Organization, etc.)
 - Digital signature from the issuing Certificate Authority (CA)
@@ -68,6 +70,7 @@ X.509 certificates contain:
 #### Certificate Authority (CA)
 
 A Certificate Authority is a trusted entity that issues digital certificates. The CA:
+
 - Verifies the identity of certificate requestors
 - Issues signed certificates
 - Maintains Certificate Revocation Lists (CRLs)
@@ -76,6 +79,7 @@ A Certificate Authority is a trusted entity that issues digital certificates. Th
 #### Public Key Infrastructure (PKI)
 
 PKI is the framework of policies, procedures, hardware, software, and people that manages digital certificates. It includes:
+
 - Certificate Authorities (Root and Intermediate)
 - Registration Authorities
 - Certificate repositories
@@ -119,6 +123,7 @@ The mTLS handshake follows these steps:
 #### Microservices Architecture
 
 In microservice environments, mTLS provides:
+
 - Service-to-service authentication
 - Encrypted communication between internal services
 - Defense against lateral movement within a network
@@ -126,6 +131,7 @@ In microservice environments, mTLS provides:
 #### Zero Trust Security Models
 
 mTLS is a cornerstone technology for Zero Trust architectures:
+
 - Enables "never trust, always verify" principle
 - Provides continuous verification of service identities
 - Supports micro-segmentation strategies
@@ -133,6 +139,7 @@ mTLS is a cornerstone technology for Zero Trust architectures:
 #### Internet of Things (IoT)
 
 For IoT devices, mTLS offers:
+
 - Device identity verification
 - Secure communication between devices and cloud services
 - Certificate-based provisioning
@@ -140,6 +147,7 @@ For IoT devices, mTLS offers:
 #### Financial Services and Healthcare
 
 Industries with strict regulatory requirements benefit from:
+
 - Compliance with security standards
 - Protection of sensitive data
 - Audit trails for communication
@@ -147,6 +155,7 @@ Industries with strict regulatory requirements benefit from:
 #### API Security
 
 For APIs, mTLS provides:
+
 - Strong client identification
 - Reduced risk of API key theft
 - Enhanced access control
@@ -156,6 +165,7 @@ For APIs, mTLS provides:
 #### Certificate Management
 
 Effective certificate management requires:
+
 - Certificate lifecycle automation
 - Monitoring expiration dates
 - Secure private key storage
@@ -164,6 +174,7 @@ Effective certificate management requires:
 #### Infrastructure Requirements
 
 Implementation needs:
+
 - Certificate Authority (internal or public)
 - Certificate management tools
 - Load balancer/proxy support for mTLS termination
@@ -172,6 +183,7 @@ Implementation needs:
 #### Performance Impact
 
 mTLS introduces:
+
 - Additional computational overhead for certificate validation
 - Increased handshake time
 - Higher CPU utilization
@@ -278,7 +290,7 @@ async function mTLSRequest() {
   const clientCert = fs.readFileSync('./client.crt');
   const clientKey = fs.readFileSync('./client.key');
   const caCert = fs.readFileSync('./ca.crt');
-  
+
   // Configure TLS options
   const tlsOptions = {
     cert: clientCert,
@@ -289,37 +301,40 @@ async function mTLSRequest() {
       // Optional: Custom validation logic for server certificate
       // Return undefined to accept or Error to reject
       return undefined;
-    }
+    },
   };
-  
+
   return new Promise((resolve, reject) => {
     // Make HTTPS request with mTLS
-    const req = https.request({
-      hostname: 'example.com',
-      port: 443,
-      path: '/api/resource',
-      method: 'GET',
-      ...tlsOptions
-    }, (res) => {
-      let data = '';
-      
-      res.on('data', (chunk) => {
-        data += chunk;
-      });
-      
-      res.on('end', () => {
-        resolve({
-          statusCode: res.statusCode,
-          headers: res.headers,
-          data: data
+    const req = https.request(
+      {
+        hostname: 'example.com',
+        port: 443,
+        path: '/api/resource',
+        method: 'GET',
+        ...tlsOptions,
+      },
+      (res) => {
+        let data = '';
+
+        res.on('data', (chunk) => {
+          data += chunk;
         });
-      });
-    });
-    
+
+        res.on('end', () => {
+          resolve({
+            statusCode: res.statusCode,
+            headers: res.headers,
+            data: data,
+          });
+        });
+      },
+    );
+
     req.on('error', (error) => {
       reject(error);
     });
-    
+
     req.end();
   });
 }
@@ -351,23 +366,23 @@ async function makeSecureRequest() {
     const clientCert = fs.readFileSync('./client.crt');
     const clientKey = fs.readFileSync('./client.key');
     const caCert = fs.readFileSync('./ca.crt');
-    
+
     // Create HTTPS agent with mTLS configuration
     const httpsAgent = new https.Agent({
       cert: clientCert,
       key: clientKey,
       ca: caCert,
-      rejectUnauthorized: true
+      rejectUnauthorized: true,
     });
-    
+
     // Make request with the configured agent
     const response = await axios.get('https://example.com/api/resource', {
       httpsAgent,
       headers: {
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     });
-    
+
     console.log('Status:', response.status);
     console.log('Data:', response.data);
     return response.data;
@@ -379,8 +394,8 @@ async function makeSecureRequest() {
 
 // Execute the function
 makeSecureRequest()
-  .then(data => console.log('Request completed successfully'))
-  .catch(err => console.error('Request failed'));
+  .then((data) => console.log('Request completed successfully'))
+  .catch((err) => console.error('Request failed'));
 ```
 
 ### Conclusion

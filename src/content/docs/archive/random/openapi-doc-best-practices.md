@@ -6,7 +6,9 @@ sidebar:
 ---
 
 ### Title
+
 Keep it concise and descriptive - typically the name of your service or product:
+
 ```yaml
 title: "User Management API"
 # or
@@ -14,18 +16,21 @@ title: "Payment Processing API"
 ```
 
 ### Description
+
 This is where you provide the functional overview. For a small API, focus on:
 
 **What the API does** - Lead with the primary business purpose:
+
 ```yaml
 description: |
   Manages user accounts, authentication, and profile data for the XYZ platform.
-  
+
   This API provides endpoints for user registration, login, profile management,
   and account settings. It supports both individual users and organization accounts.
 ```
 
 **Key capabilities** - List the main functional areas (since you only have 6 endpoints, you can be specific):
+
 ```yaml
 description: |
   Handles core user operations including:
@@ -36,75 +41,81 @@ description: |
 ```
 
 **Authentication/Security note** - Briefly mention how to authenticate:
+
 ```yaml
 description: |
   User Management API for the XYZ platform.
-  
+
   All endpoints require Bearer token authentication except for registration
   and login endpoints.
 ```
 
 ### Version
+
 Use semantic versioning:
+
 ```yaml
-version: "1.0.0"
+version: '1.0.0'
 ```
 
 ### Complete Example
+
 ```yaml
 info:
-  title: "User Management API"
+  title: 'User Management API'
   description: |
     Manages user accounts and authentication for the XYZ platform.
-    
+
     This API handles user registration, login, profile management, and account 
     settings. It supports both individual users and organization accounts.
-    
+
     Authentication is required for most endpoints using Bearer tokens obtained
     through the login endpoint.
-    
+
     Key features:
     - User registration and email verification
     - Secure authentication with JWT tokens
     - Profile management and settings
     - Password reset functionality
-  version: "1.0.0"
+  version: '1.0.0'
   contact:
-    name: "API Support"
-    email: "api-support@company.com"
+    name: 'API Support'
+    email: 'api-support@company.com'
   license:
-    name: "MIT"
+    name: 'MIT'
 ```
 
 ### In the `info.description` (API-wide rules)
+
 Include general parameter rules that apply across endpoints:
 
 ```yaml
 info:
-  title: "User Management API"
+  title: 'User Management API'
   description: |
     Manages user accounts and authentication for the XYZ platform.
-    
+
     ### Authentication
     Most endpoints require Bearer token authentication in the Authorization header:
     `Authorization: Bearer <your-token>`
-    
+
     ### General Parameter Rules
     - All timestamps use ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)
     - String parameters have a maximum length of 255 characters unless specified
     - Email addresses must be valid and unique across the system
     - Usernames must be 3-30 characters, alphanumeric and underscores only
     - Passwords must be at least 8 characters with mixed case and numbers
-    
+
     ### Rate Limiting
     API calls are limited to 100 requests per minute per API key.
-    
+
     ### Error Handling
     All errors return standard HTTP status codes with detailed error messages
     in the response body.
 ```
 
 ### At the Parameter Level (specific rules)
+
 For individual parameters, use the `description` field and validation properties:
 
 ```yaml
@@ -118,8 +129,8 @@ parameters:
     schema:
       type: string
       pattern: '^[a-zA-Z_][a-zA-Z0-9_]{2,29}$'
-      example: "john_doe"
-  
+      example: 'john_doe'
+
   - name: email
     in: query
     description: |
@@ -129,10 +140,11 @@ parameters:
       type: string
       format: email
       maxLength: 255
-      example: "user@example.com"
+      example: 'user@example.com'
 ```
 
 ### In Schema Definitions (reusable rules)
+
 For parameters used across multiple endpoints:
 
 ```yaml
@@ -145,7 +157,7 @@ components:
         System-generated and immutable once assigned.
       minimum: 1
       example: 12345
-    
+
     UserStatus:
       type: string
       description: |
@@ -155,44 +167,46 @@ components:
         - suspended: No access, account temporarily disabled
         - deleted: Account marked for deletion, no access
       enum: [active, inactive, suspended, deleted]
-      example: "active"
+      example: 'active'
 ```
 
 ### In Operation Descriptions (endpoint-specific rules)
+
 For rules specific to certain endpoints:
 
 ```yaml
 paths:
   /users/{userId}:
     put:
-      summary: "Update user profile"
+      summary: 'Update user profile'
       description: |
         Updates user profile information. 
-        
+
         **Parameter Rules:**
         - Only the authenticated user can update their own profile
         - Admin users can update any profile
         - Email changes require email verification
         - Username changes are limited to once per 30 days
-        
+
         **Validation:**
         - At least one field must be provided for update
         - Partial updates are supported
 ```
 
 ### Complete Example Structure
+
 ```yaml
 info:
-  title: "User Management API"
+  title: 'User Management API'
   description: |
     Manages user accounts and authentication for the XYZ platform.
-    
+
     ### Global Parameter Rules
     - All IDs are positive integers
     - Timestamps use ISO 8601 format
     - String fields are trimmed of whitespace
     - Maximum request body size: 1MB
-    
+
     ### Authentication
     Bearer token required: `Authorization: Bearer <token>`
 
@@ -218,6 +232,7 @@ For a Kotlin project, you'll need these tools and frameworks:
 ## Core Dependencies
 
 **Springdoc OpenAPI** - the main library for code-first OpenAPI generation:
+
 ```kotlin
 // For Spring Boot 3.x
 implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
@@ -229,6 +244,7 @@ implementation("org.springdoc:springdoc-openapi-ui:1.7.0")
 ## Framework Stack
 
 **Spring Boot** with **Spring Web MVC**:
+
 ```kotlin
 implementation("org.springframework.boot:spring-boot-starter-web")
 implementation("org.springframework.boot:spring-boot-starter-validation")
@@ -242,13 +258,13 @@ You'll use the same OpenAPI annotations in your Kotlin controllers:
 @RestController
 @Tag(name = "Users", description = "User management API")
 class UserController {
-    
+
     @GetMapping("/users/{id}")
     @Operation(summary = "Get user by ID", description = "Returns a single user")
     @ApiResponse(responseCode = "200", description = "User found")
     @ApiResponse(responseCode = "404", description = "User not found")
     fun getUser(
-        @Parameter(description = "User ID") 
+        @Parameter(description = "User ID")
         @PathVariable id: Long
     ): ResponseEntity<User> {
         // implementation
@@ -257,12 +273,13 @@ class UserController {
 ```
 
 ## Data Classes
+
 ```kotlin
 @Schema(description = "User entity")
 data class User(
     @Schema(description = "User ID", example = "1")
     val id: Long,
-    
+
     @Schema(description = "User name", example = "John Doe")
     val name: String
 )

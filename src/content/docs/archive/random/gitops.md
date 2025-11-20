@@ -61,23 +61,23 @@ Let me create a diagram to illustrate the GitOps flow with these tools.
 
 1. **Set up your Git repository structure**:
 
-   ```
-   repo/
-   ├── apps/              # Application manifests
-   │   ├── app1/
-   │   │   └── deployment.yaml
-   │   └── app2/
-   │       └── deployment.yaml
-   ├── infrastructure/    # Cluster infrastructure
-   │   └── namespaces.yaml
-   └── helm-charts/       # Helm charts for applications
-       └── app1/
-           └── templates/
-   ```
+```text
+repo/
+├── apps/              # Application manifests
+│   ├── app1/
+│   │   └── deployment.yaml
+│   └── app2/
+│       └── deployment.yaml
+├── infrastructure/    # Cluster infrastructure
+│   └── namespaces.yaml
+└── helm-charts/       # Helm charts for applications
+    └── app1/
+        └── templates/
+```
 
-2. **Install and configure ArgoCD in your Kubernetes cluster**
-3. **Set up GitHub Actions workflows to validate and build**
-4. **Connect ArgoCD to your Git repository**
+1. **Install and configure ArgoCD in your Kubernetes cluster**
+2. **Set up GitHub Actions workflows to validate and build**
+3. **Connect ArgoCD to your Git repository**
 
 ### Tag-Based GitOps Workflow
 
@@ -209,26 +209,26 @@ Here's how it works:
 
 2. **Environment Repository Structure**:
 
-   ```
-   environments/
-   ├── dev/
-   │   └── values.yaml    # Points to :latest or branch images
-   ├── staging/
-   │   └── values.yaml    # Points to :main images
-   └── production/
-       └── values.yaml    # Points to versioned tags only
-   ```
+```text
+environments/
+├── dev/
+│   └── values.yaml    # Points to :latest or branch images
+├── staging/
+│   └── values.yaml    # Points to :main images
+└── production/
+    └── values.yaml    # Points to versioned tags only
+```
 
-3. **GitHub Actions Workflow Configuration**:
+1. **GitHub Actions Workflow Configuration**:
 
-   ```yaml
-   on:
-     push:
-       tags:
-         - 'v*' # Trigger only on version tags
-   ```
+```yaml
+on:
+  push:
+    tags:
+      - 'v*' # Trigger only on version tags
+```
 
-4. **ArgoCD Configuration**:
+1. **ArgoCD Configuration**:
    - Configure ArgoCD to sync automatically or manually depending on environment
    - Set up appropriate RBAC permissions for production environments
 

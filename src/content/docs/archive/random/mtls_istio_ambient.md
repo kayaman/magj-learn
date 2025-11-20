@@ -3,7 +3,7 @@ title: mTLS with Istio Ambient
 description: by Gemini
 ---
 
-**Mutual TLS (mTLS) in Istio Ambient Mesh: Handling Multiple Clients with Unique Certificates**
+Mutual TLS (mTLS) in Istio Ambient Mesh: Handling Multiple Clients with Unique Certificates
 
 ## 1. Introduction
 
