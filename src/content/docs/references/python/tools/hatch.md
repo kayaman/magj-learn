@@ -5,11 +5,13 @@ sidebar:
 tableOfContents: true
 ---
 
-## A modern, extensible Python project manager
+## About
+
+A modern, extensible Python project manager.
 
 [Home](https://hatch.pypa.io/latest/)
 
-### Installation
+## Installation
 
 ```sh
 # using pipx (recommended)
@@ -19,9 +21,9 @@ pipx install hatch
 pip install hatch
 ```
 
-### Features
+## Features
 
-#### Python versions
+### Python versions
 
 Installing and managing Python itself.
 
@@ -45,7 +47,7 @@ hatch python remove
 hatch python update
 ```
 
-#### Projects
+### Projects
 
 Creating and working on Python projects.
 
@@ -69,7 +71,7 @@ hatch version
 hatch config
 ```
 
-#### Environments
+### Environments
 
 Managing project environments.
 
@@ -96,7 +98,7 @@ hatch env run python --version
 hatch shell
 ```
 
-#### Scripts & Commands
+### Scripts & Commands
 
 Executing commands and scripts.
 
@@ -111,7 +113,7 @@ hatch run test:pytest
 hatch run script.py
 ```
 
-#### Testing & Quality
+### Testing & Quality
 
 Built-in support for testing and formatting.
 

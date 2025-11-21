@@ -2,22 +2,26 @@
 title: uv
 sidebar:
   order: 0
-tableOfContents: true
+tableOfContents:
+  minHeadingLevel: 2
+  maxHeadingLevel: 5
 ---
 
-## An extremely fast Python package and project manager, written in Rust.
+## About
+
+An extremely fast Python package and project manager, written in Rust.
 
 [Home](https://docs.astral.sh/uv/)
 
-### Installation
+## Installation
 
 ```sh
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-### Features
+## Features
 
-#### Python versions
+### Python versions
 
 Installing and managing Python itself.
 
@@ -38,7 +42,7 @@ uv python pin
 uv python uninstall   
 ```
 
-#### Projects
+### Projects
 
 Creating and working on Python projects, i.e., with a `pyproject.toml`.
 
@@ -71,7 +75,7 @@ uv build
 uv publish
 ```
 
-#### Scripts
+### Scripts
 
 Executing standalone Python scripts, e.g., example.py.
 
@@ -92,7 +96,7 @@ uv remove --script
 uv run --with rich example.py
 ```
 
-#### Tools
+### Tools
 
 Running and installing tools published to Python package indexes, e.g., `ruff` or `black`.
 
@@ -109,18 +113,18 @@ uv tool list
 uv tool update-shell
 ```
 
-#### The `pip` interface
+### The `pip` interface
 
 Manually managing environments and packages—intended for legacy workflows or when the higher-level commands do not provide enough control.
 
-##### Creating virtual environments
+#### Creating virtual environments
 
 ```sh
 # create a virtual environment (replacement for venv / virtualenv)
 uv venv
 ```
 
-##### Managing packages in an environment
+#### Managing packages in an environment
 
 ```sh
 # install or remove packages in the active environment
@@ -137,7 +141,7 @@ uv pip freeze
 uv pip tree
 ```
 
-#### Utilities
+### Utilities
 
 Managing and inspecting uv's state, such as the cache, storage directories, or performing a self-update.
 

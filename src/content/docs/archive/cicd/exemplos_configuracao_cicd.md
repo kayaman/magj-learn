@@ -2,7 +2,7 @@
 title: Exemplos Práticos de Configuração CI/CD
 description: Exemplos de código e configurações prontas para uso
 sidebar:
-  order: 4
+  order: 6
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 4

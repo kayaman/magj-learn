@@ -2,7 +2,7 @@
 title: Proposta de Arquitetura CI/CD
 description: Esteira Moderna para Projetos Enterprise
 sidebar:
-  order: 2
+  order: 4
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 4

@@ -2,7 +2,7 @@
 title: Pacote Completo de Proposta CI/CD
 description: Documentação completa para modernização CI/CD
 sidebar:
-  order: 0
+  order: 2
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 4

@@ -8,6 +8,8 @@ import remarkToc from 'remark-toc';
 import starlightLinksValidator from 'starlight-links-validator';
 import starlightThemeRapide from 'starlight-theme-rapide';
 import externalAnchorPlugin from './src/plugins/externalAnchorPlugin.mjs';
+import sitemap from '@astrojs/sitemap';
+import mdx from '@astrojs/mdx';
 
 export default defineConfig({
   site: 'https://learn.magj.dev',
@@ -426,12 +428,14 @@ export default defineConfig({
           ],
         },
       ],
-      social: {
-        linkedin: 'https://www.linkedin.com/in/marcoantoniogonzalezjunior/',
-        github: 'https://github.com/kayaman',
-      },
+      social: [ 
+        { icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/marcoantoniogonzalezjunior/' },
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/kayaman' },
+      ],
       title: "Marco's Learning",
     }),
+    sitemap(),
+    mdx(),
   ],
   markdown: {
     syntaxHighlight: {

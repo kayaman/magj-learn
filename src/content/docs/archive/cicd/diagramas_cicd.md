@@ -2,7 +2,7 @@
 title: Diagramas CI/CD Pipeline
 description: Diagramas Mermaid para visualização de pipelines CI/CD
 sidebar:
-  order: 3
+  order: 5
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 4

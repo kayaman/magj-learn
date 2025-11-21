@@ -2,7 +2,7 @@
 title: Proposta de Modernização CI/CD
 description: Apresentação Executiva
 sidebar:
-  order: 1
+  order: 3
 tableOfContents:
   minHeadingLevel: 2
   maxHeadingLevel: 4
