@@ -358,6 +358,12 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
+              label: 'unsorted',
+              collapsed: true,
+              autogenerate: {
+                directory: 'references/unsorted',
+              },
+            {
               label: 'Python',
               items: [
                 {
