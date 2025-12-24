@@ -363,6 +363,7 @@ export default defineConfig({
               autogenerate: {
                 directory: 'references/unsorted',
               },
+            },
             {
               label: 'Python',
               items: [
