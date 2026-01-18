@@ -356,31 +356,9 @@ export default defineConfig({
         {
           label: 'References',
           collapsed: true,
-          items: [
-            {
-              label: 'unsorted',
-              collapsed: true,
-              autogenerate: {
-                directory: 'references/unsorted',
-              },
-            },
-            {
-              label: 'Python',
-              items: [
-                {
-                  label: 'Tools',
-                  collapsed: true,
-                  autogenerate: {
-                    directory: 'references/python/tools',
-                  },
-                },
-                {
-                  label: 'Snippets',
-                  link: 'references/python/snippets',
-                },
-              ],
-            },
-          ],
+          autogenerate: {
+            directory: 'references',
+          },
         },
         {
           label: 'Archive',
