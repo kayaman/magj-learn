@@ -10,7 +10,8 @@
     "lint": "eslint . --ext .js,.ts,.astro",
     "lint:fix": "eslint . --ext .js,.ts,.astro --fix",
     "type-check": "tsc --noEmit",
-    "commit": "cz"
+    "commit": "cz",
+    "postinstall": "npx playwright install --with-deps"
   },
   "config": {
     "commitizen": {
