@@ -22,7 +22,7 @@ export default defineConfig({
       customCss: [
         './src/styles/globals.css',
         '@fontsource/inter/500.css',
-        '@fontsource/open-sans/700.css',
+        '@fontsource/inter/800.css',
       ],
       editLink: {
         baseUrl: 'https://github.com/kayaman/magj-learn/edit/main/',
@@ -383,15 +383,9 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
-              label: 'Archive',
-              autogenerate: {
-                directory: 'archive/random',
-              },
-            },
-            {
               label: 'Microsoft',
               autogenerate: {
-                directory: 'archive/ms',
+                directory: 'archive/ms/ai-engineer',
               },
             },
             {
