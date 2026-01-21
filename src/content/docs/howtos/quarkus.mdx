@@ -1,0 +1,155 @@
+---
+title: Creating a new Quarkus app
+description: Creating a new Quarkus application from scratch
+---
+import { FileTree } from '@astrojs/starlight/components';
+
+## Development environment
+
+### Prerequisites
+
+1. JDK >= 17
+
+```sh
+java -version
+```
+
+2. Apache Maven
+
+```sh
+mvn -version
+```
+
+3. IDE
+
+An IDE like [IntelliJ IDEA](https://www.jetbrains.com/idea/download) or [Visual Studio Code](https://code.visualstudio.com/) with Java extensions.
+
+4. GraalVM (optional but recommended)
+
+For native compilation: [GraalVM](https://www.graalvm.org/)
+
+5. Quarkus CLI (optional)
+
+Using SDKMAN:
+
+```sh
+curl -s "https://get.sdkman.io" | bash
+```
+
+```sh
+sdk install quarkus
+```
+
+```sh
+quarkus --version
+```
+
+## Create a New Quarkus Project
+
+- Using the CLI:
+
+```sh
+quarkus create app com.capco:quarkus-quickstart:1.0-SNAPSHOT
+```
+
+- Using Maven:
+
+```sh
+mvn io.quarkus.platform:quarkus-maven-plugin:3.0.0.Final:create \
+  -DprojectGroupId=com.capco \
+  -DprojectArtifactId=quarkus-quickstart \
+  -DprojectVersion=1.0-SNAPSHOT \
+  -DclassName="com.capco.GreetingResource" \
+  -Dpath="/hello"
+```
+
+## Explore the file structure
+
+<FileTree>
+- pom.xml
+- src
+  - main
+  - resources
+  - test
+</FileTree>
+
+## Run the application in development mode
+
+```sh
+./mvnw quarkus:dev
+```
+
+## Add features to the Quarkus application
+
+- Add a new service class:
+
+```java
+@ApplicationScoped
+public class GreetingService {
+    public String greeting(String name) {
+        return "Hello, " + name;
+    }
+}
+```
+
+- Update the resource class to use the service:
+
+```java
+@Inject
+GreetingService greetingService;
+
+@GET
+@Path("/greet/{name}")
+@Produces(MediaType.TEXT_PLAIN)
+public String greet(@PathParam("name") String name) {
+    return greetingService.greeting(name);
+}
+```
+## Test the application
+
+```java
+@QuarkusTest
+public class GreetingResourceTest {
+
+    @Test
+    public void testHelloEndpoint() {
+        given()
+          .when().get("/hello")
+          .then()
+             .statusCode(200)
+             .body(is("Hello, World!"));
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
