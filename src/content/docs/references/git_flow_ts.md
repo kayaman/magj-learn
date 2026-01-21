@@ -29,6 +29,7 @@ Integration frequency should target **2-3 merges per day per developer**, with a
 | GitFlow | 10-50+ | Scheduled | Weeks-months | Poor |
 | Release Flow | 10-1000+ | Sprint-based | Hours to 2 days | Excellent |
 
+While GitHub Flow is also viable for a 2-person team, trunk-based development is recommended here because your specific requirements—pristine, linear history; very short-lived branches; and tight coupling to Conventional Commits–driven semantic versioning—benefit from minimizing long-lived branches and enforcing frequent, disciplined integration to `main`. In practice, this makes trunk-based development a stricter, more opinionated subset of GitHub Flow that better aligns with your CI/CD and quality goals.
 **GitFlow is explicitly discouraged**—its creator Vincent Driessen added a note stating teams doing continuous delivery should adopt simpler workflows. The complex branching creates merge conflicts, slows CI/CD, and adds process overhead without benefits for continuously deployed software.
 
 ### Daily workflow pattern
@@ -354,9 +355,9 @@ All commits MUST follow this format:
 - `chore`: Maintenance tasks
 
 ### Rules
-- Subject line max 60 characters
+- Subject line under 50 characters (hard limit 72)
 - Use imperative mood ("add" not "added")
-- Lowercase only, no period at end
+- Type/scope lowercase; description sentence case, no period at end
 - Body explains WHAT and WHY, not HOW
 
 ## Before Committing
@@ -617,7 +618,7 @@ jobs:
         run: npx semantic-release
 ```
 
-### Vitest vs Jest in 2025
+### Vitest vs Jest: current recommendations
 
 **Vitest is recommended** for new TypeScript projects—it's 10x faster with native ESM support, zero-config with Vite, and native TypeScript support without ts-jest. Jest remains viable for mature codebases, but Vitest's performance and developer experience advantages are significant.
 
@@ -742,7 +743,7 @@ Configure in repository settings: Enable only "Squash merging," select "Default 
 
 ## Mermaid diagrams for Git workflow visualization
 
-### Trunk-based development gitgraph
+### Trunk-based development `gitGraph`
 
 ```mermaid
 gitGraph
