@@ -354,7 +354,7 @@ export default defineConfig({
           ],
         },
         {
-          label: 'How-tos & Snippets',
+          label: 'Snippets',
           collapsed: true,
           autogenerate: {
             directory: 'howtos',
