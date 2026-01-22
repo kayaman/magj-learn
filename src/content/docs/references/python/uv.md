@@ -1,10 +1,10 @@
 ---
 title: uv
 sidebar:
-  order: 0
+  order: 1
 tableOfContents:
   minHeadingLevel: 2
-  maxHeadingLevel: 5
+  maxHeadingLevel: 4
 ---
 
 ## About

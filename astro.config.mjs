@@ -21,8 +21,8 @@ export default defineConfig({
       },
       customCss: [
         './src/styles/globals.css',
-        '@fontsource/open-sans/400.css',
-        '@fontsource/open-sans/600.css',
+        '@fontsource/inter/500.css',
+        '@fontsource/inter/800.css',
       ],
       editLink: {
         baseUrl: 'https://github.com/kayaman/magj-learn/edit/main/',
@@ -354,31 +354,27 @@ export default defineConfig({
           ],
         },
         {
+          label: 'Snippets',
+          collapsed: true,
+          autogenerate: {
+            directory: 'howtos',
+          },
+        },
+        {
           label: 'References',
           collapsed: true,
           items: [
             {
-              label: 'unsorted',
-              collapsed: true,
+              label: 'Python',
               autogenerate: {
-                directory: 'references/unsorted',
+                directory: 'references/python',
               },
             },
             {
-              label: 'Python',
-              items: [
-                {
-                  label: 'Tools',
-                  collapsed: true,
-                  autogenerate: {
-                    directory: 'references/python/tools',
-                  },
-                },
-                {
-                  label: 'Snippets',
-                  link: 'references/python/snippets',
-                },
-              ],
+              label: 'Random',
+              autogenerate: {
+                directory: 'references/random',
+              },
             },
           ],
         },
@@ -387,15 +383,9 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
-              label: 'Archive',
-              autogenerate: {
-                directory: 'archive/random',
-              },
-            },
-            {
               label: 'Microsoft',
               autogenerate: {
-                directory: 'archive/ms',
+                directory: 'archive/ms/ai-engineer',
               },
             },
             {
@@ -435,8 +425,12 @@ export default defineConfig({
           ],
         },
       ],
-      social: [ 
-        { icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/marcoantoniogonzalezjunior/' },
+      social: [
+        {
+          icon: 'linkedin',
+          label: 'LinkedIn',
+          href: 'https://www.linkedin.com/in/marcoantoniogonzalezjunior/',
+        },
         { icon: 'github', label: 'GitHub', href: 'https://github.com/kayaman' },
       ],
       title: "Marco's Learning",
